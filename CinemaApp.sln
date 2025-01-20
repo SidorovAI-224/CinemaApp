@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaApp.UI", "CinemaApp.UI\CinemaApp.UI.csproj", "{D8BF3FD7-C3F5-4BFB-BEB4-E60AEB580377}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaApp.BL", "CinemaApp.BL\CinemaApp.BL.csproj", "{6C2D9715-6358-4F1A-BDFE-001F31EE66F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaApp.DAL", "CinemaApp.DAL\CinemaApp.DAL.csproj", "{14F97C79-115F-4B96-A34F-08ADD444FE7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8BF3FD7-C3F5-4BFB-BEB4-E60AEB580377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8BF3FD7-C3F5-4BFB-BEB4-E60AEB580377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8BF3FD7-C3F5-4BFB-BEB4-E60AEB580377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8BF3FD7-C3F5-4BFB-BEB4-E60AEB580377}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C2D9715-6358-4F1A-BDFE-001F31EE66F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C2D9715-6358-4F1A-BDFE-001F31EE66F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C2D9715-6358-4F1A-BDFE-001F31EE66F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C2D9715-6358-4F1A-BDFE-001F31EE66F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14F97C79-115F-4B96-A34F-08ADD444FE7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14F97C79-115F-4B96-A34F-08ADD444FE7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14F97C79-115F-4B96-A34F-08ADD444FE7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14F97C79-115F-4B96-A34F-08ADD444FE7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
