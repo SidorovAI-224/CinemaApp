@@ -1,0 +1,55 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "CinemaApp.UI/1.0.0": {
+        "dependencies": {
+          "CinemaApp.BL": "1.0.0"
+        },
+        "runtime": {
+          "CinemaApp.UI.dll": {}
+        }
+      },
+      "CinemaApp.BL/1.0.0": {
+        "dependencies": {
+          "CinemaApp.DAL": "1.0.0"
+        },
+        "runtime": {
+          "CinemaApp.BL.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "CinemaApp.DAL/1.0.0": {
+        "runtime": {
+          "CinemaApp.DAL.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CinemaApp.UI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CinemaApp.BL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CinemaApp.DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

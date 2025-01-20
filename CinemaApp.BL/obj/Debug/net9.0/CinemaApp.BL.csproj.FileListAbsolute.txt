@@ -1,0 +1,15 @@
+/Users/denis/CinemaApp/CinemaApp.BL/bin/Debug/net9.0/CinemaApp.BL.deps.json
+/Users/denis/CinemaApp/CinemaApp.BL/bin/Debug/net9.0/CinemaApp.BL.dll
+/Users/denis/CinemaApp/CinemaApp.BL/bin/Debug/net9.0/CinemaApp.BL.pdb
+/Users/denis/CinemaApp/CinemaApp.BL/bin/Debug/net9.0/CinemaApp.DAL.dll
+/Users/denis/CinemaApp/CinemaApp.BL/bin/Debug/net9.0/CinemaApp.DAL.pdb
+/Users/denis/CinemaApp/CinemaApp.BL/obj/Debug/net9.0/CinemaApp.BL.csproj.AssemblyReference.cache
+/Users/denis/CinemaApp/CinemaApp.BL/obj/Debug/net9.0/CinemaApp.BL.GeneratedMSBuildEditorConfig.editorconfig
+/Users/denis/CinemaApp/CinemaApp.BL/obj/Debug/net9.0/CinemaApp.BL.AssemblyInfoInputs.cache
+/Users/denis/CinemaApp/CinemaApp.BL/obj/Debug/net9.0/CinemaApp.BL.AssemblyInfo.cs
+/Users/denis/CinemaApp/CinemaApp.BL/obj/Debug/net9.0/CinemaApp.BL.csproj.CoreCompileInputs.cache
+/Users/denis/CinemaApp/CinemaApp.BL/obj/Debug/net9.0/CinemaAp.B46BED4B.Up2Date
+/Users/denis/CinemaApp/CinemaApp.BL/obj/Debug/net9.0/CinemaApp.BL.dll
+/Users/denis/CinemaApp/CinemaApp.BL/obj/Debug/net9.0/refint/CinemaApp.BL.dll
+/Users/denis/CinemaApp/CinemaApp.BL/obj/Debug/net9.0/CinemaApp.BL.pdb
+/Users/denis/CinemaApp/CinemaApp.BL/obj/Debug/net9.0/ref/CinemaApp.BL.dll

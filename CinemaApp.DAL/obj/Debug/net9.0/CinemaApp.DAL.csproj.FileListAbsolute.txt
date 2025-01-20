@@ -1,0 +1,11 @@
+/Users/denis/CinemaApp/CinemaApp.DAL/bin/Debug/net9.0/CinemaApp.DAL.deps.json
+/Users/denis/CinemaApp/CinemaApp.DAL/bin/Debug/net9.0/CinemaApp.DAL.dll
+/Users/denis/CinemaApp/CinemaApp.DAL/bin/Debug/net9.0/CinemaApp.DAL.pdb
+/Users/denis/CinemaApp/CinemaApp.DAL/obj/Debug/net9.0/CinemaApp.DAL.GeneratedMSBuildEditorConfig.editorconfig
+/Users/denis/CinemaApp/CinemaApp.DAL/obj/Debug/net9.0/CinemaApp.DAL.AssemblyInfoInputs.cache
+/Users/denis/CinemaApp/CinemaApp.DAL/obj/Debug/net9.0/CinemaApp.DAL.AssemblyInfo.cs
+/Users/denis/CinemaApp/CinemaApp.DAL/obj/Debug/net9.0/CinemaApp.DAL.csproj.CoreCompileInputs.cache
+/Users/denis/CinemaApp/CinemaApp.DAL/obj/Debug/net9.0/CinemaApp.DAL.dll
+/Users/denis/CinemaApp/CinemaApp.DAL/obj/Debug/net9.0/refint/CinemaApp.DAL.dll
+/Users/denis/CinemaApp/CinemaApp.DAL/obj/Debug/net9.0/CinemaApp.DAL.pdb
+/Users/denis/CinemaApp/CinemaApp.DAL/obj/Debug/net9.0/ref/CinemaApp.DAL.dll
