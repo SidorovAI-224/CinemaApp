@@ -21,3 +21,6 @@ C:\Users\arrtu\Source\Repos\CinemaApp\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.D
 C:\Users\arrtu\Source\Repos\CinemaApp\CinemaApp.DAL\obj\Debug\net9.0\refint\CinemaApp.DAL.dll
 C:\Users\arrtu\Source\Repos\CinemaApp\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.pdb
 C:\Users\arrtu\Source\Repos\CinemaApp\CinemaApp.DAL\obj\Debug\net9.0\ref\CinemaApp.DAL.dll
+C:\Users\arrtu\Source\Repos\CinemaApp\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.csproj.AssemblyReference.cache
+C:\Users\arrtu\Source\Repos\CinemaApp\CinemaApp.DAL\bin\Debug\net9.0\CinemaApp.DAL.runtimeconfig.json
+C:\Users\arrtu\Source\Repos\CinemaApp\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.genruntimeconfig.cache

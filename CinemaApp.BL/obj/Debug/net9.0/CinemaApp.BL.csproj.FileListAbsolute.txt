@@ -29,3 +29,5 @@ C:\Users\arrtu\Source\Repos\CinemaApp\CinemaApp.BL\obj\Debug\net9.0\CinemaApp.BL
 C:\Users\arrtu\Source\Repos\CinemaApp\CinemaApp.BL\obj\Debug\net9.0\refint\CinemaApp.BL.dll
 C:\Users\arrtu\Source\Repos\CinemaApp\CinemaApp.BL\obj\Debug\net9.0\CinemaApp.BL.pdb
 C:\Users\arrtu\Source\Repos\CinemaApp\CinemaApp.BL\obj\Debug\net9.0\ref\CinemaApp.BL.dll
+C:\Users\arrtu\Source\Repos\CinemaApp\CinemaApp.BL\bin\Debug\net9.0\CinemaApp.BL.runtimeconfig.json
+C:\Users\arrtu\Source\Repos\CinemaApp\CinemaApp.BL\obj\Debug\net9.0\CinemaApp.BL.genruntimeconfig.cache
