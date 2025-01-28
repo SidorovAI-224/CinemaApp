@@ -9,3 +9,16 @@
 /Users/denis/CinemaApp/CinemaApp.DAL/obj/Debug/net9.0/refint/CinemaApp.DAL.dll
 /Users/denis/CinemaApp/CinemaApp.DAL/obj/Debug/net9.0/CinemaApp.DAL.pdb
 /Users/denis/CinemaApp/CinemaApp.DAL/obj/Debug/net9.0/ref/CinemaApp.DAL.dll
+C:\PracticeSoftServe\CinemaApp.DAL\bin\Debug\net9.0\CinemaApp.DAL.deps.json
+C:\PracticeSoftServe\CinemaApp.DAL\bin\Debug\net9.0\CinemaApp.DAL.dll
+C:\PracticeSoftServe\CinemaApp.DAL\bin\Debug\net9.0\CinemaApp.DAL.pdb
+C:\PracticeSoftServe\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.csproj.AssemblyReference.cache
+C:\PracticeSoftServe\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\PracticeSoftServe\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.AssemblyInfoInputs.cache
+C:\PracticeSoftServe\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.AssemblyInfo.cs
+C:\PracticeSoftServe\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.csproj.CoreCompileInputs.cache
+C:\PracticeSoftServe\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.sourcelink.json
+C:\PracticeSoftServe\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.dll
+C:\PracticeSoftServe\CinemaApp.DAL\obj\Debug\net9.0\refint\CinemaApp.DAL.dll
+C:\PracticeSoftServe\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.pdb
+C:\PracticeSoftServe\CinemaApp.DAL\obj\Debug\net9.0\ref\CinemaApp.DAL.dll

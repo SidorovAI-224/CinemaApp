@@ -1,3 +1,7 @@
+using CinemaApp.DAL.Data;
+using Microsoft.AspNetCore.Identity;
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -19,6 +23,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapStaticAssets();
+
 
 app.MapControllerRoute(
     name: "default",
