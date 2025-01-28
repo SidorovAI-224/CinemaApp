@@ -9,3 +9,12 @@
 /Users/denis/CinemaApp/CinemaApp.DAL/obj/Debug/net9.0/refint/CinemaApp.DAL.dll
 /Users/denis/CinemaApp/CinemaApp.DAL/obj/Debug/net9.0/CinemaApp.DAL.pdb
 /Users/denis/CinemaApp/CinemaApp.DAL/obj/Debug/net9.0/ref/CinemaApp.DAL.dll
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.csproj.AssemblyReference.cache
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.AssemblyInfoInputs.cache
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.AssemblyInfo.cs
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.csproj.CoreCompileInputs.cache
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.sourcelink.json
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.dll
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\obj\Debug\net9.0\refint\CinemaApp.DAL.dll
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.pdb

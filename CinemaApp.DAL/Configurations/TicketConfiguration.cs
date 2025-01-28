@@ -15,8 +15,8 @@ namespace CinemaApp.DAL.Configurations
                    .IsRequired();
 
             builder.Property(t => t.Price)
-                   .IsRequired()
-                   .HasColumnType("decimal(10, 2)");
+                   .IsRequired();
+                   //.HasColumnType("decimal(10, 2)");
 
             builder.Property(t => t.BookingDate)
                    .IsRequired();

@@ -101,3 +101,15 @@
 /Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/CinemaApp.UI.pdb
 /Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/CinemaApp.UI.genruntimeconfig.cache
 /Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/ref/CinemaApp.UI.dll
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.csproj.AssemblyReference.cache
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.AssemblyInfoInputs.cache
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.AssemblyInfo.cs
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.csproj.CoreCompileInputs.cache
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.RazorAssemblyInfo.cache
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.RazorAssemblyInfo.cs
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.sourcelink.json
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.dll
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\refint\CinemaApp.UI.dll
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.pdb
