@@ -39,7 +39,7 @@ namespace CinemaApp.BL.Services
             await _ticketRepository.UpdateAsync(ticket);
         }
 
-        public async Task DeleteTicketIdAsync(int id)
+        public async Task DeleteTicketByIdAsync(int id)
         {
             await _ticketRepository.DeleteByIdAsync(id);
         }

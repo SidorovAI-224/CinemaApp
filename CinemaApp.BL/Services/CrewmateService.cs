@@ -41,8 +41,5 @@ namespace CinemaApp.BL.Services
         {
             await _crewmateRepository.DeleteByIdAsync(id);
         }
-
-
-
     }
 }

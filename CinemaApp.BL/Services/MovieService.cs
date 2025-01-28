@@ -49,7 +49,7 @@ namespace CinemaApp.BL.Services
 
         public async Task<IEnumerable<Movie>> FindMovieByNameAsync(string name)
         {
-            return await _movieRepository.FindAsync(m => m.Title.Contains(name));
+            return await _movieRepository.FindAsync(m => m.Title.ToLower().Contains(name.ToLower()));
         }
 
     }
