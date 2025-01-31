@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using CinemaApp.DAL.Data;
-using CinemaApp.DAL.Interfaces;
 using System.Linq.Expressions;
+using CinemaApp.BL.Interfaces;
 
 namespace CinemaApp.DAL.Repositories
 {
@@ -32,7 +32,7 @@ namespace CinemaApp.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteByIdAsync(int id)
         {
             var entity = await GetByIdAsync(id);
             if (entity != null)

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace CinemaApp.DAL.Entities
 {
@@ -12,5 +13,7 @@ namespace CinemaApp.DAL.Entities
         public DateTime RegistrationDate { get; set; }
 
         public ICollection<Ticket> Tickets { get; set; }
+    
+
     }
 }
