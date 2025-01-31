@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // DB Connection
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<CinemaDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 // Add services to the container.
