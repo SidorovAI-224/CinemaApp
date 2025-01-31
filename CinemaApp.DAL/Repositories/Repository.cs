@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using CinemaApp.DAL.Data;
-using CinemaApp.DAL.Interfaces;
 using System.Linq.Expressions;
+using CinemaApp.BL.Interfaces;
 
 namespace CinemaApp.DAL.Repositories
 {

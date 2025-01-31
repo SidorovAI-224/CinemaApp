@@ -18,3 +18,7 @@ C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.sourc
 C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.dll
 C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\obj\Debug\net9.0\refint\CinemaApp.DAL.dll
 C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\obj\Debug\net9.0\CinemaApp.DAL.pdb
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\bin\Debug\net9.0\CinemaApp.DAL.deps.json
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\bin\Debug\net9.0\CinemaApp.DAL.dll
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\bin\Debug\net9.0\CinemaApp.DAL.pdb
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.DAL\obj\Debug\net9.0\ref\CinemaApp.DAL.dll

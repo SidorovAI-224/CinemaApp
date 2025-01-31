@@ -1,40 +1,49 @@
-﻿using CinemaApp.DAL.Entities;
-using CinemaApp.DAL.Interfaces;
+﻿using AutoMapper;
+using CinemaApp.BL.DTOs.MovieDTOs;
+using CinemaApp.DAL.Entities;
+using CinemaApp.BL.Interfaces.ServiceInterfaces;
+using CinemaApp.BL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace CinemaApp.BL.Services
 {
-    public class GenreService
+    public class GenreService : IGenreService
     {
         private readonly IRepository<Genre> _genreRepository;
+        private readonly IMapper _mapper;
 
-        public GenreService(IRepository<Genre> genreRepository)
+        public GenreService(IRepository<Genre> genreRepository, IMapper mapper)
         {
             _genreRepository = genreRepository;
-        }
-        
-        public async Task<IEnumerable<Genre>> GetAllGenresAsync()
-        {
-            return await _genreRepository.GetAllAsync();
+            _mapper = mapper;
         }
 
-        public async Task<Genre> GetGenreByIdAsync(int id)
+        public async Task<IEnumerable<GenreDTO>> GetAllGenresAsync()
         {
-            return await _genreRepository.GetByIdAsync(id);
+            var genres = await _genreRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<GenreDTO>>(genres);
         }
 
-        public async Task AddGenreAsync(Genre genre)
+        public async Task<GenreDTO> GetGenreByIdAsync(int id)
         {
+            var genre = await _genreRepository.GetByIdAsync(id);
+            return _mapper.Map<GenreDTO>(genre);
+        }
+
+        public async Task AddGenreAsync(GenreDTO genreDTO)
+        {
+            var genre = _mapper.Map<Genre>(genreDTO);
             await _genreRepository.AddAsync(genre);
         }
-        
-        public async Task UpdateGenreAsync(Genre genre)
+
+        public async Task UpdateGenreAsync(int id, GenreDTO genreDTO)
         {
+            var genre = await _genreRepository.GetByIdAsync(id);
+            _mapper.Map(genreDTO, genre);
             await _genreRepository.UpdateAsync(genre);
         }
 

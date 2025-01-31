@@ -1,5 +1,8 @@
-﻿using CinemaApp.DAL.Entities;
-using CinemaApp.DAL.Interfaces;
+﻿using AutoMapper;
+using CinemaApp.BL.DTOs.UserDTOs;
+using CinemaApp.BL.Interfaces;
+using CinemaApp.BL.Interfaces.ServiceInterfaces;
+using CinemaApp.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,38 +11,43 @@ using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Services
 {
-    public class TicketService
+    public class TicketService : ITicketService
     {
-
-
         private readonly IRepository<Ticket> _ticketRepository;
-        
-        public TicketService(IRepository<Ticket> ticketRepository)
+        private readonly IMapper _mapper;
+
+        public TicketService(IRepository<Ticket> ticketRepository, IMapper mapper)
         {
             _ticketRepository = ticketRepository;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Ticket>> GetAllTicketsAsync()
+        public async Task<IEnumerable<TicketDTO>> GetAllTicketsAsync()
         {
-            return await _ticketRepository.GetAllAsync();
+            var tickets = await _ticketRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<TicketDTO>>(tickets);
         }
 
-        public async Task<Ticket> GetTicketByIdAsync(int id)
+        public async Task<TicketDTO> GetTicketByIdAsync(int id)
         {
-            return await _ticketRepository.GetByIdAsync(id);
+            var ticket = await _ticketRepository.GetByIdAsync(id);
+            return _mapper.Map<TicketDTO>(ticket);
         }
 
-        public async Task AddTicketAsync(Ticket ticket)
+        public async Task AddTicketAsync(TicketDTO ticketDTO)
         {
+            var ticket = _mapper.Map<Ticket>(ticketDTO);
             await _ticketRepository.AddAsync(ticket);
         }
 
-        public async Task UpdateTicketAsync(Ticket ticket)
+        public async Task UpdateTicketAsync(int id, TicketDTO ticketDTO)
         {
+            var ticket = await _ticketRepository.GetByIdAsync(id);
+            _mapper.Map(ticketDTO, ticket);
             await _ticketRepository.UpdateAsync(ticket);
         }
 
-        public async Task DeleteTicketIdAsync(int id)
+        public async Task DeleteTicketByIdAsync(int id)
         {
             await _ticketRepository.DeleteByIdAsync(id);
         }

@@ -1,5 +1,8 @@
-﻿using CinemaApp.DAL.Entities;
-using CinemaApp.DAL.Interfaces;
+﻿using AutoMapper;
+using CinemaApp.BL.DTOs.UserDTOs;
+using CinemaApp.BL.Interfaces;
+using CinemaApp.BL.Interfaces.ServiceInterfaces;
+using CinemaApp.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,32 +11,39 @@ using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
         private readonly IRepository<User> _userRepository;
+        private readonly IMapper _mapper;
 
-        public UserService(IRepository<User> userRepository)
+        public UserService(IRepository<User> userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        public async Task<IEnumerable<UserDTO>> GetAllUsersAsync()
         {
-            return await _userRepository.GetAllAsync();
+            var users = await _userRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<UserDTO>>(users);
         }
 
-        public async Task<User> GetUserByIdAsync(int id)
+        public async Task<UserDTO> GetUserByIdAsync(int id)
         {
-            return await _userRepository.GetByIdAsync(id);
+            var user = await _userRepository.GetByIdAsync(id);
+            return _mapper.Map<UserDTO>(user);
         }
 
-        public async Task AddUserAsync(User user)
+        public async Task AddUserAsync(UserDTO userDTO)
         {
+            var user = _mapper.Map<User>(userDTO);
             await _userRepository.AddAsync(user);
         }
 
-        public async Task UpdateUserAsync(User user)
+        public async Task UpdateUserAsync(int id, UserDTO userDTO)
         {
+            var user = await _userRepository.GetByIdAsync(id);
+            _mapper.Map(userDTO, user);
             await _userRepository.UpdateAsync(user);
         }
 

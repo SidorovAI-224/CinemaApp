@@ -1,46 +1,51 @@
-﻿using CinemaApp.DAL.Entities;
-using CinemaApp.DAL.Interfaces;
-using System;
+﻿using AutoMapper;
+using CinemaApp.BL.DTOs.MovieDTOs;
+using CinemaApp.BL.Interfaces;
+using CinemaApp.DAL.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Services
 {
-    public class SessionService
+    public class SessionService : ISessionService
     {
-        private readonly IRepository<Session> _sessitoRepository;
-        
-        public SessionService(IRepository<Session> sessionRepository)
+        private readonly IRepository<Session> _sessionRepository;
+        private readonly IMapper _mapper;
+
+        public SessionService(IRepository<Session> sessionRepository, IMapper mapper)
         {
-            _sessitoRepository = sessionRepository;
+            _sessionRepository = sessionRepository;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Session>> GetAllSessionsAsync()
+        public async Task<IEnumerable<SessionDTO>> GetAllSessionsAsync()
         {
-            return await _sessitoRepository.GetAllAsync();
+            var sessions = await _sessionRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<SessionDTO>>(sessions);
         }
 
-        public async Task<Session> GetSessionByIdAsync(int id)
+        public async Task<SessionDTO> GetSessionByIdAsync(int id)
         {
-            return await _sessitoRepository.GetByIdAsync(id);
+            var session = await _sessionRepository.GetByIdAsync(id);
+            return _mapper.Map<SessionDTO>(session);
         }
 
-        public async Task AddSessionAsync(Session session)
+        public async Task AddSessionAsync(SessionDTO sessionDTO)
         {
-            await _sessitoRepository.AddAsync(session);
+            var session = _mapper.Map<Session>(sessionDTO);
+            await _sessionRepository.AddAsync(session);
         }
 
-        public async Task UpdateSessionAsync(Session session)
+        public async Task UpdateSessionAsync(int id, SessionDTO sessionDTO)
         {
-            await _sessitoRepository.UpdateAsync(session);
+            var session = await _sessionRepository.GetByIdAsync(id);
+            _mapper.Map(sessionDTO, session);
+            await _sessionRepository.UpdateAsync(session);
         }
 
         public async Task DeleteSessionByIdAsync(int id)
         {
-            await _sessitoRepository.DeleteByIdAsync(id);
+            await _sessionRepository.DeleteByIdAsync(id);
         }
     }
 }

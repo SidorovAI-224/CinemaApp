@@ -1,5 +1,7 @@
-﻿using CinemaApp.DAL.Entities;
-using CinemaApp.DAL.Interfaces;
+﻿using AutoMapper;
+using CinemaApp.BL.DTOs.MovieDTOs;
+using CinemaApp.DAL.Entities;
+using CinemaApp.BL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,32 +10,39 @@ using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Services
 {
-    public class MovieService
+    public class MovieService : IMovieService
     {
         private readonly IRepository<Movie> _movieRepository;
+        private readonly IMapper _mapper;
 
-        public MovieService(IRepository<Movie> movieRepository)
+        public MovieService(IRepository<Movie> movieRepository, IMapper mapper)
         {
             _movieRepository = movieRepository;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Movie>> GetAllMoviesAsync()
+        public async Task<IEnumerable<MovieDTO>> GetAllMoviesAsync() // good
         {
-            return await _movieRepository.GetAllAsync();
+            var movies = await _movieRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<MovieDTO>>(movies);
         }
 
-        public async Task<Movie> GetMovieByIdAsync(int id)
+        public async Task<MovieDTO> GetMovieByIdAsync(int id) // good
         {
-            return await _movieRepository.GetByIdAsync(id);
+            var movie = await _movieRepository.GetByIdAsync(id);
+            return _mapper.Map<MovieDTO>(movie);
         }
 
-        public async Task AddMovieAsync(Movie movie)
-        {   
+        public async Task AddMovieAsync(MovieDTO movieDTO) // good
+        {
+            var movie = _mapper.Map<Movie>(movieDTO);
             await _movieRepository.AddAsync(movie);
         }
 
-        public async Task UpdateMovieAsync(Movie movie)
+        public async Task UpdateMovieAsync(int id, MovieDTO movieDTO)
         {
+            var movie = await _movieRepository.GetByIdAsync(id);
+            _mapper.Map(movieDTO, movie);
             await _movieRepository.UpdateAsync(movie);
         }
 
@@ -42,15 +51,16 @@ namespace CinemaApp.BL.Services
             await _movieRepository.DeleteByIdAsync(id);
         }
 
-        public async Task<IEnumerable<Movie>> FindMovieByGenreAsync(string genre)
+        public async Task<IEnumerable<MovieDTO>> FindMovieByGenreAsync(string genre)
         {
-            return await _movieRepository.FindAsync(m => m.Genre.GenreName == genre);
+            var movies = await _movieRepository.FindAsync(m => m.Genre.GenreName == genre);
+            return _mapper.Map<IEnumerable<MovieDTO>>(movies);
         }
 
-        public async Task<IEnumerable<Movie>> FindMovieByNameAsync(string name)
+        public async Task<IEnumerable<MovieDTO>> FindMovieByNameAsync(string name)
         {
-            return await _movieRepository.FindAsync(m => m.Title.Contains(name));
+            var movies = await _movieRepository.FindAsync(m => m.Title.Contains(name));
+            return _mapper.Map<IEnumerable<MovieDTO>>(movies);
         }
-
     }
 }

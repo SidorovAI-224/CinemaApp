@@ -1,5 +1,8 @@
-﻿using CinemaApp.DAL.Entities;
-using CinemaApp.DAL.Interfaces;
+﻿using AutoMapper;
+using CinemaApp.BL.DTOs.CrewDTOs;
+using CinemaApp.BL.Interfaces;
+using CinemaApp.BL.Interfaces.ServiceInterfaces;
+using CinemaApp.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,33 +11,41 @@ using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Services
 {
-    public class CrewmatePositionsService
+    public class CrewmatePositionsService : ICrewmatePositionsService
     {
         private readonly IRepository<Crewmate_Positions> _crewmatePositionsRepository;
+        private readonly IMapper _mapper;
 
-        public CrewmatePositionsService(IRepository<Crewmate_Positions> crewmatePositionsRepository)
+
+        public CrewmatePositionsService(IRepository<Crewmate_Positions> crewmatePositionsRepository, IMapper mapper)
         {
             _crewmatePositionsRepository = crewmatePositionsRepository;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Crewmate_Positions>> GetAllCrewmatePositionsAsync()
+        public async Task<IEnumerable<CrewmatePositionsDTO>> GetAllCrewmatePositionsAsync()
         {
-            return await _crewmatePositionsRepository.GetAllAsync();
+            var crewmatePositions = await _crewmatePositionsRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<CrewmatePositionsDTO>>(crewmatePositions);
         }
 
-        public async Task<Crewmate_Positions> GetCrewmatePositionByIdAsync(int id)
+        public async Task<CrewmatePositionsDTO> GetCrewmatePositionsByIdAsync(int id)
         {
-            return await _crewmatePositionsRepository.GetByIdAsync(id);
+            var crewmatePositions = await _crewmatePositionsRepository.GetByIdAsync(id);
+            return _mapper.Map<CrewmatePositionsDTO>(crewmatePositions);
         }
 
-        public async Task AddCrewmatePositionsAsync(Crewmate_Positions crewmatePositions)
+        public async Task AddCrewmatePositionsAsync(CrewmatePositionsDTO crewmatePositionsDTO)
         {
+            var crewmatePositions = _mapper.Map<Crewmate_Positions>(crewmatePositionsDTO);
             await _crewmatePositionsRepository.AddAsync(crewmatePositions);
         }
 
-        public async Task UpdateCrewmatePositionsAsync(Crewmate_Positions crewmatePosition)
+        public async Task UpdateCrewmatePositionsAsync(int id, CrewmatePositionsDTO crewmatePositionDTO)
         {
-            await _crewmatePositionsRepository.UpdateAsync(crewmatePosition);
+            var crewmate = await _crewmatePositionsRepository.GetByIdAsync(id);
+            _mapper.Map(crewmatePositionDTO, crewmate);
+            await _crewmatePositionsRepository.UpdateAsync(crewmate);
         }
 
         public async Task DeleteCrewmatePositionsByIdAsync(int id)
