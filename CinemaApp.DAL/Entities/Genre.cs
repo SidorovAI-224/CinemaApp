@@ -7,6 +7,6 @@ namespace CinemaApp.DAL.Entities
         public int GenreID { get; set; }
         public string GenreName { get; set; }
 
-        public ICollection<Movie> Movies { get; set; }
+        public ICollection<Movie>? Movies { get; set; }
     }
 }

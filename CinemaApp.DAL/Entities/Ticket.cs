@@ -11,7 +11,7 @@ namespace CinemaApp.DAL.Entities
         public decimal Price { get; set; }
         public DateTime BookingDate { get; set; }
 
-        public Session Session { get; set; }
-        public User User { get; set; }
+        public Session? Session { get; set; }
+        public User? User { get; set; }
     }
 }

@@ -15,8 +15,8 @@ namespace CinemaApp.DAL.Data
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Crewmate> Crewmates { get; set; }
-        public DbSet<Movies_Crewmates> MoviesCrewmates { get; set; }
-        public DbSet<Crewmate_Positions> CrewmatePositions { get; set; }
+        public DbSet<MoviesCrewmates> MoviesCrewmates { get; set; }
+        public DbSet<CrewmatePositions> CrewmatePositions { get; set; }
         public DbSet<Position> Positions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -27,8 +27,8 @@ namespace CinemaApp.DAL.Data
             modelBuilder.ApplyConfiguration(new TicketConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new CrewmateConfiguration());
-            modelBuilder.ApplyConfiguration(new Movies_CrewmatesConfiguration());
-            modelBuilder.ApplyConfiguration(new Crewmate_PositionsConfiguration());
+            modelBuilder.ApplyConfiguration(new MoviesCrewmatesConfiguration());
+            modelBuilder.ApplyConfiguration(new CrewmatePositionsConfiguration());
             modelBuilder.ApplyConfiguration(new PositionConfiguration());
         }
     }
