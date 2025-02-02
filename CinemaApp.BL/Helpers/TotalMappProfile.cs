@@ -42,7 +42,7 @@ namespace CinemaApp.BL.Mapping
             
             // Ticket - TicketDTO
             CreateMap<Ticket, TicketDTO>()
-               .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.Name))
+               .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.FullName))
                .ForMember(dest => dest.MovieTitle, opt => opt.MapFrom(src => src.Session.Movie.Title))
                .ForMember(dest => dest.SessionStartTime, opt => opt.MapFrom(src => src.Session.StartTime));
 
