@@ -9,6 +9,7 @@ namespace CinemaApp.DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            /*
             builder.HasKey(u => u.UserID);
 
             builder.Property(u => u.Name)
@@ -22,6 +23,7 @@ namespace CinemaApp.DAL.Configurations
             builder.Property(u => u.PasswordHash)
                    .IsRequired()
                    .HasMaxLength(500);
+            */
 
             builder.Property(u => u.Age)
                    .IsRequired();

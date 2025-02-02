@@ -1,24 +1,40 @@
 using Microsoft.EntityFrameworkCore;
 using CinemaApp.DAL.Data;
 using CinemaApp.BL.Mapping;
+using CinemaApp.DAL.Entities;
+using Microsoft.AspNetCore.Identity;
+using System;
+using CinemaApp.BL.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+builder.Services.AddAutoMapper(typeof(TotalMappProfile));
 
 // DB Connection
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<CinemaDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-builder.Services.AddAutoMapper(typeof(TotalMappProfile));
-
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+    //можливо треба буде щось дописати
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequiredLength = 6;
+    options.User.RequireUniqueEmail = true;
+    options.SignIn.RequireConfirmedAccount = false;
+    options.SignIn.RequireConfirmedEmail = false;
+    options.SignIn.RequireConfirmedPhoneNumber = false;
+})
+    .AddEntityFrameworkStores<CinemaDbContext>()
+    .AddDefaultTokenProviders();
 
 var app = builder.Build();
 
+await SeedService.SeedDatabase(app.Services);
 // Auto migration
 using (var scope = app.Services.CreateScope())
 {
@@ -37,7 +53,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseStaticFiles();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
