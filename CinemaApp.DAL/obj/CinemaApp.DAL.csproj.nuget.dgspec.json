@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {}
+    "C:\\Users\\Darina\\source\\repos\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {}
   },
   "projects": {
-    "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
+    "C:\\Users\\Darina\\source\\repos\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\Darina\\source\\repos\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
         "projectName": "CinemaApp.DAL",
-        "projectPath": "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
-        "packagesPath": "C:\\Users\\xcoml\\.nuget\\packages\\",
-        "outputPath": "C:\\PracticeSoftServe\\CinemaApp.DAL\\obj\\",
+        "projectPath": "C:\\Users\\Darina\\source\\repos\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+        "packagesPath": "C:\\Users\\Darina\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Darina\\Source\\Repos\\CinemaApp\\CinemaApp.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\xcoml\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Darina\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

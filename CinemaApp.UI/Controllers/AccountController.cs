@@ -61,6 +61,7 @@ namespace CinemaApp.UI.Controllers
                 NormalizedUserName = model.Email.ToUpper(),
                 Email = model.Email,
                 NormalizedEmail = model.Email.ToUpper(),
+                Age = model.Age  // Збереження віку в БД
             };
             var result = await _userManager.CreateAsync(user, model.Password);
 

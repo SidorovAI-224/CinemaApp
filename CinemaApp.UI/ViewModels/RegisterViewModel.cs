@@ -11,6 +11,10 @@ namespace CinemaApp.UI.ViewModels
         [EmailAddress]
         public string? Email { get; set; }
 
+        [Required(ErrorMessage = "Age is required.")]
+        [Range(0, 100, ErrorMessage = "Age must be between 0 and 100 years.")]
+        public int Age { get; set; }
+
         [Required(ErrorMessage = "Password is required.")]
         [StringLength(40, MinimumLength = 8, ErrorMessage = "The {0} must be at {2} and at max {1} characters long.")]
         [DataType(DataType.Password)]
@@ -20,6 +24,6 @@ namespace CinemaApp.UI.ViewModels
         [Required(ErrorMessage = "Confirm Password is required.")]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
-        public string? ConfirmPassword { get; set; }
+        public string? ConfirmPassword { get; set; }        
     }
 }
