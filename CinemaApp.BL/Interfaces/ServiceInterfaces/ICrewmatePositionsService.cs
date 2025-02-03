@@ -1,4 +1,4 @@
-﻿using CinemaApp.BL.DTOs.CrewDTOs;
+﻿using CinemaApp.BL.DTOs.CrewDTOs.CrewmatePositions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

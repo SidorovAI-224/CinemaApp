@@ -1,4 +1,4 @@
-﻿using CinemaApp.BL.DTOs.MovieDTOs;
+﻿using CinemaApp.BL.DTOs.MovieDTOs.Session;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +11,8 @@ namespace CinemaApp.BL.Interfaces
     {
         Task<IEnumerable<SessionDTO>> GetAllSessionsAsync();
         Task<SessionDTO> GetSessionByIdAsync(int id);
-        Task AddSessionAsync(SessionDTO sessionDTO);
-        Task UpdateSessionAsync(int id, SessionDTO sessionDTO);
+        Task AddSessionAsync(SessionCreateDTO sessionCreateDTO);
+        Task UpdateSessionAsync(int id, SessionUpdateDTO sessionUpdateDTO);
         Task DeleteSessionByIdAsync(int id);
     }
 }

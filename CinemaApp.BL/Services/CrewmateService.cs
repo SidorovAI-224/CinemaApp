@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CinemaApp.BL.DTOs.CrewDTOs;
+using CinemaApp.BL.DTOs.CrewDTOs.Crewmate;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
@@ -33,16 +33,16 @@ namespace CinemaApp.BL.Services
             return _mapper.Map<CrewmateDTO>(crewmate);
         }
 
-        public async Task AddCrewmateAsync(CrewmateDTO crewmateDTO)
+        public async Task AddCrewmateAsync(CrewmateCreateDTO crewmateCreateDTO)
         {
-            var crewmate = _mapper.Map<Crewmate>(crewmateDTO);
+            var crewmate = _mapper.Map<Crewmate>(crewmateCreateDTO);
             await _crewmateRepository.AddAsync(crewmate);
         }
 
-        public async Task UpdateCrewmateAsync(int id, CrewmateDTO crewmateDTO)
+        public async Task UpdateCrewmateAsync(int id, CrewmateUpdateDTO crewmateUpdateDTO)
         {
             var crewmate = await _crewmateRepository.GetByIdAsync(id);
-            _mapper.Map(crewmateDTO, crewmate);
+            _mapper.Map(crewmateUpdateDTO, crewmate);
             await _crewmateRepository.UpdateAsync(crewmate);
         }
 

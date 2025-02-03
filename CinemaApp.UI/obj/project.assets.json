@@ -18,6 +18,19 @@
           }
         }
       },
+      "FluentValidation/11.11.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/FluentValidation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/FluentValidation.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -1183,7 +1196,8 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "AutoMapper": "13.0.1",
-          "CinemaApp.DAL": "1.0.0"
+          "CinemaApp.DAL": "1.0.0",
+          "FluentValidation": "11.11.0"
         },
         "compile": {
           "bin/placeholder/CinemaApp.BL.dll": {}
@@ -1223,6 +1237,31 @@
         "icon.png",
         "lib/net6.0/AutoMapper.dll",
         "lib/net6.0/AutoMapper.xml"
+      ]
+    },
+    "FluentValidation/11.11.0": {
+      "sha512": "cyIVdQBwSipxWG8MA3Rqox7iNbUNUTK5bfJi9tIdm4CAfH71Oo5ABLP4/QyrUwuakqpUEPGtE43BDddvEehuYw==",
+      "type": "package",
+      "path": "fluentvalidation/11.11.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.11.11.0.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net5.0/FluentValidation.dll",
+        "lib/net5.0/FluentValidation.xml",
+        "lib/net6.0/FluentValidation.dll",
+        "lib/net6.0/FluentValidation.xml",
+        "lib/net7.0/FluentValidation.dll",
+        "lib/net7.0/FluentValidation.xml",
+        "lib/net8.0/FluentValidation.dll",
+        "lib/net8.0/FluentValidation.xml",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.xml",
+        "lib/netstandard2.1/FluentValidation.dll",
+        "lib/netstandard2.1/FluentValidation.xml"
       ]
     },
     "Humanizer.Core/2.14.1": {
@@ -3323,23 +3362,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\xcoml\\.nuget\\packages\\": {},
+    "C:\\Users\\arrtu\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\PracticeSoftServe\\CinemaApp.UI\\CinemaApp.UI.csproj",
+      "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\Cinema\\CinemaApp.UI\\CinemaApp.UI.csproj",
       "projectName": "CinemaApp.UI",
-      "projectPath": "C:\\PracticeSoftServe\\CinemaApp.UI\\CinemaApp.UI.csproj",
-      "packagesPath": "C:\\Users\\xcoml\\.nuget\\packages\\",
-      "outputPath": "C:\\PracticeSoftServe\\CinemaApp.UI\\obj\\",
+      "projectPath": "C:\\Users\\arrtu\\Desktop\\Cinema\\CinemaApp.UI\\CinemaApp.UI.csproj",
+      "packagesPath": "C:\\Users\\arrtu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\arrtu\\Desktop\\Cinema\\CinemaApp.UI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\xcoml\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\arrtu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3355,8 +3394,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\PracticeSoftServe\\CinemaApp.BL\\CinemaApp.BL.csproj": {
-              "projectPath": "C:\\PracticeSoftServe\\CinemaApp.BL\\CinemaApp.BL.csproj"
+            "C:\\Users\\arrtu\\Desktop\\Cinema\\CinemaApp.BL\\CinemaApp.BL.csproj": {
+              "projectPath": "C:\\Users\\arrtu\\Desktop\\Cinema\\CinemaApp.BL\\CinemaApp.BL.csproj"
             }
           }
         }
@@ -3407,7 +3446,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

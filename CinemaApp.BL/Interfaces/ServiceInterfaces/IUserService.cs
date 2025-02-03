@@ -1,4 +1,4 @@
-﻿using CinemaApp.BL.DTOs.UserDTOs;
+﻿using CinemaApp.BL.DTOs.UserDTOs.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +11,8 @@ namespace CinemaApp.BL.Interfaces.ServiceInterfaces
     {
         Task<IEnumerable<UserDTO>> GetAllUsersAsync();
         Task<UserDTO> GetUserByIdAsync(int id);
-        Task AddUserAsync(UserDTO userDTO);
-        Task UpdateUserAsync(int id, UserDTO userDTO);
+        Task AddUserAsync(UserCreateDTO userCreateDTO);
+        Task UpdateUserAsync(int id, UserUpdateDTO userUpdateDTO);
         Task DeleteUserByIdAsync(int id);
     }
 }

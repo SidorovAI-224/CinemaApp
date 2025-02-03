@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CinemaApp.BL.DTOs.MovieDTOs;
+using CinemaApp.BL.DTOs.MovieDTOs.MovieCrewmates;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;

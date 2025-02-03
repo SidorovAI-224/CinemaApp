@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CinemaApp.BL.DTOs.CrewDTOs
+namespace CinemaApp.BL.DTOs.CrewDTOs.Crewmate
 {
-    public class CrewmateDTO
+    public class CrewmateUpdateDTO
     {
-        public int CrewmateID { get; set; }
         public string Name { get; set; }
-        public List<string> Positions { get; set; }
-
     }
 }

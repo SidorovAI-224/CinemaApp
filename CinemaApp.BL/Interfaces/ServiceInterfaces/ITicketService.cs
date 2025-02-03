@@ -1,4 +1,4 @@
-﻿using CinemaApp.BL.DTOs.UserDTOs;
+﻿using CinemaApp.BL.DTOs.UserDTOs.Ticket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +11,8 @@ namespace CinemaApp.BL.Interfaces.ServiceInterfaces
     {
         Task<IEnumerable<TicketDTO>> GetAllTicketsAsync();
         Task<TicketDTO> GetTicketByIdAsync(int id);
-        Task AddTicketAsync(TicketDTO ticketDTO);
-        Task UpdateTicketAsync(int id, TicketDTO ticketDTO);
+        Task AddTicketAsync(TicketCreateDTO ticketCreateDTO);
+        Task UpdateTicketAsync(int id, TicketUpdateDTO ticketUpdateDTO);
         Task DeleteTicketByIdAsync(int id);
     }
 }

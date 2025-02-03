@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using CinemaApp.BL.DTOs.MovieDTOs;
 using CinemaApp.DAL.Entities;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.BL.Interfaces;
@@ -8,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CinemaApp.BL.DTOs.MovieDTOs.Genre;
 
 namespace CinemaApp.BL.Services
 {
@@ -34,16 +34,16 @@ namespace CinemaApp.BL.Services
             return _mapper.Map<GenreDTO>(genre);
         }
 
-        public async Task AddGenreAsync(GenreDTO genreDTO)
+        public async Task AddGenreAsync(GenreCreateDTO genreCreateDTO)
         {
-            var genre = _mapper.Map<Genre>(genreDTO);
+            var genre = _mapper.Map<Genre>(genreCreateDTO);
             await _genreRepository.AddAsync(genre);
         }
 
-        public async Task UpdateGenreAsync(int id, GenreDTO genreDTO)
+        public async Task UpdateGenreAsync(int id, GenreUpdateDTO genreUpdateDTO)
         {
             var genre = await _genreRepository.GetByIdAsync(id);
-            _mapper.Map(genreDTO, genre);
+            _mapper.Map(genreUpdateDTO, genre);
             await _genreRepository.UpdateAsync(genre);
         }
 

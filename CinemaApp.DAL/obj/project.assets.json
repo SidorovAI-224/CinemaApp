@@ -3286,23 +3286,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\xcoml\\.nuget\\packages\\": {},
+    "C:\\Users\\arrtu\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\Cinema\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
       "projectName": "CinemaApp.DAL",
-      "projectPath": "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
-      "packagesPath": "C:\\Users\\xcoml\\.nuget\\packages\\",
-      "outputPath": "C:\\PracticeSoftServe\\CinemaApp.DAL\\obj\\",
+      "projectPath": "C:\\Users\\arrtu\\Desktop\\Cinema\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+      "packagesPath": "C:\\Users\\arrtu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\arrtu\\Desktop\\Cinema\\CinemaApp.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\xcoml\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\arrtu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3377,7 +3377,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

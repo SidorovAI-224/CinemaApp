@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CinemaApp.BL.DTOs.UserDTOs;
+using CinemaApp.BL.DTOs.UserDTOs.Ticket;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
@@ -34,16 +34,16 @@ namespace CinemaApp.BL.Services
             return _mapper.Map<TicketDTO>(ticket);
         }
 
-        public async Task AddTicketAsync(TicketDTO ticketDTO)
+        public async Task AddTicketAsync(TicketCreateDTO ticketCreateDTO)
         {
-            var ticket = _mapper.Map<Ticket>(ticketDTO);
+            var ticket = _mapper.Map<Ticket>(ticketCreateDTO);
             await _ticketRepository.AddAsync(ticket);
         }
 
-        public async Task UpdateTicketAsync(int id, TicketDTO ticketDTO)
+        public async Task UpdateTicketAsync(int id, TicketUpdateDTO ticketUpdateDTO)
         {
             var ticket = await _ticketRepository.GetByIdAsync(id);
-            _mapper.Map(ticketDTO, ticket);
+            _mapper.Map(ticketUpdateDTO, ticket);
             await _ticketRepository.UpdateAsync(ticket);
         }
 

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CinemaApp.BL.DTOs.MovieDTOs;
+using CinemaApp.BL.DTOs.MovieDTOs.Session;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.DAL.Entities;
 using System.Collections.Generic;
@@ -30,16 +30,16 @@ namespace CinemaApp.BL.Services
             return _mapper.Map<SessionDTO>(session);
         }
 
-        public async Task AddSessionAsync(SessionDTO sessionDTO)
+        public async Task AddSessionAsync(SessionCreateDTO sessionCreateDTO)
         {
-            var session = _mapper.Map<Session>(sessionDTO);
+            var session = _mapper.Map<Session>(sessionCreateDTO);
             await _sessionRepository.AddAsync(session);
         }
 
-        public async Task UpdateSessionAsync(int id, SessionDTO sessionDTO)
+        public async Task UpdateSessionAsync(int id, SessionUpdateDTO sessionUpdateDTO)
         {
             var session = await _sessionRepository.GetByIdAsync(id);
-            _mapper.Map(sessionDTO, session);
+            _mapper.Map(sessionUpdateDTO, session);
             await _sessionRepository.UpdateAsync(session);
         }
 

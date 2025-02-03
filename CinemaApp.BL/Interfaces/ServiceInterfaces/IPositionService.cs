@@ -1,4 +1,4 @@
-﻿using CinemaApp.BL.DTOs.CrewDTOs;
+﻿using CinemaApp.BL.DTOs.CrewDTOs.Position;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +11,8 @@ namespace CinemaApp.BL.Interfaces.ServiceInterfaces
     {
         Task<IEnumerable<PositionDTO>> GetAllPositionsAsync();
         Task<PositionDTO> GetPositionByIdAsync(int id);
-        Task AddPositionAsync(PositionDTO positionDTO);
-        Task UpdatePositionAsync(int id, PositionDTO positionDTO);
+        Task AddPositionAsync(PositionCreateDTO positionCreateDTO);
+        Task UpdatePositionAsync(int id, PositionUpdateDTO positionUpdateDTO);
         Task DeletePositionByIdAsync(int id);
     }
 }
