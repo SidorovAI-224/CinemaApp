@@ -128,7 +128,7 @@ namespace CinemaApp.BL.Mapping
 
             // TicketUpdateDTO - Ticket
             CreateMap<TicketUpdateDTO, Ticket>()
-                .ForMember(dest => dest.TicketID, opt => opt.Ignore())
+                //.ForMember(dest => dest.TicketID, opt => opt.Ignore()) ?
                 .ForMember(dest => dest.Session, opt => opt.Ignore())
                 .ForMember(dest => dest.User, opt => opt.Ignore());
 

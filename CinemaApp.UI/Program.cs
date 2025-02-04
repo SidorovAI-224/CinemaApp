@@ -5,13 +5,29 @@ using CinemaApp.DAL.Entities;
 using Microsoft.AspNetCore.Identity;
 using System;
 using CinemaApp.BL.Services;
+using CinemaApp.BL.Validators;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using CinemaApp.BL.Validators.Genre;
+
+
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+// mapper
 builder.Services.AddAutoMapper(typeof(TotalMappProfile));
+// validator
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+
+builder.Services.AddValidatorsFromAssembly(typeof(GenreCreateValidator).Assembly);
+
+
 
 // DB Connection
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

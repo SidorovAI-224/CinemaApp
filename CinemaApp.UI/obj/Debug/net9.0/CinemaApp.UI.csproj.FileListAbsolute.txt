@@ -788,3 +788,7 @@ C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\refint\CinemaApp.UI.
 C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.pdb
 C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.genruntimeconfig.cache
 C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\ref\CinemaApp.UI.dll
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\bin\Debug\net9.0\FluentValidation.dll
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\arrtu\Desktop\Cinema\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.MvcApplicationPartsAssemblyInfo.cs

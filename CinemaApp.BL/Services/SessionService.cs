@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using CinemaApp.BL.DTOs.CrewDTOs.Crewmate;
 using CinemaApp.BL.DTOs.MovieDTOs.Session;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.DAL.Entities;
+using FluentValidation;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

@@ -3,6 +3,7 @@ using CinemaApp.BL.DTOs.CrewDTOs.Crewmate;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,13 @@ namespace CinemaApp.BL.Services
         private readonly IRepository<Crewmate> _crewmateRepository;
         private readonly IMapper _mapper;
 
-        public CrewmateService(IRepository<Crewmate> crewmateRepository, IMapper mapper)
+        private readonly IValidator<CrewmateCreateDTO> _createValidator;
+        private readonly IValidator<CrewmateUpdateDTO> _updateValidator;
+
+        public CrewmateService(IValidator<CrewmateCreateDTO> createValidator, IValidator<CrewmateUpdateDTO> updateValidator, IRepository<Crewmate> crewmateRepository, IMapper mapper)
         {
+            _createValidator = createValidator;
+            _updateValidator = updateValidator;
             _crewmateRepository = crewmateRepository;
             _mapper = mapper;
         }
@@ -35,6 +41,12 @@ namespace CinemaApp.BL.Services
 
         public async Task AddCrewmateAsync(CrewmateCreateDTO crewmateCreateDTO)
         {
+            var validationResult = await _createValidator.ValidateAsync(crewmateCreateDTO);
+            if (!validationResult.IsValid)
+            {
+                throw new ValidationException(validationResult.Errors);
+            }
+
             var crewmate = _mapper.Map<Crewmate>(crewmateCreateDTO);
             await _crewmateRepository.AddAsync(crewmate);
         }
