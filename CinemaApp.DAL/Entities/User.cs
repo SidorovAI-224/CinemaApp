@@ -12,11 +12,21 @@ namespace CinemaApp.DAL.Entities
         public string PasswordHash { get; set; }
         */
         public string FullName { get; set; }
-        public int Age { get; set; }
+
+        private int _age;
+        public int Age
+        {
+            get => _age;
+            set
+            {
+                if (value < 0 || value > 100)
+                    throw new ArgumentOutOfRangeException(nameof(Age), "Вік має бути від 0 до 100 років.");
+                _age = value;
+            }
+        }
         public DateTime RegistrationDate { get; set; }
 
         public ICollection<Ticket> Tickets { get; set; }
-    
 
     }
 }

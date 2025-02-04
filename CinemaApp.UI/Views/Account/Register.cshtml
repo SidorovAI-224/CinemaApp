@@ -21,6 +21,15 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+
+            <!-- 🔹 Додане поле для віку -->
+            <div class="mb-3">
+                <label asp-for="Age" class="form-label"></label>
+                <input asp-for="Age" class="form-control" type="number" min="0" max="100" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <!-- 🔹 Кінець додавання віку -->
+
             <div class="mb-3">
                 <label asp-for="Password" class="form-label"></label>
                 <input asp-for="Password" class="form-control" />
