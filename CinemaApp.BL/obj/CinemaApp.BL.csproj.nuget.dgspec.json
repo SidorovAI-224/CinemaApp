@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\PracticeSoftServe\\CinemaApp.BL\\CinemaApp.BL.csproj": {}
+    "C:\\Users\\arrtu\\Desktop\\NW\\CinemaApp.BL\\CinemaApp.BL.csproj": {}
   },
   "projects": {
-    "C:\\PracticeSoftServe\\CinemaApp.BL\\CinemaApp.BL.csproj": {
+    "C:\\Users\\arrtu\\Desktop\\NW\\CinemaApp.BL\\CinemaApp.BL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\PracticeSoftServe\\CinemaApp.BL\\CinemaApp.BL.csproj",
+        "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\NW\\CinemaApp.BL\\CinemaApp.BL.csproj",
         "projectName": "CinemaApp.BL",
-        "projectPath": "C:\\PracticeSoftServe\\CinemaApp.BL\\CinemaApp.BL.csproj",
-        "packagesPath": "C:\\Users\\xcoml\\.nuget\\packages\\",
-        "outputPath": "C:\\PracticeSoftServe\\CinemaApp.BL\\obj\\",
+        "projectPath": "C:\\Users\\arrtu\\Desktop\\NW\\CinemaApp.BL\\CinemaApp.BL.csproj",
+        "packagesPath": "C:\\Users\\arrtu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arrtu\\Desktop\\NW\\CinemaApp.BL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\xcoml\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\arrtu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,8 +33,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
-                "projectPath": "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj"
+              "C:\\Users\\arrtu\\Desktop\\NW\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
+                "projectPath": "C:\\Users\\arrtu\\Desktop\\NW\\CinemaApp.DAL\\CinemaApp.DAL.csproj"
               }
             }
           }
@@ -59,6 +59,10 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.11.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -82,24 +86,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
+    "C:\\Users\\arrtu\\Desktop\\NW\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\NW\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
         "projectName": "CinemaApp.DAL",
-        "projectPath": "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
-        "packagesPath": "C:\\Users\\xcoml\\.nuget\\packages\\",
-        "outputPath": "C:\\PracticeSoftServe\\CinemaApp.DAL\\obj\\",
+        "projectPath": "C:\\Users\\arrtu\\Desktop\\NW\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+        "packagesPath": "C:\\Users\\arrtu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arrtu\\Desktop\\NW\\CinemaApp.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\xcoml\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\arrtu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -174,7 +178,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -5,13 +5,39 @@ using CinemaApp.DAL.Entities;
 using Microsoft.AspNetCore.Identity;
 using System;
 using CinemaApp.BL.Services;
-
+using CinemaApp.BL.Validators.Genre;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(TotalMappProfile));
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+// mapper
+builder.Services.AddAutoMapper(typeof(TotalMappProfile));
+// validator
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+
+builder.Services.AddValidatorsFromAssembly(typeof(GenreCreateValidator).Assembly);
+
+var validatorTypes = builder.Services.Where(s => s.ServiceType.IsGenericType
+    && s.ServiceType.GetGenericTypeDefinition() == typeof(IValidator<>))
+    .Select(s => s.ServiceType)
+    .ToList();
+
+Console.WriteLine("Registered Validators:");
+foreach (var type in validatorTypes)
+{
+    Console.WriteLine(type);
+}
+
+
 
 // DB Connection
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

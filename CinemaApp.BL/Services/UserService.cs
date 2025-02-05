@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CinemaApp.BL.DTOs.UserDTOs;
+using CinemaApp.BL.DTOs.UserDTOs.User;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
@@ -34,16 +34,16 @@ namespace CinemaApp.BL.Services
             return _mapper.Map<UserDTO>(user);
         }
 
-        public async Task AddUserAsync(UserDTO userDTO)
+        public async Task AddUserAsync(UserCreateDTO userCreateDTO)
         {
-            var user = _mapper.Map<User>(userDTO);
+            var user = _mapper.Map<User>(userCreateDTO);
             await _userRepository.AddAsync(user);
         }
 
-        public async Task UpdateUserAsync(int id, UserDTO userDTO)
+        public async Task UpdateUserAsync(int id, UserUpdateDTO userUpdateDTO)
         {
             var user = await _userRepository.GetByIdAsync(id);
-            _mapper.Map(userDTO, user);
+            _mapper.Map(userUpdateDTO, user);
             await _userRepository.UpdateAsync(user);
         }
 
