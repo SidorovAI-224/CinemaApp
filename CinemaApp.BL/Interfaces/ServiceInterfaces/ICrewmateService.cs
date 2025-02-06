@@ -1,4 +1,4 @@
-﻿using CinemaApp.BL.DTOs.CrewDTOs;
+﻿using CinemaApp.BL.DTOs.CrewDTOs.Crewmate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +11,8 @@ namespace CinemaApp.BL.Interfaces.ServiceInterfaces
     {
         Task<IEnumerable<CrewmateDTO>> GetAllCrewmatesAsync();
         Task<CrewmateDTO> GetCrewmateByIdAsync(int id);
-        Task AddCrewmateAsync(CrewmateDTO crewmateDTO);
-        Task UpdateCrewmateAsync(int id, CrewmateDTO crewmateDTO);
+        Task AddCrewmateAsync(CrewmateCreateDTO crewmateDTO);
+        Task UpdateCrewmateAsync(int id, CrewmateUpdateDTO crewmateDTO);
         Task DeleteCrewmateByIdAsync(int id);
     }
 }

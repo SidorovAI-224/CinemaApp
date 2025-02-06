@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using CinemaApp.BL.DTOs.MovieDTOs;
 using CinemaApp.DAL.Entities;
 using CinemaApp.BL.Interfaces;
 using System;
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CinemaApp.BL.DTOs.MovieDTOs.Movie;
 
 namespace CinemaApp.BL.Services
 {
@@ -21,28 +21,28 @@ namespace CinemaApp.BL.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<MovieDTO>> GetAllMoviesAsync() // good
+        public async Task<IEnumerable<MovieDTO>> GetAllMoviesAsync()
         {
             var movies = await _movieRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<MovieDTO>>(movies);
         }
 
-        public async Task<MovieDTO> GetMovieByIdAsync(int id) // good
+        public async Task<MovieDTO> GetMovieByIdAsync(int id)
         {
             var movie = await _movieRepository.GetByIdAsync(id);
             return _mapper.Map<MovieDTO>(movie);
         }
 
-        public async Task AddMovieAsync(MovieDTO movieDTO) // good
+        public async Task AddMovieAsync(MovieCreateDTO movieCreateDTO)
         {
-            var movie = _mapper.Map<Movie>(movieDTO);
+            var movie = _mapper.Map<Movie>(movieCreateDTO);
             await _movieRepository.AddAsync(movie);
         }
 
-        public async Task UpdateMovieAsync(int id, MovieDTO movieDTO)
+        public async Task UpdateMovieAsync(int id, MovieUpdateDTO movieUpdateDTO)
         {
             var movie = await _movieRepository.GetByIdAsync(id);
-            _mapper.Map(movieDTO, movie);
+            _mapper.Map(movieUpdateDTO, movie);
             await _movieRepository.UpdateAsync(movie);
         }
 

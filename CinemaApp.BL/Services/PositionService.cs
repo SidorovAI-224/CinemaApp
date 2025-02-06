@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CinemaApp.BL.DTOs.CrewDTOs;
+using CinemaApp.BL.DTOs.CrewDTOs.Position;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
@@ -34,16 +34,16 @@ namespace CinemaApp.BL.Services
             return _mapper.Map<PositionDTO>(position);
         }
 
-        public async Task AddPositionAsync(PositionDTO positionDTO)
+        public async Task AddPositionAsync(PositionCreateDTO positionCreateDTO)
         {
-            var position = _mapper.Map<Position>(positionDTO);
+            var position = _mapper.Map<Position>(positionCreateDTO);
             await _positionRepository.AddAsync(position);
         }
 
-        public async Task UpdatePositionAsync(int id, PositionDTO positionDTO)
+        public async Task UpdatePositionAsync(int id, PositionUpdateDTO positionUpdateDTO)
         {
             var position = await _positionRepository.GetByIdAsync(id);
-            _mapper.Map(positionDTO, position);
+            _mapper.Map(positionUpdateDTO, position);
             await _positionRepository.UpdateAsync(position);
         }
 

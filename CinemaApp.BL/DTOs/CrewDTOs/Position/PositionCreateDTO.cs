@@ -1,14 +1,14 @@
-﻿using System;
+﻿using CinemaApp.DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CinemaApp.BL.DTOs.CrewDTOs
+namespace CinemaApp.BL.DTOs.CrewDTOs.Position
 {
-    public class PositionDTO
+    public class PositionCreateDTO
     {
-        public int PositionID { get; set; }
         public string PositionName { get; set; }
     }
 }

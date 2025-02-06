@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CinemaApp.BL.DTOs.MovieDTOs
+namespace CinemaApp.BL.DTOs.MovieDTOs.Session
 {
     public class SessionDTO
     {

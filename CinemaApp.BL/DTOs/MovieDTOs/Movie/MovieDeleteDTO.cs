@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CinemaApp.BL.DTOs.MovieDTOs
+namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
 {
-    public class MoviesCrewmatesDTO
+    public class MovieDeleteDTO
     {
         public int MovieID { get; set; }
-
-        public int CrewmateID { get; set; }
     }
 }

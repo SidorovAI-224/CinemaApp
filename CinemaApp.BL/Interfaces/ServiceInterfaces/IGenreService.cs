@@ -1,4 +1,4 @@
-﻿using CinemaApp.BL.DTOs.MovieDTOs;
+﻿using CinemaApp.BL.DTOs.MovieDTOs.Genre;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +11,8 @@ namespace CinemaApp.BL.Interfaces.ServiceInterfaces
     {
         Task<IEnumerable<GenreDTO>> GetAllGenresAsync();
         Task<GenreDTO> GetGenreByIdAsync(int id);
-        Task AddGenreAsync(GenreDTO genreDTO);
-        Task UpdateGenreAsync(int id, GenreDTO genreDTO);
+        Task AddGenreAsync(GenreCreateDTO genreCreateDTO);
+        Task UpdateGenreAsync(int id, GenreUpdateDTO genreUpdateDTO);
         Task DeleteGenreByIdAsync(int id);
     }
 }

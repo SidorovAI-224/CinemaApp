@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CinemaApp.BL.DTOs.MovieDTOs
+namespace CinemaApp.BL.DTOs.MovieDTOs.Genre
 {
-    public class GenreDTO
+    public class GenreDeleteDTO
     {
         public int GenreID { get; set; }
-        public string GenreName { get; set; }
     }
 }
