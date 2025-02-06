@@ -8,12 +8,16 @@ using CinemaApp.BL.Services;
 using CinemaApp.BL.Validators.Genre;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using CinemaApp.BL.Interfaces;
+using CinemaApp.DAL.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(TotalMappProfile));
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IMovieService, MovieService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 // mapper
@@ -46,7 +50,7 @@ builder.Services.AddDbContext<CinemaDbContext>(options =>
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
-    //можливо треба буде щось дописати
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     options.Password.RequireDigit = true;
     options.Password.RequireLowercase = true;
     options.Password.RequiredLength = 6;
