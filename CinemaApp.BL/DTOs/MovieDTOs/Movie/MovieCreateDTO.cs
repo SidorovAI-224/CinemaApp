@@ -11,7 +11,7 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
         public string Title { get; set; }
         public string Description { get; set; }
         public int GenreID { get; set; }
-        public string GenreName { get; set; }
+        //public string GenreName { get; set; }
         public TimeSpan Duration { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string PosterURL { get; set; }

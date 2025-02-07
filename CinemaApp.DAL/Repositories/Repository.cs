@@ -2,6 +2,7 @@
 using CinemaApp.DAL.Data;
 using System.Linq.Expressions;
 using CinemaApp.BL.Interfaces;
+using CinemaApp.DAL.Entities;
 
 namespace CinemaApp.DAL.Repositories
 {
@@ -16,9 +17,39 @@ namespace CinemaApp.DAL.Repositories
             _dbSet = context.Set<T>();
         }
 
-        public async Task<T> GetByIdAsync(int id) => await _dbSet.FindAsync(id);
+        //public async Task<T> GetByIdAsync(int id) => await _dbSet.FindAsync(id);
 
-        public async Task<IEnumerable<T>> GetAllAsync() => await _dbSet.ToListAsync();
+        public async Task<T> GetByIdAsync(int id)
+        {
+            IQueryable<T> query = _dbSet;
+
+            if (typeof(T) == typeof(Movie))
+            {
+                query = query.Include(m => ((Movie)(object)m).Genre);
+            }
+
+            var keyName = _context.Model.FindEntityType(typeof(T))?.FindPrimaryKey()?.Properties.First().Name;
+
+            if (keyName == null)
+                throw new InvalidOperationException($"Не вдалося знайти ключове поле для {typeof(T).Name}");
+
+            return await query.FirstOrDefaultAsync(e => EF.Property<int>(e, keyName) == id);
+        }
+
+        //public async Task<IEnumerable<T>> GetAllAsync() => await _dbSet.ToListAsync();
+
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            IQueryable<T> query = _dbSet;
+
+            if (typeof(T) == typeof(Movie))
+            {
+                query = query.Include("Genre");
+            }
+
+            return await query.ToListAsync();
+        }
+
 
         public async Task AddAsync(T entity)
         {
@@ -42,7 +73,20 @@ namespace CinemaApp.DAL.Repositories
             }
         }
 
+        //public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
+        //    => await _dbSet.Where(predicate).ToListAsync();
+
         public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
-            => await _dbSet.Where(predicate).ToListAsync();
+        {
+            IQueryable<T> query = _dbSet.Where(predicate);
+
+            if (typeof(T) == typeof(Movie))
+            {
+                query = query.Include("Genre");
+            }
+
+            return await query.ToListAsync();
+        }
+
     }
 }

@@ -1,0 +1,27 @@
+﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDTO
+
+<h2>Деталі фільму</h2>
+
+<div>
+    <h4>@Model.Title</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Опис</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+        <dt class="col-sm-2">Жанр</dt>
+        <dd class="col-sm-10">@Model.GenreName</dd>
+        <dt class="col-sm-2">Тривалість</dt>
+        <dd class="col-sm-10">@Model.Duration</dd>
+        <dt class="col-sm-2">Дата релізу</dt>
+        <dd class="col-sm-10">@Model.ReleaseDate.ToShortDateString()</dd>
+        <dt class="col-sm-2">Рейтинг</dt>
+        <dd class="col-sm-10">@Model.Rating</dd>
+        <dt class="col-sm-2">Вікове обмеження</dt>
+        <dd class="col-sm-10">@Model.AgeLimit</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MovieID" class="btn btn-warning">Редагувати</a>
+    <a asp-action="Index" class="btn btn-secondary">Назад до списку</a>
+</div>

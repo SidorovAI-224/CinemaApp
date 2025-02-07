@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using CinemaApp.DAL.Entities;
-using CinemaApp.BL.DTOs;
 using CinemaApp.BL.DTOs.UserDTOs.Ticket;
 using CinemaApp.BL.DTOs.UserDTOs.User;
 using CinemaApp.BL.DTOs.MovieDTOs.Session;
@@ -26,12 +25,14 @@ namespace CinemaApp.BL.Mapping
                 .ForMember(dest => dest.Sessions, opt => opt.Ignore())
                 .ForMember(dest => dest.MoviesCrewmates, opt => opt.Ignore());
 
-
-            // MovieCreateDTO - Movie
+            // MovieCreate - Movie
             CreateMap<MovieCreateDTO, Movie>()
-                .ForMember(dest => dest.Genre, opt => opt.Ignore()) 
+                .ForMember(dest => dest.GenreID, opt => opt.MapFrom(src => src.GenreID))
+                .ForMember(dest => dest.Genre, opt => opt.Ignore())  
                 .ForMember(dest => dest.Sessions, opt => opt.Ignore())
                 .ForMember(dest => dest.MoviesCrewmates, opt => opt.Ignore());
+
+
 
             // MovieUpdateDTO - Movie
             CreateMap<MovieUpdateDTO, Movie>()
@@ -154,8 +155,8 @@ namespace CinemaApp.BL.Mapping
                 .ForMember(dest => dest.Movies, opt => opt.Ignore());
 
             // GenreUpdateDTO - Genre
-            CreateMap<GenreUpdateDTO, Genre>()
-                .ForMember(dest => dest.GenreName, opt => opt.Ignore());
+            CreateMap<GenreUpdateDTO, Genre>();
+                //.ForMember(dest => dest.GenreName, opt => opt.Ignore());
 
             // Genre - GenreDeleteDTO
             CreateMap<Genre, GenreDeleteDTO>();
@@ -164,6 +165,8 @@ namespace CinemaApp.BL.Mapping
             CreateMap<GenreDeleteDTO, Genre>();
 
 
+            // GenreCreateDTO - Genre
+            CreateMap<GenreCreateDTO, Genre>();
 
 
 

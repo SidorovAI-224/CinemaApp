@@ -12,4 +12,3 @@ namespace CinemaApp.BL.Interfaces
         Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
     }
 }
-// where

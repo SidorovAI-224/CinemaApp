@@ -14,7 +14,7 @@ namespace CinemaApp.DAL.Entities
         public string TrailerURL { get; set; }
         public decimal Rating { get; set; }
         public string AgeLimit { get; set; }
-
+        
         public Genre Genre { get; set; }
         public ICollection<Session> Sessions { get; set; }
         public ICollection<Movies_Crewmates> MoviesCrewmates { get; set; }

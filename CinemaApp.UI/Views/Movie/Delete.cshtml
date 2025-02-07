@@ -1,0 +1,21 @@
+﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDTO
+
+<h2>Видалити фільм</h2>
+<input type="hidden" asp-for="MovieID" />
+<h3>Ви впевнені, що хочете видалити цей фільм?</h3>
+<div>
+    <h4>@Model.Title</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Опис</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+        <dt class="col-sm-2">Жанр</dt>
+        <dd class="col-sm-10">@Model.GenreName</dd>
+    </dl>
+
+    <form asp-action="DeleteConfirmed" method="post">
+        <input type="hidden" asp-for="MovieID" />
+        <input type="submit" value="Видалити" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Назад до списку</a>
+    </form>
+</div>
