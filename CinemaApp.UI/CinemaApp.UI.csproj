@@ -14,6 +14,14 @@
     <ProjectReference Include="..\CinemaApp.BL\CinemaApp.BL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Crewmate\" />
+    <Folder Include="Views\Position\" />
+    <Folder Include="Views\Session\" />
+    <Folder Include="Views\Ticket\" />
+    <Folder Include="Views\User\" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>

@@ -1050,3 +1050,7 @@ C:\Users\arrtu\Desktop\NW\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.MvcApplicat
 C:\Users\arrtu\Desktop\NW\CinemaApp.UI\bin\Debug\net9.0\FluentValidation.dll
 C:\Users\arrtu\Desktop\NW\CinemaApp.UI\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
 C:\Users\arrtu\Desktop\NW\CinemaApp.UI\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\PracticeSoftServe\CinemaApp.UI\bin\Debug\net9.0\FluentValidation.dll
+C:\PracticeSoftServe\CinemaApp.UI\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
+C:\PracticeSoftServe\CinemaApp.UI\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\PracticeSoftServe\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.MvcApplicationPartsAssemblyInfo.cs
