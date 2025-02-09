@@ -48,36 +48,28 @@ namespace CinemaApp.BL.Mapping
 
 
 
-            // Session - SessionDTO
             CreateMap<Session, SessionDTO>()
                 .ForMember(dest => dest.MovieTitle, opt => opt.MapFrom(src => src.Movie.Title));
-        
-            // SessionDTO - Session
-            CreateMap<SessionDTO, Session>()
-                 .ForMember(dest => dest.Movie, opt => opt.Ignore())
-                .ForMember(dest => dest.Tickets, opt => opt.Ignore());
 
-            // SessionCreateDTO - Session
-            CreateMap<SessionCreateDTO, Session>()
-                .ForMember(dest => dest.Movie, opt => opt.Ignore())
-                .ForMember(dest => dest.Tickets, opt => opt.Ignore());
-
-            // SessionUpdateDTO - Session
-            CreateMap<SessionUpdateDTO, Session>()
-                .ForMember(dest => dest.Movie, opt => opt.Ignore())
-                .ForMember(dest => dest.Tickets, opt => opt.Ignore());
-
-            // Session - SessionDeleteDTO
-            CreateMap<Session, SessionDeleteDTO>();
-
-            // SessionDeleteDTO - Session
+            CreateMap<SessionCreateDTO, Session>();
+            CreateMap<SessionUpdateDTO, Session>();
+            CreateMap<Session, SessionUpdateDTO>();
+            CreateMap<SessionDTO, SessionUpdateDTO>().ReverseMap();
+            CreateMap<SessionDTO, SessionDeleteDTO>()
+                .ForMember(dest => dest.SessionID, opt => opt.MapFrom(src => src.SessionID))
+                .ForMember(dest => dest.MovieTitle, opt => opt.MapFrom(src => src.MovieTitle))
+                .ForMember(dest => dest.Hall, opt => opt.MapFrom(src => src.Hall))
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date))
+                .ForMember(dest => dest.StartTime, opt => opt.MapFrom(src => src.StartTime))
+                .ForMember(dest => dest.MovieID, opt => opt.MapFrom(src => src.MovieID));
+            
             CreateMap<SessionDeleteDTO, Session>();
 
-            
 
 
-           
-            
+
+
+
 
 
             // User - UserDTO

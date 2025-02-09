@@ -10,10 +10,11 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Session
     public class SessionUpdateDTO
     {
         public int MovieID { get; set; }
+        public int SessionID { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime Date { get; set; }
         public string Hall { get; set; }
-        public string MovieName { get; set; }
+        //public string MovieName { get; set; }
         
     }
 }

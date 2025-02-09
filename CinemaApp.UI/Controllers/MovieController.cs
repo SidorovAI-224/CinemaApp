@@ -39,6 +39,8 @@ namespace CinemaApp.UI.Controllers
         [HttpPost("Create")]
         public async Task<IActionResult> Create([FromForm] MovieCreateDTO movieDTO)
         {
+
+
             if (ModelState.IsValid)
             {
                 await _movieService.AddMovieAsync(movieDTO);
@@ -46,6 +48,7 @@ namespace CinemaApp.UI.Controllers
             }
             return View(movieDTO);
         }
+
 
         [HttpGet("Edit/{id}")]
         public async Task<IActionResult> Edit(int id)

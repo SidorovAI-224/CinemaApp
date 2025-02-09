@@ -11,7 +11,7 @@ namespace CinemaApp.BL.Interfaces
     {
         Task<IEnumerable<SessionDTO>> GetAllSessionsAsync();
         Task<SessionDTO> GetSessionByIdAsync(int id);
-        Task AddSessionAsync(SessionCreateDTO sessionCreateDTO);
+        Task<SessionDTO> AddSessionAsync(SessionCreateDTO sessionCreateDTO);
         Task UpdateSessionAsync(int id, SessionUpdateDTO sessionUpdateDTO);
         Task DeleteSessionByIdAsync(int id);
     }

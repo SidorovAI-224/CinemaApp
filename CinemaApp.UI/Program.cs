@@ -11,6 +11,7 @@ using FluentValidation.AspNetCore;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.DAL.Repositories;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
+using CinemaApp.BL.Validators.Movie;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +36,7 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 // Реєстрація сервісу
 builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<IGenreService, GenreService>();
-
+builder.Services.AddScoped<ISessionService, SessionService>();
 
 
 // DB Connection

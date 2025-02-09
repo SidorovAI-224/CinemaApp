@@ -1,9 +1,4 @@
-﻿using CinemaApp.DAL.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace CinemaApp.BL.DTOs.MovieDTOs.Session
 {
@@ -13,7 +8,5 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Session
         public DateTime StartTime { get; set; }
         public DateTime Date { get; set; }
         public string Hall { get; set; }
-        public string MovieName { get; set; }
-    
     }
 }

@@ -23,9 +23,9 @@ namespace CinemaApp.BL.Validators.Session
                 .NotEmpty().WithMessage("Hall can not be empty")
                 .MaximumLength(50).WithMessage("Hall length can not be longer that 50 characters");
 
-            RuleFor(x => x.MovieName)
-                .NotEmpty().WithMessage("Must have MovieName")
-                .MaximumLength(50).WithMessage("MovieName length can not be longer that 50 characters");
+            //RuleFor(x => x.MovieName)
+            //    .NotEmpty().WithMessage("Must have MovieName")
+            //    .MaximumLength(50).WithMessage("MovieName length can not be longer that 50 characters");
         }
     }
 }
