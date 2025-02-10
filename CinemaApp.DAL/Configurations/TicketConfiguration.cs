@@ -11,9 +11,6 @@ namespace CinemaApp.DAL.Configurations
         {
             builder.HasKey(t => t.TicketID);
 
-            builder.Property(t => t.Seat)
-                   .IsRequired();
-
             builder.Property(t => t.Price)
                    .IsRequired();
                    //.HasColumnType("decimal(10, 2)");
@@ -31,6 +28,11 @@ namespace CinemaApp.DAL.Configurations
                    .WithMany(u => u.Tickets)
                    .HasForeignKey(t => t.UserID)
                    .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(t => t.HallOne)
+                   .WithMany(h => h.Tickets)
+                   .HasForeignKey(t => t.SeatID)
+                   .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

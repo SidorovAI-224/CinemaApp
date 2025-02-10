@@ -1530,3 +1530,4 @@ C:\Users\arrtu\Desktop\Ruchkami\CinemaApp.UI\obj\Debug\net9.0\refint\CinemaApp.U
 C:\Users\arrtu\Desktop\Ruchkami\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.pdb
 C:\Users\arrtu\Desktop\Ruchkami\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.genruntimeconfig.cache
 C:\Users\arrtu\Desktop\Ruchkami\CinemaApp.UI\obj\Debug\net9.0\ref\CinemaApp.UI.dll
+C:\Users\Darina\Source\Repos\CinemaApp\CinemaApp.UI\obj\Debug\net9.0\CinemaApp.UI.MvcApplicationPartsAssemblyInfo.cs

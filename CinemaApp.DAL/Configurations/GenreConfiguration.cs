@@ -12,9 +12,9 @@ namespace CinemaApp.DAL.Configurations
             builder.HasKey(g => g.GenreID);
             builder.Property(g => g.GenreName).IsRequired().HasMaxLength(100);
 
-            builder.HasMany(g => g.Movies)
-                   .WithOne(m => m.Genre)
-                   .HasForeignKey(m => m.GenreID);
+            builder.HasMany(g => g.MovieGenre)
+                    .WithOne(mg => mg.Genre)
+                    .HasForeignKey(mg => mg.GenreID);
         }
     }
 }

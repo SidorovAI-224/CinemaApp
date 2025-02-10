@@ -15,9 +15,9 @@ namespace CinemaApp.DAL.Configurations
             builder.Property(m => m.PosterURL).HasMaxLength(500);
             builder.Property(m => m.TrailerURL).HasMaxLength(500);
 
-            builder.HasOne(m => m.Genre)
-                   .WithMany(g => g.Movies)
-                   .HasForeignKey(m => m.GenreID);
+            builder.HasMany(m => m.MovieGenre)
+                   .WithOne(mg => mg.Movie)
+                   .HasForeignKey(mg => mg.MovieID);
 
             builder.HasMany(m => m.Sessions)
                    .WithOne(s => s.Movie)
