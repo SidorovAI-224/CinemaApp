@@ -5,33 +5,34 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
 {
     public class MovieUpdateDTO
     {
-        [Required(ErrorMessage = "Назва фільму обов'язкова")]
-        [StringLength(200, ErrorMessage = "Назва фільму не може бути довшою за 200 символів")]
+        [Required(ErrorMessage = "Film name is required")]
+        [StringLength(200, ErrorMessage = "Film name can't be longer than 200 characters")]
         public string Title { get; set; }
 
-        [Required(ErrorMessage = "Опис фільму обов'язковий")]
+        [Required(ErrorMessage = "Film description is required")]
+
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "ID жанру обов'язковий")]
+        [Required(ErrorMessage = "Genre ID is required")]
         public int GenreID { get; set; }
 
-        [Required(ErrorMessage = "Тривалість фільму обов'язкова")]
+        [Required(ErrorMessage = "Film duration is required")]
         public TimeSpan Duration { get; set; }
 
-        [Required(ErrorMessage = "Дата релізу обов'язкова")]
+        [Required(ErrorMessage = "Release date is required")]
         public DateTime ReleaseDate { get; set; }
 
-        [Url(ErrorMessage = "Неправильний формат посилання на постер")]
+        [Url(ErrorMessage = "Wrong poster URL format")]
         public string PosterURL { get; set; }
 
-        [Url(ErrorMessage = "Неправильний формат посилання на трейлер")]
+        [Url(ErrorMessage = "Wrong trailer URL format")]
         public string TrailerURL { get; set; }
 
-        [Range(0, 10, ErrorMessage = "Рейтинг повинен бути від 0 до 10")]
+        [Range(0, 10, ErrorMessage = "Rating must be in 0 - 10 range")]
         public decimal Rating { get; set; }
 
-        [Required(ErrorMessage = "Вікове обмеження обов'язкове")]
-        [Range(0, 21, ErrorMessage = "Вікове обмеження повинно бути від 0 до 21")]
+        [Required(ErrorMessage = "Age limit is required")]
+        [Range(0, 21, ErrorMessage = "Age limit must be in 0 - 21 range")]
         public int AgeLimit { get; set; }
     }
 }

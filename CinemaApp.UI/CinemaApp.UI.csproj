@@ -25,7 +25,6 @@
     <Folder Include="Views\Crewmate\" />
     <Folder Include="Views\Position\" />
     <Folder Include="Views\Ticket\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
 
   <PropertyGroup>

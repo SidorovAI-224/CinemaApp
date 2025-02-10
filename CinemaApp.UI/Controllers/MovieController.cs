@@ -3,6 +3,7 @@ using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.DTOs.MovieDTOs.Movie;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CinemaApp.UI.Controllers
 {
@@ -16,14 +17,14 @@ namespace CinemaApp.UI.Controllers
             _movieService = movieService;
             _mapper = mapper;
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             var movies = await _movieService.GetAllMoviesAsync();
             return View(movies);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
@@ -34,13 +35,14 @@ namespace CinemaApp.UI.Controllers
             }
             return View(movie);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(MovieCreateDTO movieDTO)
         {
@@ -61,6 +63,7 @@ namespace CinemaApp.UI.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -73,6 +76,7 @@ namespace CinemaApp.UI.Controllers
             return View(movieUpdateDTO);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(int id, MovieUpdateDTO movieDTO)
         {
@@ -93,6 +97,7 @@ namespace CinemaApp.UI.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("Delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -101,6 +106,7 @@ namespace CinemaApp.UI.Controllers
             return View(movie);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("DeleteConfirmed")]
         public async Task<IActionResult> DeleteConfirmed([FromForm] int MovieID)
         {

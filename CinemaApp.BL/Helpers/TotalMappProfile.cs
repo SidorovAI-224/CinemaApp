@@ -41,7 +41,8 @@ namespace CinemaApp.BL.Mapping
             CreateMap<Session, SessionDTO>()
                 .ForMember(dest => dest.MovieTitle, opt => opt.MapFrom(src => src.Movie.Title));
 
-            CreateMap<SessionCreateDTO, Session>();
+            CreateMap<SessionCreateDTO, Session>()
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date)); // Зберігаємо дату з DTO
 
             CreateMap<SessionUpdateDTO, Session>();
 

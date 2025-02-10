@@ -25,17 +25,12 @@ namespace CinemaApp.BL.Services
             return _mapper.Map<IEnumerable<SessionDTO>>(sessions);
         }
 
-        //public async Task<SessionDTO> GetSessionByIdAsync(int id)
-        //{
-        //    var session = await _sessionRepository.GetByIdAsync(id);
-        //    return _mapper.Map<SessionDTO>(session);
-        //}
         public async Task<SessionDTO> GetSessionByIdAsync(int id)
         {
             var session = await _sessionRepository.GetByIdAsync(id, include: q => q.Include(s => s.Movie));
             if (session == null)
             {
-                throw new Exception("Сесія не знайдена.");
+                throw new Exception("Session not found.");
             }
             return _mapper.Map<SessionDTO>(session);
         }
@@ -47,7 +42,7 @@ namespace CinemaApp.BL.Services
             var createdSession = await _sessionRepository.GetByIdAsync(session.SessionID);
             if (createdSession == null)
             {
-                throw new Exception("Помилка при збереженні сесії в базі даних.");
+                throw new Exception("Save in DB error.");
             }
 
             return _mapper.Map<SessionDTO>(createdSession);
@@ -58,7 +53,7 @@ namespace CinemaApp.BL.Services
             var session = await _sessionRepository.GetByIdAsync(id);
             if (session == null)
             {
-                throw new Exception("Сесія не знайдена.");
+                throw new Exception("Session not found.");
             }
 
             _mapper.Map(sessionUpdateDTO, session);

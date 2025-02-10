@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDTO>
 @{
-    ViewData["Title"] = "Головна сторінка";
+    ViewData["Title"] = "Main page";
 }
-
-<h2>Усі фільми</h2>
 
 @if (Model == null || !Model.Any())
 {
@@ -16,7 +14,7 @@ else
         {
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img style="max-width: 400px; max-height: 300px" src="@movie.PosterURL" class="card-img-top" alt="Постер фільму">
+                    <img style="max-height: 500px" src="@movie.PosterURL" class="card-img-top" alt="Постер фільму">
                     <div class="card-body">
                         <h5 class="card-title">@movie.Title</h5>
                         <p class="card-text"><strong>Жанр:</strong> @movie.GenreName</p>
