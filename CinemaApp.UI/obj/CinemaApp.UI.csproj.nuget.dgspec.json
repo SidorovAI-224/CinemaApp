@@ -67,6 +67,22 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.1, )"
+            },
+            "Microsoft.Extensions.AI": {
+              "target": "Package",
+              "version": "[9.1.0-preview.1.25064.3, )"
+            },
+            "Microsoft.Extensions.AI.Ollama": {
+              "target": "Package",
+              "version": "[9.1.0-preview.1.25064.3, )"
+            },
+            "Microsoft.Extensions.VectorData.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0-preview.1.25078.1, )"
+            },
+            "Microsoft.SemanticKernel.Connectors.InMemory": {
+              "target": "Package",
+              "version": "[1.36.1-preview, )"
             }
           },
           "imports": [
