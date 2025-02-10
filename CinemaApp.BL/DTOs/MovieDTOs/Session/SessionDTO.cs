@@ -9,6 +9,6 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Session
         public string MovieTitle { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime Date { get; set; }
-        public string Hall { get; set; }
+        public int Hall { get; set; }
     }
 }

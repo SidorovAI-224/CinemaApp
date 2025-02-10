@@ -104,3 +104,21 @@ C:\Users\arrtu\Desktop\NT\CinemaApp.BL\obj\Debug\net9.0\refint\CinemaApp.BL.dll
 C:\Users\arrtu\Desktop\NT\CinemaApp.BL\obj\Debug\net9.0\CinemaApp.BL.pdb
 C:\Users\arrtu\Desktop\NT\CinemaApp.BL\obj\Debug\net9.0\CinemaApp.BL.genruntimeconfig.cache
 C:\Users\arrtu\Desktop\NT\CinemaApp.BL\obj\Debug\net9.0\ref\CinemaApp.BL.dll
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\bin\Debug\net9.0\CinemaApp.BL.deps.json
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\bin\Debug\net9.0\CinemaApp.BL.runtimeconfig.json
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\bin\Debug\net9.0\CinemaApp.BL.dll
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\bin\Debug\net9.0\CinemaApp.BL.pdb
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\bin\Debug\net9.0\CinemaApp.DAL.dll
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\bin\Debug\net9.0\CinemaApp.DAL.pdb
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\obj\Debug\net9.0\CinemaApp.BL.csproj.AssemblyReference.cache
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\obj\Debug\net9.0\CinemaApp.BL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\obj\Debug\net9.0\CinemaApp.BL.AssemblyInfoInputs.cache
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\obj\Debug\net9.0\CinemaApp.BL.AssemblyInfo.cs
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\obj\Debug\net9.0\CinemaApp.BL.csproj.CoreCompileInputs.cache
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\obj\Debug\net9.0\CinemaApp.BL.sourcelink.json
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\obj\Debug\net9.0\CinemaAp.B46BED4B.Up2Date
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\obj\Debug\net9.0\CinemaApp.BL.dll
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\obj\Debug\net9.0\refint\CinemaApp.BL.dll
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\obj\Debug\net9.0\CinemaApp.BL.pdb
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\obj\Debug\net9.0\CinemaApp.BL.genruntimeconfig.cache
+C:\Users\arrtu\Desktop\NT copy\NT\CinemaApp.BL\obj\Debug\net9.0\ref\CinemaApp.BL.dll

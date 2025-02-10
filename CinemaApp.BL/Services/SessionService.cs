@@ -24,12 +24,6 @@ namespace CinemaApp.BL.Services
             var sessions = await _sessionRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<SessionDTO>>(sessions);
         }
-
-        //public async Task<SessionDTO> GetSessionByIdAsync(int id)
-        //{
-        //    var session = await _sessionRepository.GetByIdAsync(id);
-        //    return _mapper.Map<SessionDTO>(session);
-        //}
         public async Task<SessionDTO> GetSessionByIdAsync(int id)
         {
             var session = await _sessionRepository.GetByIdAsync(id, include: q => q.Include(s => s.Movie));

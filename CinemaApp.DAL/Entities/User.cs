@@ -5,12 +5,6 @@ namespace CinemaApp.DAL.Entities
 {
     public class User : IdentityUser
     {
-        /*
-        public int UserID { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string PasswordHash { get; set; }
-        */
         public string FullName { get; set; }
 
         private int _age;

@@ -17,7 +17,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddAutoMapper(typeof(TotalMappProfile));
 // mapper
 builder.Services.AddAutoMapper(typeof(TotalMappProfile));
 // validator

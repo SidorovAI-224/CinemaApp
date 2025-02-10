@@ -15,27 +15,17 @@ namespace CinemaApp.BL.Mapping
     {
         public TotalMappProfile()
         {
-            // Movie - MovieDTO
             CreateMap<Movie, MovieDTO>()
                 .ForMember(dest => dest.GenreName, opt => opt.MapFrom(src => src.Genre.GenreName));
 
+            CreateMap<MovieCreateDTO, Movie>();
+          
+            CreateMap<MovieUpdateDTO, Movie>();
+            
+            CreateMap<MovieDTO, MovieUpdateDTO>();
+
             // MovieDTO - Movie
             CreateMap<MovieDTO, Movie>()
-                .ForMember(dest => dest.Genre, opt => opt.Ignore())
-                .ForMember(dest => dest.Sessions, opt => opt.Ignore())
-                .ForMember(dest => dest.MoviesCrewmates, opt => opt.Ignore());
-
-            // MovieCreate - Movie
-            CreateMap<MovieCreateDTO, Movie>()
-                .ForMember(dest => dest.GenreID, opt => opt.MapFrom(src => src.GenreID))
-                .ForMember(dest => dest.Genre, opt => opt.Ignore())  
-                .ForMember(dest => dest.Sessions, opt => opt.Ignore())
-                .ForMember(dest => dest.MoviesCrewmates, opt => opt.Ignore());
-
-
-
-            // MovieUpdateDTO - Movie
-            CreateMap<MovieUpdateDTO, Movie>()
                 .ForMember(dest => dest.Genre, opt => opt.Ignore())
                 .ForMember(dest => dest.Sessions, opt => opt.Ignore())
                 .ForMember(dest => dest.MoviesCrewmates, opt => opt.Ignore());
@@ -52,9 +42,13 @@ namespace CinemaApp.BL.Mapping
                 .ForMember(dest => dest.MovieTitle, opt => opt.MapFrom(src => src.Movie.Title));
 
             CreateMap<SessionCreateDTO, Session>();
+            
             CreateMap<SessionUpdateDTO, Session>();
+            
             CreateMap<Session, SessionUpdateDTO>();
+            
             CreateMap<SessionDTO, SessionUpdateDTO>().ReverseMap();
+
             CreateMap<SessionDTO, SessionDeleteDTO>()
                 .ForMember(dest => dest.SessionID, opt => opt.MapFrom(src => src.SessionID))
                 .ForMember(dest => dest.MovieTitle, opt => opt.MapFrom(src => src.MovieTitle))
@@ -64,11 +58,6 @@ namespace CinemaApp.BL.Mapping
                 .ForMember(dest => dest.MovieID, opt => opt.MapFrom(src => src.MovieID));
             
             CreateMap<SessionDeleteDTO, Session>();
-
-
-
-
-
 
 
 
@@ -98,13 +87,6 @@ namespace CinemaApp.BL.Mapping
 
 
 
-
-
-
-
-
-
-
             // Ticket - TicketDTO
             CreateMap<Ticket, TicketDTO>()
                 .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.UserName))
@@ -118,10 +100,8 @@ namespace CinemaApp.BL.Mapping
                  .ForMember(dest => dest.Session, opt => opt.Ignore())
                  .ForMember(dest => dest.User, opt => opt.Ignore());
 
-
             // TicketUpdateDTO - Ticket
             CreateMap<TicketUpdateDTO, Ticket>()
-                //.ForMember(dest => dest.TicketID, opt => opt.Ignore()) ?
                 .ForMember(dest => dest.Session, opt => opt.Ignore())
                 .ForMember(dest => dest.User, opt => opt.Ignore());
 
@@ -130,12 +110,6 @@ namespace CinemaApp.BL.Mapping
 
             // TicketDeleteDTO - Ticket
             CreateMap<TicketDeleteDTO, Ticket>();
-
-
-
-
-
-
 
 
 
@@ -148,7 +122,6 @@ namespace CinemaApp.BL.Mapping
 
             // GenreUpdateDTO - Genre
             CreateMap<GenreUpdateDTO, Genre>();
-                //.ForMember(dest => dest.GenreName, opt => opt.Ignore());
 
             // Genre - GenreDeleteDTO
             CreateMap<Genre, GenreDeleteDTO>();
@@ -159,10 +132,6 @@ namespace CinemaApp.BL.Mapping
 
             // GenreCreateDTO - Genre
             CreateMap<GenreCreateDTO, Genre>();
-
-
-
-
 
 
 
@@ -182,12 +151,6 @@ namespace CinemaApp.BL.Mapping
 
             // PositionDeleteDTO - Position
             CreateMap<PositionDeleteDTO, Position>();
-
-
-
-
-
-
 
 
 
@@ -219,7 +182,6 @@ namespace CinemaApp.BL.Mapping
             CreateMap<Crewmate, CrewmateDTO>();
             // CrewmatePositionsDTO - CrewmatePositions
             CreateMap<CrewmateDTO, Crewmate>();
-
 
 
 

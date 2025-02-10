@@ -1,23 +1,20 @@
 ﻿using AutoMapper;
-using CinemaApp.DAL.Entities;
-using CinemaApp.BL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CinemaApp.BL.DTOs.MovieDTOs.Movie;
+using CinemaApp.BL.Interfaces;
+using CinemaApp.DAL.Entities;
 
 namespace CinemaApp.BL.Services
 {
     public class MovieService : IMovieService
     {
         private readonly IRepository<Movie> _movieRepository;
+        private readonly IRepository<Genre> _genreRepository;
         private readonly IMapper _mapper;
 
-        public MovieService(IRepository<Movie> movieRepository, IMapper mapper)
+        public MovieService(IRepository<Movie> movieRepository, IRepository<Genre> genreRepository, IMapper mapper)
         {
             _movieRepository = movieRepository;
+            _genreRepository = genreRepository;
             _mapper = mapper;
         }
 
@@ -33,16 +30,28 @@ namespace CinemaApp.BL.Services
             return _mapper.Map<MovieDTO>(movie);
         }
 
-        public async Task AddMovieAsync(MovieCreateDTO movieCreateDTO)
+        public async Task AddMovieAsync(MovieCreateDTO movieDTO)
         {
-            var movie = _mapper.Map<Movie>(movieCreateDTO);
+            var genre = await _genreRepository.GetByIdAsync(movieDTO.GenreID);
+            if (genre == null)
+            {
+                throw new Exception("Жанр з таким ID не знайдено.");
+            }
+
+            var movie = _mapper.Map<Movie>(movieDTO);
             await _movieRepository.AddAsync(movie);
         }
 
-        public async Task UpdateMovieAsync(int id, MovieUpdateDTO movieUpdateDTO)
+        public async Task UpdateMovieAsync(int id, MovieUpdateDTO movieDTO)
         {
+            var genre = await _genreRepository.GetByIdAsync(movieDTO.GenreID);
+            if (genre == null)
+            {
+                throw new Exception("Жанр з таким ID не знайдено.");
+            }
+
             var movie = await _movieRepository.GetByIdAsync(id);
-            _mapper.Map(movieUpdateDTO, movie);
+            _mapper.Map(movieDTO, movie);
             await _movieRepository.UpdateAsync(movie);
         }
 
@@ -64,3 +73,4 @@ namespace CinemaApp.BL.Services
         }
     }
 }
+

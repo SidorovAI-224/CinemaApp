@@ -19,9 +19,9 @@ namespace CinemaApp.BL.Validators.Session
             RuleFor(x => x.StartTime)
                 .NotEmpty().WithMessage("Start time is necessary");
 
-            RuleFor(x => x.Hall)
-                .NotEmpty().WithMessage("Hall can not be empty")
-                .MaximumLength(50).WithMessage("Hall length can not be longer that 50 characters");
+            //RuleFor(x => x.Hall)
+            //    .NotEmpty().WithMessage("Hall can not be empty")
+            //    .MaximumLength(50).WithMessage("Hall length can not be longer that 50 characters");
         
             //RuleFor(x => x.MovieName)
             //    .NotEmpty().WithMessage("Must have MovieName")

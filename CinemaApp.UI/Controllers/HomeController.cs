@@ -4,21 +4,26 @@ using CinemaApp.UI.Models;
 using CinemaApp.BL;
 using Microsoft.AspNetCore.Authorization;
 
+using Microsoft.AspNetCore.Mvc;
+using CinemaApp.BL.Interfaces;
+using System.Threading.Tasks;
 namespace CinemaApp.UI.Controllers;
 
 public class HomeController : Controller
 {
     private readonly GreetingService _greetingService;
+    private readonly IMovieService _movieService;
 
-    public HomeController()
+    public HomeController(IMovieService movieService)
     {
         _greetingService = new GreetingService();
+        _movieService = movieService;
     }
 
-    public IActionResult Index()
+    public async Task <IActionResult> Index()
     {
-        ViewData["Greeting"] = _greetingService.GetGreeting();
-        return View();
+        var movies = await _movieService.GetAllMoviesAsync();
+        return View(movies);
     }
 
     [Authorize]

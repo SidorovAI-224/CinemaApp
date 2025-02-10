@@ -23,6 +23,7 @@ namespace CinemaApp.UI.Controllers
             return View(sessions);
         }
 
+
         [HttpGet]
         public IActionResult SessionCreate()
         {
@@ -119,5 +120,6 @@ namespace CinemaApp.UI.Controllers
             var sessions = await _sessionService.GetAllSessionsAsync();
             return View(sessions);
         }
+
     }
 }
