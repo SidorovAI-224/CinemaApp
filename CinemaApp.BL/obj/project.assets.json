@@ -3343,33 +3343,40 @@
     ]
   },
   "packageFolders": {
-    "/Users/denis/.nuget/packages/": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {},
+    "D:\\Visual Studio\\VS2\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/denis/CinemaApp/CinemaApp.BL/CinemaApp.BL.csproj",
+      "projectUniqueName": "C:\\Users\\user\\RiderProjects\\CinemaApp\\CinemaApp.BL\\CinemaApp.BL.csproj",
       "projectName": "CinemaApp.BL",
-      "projectPath": "/Users/denis/CinemaApp/CinemaApp.BL/CinemaApp.BL.csproj",
-      "packagesPath": "/Users/denis/.nuget/packages/",
-      "outputPath": "/Users/denis/CinemaApp/CinemaApp.BL/obj/",
+      "projectPath": "C:\\Users\\user\\RiderProjects\\CinemaApp\\CinemaApp.BL\\CinemaApp.BL.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user\\RiderProjects\\CinemaApp\\CinemaApp.BL\\obj\\",
       "projectStyle": "PackageReference",
+      "UsingMicrosoftNETSdk": false,
+      "fallbackFolders": [
+        "D:\\Visual Studio\\VS2\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/denis/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/library-packs": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/Users/denis/CinemaApp/CinemaApp.DAL/CinemaApp.DAL.csproj": {
-              "projectPath": "/Users/denis/CinemaApp/CinemaApp.DAL/CinemaApp.DAL.csproj"
+            "C:\\Users\\user\\RiderProjects\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
+              "projectPath": "C:\\Users\\user\\RiderProjects\\CinemaApp\\CinemaApp.DAL\\CinemaApp.DAL.csproj"
             }
           }
         }
@@ -3382,9 +3389,8 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+        "auditMode": "all"
+      }
     },
     "frameworks": {
       "net9.0": {
@@ -3421,7 +3427,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\user\\.dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
