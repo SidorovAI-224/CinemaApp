@@ -1,86 +1,96 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.DTOs.MovieDTOs.Movie;
+using System.Threading.Tasks;
+using AutoMapper;
 
 namespace CinemaApp.UI.Controllers
 {
-    [ApiController]
-    [Route("Movie")]
     public class MovieController : Controller
     {
         private readonly IMovieService _movieService;
+        private readonly IMapper _mapper;
 
-        public MovieController(IMovieService movieService)
+        public MovieController(IMovieService movieService, IMapper mapper)
         {
             _movieService = movieService;
+            _mapper = mapper;
         }
 
-        [HttpGet("Index")]
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var movies = await _movieService.GetAllMoviesAsync();
             return View(movies);
         }
 
-        [HttpGet("Details/{id}")]
+        [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
             var movie = await _movieService.GetMovieByIdAsync(id);
-            if (movie == null) return NotFound();
+            if (movie == null)
+            {
+                return NotFound();
+            }
             return View(movie);
         }
 
-        [HttpGet("Create")]
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        [HttpPost("Create")]
-        public async Task<IActionResult> Create([FromForm] MovieCreateDTO movieDTO)
+        [HttpPost]
+        public async Task<IActionResult> Create(MovieCreateDTO movieDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(movieDTO);
+            }
 
-
-            if (ModelState.IsValid)
+            try
             {
                 await _movieService.AddMovieAsync(movieDTO);
                 return RedirectToAction(nameof(Index));
             }
-            return View(movieDTO);
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View(movieDTO);
+            }
         }
 
-
-        [HttpGet("Edit/{id}")]
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             var movie = await _movieService.GetMovieByIdAsync(id);
-            if (movie == null) return NotFound();
-
-            var movieUpdateDTO = new MovieUpdateDTO
+            if (movie == null)
             {
-                Title = movie.Title,
-                Description = movie.Description,
-                GenreID = movie.GenreID,
-                Duration = movie.Duration,
-                ReleaseDate = movie.ReleaseDate,
-                PosterURL = movie.PosterURL,
-                TrailerURL = movie.TrailerURL,
-                Rating = movie.Rating,
-                AgeLimit = movie.AgeLimit
-            };
-
+                return NotFound();
+            }
+            var movieUpdateDTO = _mapper.Map<MovieUpdateDTO>(movie);
             return View(movieUpdateDTO);
         }
 
-        [HttpPost("Edit/{id}")]
-        public async Task<IActionResult> Edit(int id, [FromForm] MovieUpdateDTO movieDTO)
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, MovieUpdateDTO movieDTO)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                return View(movieDTO);
+            }
+
+            try
             {
                 await _movieService.UpdateMovieAsync(id, movieDTO);
                 return RedirectToAction(nameof(Index));
             }
-            return View(movieDTO);
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View(movieDTO);
+            }
         }
 
         [HttpGet("Delete/{id}")]
@@ -97,6 +107,5 @@ namespace CinemaApp.UI.Controllers
             await _movieService.DeleteMovieByIdAsync(MovieID);
             return RedirectToAction(nameof(Index));
         }
-
     }
 }
