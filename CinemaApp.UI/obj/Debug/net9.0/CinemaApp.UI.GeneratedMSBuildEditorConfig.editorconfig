@@ -52,6 +52,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxWZXJpZnlFbWFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/arrtu/Desktop/Ruchkami/CinemaApp.UI/Views/Crewmate/CrewmateAdminIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Jld21hdGVcQ3Jld21hdGVBZG1pbkluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/arrtu/Desktop/Ruchkami/CinemaApp.UI/Views/Crewmate/CrewmateCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Jld21hdGVcQ3Jld21hdGVDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/arrtu/Desktop/Ruchkami/CinemaApp.UI/Views/Crewmate/CrewmateDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Jld21hdGVcQ3Jld21hdGVEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/arrtu/Desktop/Ruchkami/CinemaApp.UI/Views/Crewmate/CrewmateDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Jld21hdGVcQ3Jld21hdGVEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/arrtu/Desktop/Ruchkami/CinemaApp.UI/Views/Crewmate/CrewmateEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Jld21hdGVcQ3Jld21hdGVFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/arrtu/Desktop/Ruchkami/CinemaApp.UI/Views/Genre/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -102,6 +122,22 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/arrtu/Desktop/Ruchkami/CinemaApp.UI/Views/Movie/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/arrtu/Desktop/Ruchkami/CinemaApp.UI/Views/Position/PositionAdminIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25cUG9zaXRpb25BZG1pbkluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/arrtu/Desktop/Ruchkami/CinemaApp.UI/Views/Position/PositionCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25cUG9zaXRpb25DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/arrtu/Desktop/Ruchkami/CinemaApp.UI/Views/Position/PositionDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25cUG9zaXRpb25EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/arrtu/Desktop/Ruchkami/CinemaApp.UI/Views/Position/PositionEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25cUG9zaXRpb25FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/arrtu/Desktop/Ruchkami/CinemaApp.UI/Views/Session/SessionCreate.cshtml]

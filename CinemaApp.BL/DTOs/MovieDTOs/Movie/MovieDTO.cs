@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
 {
     public class MovieDTO

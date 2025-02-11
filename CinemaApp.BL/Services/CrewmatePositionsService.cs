@@ -3,21 +3,16 @@ using CinemaApp.BL.DTOs.CrewDTOs.CrewmatePositions;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Services
 {
     public class CrewmatePositionsService : ICrewmatePositionsService
     {
-        private readonly IRepository<Crewmate_Positions> _crewmatePositionsRepository;
+        private readonly IRepository<CrewmatePositions> _crewmatePositionsRepository;
         private readonly IMapper _mapper;
 
 
-        public CrewmatePositionsService(IRepository<Crewmate_Positions> crewmatePositionsRepository, IMapper mapper)
+        public CrewmatePositionsService(IRepository<CrewmatePositions> crewmatePositionsRepository, IMapper mapper)
         {
             _crewmatePositionsRepository = crewmatePositionsRepository;
             _mapper = mapper;
@@ -37,7 +32,7 @@ namespace CinemaApp.BL.Services
 
         public async Task AddCrewmatePositionsAsync(CrewmatePositionsDTO crewmatePositionsDTO)
         {
-            var crewmatePositions = _mapper.Map<Crewmate_Positions>(crewmatePositionsDTO);
+            var crewmatePositions = _mapper.Map<CrewmatePositions>(crewmatePositionsDTO);
             await _crewmatePositionsRepository.AddAsync(crewmatePositions);
         }
 

@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace CinemaApp.BL.DTOs.MovieDTOs.Session
 {
     public class SessionDTO

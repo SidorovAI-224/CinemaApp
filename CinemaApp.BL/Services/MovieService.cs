@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using CinemaApp.DAL.Entities;
 using CinemaApp.BL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CinemaApp.BL.DTOs.MovieDTOs.Movie;
 
 namespace CinemaApp.BL.Services

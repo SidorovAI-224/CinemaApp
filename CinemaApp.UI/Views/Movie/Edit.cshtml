@@ -53,4 +53,18 @@
         <input type="submit" value="Зберегти" class="btn btn-primary" />
         <a asp-action="Index" class="btn btn-secondary">Назад до списку</a>
     </div>
+
+   @*  <div class="form-group">
+        <label>Акторський склад</label>
+        <select multiple class="form-control" asp-for="CrewmateIDs">
+            @foreach (var crewmate in ViewBag.Crewmates)
+            {
+                <option value="@crewmate.CrewmateID">@crewmate.FullName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Зберегти" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Назад до списку</a>
+    </div> *@
 </form>

@@ -3,8 +3,6 @@ using CinemaApp.BL.DTOs.MovieDTOs.Session;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Services
 {

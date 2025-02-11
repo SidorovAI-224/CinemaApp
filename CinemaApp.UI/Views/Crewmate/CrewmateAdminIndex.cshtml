@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CinemaApp.BL.DTOs.CrewDTOs.Crewmate.CrewmateDTO>
+
+<h2>Crewmates</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th style="text-align: right">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var crewmate in Model)
+        {
+            <tr>
+                <td>@crewmate.Name</td>
+                <td style="text-align: right">
+                    <a asp-action="CrewmateDetails" asp-route-id="@crewmate.CrewmateID" class="btn btn-success">Details</a> 
+                    <a asp-action="CrewmateEdit" asp-route-id="@crewmate.CrewmateID" class="btn btn-warning">Edit</a> 
+                    <a asp-action="CrewmateDelete" asp-route-id="@crewmate.CrewmateID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="CrewmateCreate" class="btn btn-primary">Create New</a>

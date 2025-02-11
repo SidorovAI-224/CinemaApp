@@ -3,10 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using CinemaApp.UI.Models;
 using CinemaApp.BL;
 using Microsoft.AspNetCore.Authorization;
-
-using Microsoft.AspNetCore.Mvc;
 using CinemaApp.BL.Interfaces;
-using System.Threading.Tasks;
 namespace CinemaApp.UI.Controllers;
 
 public class HomeController : Controller

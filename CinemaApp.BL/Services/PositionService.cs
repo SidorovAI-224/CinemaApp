@@ -3,10 +3,7 @@ using CinemaApp.BL.DTOs.CrewDTOs.Position;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Services
@@ -21,7 +18,7 @@ namespace CinemaApp.BL.Services
             _positionRepository = positionRepository;
             _mapper = mapper;
         }
-        
+
         public async Task<IEnumerable<PositionDTO>> GetAllPositionsAsync()
         {
             var positions = await _positionRepository.GetAllAsync();

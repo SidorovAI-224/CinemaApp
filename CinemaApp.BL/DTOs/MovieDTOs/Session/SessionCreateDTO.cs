@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CinemaApp.BL.DTOs.MovieDTOs.Session
 {
@@ -26,6 +25,7 @@ HALL1:
 SEAT ISBOOKED
 
 1 - TRUE
+
 32 - TRUE
 ...
 50 - FALSE

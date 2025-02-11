@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace CinemaApp.BL.DTOs.MovieDTOs.Session

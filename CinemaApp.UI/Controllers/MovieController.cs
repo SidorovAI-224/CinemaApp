@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.DTOs.MovieDTOs.Movie;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 

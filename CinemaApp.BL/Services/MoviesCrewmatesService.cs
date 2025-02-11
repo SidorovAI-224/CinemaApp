@@ -3,20 +3,15 @@ using CinemaApp.BL.DTOs.MovieDTOs.MovieCrewmates;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Services
 {
     public class MoviesCrewmatesService : IMoviesCrewmatesService
     {
-        private readonly IRepository<Movies_Crewmates> _moviewCrewmatesRepository;
+        private readonly IRepository<MoviesCrewmates> _moviewCrewmatesRepository;
         private readonly IMapper _mapper;
 
-        public MoviesCrewmatesService(IRepository<Movies_Crewmates> moviewCrewmatesRepository, IMapper mapper)
+        public MoviesCrewmatesService(IRepository<MoviesCrewmates> moviewCrewmatesRepository, IMapper mapper)
         {
             _moviewCrewmatesRepository = moviewCrewmatesRepository;
             _mapper = mapper;
@@ -36,7 +31,7 @@ namespace CinemaApp.BL.Services
 
         public async Task AddMoviesCrewmatesAsync(MoviesCrewmatesDTO movies_CrewmatesDTO)
         {
-            var moviesCrewmates = _mapper.Map<Movies_Crewmates>(movies_CrewmatesDTO);
+            var moviesCrewmates = _mapper.Map<MoviesCrewmates>(movies_CrewmatesDTO);
             await _moviewCrewmatesRepository.AddAsync(moviesCrewmates);
         }
 

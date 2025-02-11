@@ -33,10 +33,13 @@ builder.Services.AddValidatorsFromAssembly(typeof(GenreCreateValidator).Assembly
 // Реєстрація репозиторію
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
-// Реєстрація сервісу
+// Реєстрація сервісів
 builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<ISessionService, SessionService>();
+builder.Services.AddScoped<IPositionService, PositionService>();
+builder.Services.AddScoped<ICrewmateService, CrewmateService>();
+
 
 
 // DB Connection
@@ -62,12 +65,12 @@ var app = builder.Build();
 
 await SeedService.SeedDatabase(app.Services);
 // Auto migration
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<CinemaDbContext>();
-    context.Database.Migrate();
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+//    var context = services.GetRequiredService<CinemaDbContext>();
+//    context.Database.Migrate();
+//}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -7,6 +7,6 @@ namespace CinemaApp.DAL.Entities
         public int PositionID { get; set; }
         public string PositionName { get; set; }
 
-        public ICollection<Crewmate_Positions> CrewmatePositions { get; set; }
+        public ICollection<CrewmatePositions> CrewmatePositions { get; set; }
     }
 }
