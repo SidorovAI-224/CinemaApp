@@ -3,11 +3,6 @@ using CinemaApp.DAL.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Services
 {
@@ -40,14 +35,14 @@ namespace CinemaApp.BL.Services
                     {
                         //Id = Guid.NewGuid().ToString(), //Ще подумаю чи всовувати
                         FullName = "Comand Number Seventeen",
-                        //Age = 35,                              //Додав Вік
+                        Age = 35,                              //Додав Вік
                         UserName = adminEmail,
                         NormalizedUserName = adminEmail.ToUpper(),
                         Email = adminEmail,
                         NormalizedEmail = adminEmail.ToUpper(),
                         EmailConfirmed = true,
                         SecurityStamp = Guid.NewGuid().ToString(),
-                       // RegistrationDate = DateTime.UtcNow // Дата реєстрації
+                        RegistrationDate = DateTime.UtcNow // Дата реєстрації
                     };
                     var result = await userManager.CreateAsync(adminUser, "Admin@123");
                     if (result.Succeeded)

@@ -9,16 +9,18 @@ namespace CinemaApp.DAL.Data
     public class CinemaDbContext : IdentityDbContext<User>
     {
         public CinemaDbContext(DbContextOptions<CinemaDbContext> options) : base(options) { }
-
+        
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
-        //public DbSet<User> Users { get; set; }
         public DbSet<Crewmate> Crewmates { get; set; }
-        public DbSet<Movies_Crewmates> MoviesCrewmates { get; set; }
-        public DbSet<Crewmate_Positions> CrewmatePositions { get; set; }
+        public DbSet<MovieCrewmate> MovieCrewmate { get; set; }
+        public DbSet<CrewmatePositions> CrewmatePositions { get; set; }
         public DbSet<Position> Positions { get; set; }
+        public DbSet<HallOne> Halls { get; set; }
+        public DbSet<MovieGenre> MovieGenre { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,8 +34,8 @@ namespace CinemaApp.DAL.Data
             modelBuilder.ApplyConfiguration(new Movies_CrewmatesConfiguration());
             modelBuilder.ApplyConfiguration(new Crewmate_PositionsConfiguration());
             modelBuilder.ApplyConfiguration(new PositionConfiguration());
-
-         
+            modelBuilder.ApplyConfiguration(new MovieGenreConfiguration());
+            modelBuilder.ApplyConfiguration(new HallOneConfiguration());
         }
     }
 }

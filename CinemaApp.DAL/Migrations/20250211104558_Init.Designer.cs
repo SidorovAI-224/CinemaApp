@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinemaApp.DAL.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    [Migration("20250202104637_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250211104558_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,6 +67,20 @@ namespace CinemaApp.DAL.Migrations
                     b.ToTable("Genres");
                 });
 
+            modelBuilder.Entity("CinemaApp.DAL.Entities.HallOne", b =>
+                {
+                    b.Property<int>("SeatID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsBooked")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("SeatID");
+
+                    b.ToTable("Halls");
+                });
+
             modelBuilder.Entity("CinemaApp.DAL.Entities.Movie", b =>
                 {
                     b.Property<int>("MovieID")
@@ -116,6 +130,21 @@ namespace CinemaApp.DAL.Migrations
                     b.ToTable("Movies");
                 });
 
+            modelBuilder.Entity("CinemaApp.DAL.Entities.MovieGenre", b =>
+                {
+                    b.Property<int>("MovieID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("GenreID")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("MovieID", "GenreID");
+
+                    b.HasIndex("GenreID");
+
+                    b.ToTable("MovieGenre");
+                });
+
             modelBuilder.Entity("CinemaApp.DAL.Entities.Movies_Crewmates", b =>
                 {
                     b.Property<int>("MovieID")
@@ -128,7 +157,7 @@ namespace CinemaApp.DAL.Migrations
 
                     b.HasIndex("CrewmateID");
 
-                    b.ToTable("MoviesCrewmates");
+                    b.ToTable("MovieCrewmate");
                 });
 
             modelBuilder.Entity("CinemaApp.DAL.Entities.Position", b =>
@@ -183,6 +212,9 @@ namespace CinemaApp.DAL.Migrations
                     b.Property<DateTime>("BookingDate")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("HallOneSeatID")
+                        .HasColumnType("INTEGER");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
@@ -197,6 +229,8 @@ namespace CinemaApp.DAL.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("TicketID");
+
+                    b.HasIndex("HallOneSeatID");
 
                     b.HasIndex("SessionID");
 
@@ -437,16 +471,35 @@ namespace CinemaApp.DAL.Migrations
                     b.Navigation("Genre");
                 });
 
+            modelBuilder.Entity("CinemaApp.DAL.Entities.MovieGenre", b =>
+                {
+                    b.HasOne("CinemaApp.DAL.Entities.Genre", "Genre")
+                        .WithMany()
+                        .HasForeignKey("GenreID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CinemaApp.DAL.Entities.Movie", "Movie")
+                        .WithMany()
+                        .HasForeignKey("MovieID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Genre");
+
+                    b.Navigation("Movie");
+                });
+
             modelBuilder.Entity("CinemaApp.DAL.Entities.Movies_Crewmates", b =>
                 {
                     b.HasOne("CinemaApp.DAL.Entities.Crewmate", "Crewmate")
-                        .WithMany("MoviesCrewmates")
+                        .WithMany("MovieCrewmate")
                         .HasForeignKey("CrewmateID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CinemaApp.DAL.Entities.Movie", "Movie")
-                        .WithMany("MoviesCrewmates")
+                        .WithMany("MovieCrewmate")
                         .HasForeignKey("MovieID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -469,6 +522,10 @@ namespace CinemaApp.DAL.Migrations
 
             modelBuilder.Entity("CinemaApp.DAL.Entities.Ticket", b =>
                 {
+                    b.HasOne("CinemaApp.DAL.Entities.HallOne", null)
+                        .WithMany("Tickets")
+                        .HasForeignKey("HallOneSeatID");
+
                     b.HasOne("CinemaApp.DAL.Entities.Session", "Session")
                         .WithMany("Tickets")
                         .HasForeignKey("SessionID")
@@ -541,7 +598,7 @@ namespace CinemaApp.DAL.Migrations
                 {
                     b.Navigation("CrewmatePositions");
 
-                    b.Navigation("MoviesCrewmates");
+                    b.Navigation("MovieCrewmate");
                 });
 
             modelBuilder.Entity("CinemaApp.DAL.Entities.Genre", b =>
@@ -549,9 +606,14 @@ namespace CinemaApp.DAL.Migrations
                     b.Navigation("Movies");
                 });
 
+            modelBuilder.Entity("CinemaApp.DAL.Entities.HallOne", b =>
+                {
+                    b.Navigation("Tickets");
+                });
+
             modelBuilder.Entity("CinemaApp.DAL.Entities.Movie", b =>
                 {
-                    b.Navigation("MoviesCrewmates");
+                    b.Navigation("MovieCrewmate");
 
                     b.Navigation("Sessions");
                 });

@@ -1,9 +1,4 @@
 ﻿using CinemaApp.BL.DTOs.MovieDTOs.Session;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Interfaces
 {
@@ -11,7 +6,7 @@ namespace CinemaApp.BL.Interfaces
     {
         Task<IEnumerable<SessionDTO>> GetAllSessionsAsync();
         Task<SessionDTO> GetSessionByIdAsync(int id);
-        Task AddSessionAsync(SessionCreateDTO sessionCreateDTO);
+        Task<SessionDTO> AddSessionAsync(SessionCreateDTO sessionCreateDTO);
         Task UpdateSessionAsync(int id, SessionUpdateDTO sessionUpdateDTO);
         Task DeleteSessionByIdAsync(int id);
     }

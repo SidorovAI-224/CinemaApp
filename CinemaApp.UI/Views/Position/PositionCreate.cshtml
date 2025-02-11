@@ -1,0 +1,13 @@
+﻿@model CinemaApp.BL.DTOs.CrewDTOs.Position.PositionCreateDTO
+
+<h2>Create New Position</h2>
+
+<form asp-action="PositionCreate" method="post">
+    <div class="form-group">
+        <label asp-for="PositionName">Title</label>
+        <input asp-for="PositionName" class="form-control" />
+        <span asp-validation-for="PositionName" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+    <a asp-action="PositionAdminIndex" class="btn btn-secondary">Cancel</a>
+</form>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CinemaApp.BL.DTOs.MovieDTOs.Session.SessionDTO>
+
+<h2>Список сесій</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>Немає доступних сесій.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Session ID</th>
+                <th>Назва фільму</th>
+                <th>Зал</th>
+                <th>Дата</th>
+                <th>Час початку</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var session in Model)
+            {
+                <tr>
+                    <td>@session.SessionID</td>
+                    <td>@session.MovieTitle</td>
+                    <td>@session.Hall</td>
+                    <td>@session.Date.ToShortDateString()</td>
+                    <td>@session.StartTime.ToShortTimeString()</td>
+                    <td>
+                        <a asp-action="SessionEdit" asp-route-id="@session.SessionID" class="btn btn-warning">Редагувати</a>
+                        <a asp-action="SessionDelete" asp-route-id="@session.SessionID" class="btn btn-danger">Видалити</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+<a asp-action="SessionCreate" class="btn btn-primary">Додати нову сесію</a>
+

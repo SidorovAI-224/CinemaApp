@@ -1,7 +1,10 @@
-﻿using CinemaApp.DAL.Entities;
+﻿using CinemaApp.DAL.Data;
+using CinemaApp.DAL.Entities;
 using CinemaApp.UI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CinemaApp.UI.Controllers
 {
@@ -10,13 +13,95 @@ namespace CinemaApp.UI.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-
-        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        private readonly CinemaDbContext _context;
+        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, CinemaDbContext cinemaDbContext)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _roleManager = roleManager;
+            _context = cinemaDbContext; 
         }
+        //Список користувачів
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Users()
+        {
+            var users = await _context.Users
+                .Select(user => new UserViewModel
+                {
+                    UserId = user.Id,
+                    Name = user.FullName,
+                    Email = user.Email,
+                    Age = user.Age,
+                    RegistrationDate = user.RegistrationDate
+                })
+                .ToListAsync();
+            return View(users);
+        }
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EditUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var model = new EditUserViewModel
+            {
+                Id = user.Id,
+                FullName = user.FullName,
+                Email = user.Email
+            };
+
+            return View(model);
+        }
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EditUser(EditUserViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await _userManager.FindByIdAsync(model.Id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.FullName = model.FullName;
+            user.Email = model.Email;
+            user.UserName = model.Email;
+
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("", "Error updating user");
+                return View(model);
+            }
+
+            return RedirectToAction("Users");
+        }
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var result = await _userManager.DeleteAsync(user);
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("", "Error deleting user");
+            }
+
+            return RedirectToAction("Users");
+        }
+
         [HttpGet]
         public IActionResult Login()
         {
@@ -61,7 +146,8 @@ namespace CinemaApp.UI.Controllers
                 NormalizedUserName = model.Email.ToUpper(),
                 Email = model.Email,
                 NormalizedEmail = model.Email.ToUpper(),
-                Age = model.Age  // Збереження віку в БД
+                Age = model.Age,
+                RegistrationDate = DateTime.UtcNow
             };
             var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -83,8 +169,6 @@ namespace CinemaApp.UI.Controllers
             }
             return View(model);
         }
-
-
 
         [HttpGet]
         public IActionResult VerifyEmail()
@@ -154,6 +238,38 @@ namespace CinemaApp.UI.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> UpdateProfile(string NewEmail, string NewPassword)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            if (!string.IsNullOrEmpty(NewEmail))
+            {
+                user.Email = NewEmail;
+                user.UserName = NewEmail;
+            }
+
+            if (!string.IsNullOrEmpty(NewPassword))
+            {
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var result = await _userManager.ResetPasswordAsync(user, token, NewPassword);
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError("", "Error updating password");
+                    return View();
+                }
+            }
+
+            await _userManager.UpdateAsync(user);
+            await _signInManager.RefreshSignInAsync(user);
+
             return RedirectToAction("Index", "Home");
         }
     }

@@ -8,5 +8,10 @@ namespace CinemaApp.UI.Controllers
         {
             return View();
         }
+
+        public IActionResult Profile()
+        {
+            return View();
+        }
     }
 }

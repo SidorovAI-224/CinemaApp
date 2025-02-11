@@ -1,9 +1,6 @@
 ﻿using CinemaApp.BL.DTOs.MovieDTOs.Movie;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CinemaApp.DAL.Entities;
+
 namespace CinemaApp.BL.Interfaces
 {
     public interface IMovieService
@@ -15,5 +12,6 @@ namespace CinemaApp.BL.Interfaces
         Task DeleteMovieByIdAsync(int id);
         Task<IEnumerable<MovieDTO>> FindMovieByGenreAsync(string genre);
         Task<IEnumerable<MovieDTO>> FindMovieByNameAsync(string name);
+
     }
 }

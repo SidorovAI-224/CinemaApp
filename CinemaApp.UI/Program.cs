@@ -8,34 +8,41 @@ using CinemaApp.BL.Services;
 using CinemaApp.BL.Validators.Genre;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using CinemaApp.BL.Interfaces;
+using CinemaApp.DAL.Repositories;
+using CinemaApp.BL.Interfaces.ServiceInterfaces;
+using CinemaApp.DAL.Repositories.MoviesCrewmates;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(TotalMappProfile));
-// Add services to the container.
-builder.Services.AddControllersWithViews();
 // mapper
 builder.Services.AddAutoMapper(typeof(TotalMappProfile));
 // validator
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();
 
+
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 builder.Services.AddValidatorsFromAssembly(typeof(GenreCreateValidator).Assembly);
 
-var validatorTypes = builder.Services.Where(s => s.ServiceType.IsGenericType
-    && s.ServiceType.GetGenericTypeDefinition() == typeof(IValidator<>))
-    .Select(s => s.ServiceType)
-    .ToList();
 
-Console.WriteLine("Registered Validators:");
-foreach (var type in validatorTypes)
-{
-    Console.WriteLine(type);
-}
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IMovieCrewmateRepository, MovieCrewmateRepository>();
+
+
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<IGenreService, GenreService>();
+builder.Services.AddScoped<ISessionService, SessionService>();
+builder.Services.AddScoped<IPositionService, PositionService>();
+builder.Services.AddScoped<ICrewmateService, CrewmateService>();
+builder.Services.AddScoped<IMovieCrewmateService, MovieCrewmateService>();
+
 
 
 
@@ -46,7 +53,6 @@ builder.Services.AddDbContext<CinemaDbContext>(options =>
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
-    //можливо треба буде щось дописати
     options.Password.RequireDigit = true;
     options.Password.RequireLowercase = true;
     options.Password.RequiredLength = 6;
@@ -61,13 +67,6 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 var app = builder.Build();
 
 await SeedService.SeedDatabase(app.Services);
-// Auto migration
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<CinemaDbContext>();
-    context.Database.Migrate();
-}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

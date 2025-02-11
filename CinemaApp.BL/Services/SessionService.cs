@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
-using CinemaApp.BL.DTOs.CrewDTOs.Crewmate;
 using CinemaApp.BL.DTOs.MovieDTOs.Session;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.DAL.Entities;
-using FluentValidation;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace CinemaApp.BL.Services
 {
@@ -28,19 +25,35 @@ namespace CinemaApp.BL.Services
 
         public async Task<SessionDTO> GetSessionByIdAsync(int id)
         {
-            var session = await _sessionRepository.GetByIdAsync(id);
+            var session = await _sessionRepository.GetByIdAsync(id, include: q => q.Include(s => s.Movie));
+            if (session == null)
+            {
+                throw new Exception("Session not found.");
+            }
             return _mapper.Map<SessionDTO>(session);
         }
-
-        public async Task AddSessionAsync(SessionCreateDTO sessionCreateDTO)
+        public async Task<SessionDTO> AddSessionAsync(SessionCreateDTO sessionCreateDTO)
         {
             var session = _mapper.Map<Session>(sessionCreateDTO);
             await _sessionRepository.AddAsync(session);
+
+            var createdSession = await _sessionRepository.GetByIdAsync(session.SessionID);
+            if (createdSession == null)
+            {
+                throw new Exception("Save in DB error.");
+            }
+
+            return _mapper.Map<SessionDTO>(createdSession);
         }
 
         public async Task UpdateSessionAsync(int id, SessionUpdateDTO sessionUpdateDTO)
         {
             var session = await _sessionRepository.GetByIdAsync(id);
+            if (session == null)
+            {
+                throw new Exception("Session not found.");
+            }
+
             _mapper.Map(sessionUpdateDTO, session);
             await _sessionRepository.UpdateAsync(session);
         }

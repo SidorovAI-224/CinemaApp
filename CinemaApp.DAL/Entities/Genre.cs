@@ -10,3 +10,4 @@ namespace CinemaApp.DAL.Entities
         public ICollection<Movie> Movies { get; set; }
     }
 }
+
