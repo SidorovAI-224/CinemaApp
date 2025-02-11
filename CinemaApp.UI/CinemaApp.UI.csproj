@@ -21,10 +21,6 @@
     <ProjectReference Include="..\CinemaApp.BL\CinemaApp.BL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Ticket\" />
-  </ItemGroup>
-
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>

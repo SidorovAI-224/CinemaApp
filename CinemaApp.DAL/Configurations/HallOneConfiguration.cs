@@ -13,10 +13,10 @@ namespace CinemaApp.DAL.Configurations
             builder.Property(h => h.IsBooked)
                    .IsRequired();
 
-            builder.HasMany(h => h.Tickets);
-                   //.WithOne(t => t.HallOne)
-                   //.HasForeignKey(t => t.SeatID)
-                   //.OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(h => h.Tickets)
+                   .WithOne(t => t.HallOne)
+                   .HasForeignKey(t => t.Seat)
+                   .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

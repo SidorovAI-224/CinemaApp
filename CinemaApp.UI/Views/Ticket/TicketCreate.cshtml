@@ -1,0 +1,28 @@
+﻿@model CinemaApp.BL.DTOs.UserDTOs.Ticket.TicketCreateDTO
+
+@{
+    ViewData["Title"] = "Додати квиток";
+}
+
+<h2>Додати квиток</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="SessionID">ID сеансу</label>
+        <input asp-for="SessionID" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label asp-for="UserID">ID користувача</label>
+        <input asp-for="UserID" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label asp-for="Seat">Місце</label>
+        <input asp-for="Seat" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Ціна</label>
+        <input asp-for="Price" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-success">Додати</button>
+    <a asp-action="Index" class="btn btn-secondary">Назад</a>
+</form>

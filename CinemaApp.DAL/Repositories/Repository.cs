@@ -55,6 +55,12 @@ namespace CinemaApp.DAL.Repositories
             {
                 query = query.Include("Movie");
             }
+            else if (typeof(T) == typeof(Ticket))
+            {
+                query = query.Include("Session")
+                            .Include("User")
+                            .Include("Session.Movie");
+            }
 
             return await query.ToListAsync();
         }

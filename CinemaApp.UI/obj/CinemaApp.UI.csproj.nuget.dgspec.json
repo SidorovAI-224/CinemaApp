@@ -1,34 +1,40 @@
 {
   "format": 1,
   "restore": {
-    "/Users/denis/CinemaApp/CinemaApp.UI/CinemaApp.UI.csproj": {}
+    "C:\\PracticeSoftServe\\CinemaApp.UI\\CinemaApp.UI.csproj": {}
   },
   "projects": {
-    "/Users/denis/CinemaApp/CinemaApp.BL/CinemaApp.BL.csproj": {
+    "C:\\PracticeSoftServe\\CinemaApp.BL\\CinemaApp.BL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/denis/CinemaApp/CinemaApp.BL/CinemaApp.BL.csproj",
+        "projectUniqueName": "C:\\PracticeSoftServe\\CinemaApp.BL\\CinemaApp.BL.csproj",
         "projectName": "CinemaApp.BL",
-        "projectPath": "/Users/denis/CinemaApp/CinemaApp.BL/CinemaApp.BL.csproj",
-        "packagesPath": "/Users/denis/.nuget/packages/",
-        "outputPath": "/Users/denis/CinemaApp/CinemaApp.BL/obj/",
+        "projectPath": "C:\\PracticeSoftServe\\CinemaApp.BL\\CinemaApp.BL.csproj",
+        "packagesPath": "C:\\Users\\xcoml\\.nuget\\packages\\",
+        "outputPath": "C:\\PracticeSoftServe\\CinemaApp.BL\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/denis/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\xcoml\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/Users/denis/CinemaApp/CinemaApp.DAL/CinemaApp.DAL.csproj": {
-                "projectPath": "/Users/denis/CinemaApp/CinemaApp.DAL/CinemaApp.DAL.csproj"
+              "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
+                "projectPath": "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj"
               }
             }
           }
@@ -80,27 +86,33 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/denis/CinemaApp/CinemaApp.DAL/CinemaApp.DAL.csproj": {
+    "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/denis/CinemaApp/CinemaApp.DAL/CinemaApp.DAL.csproj",
+        "projectUniqueName": "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
         "projectName": "CinemaApp.DAL",
-        "projectPath": "/Users/denis/CinemaApp/CinemaApp.DAL/CinemaApp.DAL.csproj",
-        "packagesPath": "/Users/denis/.nuget/packages/",
-        "outputPath": "/Users/denis/CinemaApp/CinemaApp.DAL/obj/",
+        "projectPath": "C:\\PracticeSoftServe\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+        "packagesPath": "C:\\Users\\xcoml\\.nuget\\packages\\",
+        "outputPath": "C:\\PracticeSoftServe\\CinemaApp.DAL\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/denis/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\xcoml\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -166,35 +178,41 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/denis/CinemaApp/CinemaApp.UI/CinemaApp.UI.csproj": {
+    "C:\\PracticeSoftServe\\CinemaApp.UI\\CinemaApp.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/denis/CinemaApp/CinemaApp.UI/CinemaApp.UI.csproj",
+        "projectUniqueName": "C:\\PracticeSoftServe\\CinemaApp.UI\\CinemaApp.UI.csproj",
         "projectName": "CinemaApp.UI",
-        "projectPath": "/Users/denis/CinemaApp/CinemaApp.UI/CinemaApp.UI.csproj",
-        "packagesPath": "/Users/denis/.nuget/packages/",
-        "outputPath": "/Users/denis/CinemaApp/CinemaApp.UI/obj/",
+        "projectPath": "C:\\PracticeSoftServe\\CinemaApp.UI\\CinemaApp.UI.csproj",
+        "packagesPath": "C:\\Users\\xcoml\\.nuget\\packages\\",
+        "outputPath": "C:\\PracticeSoftServe\\CinemaApp.UI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/denis/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\xcoml\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/Users/denis/CinemaApp/CinemaApp.BL/CinemaApp.BL.csproj": {
-                "projectPath": "/Users/denis/CinemaApp/CinemaApp.BL/CinemaApp.BL.csproj"
+              "C:\\PracticeSoftServe\\CinemaApp.BL\\CinemaApp.BL.csproj": {
+                "projectPath": "C:\\PracticeSoftServe\\CinemaApp.BL\\CinemaApp.BL.csproj"
               }
             }
           }
@@ -271,7 +289,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -12,5 +12,7 @@ namespace CinemaApp.DAL.Entities
         public DateTime BookingDate { get; set; }
         public Session Session { get; set; }
         public User User { get; set; }
+        public HallOne HallOne { get; set; }
     }
 }
+

@@ -42,6 +42,7 @@ builder.Services.AddScoped<ISessionService, SessionService>();
 builder.Services.AddScoped<IPositionService, PositionService>();
 builder.Services.AddScoped<ICrewmateService, CrewmateService>();
 builder.Services.AddScoped<IMovieCrewmateService, MovieCrewmateService>();
+builder.Services.AddScoped<ITicketService, TicketService>();
 
 
 
