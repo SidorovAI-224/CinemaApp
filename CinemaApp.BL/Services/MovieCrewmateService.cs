@@ -3,48 +3,42 @@ using CinemaApp.BL.DTOs.MovieDTOs.MovieCrewmates;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
+using CinemaApp.DAL.Repositories.MoviesCrewmates;
 
 namespace CinemaApp.BL.Services
 {
     public class MovieCrewmateService : IMovieCrewmateService
     {
-        private readonly IRepository<MovieCrewmate> _moviewCrewmatesRepository;
+        private readonly IMovieCrewmateRepository _movieCrewmateRepository;
         private readonly IMapper _mapper;
 
-        public MovieCrewmateService(IRepository<MovieCrewmate> moviewCrewmatesRepository, IMapper mapper)
+        public MovieCrewmateService(IMovieCrewmateRepository movieCrewmateRepository, IMapper mapper)
         {
-            _moviewCrewmatesRepository = moviewCrewmatesRepository;
+            _movieCrewmateRepository = movieCrewmateRepository;
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<MovieCrewmateDTO>> GetAllMoviesCrewmatesAsync()
+        public async Task AddCrewmateToMovieAsync(int movieId, int crewmateId, int positionId)
         {
-            var moviesCrewmates = await _moviewCrewmatesRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<MovieCrewmateDTO>>(moviesCrewmates);
+            var movieCrewmate = new MovieCrewmate
+            {
+                MovieID = movieId,
+                CrewmateID = crewmateId,
+                PositionID = positionId
+            };
+
+            await _movieCrewmateRepository.AddMovieCrewmateAsync(movieCrewmate);
         }
 
-        public async Task<MovieCrewmateDTO> GetMoviesCrewmatesByIdAsync(int id)
+        public async Task RemoveCrewmateFromMovieAsync(int movieId, int crewmateId)
         {
-            var moviesCrewmates = await _moviewCrewmatesRepository.GetByIdAsync(id);
-            return _mapper.Map<MovieCrewmateDTO>(moviesCrewmates);
+            await _movieCrewmateRepository.RemoveMovieCrewmateAsync(movieId, crewmateId);
         }
 
-        public async Task AddMoviesCrewmatesAsync(MovieCrewmateDTO movies_CrewmatesDTO)
+        public async Task<IEnumerable<MovieCrewmateDTO>> GetCrewmatesByMovieIdAsync(int movieId)
         {
-            var moviesCrewmates = _mapper.Map<MovieCrewmate>(movies_CrewmatesDTO);
-            await _moviewCrewmatesRepository.AddAsync(moviesCrewmates);
-        }
-
-        public async Task UpdateMoviesCrewmatesAsync(int id, MovieCrewmateDTO moviesCrewmatesDTO)
-        {
-            var moviesCrewmates = await _moviewCrewmatesRepository.GetByIdAsync(id);
-            _mapper.Map(moviesCrewmatesDTO, moviesCrewmates);
-            await _moviewCrewmatesRepository.UpdateAsync(moviesCrewmates);
-        }
-
-        public async Task DeleteMoviesCrewmatesByIdAsync(int id)
-        {
-            await _moviewCrewmatesRepository.DeleteByIdAsync(id);
+            var movieCrewmates = await _movieCrewmateRepository.GetMovieCrewmatesByMovieIdAsync(movieId);
+            return _mapper.Map<IEnumerable<MovieCrewmateDTO>>(movieCrewmates);
         }
     }
 }

@@ -22,7 +22,10 @@ namespace CinemaApp.BL.Mapping
 
             CreateMap<MovieUpdateDTO, Movie>();
 
-            CreateMap<MovieDTO, MovieUpdateDTO>();
+            CreateMap<Movie, MovieUpdateDTO>()
+                .ForMember(dest => dest.MovieCrewmates, opt => opt.MapFrom(src => src.MoviesCrewmates))
+                .ReverseMap();
+
 
             // MovieDTO - Movie
             CreateMap<MovieDTO, Movie>()
@@ -187,7 +190,14 @@ namespace CinemaApp.BL.Mapping
 
 
             // Movies_Crewmates - MovieCrewmateDTO
-            CreateMap<MovieCrewmate, MovieCrewmateDTO>();
+
+            CreateMap<MovieCrewmate, MovieCrewmateCreateDTO>()
+                .ReverseMap();
+
+            CreateMap<MovieCrewmate, MovieCrewmateDTO>()
+                .ForMember(dest => dest.CrewmateName, opt => opt.MapFrom(src => src.Crewmate.Name))
+                .ForMember(dest => dest.PositionName, opt => opt.MapFrom(src => src.Position.PositionName))
+                .ReverseMap();
 
             // MovieCrewmateDTO - Movies_Crewmates
             CreateMap<MovieCrewmateDTO, MovieCrewmate>();

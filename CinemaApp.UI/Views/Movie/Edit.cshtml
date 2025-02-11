@@ -1,4 +1,4 @@
-﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieUpdateDTO
+﻿@* @model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieUpdateDTO
 
 <h2>Редагувати фільм</h2>
 
@@ -49,6 +49,63 @@
         <input asp-for="TrailerURL" class="form-control" />
         <span asp-validation-for="TrailerURL" class="text-danger"></span>
     </div>
+    <div class="form-group">
+        <input type="submit" value="Зберегти" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Назад до списку</a>
+    </div>
+</form> *@
+
+@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieUpdateDTO
+
+<h2>Редагувати фільм</h2>
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="CrewmateID">Актор</label>
+        <select name="CrewmateID" class="form-control" asp-items="ViewBag.Crewmates"></select>
+    </div>
+
+    <div class="form-group">
+        <label for="PositionID">Роль</label>
+        <select name="PositionID" class="form-control" asp-items="ViewBag.Positions"></select>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" name="action" value="AddCrewmate" class="btn btn-info">Додати актора</button>
+    </div>
+
+    <h3>Актори</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Актор</th>
+                <th>Роль</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var crewmate in Model.MovieCrewmates)
+            {
+                <tr>
+                    <td>@crewmate.CrewmateName</td> 
+                    <td>@crewmate.PositionName</td> 
+                    <td>
+                        <form asp-action="RemoveCrewmateFromMovie" method="post">
+                            <input type="hidden" name="movieId" value="@Model.MovieID" />
+                            <input type="hidden" name="crewmateId" value="@crewmate.CrewmateID" />
+                            <button type="submit" class="btn btn-danger">Видалити</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
     <div class="form-group">
         <input type="submit" value="Зберегти" class="btn btn-primary" />
         <a asp-action="Index" class="btn btn-secondary">Назад до списку</a>

@@ -31,7 +31,7 @@ namespace CinemaApp.DAL.Data
             modelBuilder.ApplyConfiguration(new TicketConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new CrewmateConfiguration());
-            modelBuilder.ApplyConfiguration(new Movies_CrewmatesConfiguration());
+            modelBuilder.ApplyConfiguration(new MovieCrewmateConfiguration());
             modelBuilder.ApplyConfiguration(new Crewmate_PositionsConfiguration());
             modelBuilder.ApplyConfiguration(new PositionConfiguration());
             modelBuilder.ApplyConfiguration(new MovieGenreConfiguration());

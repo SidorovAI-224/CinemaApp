@@ -7,6 +7,8 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
 {
     public class MovieUpdateDTO
     {
+        public int MovieID { get; set; }
+
         [Required(ErrorMessage = "Film name is required")]
         [StringLength(200, ErrorMessage = "Film name can't be longer than 200 characters")]
         public string Title { get; set; }
@@ -36,6 +38,6 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
         [Range(0, 21, ErrorMessage = "Age limit must be in 0 - 21 range")]
         public int AgeLimit { get; set; }
 
-        //public List<MovieCrewmateCreateDTO> MovieCrewmates { get; set; }
+        public List<MovieCrewmateDTO> MovieCrewmates { get; set; }
     }
 }

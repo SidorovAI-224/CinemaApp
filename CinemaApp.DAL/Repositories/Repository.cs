@@ -16,7 +16,6 @@ namespace CinemaApp.DAL.Repositories
             _context = context;
             _dbSet = context.Set<T>();
         }
-
         public async Task<T> GetByIdAsync(int id, Func<IQueryable<T>, IQueryable<T>> include = null)
         {
             var query = _dbSet.AsQueryable();
@@ -30,11 +29,11 @@ namespace CinemaApp.DAL.Repositories
                 .Select(p => p.Name)
                 .FirstOrDefault();
 
-
             if (keyName == null)
             {
                 throw new InvalidOperationException($"Can't find the primary key for entity: {typeof(T).Name}");
             }
+
             var parameter = Expression.Parameter(typeof(T), "e");
             var property = Expression.Property(parameter, keyName);
             var equals = Expression.Equal(property, Expression.Constant(id));
@@ -42,6 +41,31 @@ namespace CinemaApp.DAL.Repositories
 
             return await query.FirstOrDefaultAsync(lambda);
         }
+        //public async Task<T> GetByIdAsync(int id, Func<IQueryable<T>, IQueryable<T>> include = null)
+        //{
+        //    var query = _dbSet.AsQueryable();
+
+        //    if (include != null)
+        //    {
+        //        query = include(query);
+        //    }
+
+        //    var keyName = _context.Model.FindEntityType(typeof(T))?.FindPrimaryKey()?.Properties
+        //        .Select(p => p.Name)
+        //        .FirstOrDefault();
+
+
+        //    if (keyName == null)
+        //    {
+        //        throw new InvalidOperationException($"Can't find the primary key for entity: {typeof(T).Name}");
+        //    }
+        //    var parameter = Expression.Parameter(typeof(T), "e");
+        //    var property = Expression.Property(parameter, keyName);
+        //    var equals = Expression.Equal(property, Expression.Constant(id));
+        //    var lambda = Expression.Lambda<Func<T, bool>>(equals, parameter);
+
+        //    return await query.FirstOrDefaultAsync(lambda);
+        //}
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {

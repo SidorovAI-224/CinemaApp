@@ -5,7 +5,7 @@ using CinemaApp.DAL.Entities;
 
 namespace CinemaApp.DAL.Configurations
 {
-    public class Movies_CrewmatesConfiguration : IEntityTypeConfiguration<MovieCrewmate>
+    public class MovieCrewmateConfiguration : IEntityTypeConfiguration<MovieCrewmate>
     {
         public void Configure(EntityTypeBuilder<MovieCrewmate> builder)
         {

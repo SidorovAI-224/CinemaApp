@@ -5,11 +5,11 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.MovieCrewmates
 {
     public class MovieCrewmateDTO
     {
-        [Required(ErrorMessage = "Actor ID is required")]
-        public int ActorID { get; set; }
+        public int MovieID { get; set; }
+        public int CrewmateID { get; set; }
+        public int PositionID { get; set; }
 
-        [Required(ErrorMessage = "Position is required")]
-        [StringLength(100, ErrorMessage = "Position can't be longer than 100 characters")]
-        public string Position { get; set; }
+        public string CrewmateName { get; set; } 
+        public string PositionName { get; set; } 
     }
 }

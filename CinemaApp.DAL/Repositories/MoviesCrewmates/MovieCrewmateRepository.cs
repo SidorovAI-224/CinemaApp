@@ -40,7 +40,7 @@ namespace CinemaApp.DAL.Repositories.MoviesCrewmates
         {
             return await _context.MovieCrewmate
                 .Include(mc => mc.Crewmate)
-                //.Include(mc => mc.Position)
+                .Include(mc => mc.Position)
                 .Where(mc => mc.MovieID == movieId)
                 .ToListAsync();
         }

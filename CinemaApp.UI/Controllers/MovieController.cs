@@ -3,6 +3,8 @@ using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.DTOs.MovieDTOs.Movie;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using CinemaApp.BL.Interfaces.ServiceInterfaces;
+using CinemaApp.DAL.Entities;
 
 namespace CinemaApp.UI.Controllers
 {
@@ -10,7 +12,7 @@ namespace CinemaApp.UI.Controllers
     {
         private readonly IMovieService _movieService;
         private readonly IMapper _mapper;
-
+        private readonly IMovieCrewmateService _movieCrewmateService;
         public MovieController(IMovieService movieService, IMapper mapper)
         {
             _movieService = movieService;
@@ -62,6 +64,40 @@ namespace CinemaApp.UI.Controllers
             }
         }
 
+        //[Authorize(Roles = "Admin")]
+        //[HttpGet]
+        //public async Task<IActionResult> Edit(int id)
+        //{
+        //    var movie = await _movieService.GetMovieByIdAsync(id);
+        //    if (movie == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var movieUpdateDTO = _mapper.Map<MovieUpdateDTO>(movie);
+        //    return View(movieUpdateDTO);
+        //}
+
+        //[Authorize(Roles = "Admin")]
+        //[HttpPost]
+        //public async Task<IActionResult> Edit(int id, MovieUpdateDTO movieDTO)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(movieDTO);
+        //    }
+
+        //    try
+        //    {
+        //        await _movieService.UpdateMovieAsync(id, movieDTO);
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ModelState.AddModelError(string.Empty, ex.Message);
+        //        return View(movieDTO);
+        //    }
+        //}
+
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
@@ -71,6 +107,7 @@ namespace CinemaApp.UI.Controllers
             {
                 return NotFound();
             }
+
             var movieUpdateDTO = _mapper.Map<MovieUpdateDTO>(movie);
             return View(movieUpdateDTO);
         }
@@ -111,6 +148,26 @@ namespace CinemaApp.UI.Controllers
         {
             await _movieService.DeleteMovieByIdAsync(MovieID);
             return RedirectToAction(nameof(Index));
+        }
+
+
+
+        // [MovieCrewmate methods]
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost("AddCrewmateToMovie")]
+        public async Task<IActionResult> AddCrewmateToMovie(int movieId, int crewmateId, int positionId)
+        {
+            await _movieCrewmateService.AddCrewmateToMovieAsync(movieId, crewmateId, positionId);
+            return RedirectToAction(nameof(Edit), new { id = movieId });
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost("RemoveCrewmateFromMovie")]
+        public async Task<IActionResult> RemoveCrewmateFromMovie(int movieId, int crewmateId)
+        {
+            await _movieCrewmateService.RemoveCrewmateFromMovieAsync(movieId, crewmateId);
+            return RedirectToAction(nameof(Edit), new { id = movieId });
         }
     }
 }
