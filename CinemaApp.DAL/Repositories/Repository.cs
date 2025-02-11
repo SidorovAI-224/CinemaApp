@@ -93,11 +93,5 @@ namespace CinemaApp.DAL.Repositories
 
             return await query.ToListAsync();
         }
-
-        public async Task AddMovieCrewmateAsync(MoviesCrewmates movieCrewmate)
-        {
-            await _context.MoviesCrewmates.AddAsync(movieCrewmate);
-            await _context.SaveChangesAsync();
-        }
     }
 }

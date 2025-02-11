@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using System.ComponentModel.DataAnnotations;
 
 namespace CinemaApp.BL.DTOs.MovieDTOs.MovieCrewmates
 {
-    public class MovieCrewmateCreateDTO
+    public class MovieCrewmateDTO
     {
         [Required(ErrorMessage = "Actor ID is required")]
         public int ActorID { get; set; }

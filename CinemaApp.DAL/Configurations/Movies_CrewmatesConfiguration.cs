@@ -5,9 +5,9 @@ using CinemaApp.DAL.Entities;
 
 namespace CinemaApp.DAL.Configurations
 {
-    public class Movies_CrewmatesConfiguration : IEntityTypeConfiguration<MoviesCrewmates>
+    public class Movies_CrewmatesConfiguration : IEntityTypeConfiguration<MovieCrewmate>
     {
-        public void Configure(EntityTypeBuilder<MoviesCrewmates> builder)
+        public void Configure(EntityTypeBuilder<MovieCrewmate> builder)
         {
             builder.HasKey(mc => new { mc.MovieID, mc.CrewmateID });
 

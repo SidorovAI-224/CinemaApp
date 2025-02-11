@@ -17,7 +17,7 @@ namespace CinemaApp.DAL.Entities
 
         public Genre Genre { get; set; }
         public ICollection<Session> Sessions { get; set; }
-        public ICollection<MoviesCrewmates> MoviesCrewmates { get; set; }
+        public ICollection<MovieCrewmate> MoviesCrewmates { get; set; }
     }
 }
 

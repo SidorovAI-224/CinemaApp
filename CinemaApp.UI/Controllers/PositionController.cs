@@ -2,6 +2,7 @@
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.BL.DTOs.CrewDTOs.Position;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CinemaApp.UI.Controllers
 {
@@ -13,19 +14,21 @@ namespace CinemaApp.UI.Controllers
         {
             _positionService = positionService;
         }
-
+        
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PositionAdminIndex()
         {
             var positions = await _positionService.GetAllPositionsAsync();
             return View(positions);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult PositionCreate()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> PositionCreate(PositionCreateDTO positionCreateDTO)
@@ -39,6 +42,7 @@ namespace CinemaApp.UI.Controllers
             return RedirectToAction(nameof(PositionAdminIndex));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> PositionEdit(int id)
         {
@@ -55,7 +59,7 @@ namespace CinemaApp.UI.Controllers
             
             return View(positionUpdateDTO);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> PositionEdit(int id, PositionUpdateDTO positionUpdateDTO)
@@ -68,7 +72,7 @@ namespace CinemaApp.UI.Controllers
             await _positionService.UpdatePositionAsync(id, positionUpdateDTO);
             return RedirectToAction(nameof(PositionAdminIndex));
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> PositionDelete(int id)
         {
@@ -79,7 +83,7 @@ namespace CinemaApp.UI.Controllers
             }
             return View(position);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

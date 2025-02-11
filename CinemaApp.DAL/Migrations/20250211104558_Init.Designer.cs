@@ -157,7 +157,7 @@ namespace CinemaApp.DAL.Migrations
 
                     b.HasIndex("CrewmateID");
 
-                    b.ToTable("MoviesCrewmates");
+                    b.ToTable("MovieCrewmate");
                 });
 
             modelBuilder.Entity("CinemaApp.DAL.Entities.Position", b =>
@@ -493,13 +493,13 @@ namespace CinemaApp.DAL.Migrations
             modelBuilder.Entity("CinemaApp.DAL.Entities.Movies_Crewmates", b =>
                 {
                     b.HasOne("CinemaApp.DAL.Entities.Crewmate", "Crewmate")
-                        .WithMany("MoviesCrewmates")
+                        .WithMany("MovieCrewmate")
                         .HasForeignKey("CrewmateID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CinemaApp.DAL.Entities.Movie", "Movie")
-                        .WithMany("MoviesCrewmates")
+                        .WithMany("MovieCrewmate")
                         .HasForeignKey("MovieID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -598,7 +598,7 @@ namespace CinemaApp.DAL.Migrations
                 {
                     b.Navigation("CrewmatePositions");
 
-                    b.Navigation("MoviesCrewmates");
+                    b.Navigation("MovieCrewmate");
                 });
 
             modelBuilder.Entity("CinemaApp.DAL.Entities.Genre", b =>
@@ -613,7 +613,7 @@ namespace CinemaApp.DAL.Migrations
 
             modelBuilder.Entity("CinemaApp.DAL.Entities.Movie", b =>
                 {
-                    b.Navigation("MoviesCrewmates");
+                    b.Navigation("MovieCrewmate");
 
                     b.Navigation("Sessions");
                 });

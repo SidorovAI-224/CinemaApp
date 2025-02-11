@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CinemaApp.BL.DTOs.MovieDTOs.MovieCrewmates;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
 {

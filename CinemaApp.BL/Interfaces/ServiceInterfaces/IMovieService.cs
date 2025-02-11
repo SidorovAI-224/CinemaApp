@@ -1,4 +1,5 @@
 ﻿using CinemaApp.BL.DTOs.MovieDTOs.Movie;
+using CinemaApp.DAL.Entities;
 
 namespace CinemaApp.BL.Interfaces
 {
@@ -11,5 +12,6 @@ namespace CinemaApp.BL.Interfaces
         Task DeleteMovieByIdAsync(int id);
         Task<IEnumerable<MovieDTO>> FindMovieByGenreAsync(string genre);
         Task<IEnumerable<MovieDTO>> FindMovieByNameAsync(string name);
+
     }
 }

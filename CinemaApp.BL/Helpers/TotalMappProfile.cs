@@ -186,11 +186,11 @@ namespace CinemaApp.BL.Mapping
 
 
 
-            // Movies_Crewmates - MoviesCrewmatesDTO
-            CreateMap<MoviesCrewmates, MoviesCrewmatesDTO>();
+            // Movies_Crewmates - MovieCrewmateDTO
+            CreateMap<MovieCrewmate, MovieCrewmateDTO>();
 
-            // MoviesCrewmatesDTO - Movies_Crewmates
-            CreateMap<MoviesCrewmatesDTO, MoviesCrewmates>();
+            // MovieCrewmateDTO - Movies_Crewmates
+            CreateMap<MovieCrewmateDTO, MovieCrewmate>();
 
 
 

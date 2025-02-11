@@ -15,7 +15,7 @@ namespace CinemaApp.DAL.Data
         public DbSet<Session> Sessions { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Crewmate> Crewmates { get; set; }
-        public DbSet<MoviesCrewmates> MoviesCrewmates { get; set; }
+        public DbSet<MovieCrewmate> MovieCrewmate { get; set; }
         public DbSet<CrewmatePositions> CrewmatePositions { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<HallOne> Halls { get; set; }
@@ -36,9 +36,6 @@ namespace CinemaApp.DAL.Data
             modelBuilder.ApplyConfiguration(new PositionConfiguration());
             modelBuilder.ApplyConfiguration(new MovieGenreConfiguration());
             modelBuilder.ApplyConfiguration(new HallOneConfiguration());
-
-
-
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CinemaApp.BL.DTOs.MovieDTOs.MovieCrewmates;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
 {
@@ -9,7 +12,6 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Film description is required")]
-
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Genre ID is required")]
@@ -33,5 +35,7 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
         [Required(ErrorMessage = "Age limit is required")]
         [Range(0, 21, ErrorMessage = "Age limit must be in 0 - 21 range")]
         public int AgeLimit { get; set; }
+
+        //public List<MovieCrewmateCreateDTO> MovieCrewmates { get; set; }
     }
 }

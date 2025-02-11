@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Validators.MovieCrewmates
 {
-    public class MoviesCrewmatesUpdateValidator : AbstractValidator<MoviesCrewmatesDTO>
+    public class MoviesCrewmatesUpdateValidator : AbstractValidator<MovieCrewmateDTO>
     {
         public MoviesCrewmatesUpdateValidator()
         {
-            RuleFor(x => x.MovieID)
-                .GreaterThan(0).WithMessage("Movie ID must be greater than zero.");
+            //RuleFor(x => x.MovieID)
+            //    .GreaterThan(0).WithMessage("Movie ID must be greater than zero.");
 
-            RuleFor(x => x.CrewmateID)
-                .GreaterThan(0).WithMessage("Crewmate ID must be greater than zero.");
+            //RuleFor(x => x.CrewmateID)
+            //    .GreaterThan(0).WithMessage("Crewmate ID must be greater than zero.");
         }
     }
 }

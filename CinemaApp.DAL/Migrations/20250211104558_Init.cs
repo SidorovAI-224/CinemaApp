@@ -287,7 +287,7 @@ namespace CinemaApp.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MoviesCrewmates",
+                name: "MovieCrewmate",
                 columns: table => new
                 {
                     MovieID = table.Column<int>(type: "INTEGER", nullable: false),
@@ -421,7 +421,7 @@ namespace CinemaApp.DAL.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_MoviesCrewmates_CrewmateID",
-                table: "MoviesCrewmates",
+                table: "MovieCrewmate",
                 column: "CrewmateID");
 
             migrationBuilder.CreateIndex(
@@ -470,7 +470,7 @@ namespace CinemaApp.DAL.Migrations
                 name: "MovieGenre");
 
             migrationBuilder.DropTable(
-                name: "MoviesCrewmates");
+                name: "MovieCrewmate");
 
             migrationBuilder.DropTable(
                 name: "Tickets");

@@ -3,6 +3,7 @@ using CinemaApp.BL.DTOs.CrewDTOs.Crewmate;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using System.Threading.Tasks;
 using CinemaApp.BL.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CinemaApp.Web.Controllers
 {
@@ -15,6 +16,7 @@ namespace CinemaApp.Web.Controllers
             _crewmateService = crewmateService;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> CrewmateAdminIndex()
         {
@@ -22,6 +24,7 @@ namespace CinemaApp.Web.Controllers
             return View(crewmates);
         }
 
+        [Authorize(Roles = "Admin")] // ?
         [HttpGet]
         public async Task<IActionResult> CrewmateDetails(int id)
         {
@@ -32,13 +35,13 @@ namespace CinemaApp.Web.Controllers
             }
             return View(crewmate);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult CrewmateCreate()
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CrewmateCreate(CrewmateCreateDTO crewmateCreateDTO)
@@ -51,6 +54,7 @@ namespace CinemaApp.Web.Controllers
             return View(crewmateCreateDTO);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> CrewmateEdit(int id)
         {
@@ -66,7 +70,7 @@ namespace CinemaApp.Web.Controllers
             };
             return View(crewmateUpdateDTO);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CrewmateEdit(int id, CrewmateUpdateDTO crewmateUpdateDTO)
@@ -83,7 +87,7 @@ namespace CinemaApp.Web.Controllers
             }
             return View(crewmateUpdateDTO);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> CrewmateDelete(int id)
         {
@@ -94,7 +98,7 @@ namespace CinemaApp.Web.Controllers
             }
             return View(crewmate);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CrewmateDeleteConfirmed(int id)
