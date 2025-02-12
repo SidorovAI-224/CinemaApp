@@ -57,8 +57,8 @@ function sortMovies(criteria) {
             valueA = new Date(a.getAttribute("data-release")).getTime(); 
             valueB = new Date(b.getAttribute("data-release")).getTime();
         } else {
-            valueA = parseFloat(a.getAttribute("data-" + criteria));
-            valueB = parseFloat(b.getAttribute("data-" + criteria));
+            valueA = parseFloat(a.getAttribute("data-" + criteria).replace(',', '.'));
+            valueB = parseFloat(b.getAttribute("data-" + criteria).replace(',', '.'));
         }
 
         return valueB - valueA; 
@@ -72,7 +72,7 @@ function filterSessionsByDate(date) {
     let rows = document.querySelectorAll("tbody tr");
 
     rows.forEach(row => {
-        let sessionDate = row.cells[2].textContent.trim(); // Дата находится в третьем столбце
+        let sessionDate = row.cells[2].textContent.trim(); 
         if (sessionDate === formattedDate || formattedDate === "all") {
             row.style.display = "";
         } else {
