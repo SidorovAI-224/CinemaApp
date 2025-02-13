@@ -3,29 +3,58 @@
     ViewData["Title"] = "Головна сторінка";
 }
 
-@if (Model == null || !Model.Any())
-{
-    <p class="text-center mt-4">Немає доступних фільмів.</p>
-}
-else
-{
-    <div class="container">
-        <div class="row justify-content-center">
+<button onclick="sortMovies('ReleaseDate')">Сортувати за датою виходу</button>
+<button onclick="sortMovies('Rating')">Сортувати за рейтингом</button>
+
+<div class="image-container">
+    <div class="image-wrapper">
+        <div id="movies-container">
             @foreach (var movie in Model)
             {
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                    <div class="card text-center shadow-sm">
-                        <img src="@movie.PosterURL" class="card-img-top" alt="Постер фільму"
-                             style="height: 250px; width: 100%; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">@movie.Title</h5>
-                            <p class="card-text"><strong>Жанр:</strong> @movie.GenreName</p>
-                            <p class="card-text"><strong>Рейтинг:</strong> @movie.Rating</p>
-                            <a asp-controller="Movie" asp-action="Details" asp-route-id="@movie.MovieID" class="btn btn-primary btn-sm">Деталі</a>
-                        </div>
+                <div class="movie-item" data-release="@movie.ReleaseDate.ToString("yyyy-MM-dd")" data-rating="@movie.Rating">
+                    <div class="badge-container">
+                        @if (@movie.ReleaseDate >= DateTime.UtcNow.AddDays(-100))
+                        {
+                            <div class="new-badge">NEW</div>
+                        }
+                        @if (@movie.Rating == 5)
+                        {
+                            <div class="relevant-badge">RELEVANT</div>
+                        }
                     </div>
+                    <img src=@movie.PosterURL alt="Image @movie.MovieID" class="openModal" data-id="@movie.MovieID">
+                    <h3>@movie.Title</h3>
                 </div>
             }
+        </div>
+    </div>
+</div>
+
+@foreach (var movie in Model)
+{
+    <div id="modal-@movie.MovieID" class="modal">
+        <div class="modal-content">
+            <span class="close" data-id="@movie.MovieID">&times;</span>
+            <button class="back-btn" data-id="@movie.MovieID" style="display:none;">Назад</button>
+            <h3>@movie.Title</h3>
+            <iframe src=@movie.TrailerURL></iframe>
+            <p>@movie.Description</p>
+            <p>Жанр – @movie.GenreName</p>
+            <p>Тривалість – @movie.Duration.TotalMinutes.ToString("0") хв</p>
+            <p>Дата виходу – @movie.ReleaseDate.ToString("dd.MM.yyyy")</p>
+            <p>Рейтинг – @movie.Rating</p>
+            <p>Вікове обмеження – @movie.AgeLimit+</p>
+            <button class="open-actors" data-id="@movie.MovieID">Актори</button>
+    
+            <div class="actors-modal">
+                <span class="close-actors">&times;</span>
+                <h3>Актори</h3>
+                <p>Актори 1</p>
+                <p>Актори 2</p>
+                <p>Актори 3</p>
+                <p>Актори 4</p>
+                <p>Актори 5</p>
+            </div>
         </div>
     </div>
 }

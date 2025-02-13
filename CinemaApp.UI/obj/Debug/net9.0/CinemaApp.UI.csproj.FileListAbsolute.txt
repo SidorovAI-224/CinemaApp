@@ -1457,9 +1457,7 @@ C:/Users/arrtu/Desktop/Ruchkami/CinemaApp.UI/obj/Debug/net9.0/ref/CinemaApp.UI.d
 /Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/scopedcss/bundle/CinemaApp.UI.styles.css
 /Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/scopedcss/projectbundle/CinemaApp.UI.bundle.scp.css
 /Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/compressed/kxjgk7aabs-fo5ozesrv5.gz
-/Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/compressed/dlbl4rnczr-umveipusep.gz
 /Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/compressed/oaztrlon1s-61n19gt1b8.gz
-/Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/compressed/yme5cpig36-xtxxf3hu2r.gz
 /Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/compressed/l2i188eq5p-bqjiyaj88i.gz
 /Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/compressed/enrs62mhc8-c2jlpeoesf.gz
 /Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/compressed/n0pjp98r4d-erw9l3u2r3.gz
@@ -1536,3 +1534,5 @@ C:/Users/arrtu/Desktop/Ruchkami/CinemaApp.UI/obj/Debug/net9.0/ref/CinemaApp.UI.d
 /Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/CinemaApp.UI.pdb
 /Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/CinemaApp.UI.genruntimeconfig.cache
 /Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/ref/CinemaApp.UI.dll
+/Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/compressed/yme5cpig36-rh6qj76x8n.gz
+/Users/denis/CinemaApp/CinemaApp.UI/obj/Debug/net9.0/compressed/dlbl4rnczr-n04lucayfw.gz
