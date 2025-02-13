@@ -1,4 +1,5 @@
 ﻿using CinemaApp.BL.DTOs.UserDTOs.Ticket;
+using CinemaApp.DAL.Entities;
 
 namespace CinemaApp.BL.Interfaces.ServiceInterfaces
 {
@@ -9,5 +10,6 @@ namespace CinemaApp.BL.Interfaces.ServiceInterfaces
         Task AddTicketAsync(TicketCreateDTO ticketCreateDTO);
         Task UpdateTicketAsync(int id, TicketUpdateDTO ticketUpdateDTO);
         Task DeleteTicketByIdAsync(int id);
+        Task AddTicketAsync(Ticket ticket);
     }
 }

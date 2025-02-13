@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CinemaApp.BL.DTOs.MovieDTOs.Session;
 using CinemaApp.BL.Interfaces;
+using CinemaApp.DAL.Data;
 using CinemaApp.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,12 +10,14 @@ namespace CinemaApp.BL.Services
     public class SessionService : ISessionService
     {
         private readonly IRepository<Session> _sessionRepository;
+        private readonly CinemaDbContext _context;
         private readonly IMapper _mapper;
 
-        public SessionService(IRepository<Session> sessionRepository, IMapper mapper)
+        public SessionService(IRepository<Session> sessionRepository, IMapper mapper, CinemaDbContext context)
         {
             _sessionRepository = sessionRepository;
             _mapper = mapper;
+            _context = context;
         }
 
         public async Task<IEnumerable<SessionDTO>> GetAllSessionsAsync()
@@ -22,6 +25,7 @@ namespace CinemaApp.BL.Services
             var sessions = await _sessionRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<SessionDTO>>(sessions);
         }
+        /*
 
         public async Task<SessionDTO> GetSessionByIdAsync(int id)
         {
@@ -30,6 +34,16 @@ namespace CinemaApp.BL.Services
             {
                 throw new Exception("Session not found.");
             }
+            return _mapper.Map<SessionDTO>(session);
+
+        }
+        */
+        public async Task<SessionDTO> GetSessionByIdAsync(int id)
+        {
+            var session = await _context.Sessions
+                .Include(s => s.Movie)
+                .FirstOrDefaultAsync(s => s.SessionID == id);
+
             return _mapper.Map<SessionDTO>(session);
         }
         public async Task<SessionDTO> AddSessionAsync(SessionCreateDTO sessionCreateDTO)
@@ -57,7 +71,7 @@ namespace CinemaApp.BL.Services
             _mapper.Map(sessionUpdateDTO, session);
             await _sessionRepository.UpdateAsync(session);
         }
-
+            
         public async Task DeleteSessionByIdAsync(int id)
         {
             await _sessionRepository.DeleteByIdAsync(id);

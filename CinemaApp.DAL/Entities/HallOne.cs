@@ -10,7 +10,6 @@ namespace CinemaApp.DAL.Entities
     {
         public int SeatID { get; set; }
         public bool IsBooked { get; set; }
-
         public ICollection<Ticket> Tickets { get; set; }
     }
 }

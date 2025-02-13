@@ -1,101 +1,129 @@
-﻿using CinemaApp.BL.DTOs.UserDTOs.Ticket;
+﻿using AutoMapper;
+using CinemaApp.BL.DTOs.UserDTOs.Ticket;
+using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
+using CinemaApp.DAL.Entities;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace CinemaApp.UI.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    
     public class TicketController : Controller
     {
         private readonly ITicketService _ticketService;
-        public TicketController(ITicketService ticketService)
+        private readonly ISessionService _sessionService;
+
+        public TicketController(ITicketService ticketService, ISessionService sessionService)
         {
             _ticketService = ticketService;
+            _sessionService = sessionService;
         }
 
-        // GET: Ticket
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> TicketIndex()
         {
             var tickets = await _ticketService.GetAllTicketsAsync();
             return View(tickets);
         }
 
-        // GET: Ticket/Create
-        public IActionResult Create()
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> TicketCreateBooking(int sessionId)
         {
-            return View();
-        }
-
-        // POST: Ticket/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(TicketCreateDTO ticketCreateDTO)
-        {
-            if (ModelState.IsValid)
-            {
-                await _ticketService.AddTicketAsync(ticketCreateDTO);
-                return RedirectToAction(nameof(Index));
-            }
-            return View(ticketCreateDTO);
-        }
-
-        // GET: Ticket/Edit/5
-        public async Task<IActionResult> Edit(int id)
-        {
-            var ticket = await _ticketService.GetTicketByIdAsync(id);
-            if (ticket == null)
+            var session = await _sessionService.GetSessionByIdAsync(sessionId);
+            if (session == null)
             {
                 return NotFound();
             }
-            var ticketUpdateDTO = new TicketUpdateDTO
+
+            var tickets = await _ticketService.GetAllTicketsAsync();
+            var takenSeats = tickets
+                .Where(t => t.SessionID == sessionId)
+                .Select(t => t.Seat)
+                .ToList();
+
+            ViewBag.Session = session;
+            ViewBag.TakenSeats = takenSeats;
+
+            var model = new TicketCreateDTO
             {
-                TicketID = ticket.TicketID,
-                SessionID = ticket.SessionID,
-                Seat = ticket.Seat,
-                Price = ticket.Price,
-                MovieTitle = ticket.MovieTitle,
-                SessionStartTime = ticket.SessionStartTime
+                SessionID = sessionId,
+                UserID = User.FindFirstValue(ClaimTypes.NameIdentifier),
+                BookingDate = DateTime.Now,
+                Price = 140.00m
             };
-            return View(ticketUpdateDTO);
+
+            return View(model);
         }
 
-        // POST: Ticket/Edit/5
+        [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, TicketUpdateDTO ticketUpdateDTO)
+        public async Task<IActionResult> TicketCreateBooking(string selectedSeats)
         {
-            if (id != ticketUpdateDTO.TicketID)
+            if (string.IsNullOrEmpty(selectedSeats))
             {
-                return BadRequest();
+                return BadRequest("No seats selected");
             }
-
-            if (ModelState.IsValid)
+            try
             {
-                await _ticketService.UpdateTicketAsync(id, ticketUpdateDTO);
-                return RedirectToAction(nameof(Index));
-            }
-            return View(ticketUpdateDTO);
-        }
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var sessionId = int.Parse(Request.Form["SessionID"]);
+                var seats = selectedSeats.Split(',');
 
-        // GET: Ticket/Delete/5
-        public async Task<IActionResult> Delete(int id)
-        {
-            var ticket = await _ticketService.GetTicketByIdAsync(id);
-            if (ticket == null)
+                foreach (var seat in seats)
+                {
+                    var seatParts = seat.Split('-');
+                    var row = int.Parse(seatParts[0]);
+                    var seatNum = int.Parse(seatParts[1]);
+
+                    var ticketCreateDTO = new TicketCreateDTO
+                    {
+                        SessionID = sessionId,
+                        UserID = userId,
+                        Row = row,
+                        Seat = seatNum,
+                        Price = 140.00m,
+                        BookingDate = DateTime.Now
+                    };
+
+                    await _ticketService.AddTicketAsync(ticketCreateDTO);
+                }
+
+                TempData["SuccessMessage"] = "Tickets purchased successfully!";
+                return Json(new { success = true, redirectUrl = Url.Action("Index", "Home") });
+            }
+            /*
+            try
             {
-                return NotFound();
-            }
-            return View(ticket);
-        }
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var sessionId = int.Parse(Request.Form["SessionID"]);
+                var seats = selectedSeats.Split(',').Select(int.Parse).ToList();
 
-        // POST: Ticket/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            await _ticketService.DeleteTicketByIdAsync(id);
-            return RedirectToAction(nameof(Index));
+                foreach (var seat in seats)
+                {
+                    var ticketCreateDTO = new TicketCreateDTO
+                    {
+                        SessionID = sessionId,
+                        UserID = userId,
+                        Seat = seat,
+                        Price = 140.00m,
+                        BookingDate = DateTime.Now
+                    };
+
+                    await _ticketService.AddTicketAsync(ticketCreateDTO);
+                }
+
+                TempData["SuccessMessage"] = "Tickets purchased successfully!";
+                return Json(new { success = true, redirectUrl = Url.Action("Index", "Home") });
+            }
+            */
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Error occurred while processing your request." });
+            }
         }
     }
 }

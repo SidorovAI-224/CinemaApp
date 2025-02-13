@@ -1,4 +1,6 @@
 ﻿
+using CinemaApp.DAL.Entities;
+
 namespace CinemaApp.BL.DTOs.MovieDTOs.Session
 {
     public class SessionDTO
@@ -9,5 +11,6 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Session
         public DateTime StartTime { get; set; }
         public DateTime Date { get; set; }
         public string Hall { get; set; }
+        public ICollection<Ticket> Tickets { get; set; }
     }
 }

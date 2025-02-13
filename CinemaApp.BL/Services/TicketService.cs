@@ -46,6 +46,11 @@ namespace CinemaApp.BL.Services
         {
             await _ticketRepository.DeleteByIdAsync(id);
         }
+        public async Task AddTicketAsync(Ticket ticket) // Take the Entity directly
+        {
+            await _ticketRepository.AddAsync(ticket);
+        }
     }
+
 
 }
