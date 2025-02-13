@@ -8,6 +8,7 @@ namespace CinemaApp.DAL.Entities
         public int SessionID { get; set; }
         public string UserID { get; set; }
         public int Seat { get; set; }
+        public int Row { get; set; }
         public decimal Price { get; set; }
         public DateTime BookingDate { get; set; }
         public Session Session { get; set; }
