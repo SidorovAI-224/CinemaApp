@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CinemaApp.BL.DTOs.CrewDTOs.Crewmate;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
-using System.Threading.Tasks;
-using CinemaApp.BL.Services;
 using Microsoft.AspNetCore.Authorization;
 
 namespace CinemaApp.Web.Controllers

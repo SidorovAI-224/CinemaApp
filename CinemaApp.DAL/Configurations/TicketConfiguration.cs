@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using CinemaApp.DAL.Entities;
 
@@ -16,7 +15,6 @@ namespace CinemaApp.DAL.Configurations
 
             builder.Property(t => t.Price)
                    .IsRequired();
-                   //.HasColumnType("decimal(10, 2)");
 
 
             builder.Property(t => t.BookingDate)

@@ -8,8 +8,8 @@ namespace CinemaApp.BL.DTOs.UserDTOs.Ticket
         public int SessionID { get; set; }
         public decimal Price { get; set; }
         public DateTime BookingDate { get; set; }
-        public string UserName { get; set; }
-        public string MovieTitle { get; set; }
+        public string? UserName { get; set; }
+        public string? MovieTitle { get; set; }
         public DateTime SessionStartTime { get; set; }
     }
 }

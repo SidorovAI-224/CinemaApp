@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mX54I/12NJo=",
+  "dgSpecHash": "AKoYVi2NSiI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+  "projectFilePath": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arrtu\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\arrtu\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\9.0.1\\microsoft.aspnetcore.cryptography.internal.9.0.1.nupkg.sha512",

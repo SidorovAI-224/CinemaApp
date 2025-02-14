@@ -1,7 +1,7 @@
 ﻿@model CinemaApp.BL.DTOs.MovieDTOs.Session.SessionDeleteDTO
 
-<h2>Видалити сесію</h2>
-<h3>Ви впевнені, що хочете видалити цю сесію?</h3>
+<h2>Session delete</h2>
+<h3>Are you sure you want to delete this session?</h3>
 <div>
     <h4>Session №@Model.SessionID - @Model.MovieTitle at @Model.Date.ToString("dd-MM-yyyy")</h4>
     <hr />
@@ -28,7 +28,6 @@
 
     <form asp-action="SessionDeleteConfirmed" method="post">
         <input type="hidden" name="id" value="@Model.SessionID" />
-        <input type="submit" value="Видалити" class="btn btn-danger" />
-        <a asp-action="SessionIndex" class="btn btn-secondary">Назад до списку</a>
+        <input type="submit" value="Delete" class="btn btn-danger" />Back to list</a>
     </form>
 </div>

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace CinemaApp.DAL.Entities
 {
     public class MovieCrewmate

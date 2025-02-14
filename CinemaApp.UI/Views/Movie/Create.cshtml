@@ -1,8 +1,8 @@
 ﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieCreateDTO
 
-<h2>Додати новий фільм</h2>
+<h2>Add new film</h2>
 
-<form asp-action="Create">
+<form asp-action="Create" method="post">
     <div class="form-group">
         <label asp-for="Title" class="control-label"></label>
         <input asp-for="Title" class="form-control" />
@@ -48,11 +48,118 @@
         <input asp-for="TrailerURL" class="form-control" />
         <span asp-validation-for="TrailerURL" class="text-danger"></span>
     </div>
+
+    <h3>Crewmates</h3>
+    <table class="table" id="crewmateTable">
+        <thead>
+            <tr>
+                <th>Crewmate ID</th>
+                <th>Position ID</th>
+                <th>Crewmate</th>
+                <th>Position</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="number" name="MovieCrewmates[0].CrewmateID" class="form-control crewmate-id" />
+                </td>
+                <td>
+                    <input type="number" name="MovieCrewmates[0].PositionID" class="form-control position-id" />
+                </td>
+                <td class="crewmate-name"></td>
+                <td class="position-name"></td>
+                <td>
+                    <button type="button" class="btn btn-danger remove-actor">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-success" id="addActor">Add crewmate</button>
+
     <div class="form-group">
-        <input type="submit" value="Додати" class="btn btn-primary" />
-        <a asp-action="Index" class="btn btn-secondary">Назад до списку</a>
+        <input type="submit" value="Add" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Back to list</a>
     </div>
 </form>
+
+<script>
+    document.getElementById("addActor").addEventListener("click", function () {
+        var table = document.getElementById("crewmateTable").getElementsByTagName('tbody')[0];
+        var index = table.rows.length;
+
+        var newRow = table.insertRow();
+        newRow.innerHTML = `
+            <td>
+                <input type="number" name="MovieCrewmates[${index}].CrewmateID" class="form-control crewmate-id" />
+            </td>
+            <td>
+                <input type="number" name="MovieCrewmates[${index}].PositionID" class="form-control position-id" />
+            </td>
+            <td class="crewmate-name"></td>
+            <td class="position-name"></td>
+            <td>
+                <button type="button" class="btn btn-danger remove-actor">Видалити</button>
+            </td>
+        `;
+
+        updateRemoveButtons();
+        attachPreviewListeners(newRow);
+    });
+
+    function updateRemoveButtons() {
+        document.querySelectorAll(".remove-actor").forEach(button => {
+            button.addEventListener("click", function () {
+                this.closest("tr").remove();
+            });
+        });
+    }
+
+    function attachPreviewListeners(row) {
+        const crewmateIdInput = row.querySelector(".crewmate-id");
+        const positionIdInput = row.querySelector(".position-id");
+        const crewmateNameCell = row.querySelector(".crewmate-name");
+        const positionNameCell = row.querySelector(".position-name");
+
+        crewmateIdInput.addEventListener("input", async function () {
+            const crewmateId = this.value;
+            if (crewmateId) {
+                const response = await fetch(`/Crewmate/GetCrewmateName?id=${crewmateId}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    crewmateNameCell.textContent = data.name;
+                } else {
+                    crewmateNameCell.textContent = "Unknown crewmate";
+                }
+            } else {
+                crewmateNameCell.textContent = "";
+            }
+        });
+
+        positionIdInput.addEventListener("input", async function () {
+            const positionId = this.value;
+            if (positionId) {
+                const response = await fetch(`/Position/GetPositionName?id=${positionId}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    positionNameCell.textContent = data.name;
+                } else {
+                    positionNameCell.textContent = "Unknown position";
+                }
+            } else {
+                positionNameCell.textContent = "";
+            }
+        });
+    }
+
+    document.querySelectorAll("#crewmateTable tbody tr").forEach(row => {
+        attachPreviewListeners(row);
+    });
+
+    updateRemoveButtons();
+</script>
 
 @if (!ViewData.ModelState.IsValid)
 {

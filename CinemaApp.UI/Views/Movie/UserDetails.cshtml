@@ -1,0 +1,130 @@
+﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDTO
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="movie-details-container">
+    <div class="movie-poster">
+        <img src="@Model.PosterURL" alt="@Model.Title" class="poster-image" />
+    </div>
+    <div class="movie-info">
+        <h1 class="movie-title">@Model.Title</h1>
+        <p class="movie-description">@Model.Description</p>
+
+        <div class="movie-metadata">
+            <p><strong>Genre:</strong> @Model.GenreName</p>
+            <p><strong>Duration:</strong> @Model.Duration.ToString(@"hh\:mm")</p>
+            <p><strong>Release date:</strong> @Model.ReleaseDate.ToShortDateString()</p>
+            <p><strong>Rating:</strong> @Model.Rating</p>
+            <p><strong>Age limit:</strong> @Model.AgeLimit+</p>
+        </div>
+
+        <h2>Crewmates and positions</h2>
+        <table class="crewmate-table">
+            <thead>
+                <tr>
+                    <th>Crewmate</th>
+                    <th>Position</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var crewmate in Model.MovieCrewmates)
+                {
+                    <tr>
+                        <td>@crewmate.CrewmateName</td>
+                        <td>@crewmate.PositionName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="trailer-container">
+    <h2>Trailer</h2> 
+    <iframe width="400" height="300" src="@Model.TrailerURL.Replace("watch?v=", "embed/")" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</div>
+
+<style>
+    .movie-details-container {
+        display: flex;
+        gap: 20px;
+        margin: 20px;
+    }
+
+    .movie-poster {
+        flex: 1;
+    }
+
+    .poster-image {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .movie-info {
+        flex: 2;
+    }
+
+    .movie-title {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .movie-description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .movie-metadata {
+        margin-top: 20px;
+    }
+
+    .movie-metadata p {
+        margin: 5px 0;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .crewmate-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    .crewmate-table th, .crewmate-table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    .crewmate-table th {
+        background-color: #f4f4f4;
+    }
+
+    .trailer-container {
+        margin: 20px;
+    }
+
+    .trailer-container h2 {
+        margin-bottom: 10px;
+    }
+
+    iframe {
+        width: 100%;
+        max-width: 800px;
+        height: 450px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        console.log("Page succesfuly loaded!");
+    });
+</script>

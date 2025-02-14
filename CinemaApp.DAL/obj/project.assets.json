@@ -3292,11 +3292,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
       "projectName": "CinemaApp.DAL",
-      "projectPath": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+      "projectPath": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
       "packagesPath": "C:\\Users\\arrtu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.DAL\\obj\\",
+      "outputPath": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

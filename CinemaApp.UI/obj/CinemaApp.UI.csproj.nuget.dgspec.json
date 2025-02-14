@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.UI\\CinemaApp.UI.csproj": {}
+    "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.UI\\CinemaApp.UI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.BL\\CinemaApp.BL.csproj": {
+    "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.BL\\CinemaApp.BL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.BL\\CinemaApp.BL.csproj",
+        "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.BL\\CinemaApp.BL.csproj",
         "projectName": "CinemaApp.BL",
-        "projectPath": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.BL\\CinemaApp.BL.csproj",
+        "projectPath": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.BL\\CinemaApp.BL.csproj",
         "packagesPath": "C:\\Users\\arrtu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.BL\\obj\\",
+        "outputPath": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.BL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
-                "projectPath": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj"
+              "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
+                "projectPath": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj"
               }
             }
           }
@@ -68,6 +68,20 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.1, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.13.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.2, )"
             }
           },
           "imports": [
@@ -90,14 +104,14 @@
         }
       }
     },
-    "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
+    "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
         "projectName": "CinemaApp.DAL",
-        "projectPath": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+        "projectPath": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
         "packagesPath": "C:\\Users\\arrtu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.DAL\\obj\\",
+        "outputPath": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -182,14 +196,14 @@
         }
       }
     },
-    "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.UI\\CinemaApp.UI.csproj": {
+    "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.UI\\CinemaApp.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.UI\\CinemaApp.UI.csproj",
+        "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.UI\\CinemaApp.UI.csproj",
         "projectName": "CinemaApp.UI",
-        "projectPath": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.UI\\CinemaApp.UI.csproj",
+        "projectPath": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.UI\\CinemaApp.UI.csproj",
         "packagesPath": "C:\\Users\\arrtu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.UI\\obj\\",
+        "outputPath": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.UI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -211,8 +225,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.BL\\CinemaApp.BL.csproj": {
-                "projectPath": "C:\\Users\\arrtu\\Desktop\\Ruchkami\\CinemaApp.BL\\CinemaApp.BL.csproj"
+              "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.BL\\CinemaApp.BL.csproj": {
+                "projectPath": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.BL\\CinemaApp.BL.csproj"
               }
             }
           }

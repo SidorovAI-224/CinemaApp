@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace CinemaApp.DAL.Entities
 {
     public class CrewmatePositions
@@ -8,7 +7,7 @@ namespace CinemaApp.DAL.Entities
         public int PositionID { get; set; }
 
 
-        public Crewmate Crewmate { get; set; }
-        public Position Position { get; set; }
+        public Crewmate? Crewmate { get; set; }
+        public Position? Position { get; set; }
     }
 }

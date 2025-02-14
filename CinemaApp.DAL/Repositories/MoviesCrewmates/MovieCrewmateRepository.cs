@@ -1,11 +1,6 @@
 ﻿using CinemaApp.DAL.Data;
 using CinemaApp.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CinemaApp.DAL.Repositories.MoviesCrewmates
 {
@@ -18,6 +13,13 @@ namespace CinemaApp.DAL.Repositories.MoviesCrewmates
             _context = context;
         }
 
+        public async Task<MovieCrewmate> GetByMovieAndCrewmateIdAsync(int movieId, int crewmateId)
+        {
+            return await _context.MovieCrewmate
+                .AsNoTracking()
+                .FirstOrDefaultAsync(mc => mc.MovieID == movieId && mc.CrewmateID == crewmateId);
+        }
+
         public async Task AddMovieCrewmateAsync(MovieCrewmate movieCrewmate)
         {
             await _context.MovieCrewmate.AddAsync(movieCrewmate);
@@ -26,9 +28,7 @@ namespace CinemaApp.DAL.Repositories.MoviesCrewmates
 
         public async Task RemoveMovieCrewmateAsync(int movieId, int crewmateId)
         {
-            var movieCrewmate = await _context.MovieCrewmate
-                .FirstOrDefaultAsync(mc => mc.MovieID == movieId && mc.CrewmateID == crewmateId);
-
+            var movieCrewmate = await GetByMovieAndCrewmateIdAsync(movieId, crewmateId);
             if (movieCrewmate != null)
             {
                 _context.MovieCrewmate.Remove(movieCrewmate);
@@ -39,10 +39,18 @@ namespace CinemaApp.DAL.Repositories.MoviesCrewmates
         public async Task<IEnumerable<MovieCrewmate>> GetMovieCrewmatesByMovieIdAsync(int movieId)
         {
             return await _context.MovieCrewmate
+                .AsNoTracking()
                 .Include(mc => mc.Crewmate)
                 .Include(mc => mc.Position)
                 .Where(mc => mc.MovieID == movieId)
                 .ToListAsync();
         }
+
+        public async Task UpdateMovieCrewmateAsync(MovieCrewmate movieCrewmate)
+        {
+            _context.MovieCrewmate.Update(movieCrewmate);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

@@ -1,5 +1,4 @@
 ﻿using CinemaApp.BL.DTOs.MovieDTOs.Movie;
-using CinemaApp.DAL.Entities;
 
 namespace CinemaApp.BL.Interfaces
 {

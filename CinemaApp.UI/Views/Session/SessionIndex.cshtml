@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<CinemaApp.BL.DTOs.MovieDTOs.Session.SessionDTO>
 
-<h2>Список сесій</h2>
+<h2>Session list</h2>
+<a asp-action="SessionCreate" class="btn btn-primary">Add new session</a>
 
 @if (Model == null || !Model.Any())
 {
-    <p>Немає доступних сесій.</p>
+    <p>No avaible sessions.</p>
 }
 else
 {
@@ -12,11 +13,11 @@ else
         <thead>
             <tr>
                 <th>Session ID</th>
-                <th>Назва фільму</th>
-                <th>Зал</th>
-                <th>Дата</th>
-                <th>Час початку</th>
-                <th>Дії</th>
+                <th>Film name</th>
+                <th>Hall</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -29,8 +30,8 @@ else
                     <td>@session.Date.ToShortDateString()</td>
                     <td>@session.StartTime.ToShortTimeString()</td>
                     <td>
-                        <a asp-action="SessionEdit" asp-route-id="@session.SessionID" class="btn btn-warning">Редагувати</a>
-                        <a asp-action="SessionDelete" asp-route-id="@session.SessionID" class="btn btn-danger">Видалити</a>
+                        <a asp-action="SessionEdit" asp-route-id="@session.SessionID" class="btn btn-warning">Edit</a>
+                        <a asp-action="SessionDelete" asp-route-id="@session.SessionID" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             }
@@ -39,5 +40,4 @@ else
 
 }
 
-<a asp-action="SessionCreate" class="btn btn-primary">Додати нову сесію</a>
 

@@ -3,7 +3,6 @@ using CinemaApp.DAL.Data;
 using CinemaApp.BL.Mapping;
 using CinemaApp.DAL.Entities;
 using Microsoft.AspNetCore.Identity;
-using System;
 using CinemaApp.BL.Services;
 using CinemaApp.BL.Validators.Genre;
 using FluentValidation;
@@ -34,7 +33,6 @@ builder.Services.AddValidatorsFromAssembly(typeof(GenreCreateValidator).Assembly
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IMovieCrewmateRepository, MovieCrewmateRepository>();
 
-
 // –еЇстрац≥€ серв≥с≥в
 builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<IGenreService, GenreService>();
@@ -44,6 +42,24 @@ builder.Services.AddScoped<ICrewmateService, CrewmateService>();
 builder.Services.AddScoped<IMovieCrewmateService, MovieCrewmateService>();
 
 
+
+
+// //table check
+//var options = new DbContextOptionsBuilder<CinemaDbContext>()
+//    .UseSqlite("Data Source=CinemeApp.db") 
+//    .Options;
+
+//using (var context = new CinemaDbContext(options))
+//{
+//    var tables = context.Model.GetEntityTypes()
+//        .Select(t => t.GetTableName())
+//        .ToList();
+
+//    foreach (var table in tables)
+//    {
+//        Console.WriteLine(table);
+//    }
+//}
 
 
 // DB Connection
@@ -68,11 +84,9 @@ var app = builder.Build();
 
 await SeedService.SeedDatabase(app.Services);
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 

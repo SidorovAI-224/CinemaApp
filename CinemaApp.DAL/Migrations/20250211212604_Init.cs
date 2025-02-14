@@ -225,7 +225,7 @@ namespace CinemaApp.DAL.Migrations
                     PosterURL = table.Column<string>(type: "TEXT", maxLength: 500, nullable: false),
                     TrailerURL = table.Column<string>(type: "TEXT", maxLength: 500, nullable: false),
                     Rating = table.Column<decimal>(type: "TEXT", nullable: false),
-                    AgeLimit = table.Column<string>(type: "TEXT", nullable: false)
+                    AgeLimit = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -263,6 +263,37 @@ namespace CinemaApp.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MovieCrewmate",
+                columns: table => new
+                {
+                    MovieID = table.Column<int>(type: "INTEGER", nullable: false),
+                    CrewmateID = table.Column<int>(type: "INTEGER", nullable: false),
+                    PositionID = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MovieCrewmate", x => new { x.MovieID, x.CrewmateID });
+                    table.ForeignKey(
+                        name: "FK_MovieCrewmate_Crewmates_CrewmateID",
+                        column: x => x.CrewmateID,
+                        principalTable: "Crewmates",
+                        principalColumn: "CrewmateID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MovieCrewmate_Movies_MovieID",
+                        column: x => x.MovieID,
+                        principalTable: "Movies",
+                        principalColumn: "MovieID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MovieCrewmate_Positions_PositionID",
+                        column: x => x.PositionID,
+                        principalTable: "Positions",
+                        principalColumn: "PositionID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MovieGenre",
                 columns: table => new
                 {
@@ -280,30 +311,6 @@ namespace CinemaApp.DAL.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_MovieGenre_Movies_MovieID",
-                        column: x => x.MovieID,
-                        principalTable: "Movies",
-                        principalColumn: "MovieID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MovieCrewmate",
-                columns: table => new
-                {
-                    MovieID = table.Column<int>(type: "INTEGER", nullable: false),
-                    CrewmateID = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MoviesCrewmates", x => new { x.MovieID, x.CrewmateID });
-                    table.ForeignKey(
-                        name: "FK_MoviesCrewmates_Crewmates_CrewmateID",
-                        column: x => x.CrewmateID,
-                        principalTable: "Crewmates",
-                        principalColumn: "CrewmateID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MoviesCrewmates_Movies_MovieID",
                         column: x => x.MovieID,
                         principalTable: "Movies",
                         principalColumn: "MovieID",
@@ -410,6 +417,16 @@ namespace CinemaApp.DAL.Migrations
                 column: "PositionID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_MovieCrewmate_CrewmateID",
+                table: "MovieCrewmate",
+                column: "CrewmateID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MovieCrewmate_PositionID",
+                table: "MovieCrewmate",
+                column: "PositionID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_MovieGenre_GenreID",
                 table: "MovieGenre",
                 column: "GenreID");
@@ -418,11 +435,6 @@ namespace CinemaApp.DAL.Migrations
                 name: "IX_Movies_GenreID",
                 table: "Movies",
                 column: "GenreID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MoviesCrewmates_CrewmateID",
-                table: "MovieCrewmate",
-                column: "CrewmateID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sessions_MovieID",
@@ -467,10 +479,10 @@ namespace CinemaApp.DAL.Migrations
                 name: "CrewmatePositions");
 
             migrationBuilder.DropTable(
-                name: "MovieGenre");
+                name: "MovieCrewmate");
 
             migrationBuilder.DropTable(
-                name: "MovieCrewmate");
+                name: "MovieGenre");
 
             migrationBuilder.DropTable(
                 name: "Tickets");
@@ -479,10 +491,10 @@ namespace CinemaApp.DAL.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Positions");
+                name: "Crewmates");
 
             migrationBuilder.DropTable(
-                name: "Crewmates");
+                name: "Positions");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

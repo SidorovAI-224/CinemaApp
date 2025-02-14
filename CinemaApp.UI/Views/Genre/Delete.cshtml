@@ -1,13 +1,13 @@
 ﻿@model CinemaApp.BL.DTOs.MovieDTOs.Genre.GenreDTO
 
-<h2>Видалити жанр</h2>
+<h2>Genre delete</h2>
 
-<p>Ви впевнені, що хочете видалити цей жанр?</p>
+<p>Are you sure you want to delete this genre?</p>
 <div>
     <h4>@Model.GenreName - @Model.GenreID ID</h4>
     <form asp-action="Delete" asp-route-id="@Model.GenreID" method="post">
-        <input type="submit" value="Видалити" class="btn btn-danger" />
-        <a asp-action="Index" class="btn btn-secondary">Скасувати</a>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
     </form>
 
 </div>
