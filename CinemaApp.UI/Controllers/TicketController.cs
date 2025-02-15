@@ -125,5 +125,80 @@ namespace CinemaApp.UI.Controllers
                 return Json(new { success = false, message = "Error occurred while processing your request." });
             }
         }
+
+        // ДОДАНІ МЕТОДИ ДЛЯ РЕДАГУВАННЯ ТА ВИДАЛЕННЯ
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public async Task<IActionResult> TicketEdit(int id)
+        {
+            var ticket = await _ticketService.GetTicketByIdAsync(id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+
+            var model = new TicketUpdateDTO
+            {
+                TicketID = ticket.TicketID,
+                SessionID = ticket.SessionID,
+                Seat = ticket.Seat,
+                Price = ticket.Price,
+                MovieTitle = ticket.MovieTitle,
+                SessionStartTime = ticket.SessionStartTime
+            };
+
+            return View(model);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> TicketEdit(TicketUpdateDTO model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            try
+            {
+                await _ticketService.UpdateTicketAsync(model.TicketID, model);
+                return RedirectToAction("TicketIndex");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "Помилка оновлення квитка");
+                return View(model);
+            }
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public async Task<IActionResult> TicketDelete(int id)
+        {
+            var ticket = await _ticketService.GetTicketByIdAsync(id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+
+            return View(ticket);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost, ActionName("TicketDelete")] // Додаємо ActionName, щоб маршрут був однаковий
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            try
+            {
+                await _ticketService.DeleteTicketByIdAsync(id);
+                return RedirectToAction("TicketIndex");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "Помилка видалення квитка");
+                return RedirectToAction("Delete", new { id });
+            }
+        }
     }
 }
+    

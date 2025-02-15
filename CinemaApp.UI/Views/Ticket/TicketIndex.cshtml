@@ -32,8 +32,8 @@
                 <td>@ticket.BookingDate.ToString("dd.MM.yyyy HH:mm")</td>
                 <td>@ticket.UserName</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@ticket.TicketID" class="btn btn-warning btn-sm">Редагувати</a>
-                    <a asp-action="Delete" asp-route-id="@ticket.TicketID" class="btn btn-danger btn-sm">Видалити</a>
+                    <a asp-controller="Ticket" asp-action="TicketEdit" asp-route-id="@ticket.TicketID" class="btn btn-warning btn-sm">Редагувати</a>
+                    <a asp-controller="Ticket" asp-action="TicketDelete" asp-route-id="@ticket.TicketID" class="btn btn-danger btn-sm">Видалити</a>
                 </td>
             </tr>
         }
