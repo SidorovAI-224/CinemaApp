@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using CinemaApp.DAL.Entities;
 
+
+// NEEDED IF I WILL FIX GENRES [!]
 namespace CinemaApp.DAL.Configurations
 {
     public class MovieGenreConfiguration : IEntityTypeConfiguration<MovieGenre>
@@ -11,14 +12,6 @@ namespace CinemaApp.DAL.Configurations
         {
             builder.HasKey(mg => new { mg.MovieID, mg.GenreID });
 
-            builder.HasOne(mg => mg.Movie);
-            //.WithMany(m => m.MovieGenre)
-            //.HasForeignKey(mg => mg.MovieID);
-
-            builder.HasOne(mg => mg.Genre);
-                   //.WithMany(g => g.MovieGenre)
-                   //.HasForeignKey(mg => mg.GenreID);
         }
     }
 }
-

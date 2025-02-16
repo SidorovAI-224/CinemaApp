@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.BL.DTOs.CrewDTOs.Position;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 
 namespace CinemaApp.UI.Controllers

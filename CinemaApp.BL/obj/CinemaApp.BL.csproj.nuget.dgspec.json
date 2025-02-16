@@ -102,6 +102,14 @@
             "Microsoft.SemanticKernel.Connectors.InMemory": {
               "target": "Package",
               "version": "[1.36.1-preview, )"
+            },
+            "xunit.assert": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
+            "xunit.extensibility.core": {
+              "target": "Package",
+              "version": "[2.9.3, )"
             }
           },
           "imports": [
