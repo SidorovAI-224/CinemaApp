@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CinemaApp.BL.DTOs.CrewDTOs.Position.PositionDTO>
+﻿@model IEnumerable<CinemaApp.BL.DTOs.CrewDTOs.Position.PositionDto>
 
 <h2>Position List</h2>
 
@@ -14,11 +14,11 @@
         @foreach (var position in Model)
         {
             <tr>
-                <td>@position.PositionID</td>
+                <td>@position.PositionId</td>
                 <td>@position.PositionName</td>
                 <td>
-                    <a asp-action="PositionEdit" asp-route-id="@position.PositionID" class="btn btn-warning btn-sm">Edit</a>
-                    <a asp-action="PositionDelete" asp-route-id="@position.PositionID" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-action="PositionEdit" asp-route-id="@position.PositionId" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="PositionDelete" asp-route-id="@position.PositionId" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
         }

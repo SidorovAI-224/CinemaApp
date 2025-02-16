@@ -1,11 +1,9 @@
 ﻿using CinemaApp.BL.DTOs.MovieDTOs.MovieCrewmates;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
 {
-    public class MovieCreateDTO
+    public class MovieCreateDto
     {
         [Required(ErrorMessage = "Film name is required")]
         [StringLength(200, ErrorMessage = "Film name can't be longer than 200 characters")]  
@@ -21,10 +19,10 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
         public DateTime ReleaseDate { get; set; }
 
         [Url(ErrorMessage = "Wrong poster URL format")]
-        public string? PosterURL { get; set; }
+        public string? PosterUrl { get; set; }
 
         [Url(ErrorMessage = "Wrong trailer URL format")]
-        public string? TrailerURL { get; set; }
+        public string? TrailerUrl { get; set; }
 
         [Range(0, 10, ErrorMessage = "Rating must be in 0 - 10 range")]
         public decimal Rating { get; set; }
@@ -37,10 +35,10 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
 
 
         //stupid ass genres
-        public int? GenreID { get; set; }
-        public int? GenreID1 { get; set; }
-        public int? GenreID2 { get; set; }
-        public int? GenreID3 { get; set; }
-        public int? GenreID4 { get; set; }
+        public int? GenreId { get; set; }
+        public int? GenreId1 { get; set; }
+        public int? GenreId2 { get; set; }
+        public int? GenreId3 { get; set; }
+        public int? GenreId4 { get; set; }
     }
 }

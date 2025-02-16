@@ -1,6 +1,6 @@
+using CinemaApp.BL.Helpers;
 using Microsoft.EntityFrameworkCore;
 using CinemaApp.DAL.Data;
-using CinemaApp.BL.Mapping;
 using CinemaApp.DAL.Entities;
 using Microsoft.AspNetCore.Identity;
 using CinemaApp.BL.Services;
@@ -40,7 +40,7 @@ builder.Services.AddScoped<ISessionService, SessionService>();
 builder.Services.AddScoped<IPositionService, PositionService>();
 builder.Services.AddScoped<ICrewmateService, CrewmateService>();
 builder.Services.AddScoped<IMovieCrewmateService, MovieCrewmateService>();
-builder.Services.AddScoped<IAIService, AiService>();
+builder.Services.AddScoped<IAiService, AiService>();
 
 
 

@@ -6,18 +6,18 @@ namespace CinemaApp.BL.AI;
 public class VectorizedMovie
 {
     [VectorStoreRecordData]
-    public string Title { get; set; }
+    public string? Title { get; set; }
 
     [VectorStoreRecordData]
-    public string Genre { get; set; }
+    public string? Genre { get; set; }
 
     [VectorStoreRecordData]
-    public string Description { get; set; }
+    public string? Description { get; set; }
     
     [VectorStoreRecordVector(4096, DistanceFunction.CosineSimilarity)]
     public ReadOnlyMemory<float> Vector { get; set; }
 
-    public VectorizedMovie(MovieDTO movieDto)
+    public VectorizedMovie(MovieDto movieDto)
     {
         Title = movieDto.Title;
         

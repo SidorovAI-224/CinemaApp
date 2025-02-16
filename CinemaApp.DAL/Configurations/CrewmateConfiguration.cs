@@ -8,16 +8,16 @@ namespace CinemaApp.DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<Crewmate> builder)
         {
-            builder.HasKey(c => c.CrewmateID);
+            builder.HasKey(c => c.CrewmateId);
             builder.Property(c => c.Name).IsRequired().HasMaxLength(100);
 
             builder.HasMany(c => c.MoviesCrewmates)
                    .WithOne(mc => mc.Crewmate)
-                   .HasForeignKey(mc => mc.CrewmateID);
+                   .HasForeignKey(mc => mc.CrewmateId);
 
             builder.HasMany(c => c.CrewmatePositions)
                    .WithOne(cp => cp.Crewmate)
-                   .HasForeignKey(cp => cp.CrewmateID);
+                   .HasForeignKey(cp => cp.CrewmateId);
         }
     }
 }

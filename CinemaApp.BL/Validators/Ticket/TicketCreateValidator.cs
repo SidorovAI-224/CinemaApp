@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CinemaApp.BL.DTOs.UserDTOs.Ticket;
+﻿using CinemaApp.BL.DTOs.UserDTOs.Ticket;
 using FluentValidation;
 
 
 namespace CinemaApp.BL.Validators.Ticket
 {
-    public class TicketCreateDTOValidator : AbstractValidator<TicketCreateDTO>
+    public class TicketCreateDtoValidator : AbstractValidator<TicketCreateDto>
     {
-        public TicketCreateDTOValidator()
+        public TicketCreateDtoValidator()
         {
-            RuleFor(x => x.SessionID)
+            RuleFor(x => x.SessionId)
                 .GreaterThan(0).WithMessage("SessionID must be greater than 0");
 
             //RuleFor(x => x.UserID)

@@ -6,7 +6,7 @@ namespace CinemaApp.BL.AI;
 public class AiQueryRecommendations : AiBase
 {
     
-    public AiQueryRecommendations(List<VectorizedMovie> itemList, Uri uri, string model)
+    public AiQueryRecommendations(List<VectorizedMovie> itemList, Uri uri, string? model)
         : base(itemList, uri, model)
     {
         
@@ -14,7 +14,7 @@ public class AiQueryRecommendations : AiBase
 
     public async Task<List<VectorizedMovie>> GetRecommendationsByQuery(string query, uint maxResults)
     {
-        await GenerateEmbeddings(new List<Func<VectorizedMovie, string>>
+        await GenerateEmbeddings(new List<Func<VectorizedMovie, string?>>
         {
             movie => movie.Description,
         });

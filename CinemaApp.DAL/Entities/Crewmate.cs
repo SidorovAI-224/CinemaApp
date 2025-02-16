@@ -3,7 +3,7 @@ namespace CinemaApp.DAL.Entities
 {
     public class Crewmate
     {
-        public int CrewmateID { get; set; }
+        public int CrewmateId { get; set; }
         public string? Name { get; set; }
 
         public ICollection<MovieCrewmate>? MoviesCrewmates { get; set; }

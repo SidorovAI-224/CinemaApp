@@ -2,9 +2,9 @@
 
 namespace CinemaApp.BL.DTOs.MovieDTOs.Genre
 {
-    public class GenreDeleteDTO
+    public class GenreDeleteDto
     {
         [Required(ErrorMessage = "Genre ID is required")]
-        public int GenreID { get; set; }
+        public int GenreId { get; set; }
     }
 }

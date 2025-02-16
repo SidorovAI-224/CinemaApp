@@ -1,8 +1,8 @@
 ﻿
 namespace CinemaApp.BL.DTOs.CrewDTOs.Position
 {
-    public class PositionDeleteDTO
+    public class PositionDeleteDto
     {
-        public int PositionID { get; set; }
+        public int PositionId { get; set; }
     }
 }

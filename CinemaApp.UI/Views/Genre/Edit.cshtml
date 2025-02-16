@@ -1,9 +1,9 @@
-﻿@model CinemaApp.BL.DTOs.MovieDTOs.Genre.GenreUpdateDTO
+﻿@model CinemaApp.BL.DTOs.MovieDTOs.Genre.GenreUpdateDto
 
 <h2>Edit genre</h2>
 
 <form asp-action="Edit" method="post">
-    <input type="hidden" asp-for="GenreID" />
+    <input type="hidden" asp-for="GenreId" />
     <div class="form-group">
         <label asp-for="GenreName" class="control-label"></label>
         <input asp-for="GenreName" class="form-control" />

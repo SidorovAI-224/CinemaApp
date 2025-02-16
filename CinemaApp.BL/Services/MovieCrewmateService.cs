@@ -3,9 +3,6 @@ using CinemaApp.BL.DTOs.MovieDTOs.MovieCrewmates;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
 using CinemaApp.DAL.Repositories.MoviesCrewmates;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Services
 {
@@ -36,9 +33,9 @@ namespace CinemaApp.BL.Services
 
             var movieCrewmate = new MovieCrewmate
             {
-                MovieID = movieId,
-                CrewmateID = crewmateId,
-                PositionID = positionId
+                MovieId = movieId,
+                CrewmateId = crewmateId,
+                PositionId = positionId
             };
 
             await _movieCrewmateRepository.AddMovieCrewmateAsync(movieCrewmate);
@@ -63,8 +60,8 @@ namespace CinemaApp.BL.Services
             var movieCrewmate = await _movieCrewmateRepository.GetByMovieAndCrewmateIdAsync(movieId, crewmateId);
             if (movieCrewmate != null)
             {
-                movieCrewmate.CrewmateID = newCrewmateId;
-                movieCrewmate.PositionID = newPositionId;
+                movieCrewmate.CrewmateId = newCrewmateId;
+                movieCrewmate.PositionId = newPositionId;
 
                 await _movieCrewmateRepository.UpdateMovieCrewmateAsync(movieCrewmate);
             }

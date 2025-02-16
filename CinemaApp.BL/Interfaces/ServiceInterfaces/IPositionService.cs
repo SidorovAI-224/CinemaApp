@@ -4,10 +4,10 @@ namespace CinemaApp.BL.Interfaces.ServiceInterfaces
 {
     public interface IPositionService
     {
-        Task<IEnumerable<PositionDTO>> GetAllPositionsAsync();
-        Task<PositionDTO> GetPositionByIdAsync(int id);
-        Task AddPositionAsync(PositionCreateDTO positionCreateDTO);
-        Task UpdatePositionAsync(int id, PositionUpdateDTO positionUpdateDTO);
+        Task<IEnumerable<PositionDto>> GetAllPositionsAsync();
+        Task<PositionDto> GetPositionByIdAsync(int id);
+        Task AddPositionAsync(PositionCreateDto positionCreateDto);
+        Task UpdatePositionAsync(int id, PositionUpdateDto positionUpdateDto);
         Task DeletePositionByIdAsync(int id);
     }
 }

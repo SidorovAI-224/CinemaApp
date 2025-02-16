@@ -1,16 +1,11 @@
 ﻿using CinemaApp.BL.AI;
-using CinemaApp.BL.DTOs.MovieDTOs.Movie;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 
 
 namespace CinemaApp.BL.Services
 {
-    public class AiService : IAIService
+    public class AiService : IAiService
     {
         private readonly AiQueryRecommendations _queryRecommender;
         private readonly AiRecommendations _similarRecommender;
@@ -20,8 +15,8 @@ namespace CinemaApp.BL.Services
         {
             _movieService = movieService;
 
-            Uri aiUri = new Uri(configuration["AI:BaseUrl"]);
-            string model = configuration["AI:Model"];
+            Uri aiUri = new Uri(configuration["AI:BaseUrl"]!);
+            string? model = configuration["AI:Model"];
 
             List<VectorizedMovie> movies = GetVectorizedMovies().Result;
 
@@ -49,8 +44,6 @@ namespace CinemaApp.BL.Services
         public async Task<List<VectorizedMovie>> GetSimilarMovies(int movieId, uint maxResults)
         {
             var movieDto = await _movieService.GetMovieByIdAsync(movieId);
-            if (movieDto == null)
-                return new List<VectorizedMovie>();
 
             var vectorizedMovie = new VectorizedMovie(movieDto);
             return await _similarRecommender.GetSimilarItems(vectorizedMovie, maxResults);

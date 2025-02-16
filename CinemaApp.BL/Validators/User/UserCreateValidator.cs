@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CinemaApp.BL.DTOs.UserDTOs.User;
+﻿using CinemaApp.BL.DTOs.UserDTOs.User;
 using FluentValidation;
 
-public class UserCreateValidator : AbstractValidator<UserCreateDTO>
+namespace CinemaApp.BL.Validators.User;
+
+public class UserCreateValidator : AbstractValidator<UserCreateDto>
 {
     public UserCreateValidator()
     {

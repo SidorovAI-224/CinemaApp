@@ -1,9 +1,9 @@
 ﻿
 namespace CinemaApp.BL.DTOs.MovieDTOs.Genre
 {
-    public class GenreDTO
+    public class GenreDto
     {
-        public int GenreID { get; set; }
+        public int GenreId { get; set; }
         public string? GenreName { get; set; }
     }
 }

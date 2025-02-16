@@ -2,6 +2,7 @@
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.DTOs.MovieDTOs.Session;
 using AutoMapper;
+using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using Microsoft.AspNetCore.Authorization;
 
 namespace CinemaApp.UI.Controllers

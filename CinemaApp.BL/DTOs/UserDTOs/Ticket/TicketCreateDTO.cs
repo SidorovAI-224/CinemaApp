@@ -1,10 +1,10 @@
 ﻿
 namespace CinemaApp.BL.DTOs.UserDTOs.Ticket
 {
-    public class TicketCreateDTO
+    public abstract class TicketCreateDto
     {
-        public int SessionID { get; set; }
-        public string? UserID { get; set; }
+        public int SessionId { get; set; }
+        public string? UserId { get; set; }
         public int Seat { get; set; }
         public decimal Price { get; set; }
     }

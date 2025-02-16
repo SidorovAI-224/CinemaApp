@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDTO>
+﻿@model IEnumerable<CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDto>
 
 <h2>Список фільмів</h2>
 <a asp-action="Create" class="btn btn-primary">Add new film</a>
@@ -17,12 +17,12 @@
             <tr>
                 <td>@movie.Title</td>
                 <td>@movie.Description</td>
-                <td>@movie.GenreID</td>
+                <td>@movie.GenreId</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@movie.MovieID">Details</a> |
-                    <a asp-action="UserDetails" asp-controller="Movie" asp-route-id="@movie.MovieID">UserDetails</a>
-                    <a asp-action="Edit" asp-route-id="@movie.MovieID">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@movie.MovieID">Delete</a>
+                    <a asp-action="Details" asp-route-id="@movie.MovieId">Details</a> |
+                    <a asp-action="UserDetails" asp-controller="Movie" asp-route-id="@movie.MovieId">UserDetails</a>
+                    <a asp-action="Edit" asp-route-id="@movie.MovieId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@movie.MovieId">Delete</a>
                 </td>
             </tr>
         }

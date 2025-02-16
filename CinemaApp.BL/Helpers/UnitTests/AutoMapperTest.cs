@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
-using CinemaApp.BL.Mapping;
-using CinemaApp.DAL.Entities;
 using CinemaApp.BL.DTOs.MovieDTOs.Movie;
+using CinemaApp.DAL.Entities;
 using Xunit;
 
-namespace CinemaApp.Helpers.UnitTests
+namespace CinemaApp.BL.Helpers.UnitTests
 {
     public class AutoMapperTests
     {
@@ -36,41 +35,41 @@ namespace CinemaApp.Helpers.UnitTests
         {
             var movie = new Movie
             {
-                MovieID = 1,
+                MovieId = 1,
                 Title = "Test Movie",
                 Description = "Test Description",
-                GenreID = 1,
+                GenreId = 1,
                 Duration = TimeSpan.FromHours(2),
                 ReleaseDate = DateTime.Now,
-                PosterURL = "http://example.com/poster.jpg",
-                TrailerURL = "http://example.com/trailer.mp4",
+                PosterUrl = "http://example.com/poster.jpg",
+                TrailerUrl = "http://example.com/trailer.mp4",
                 Rating = 8.5m,
                 AgeLimit = 18,
                 MovieCrewmates = new List<MovieCrewmate>
                 {
                     new MovieCrewmate
                     {
-                        MovieID = 1,
-                        CrewmateID = 1,
-                        PositionID = 1,
-                        Crewmate = new Crewmate { CrewmateID = 1, Name = "XDie King" },
-                        Position = new Position { PositionID = 1, PositionName = "Director" }
+                        MovieId = 1,
+                        CrewmateId = 1,
+                        PositionId = 1,
+                        Crewmate = new Crewmate { CrewmateId = 1, Name = "XDie King" },
+                        Position = new Position { PositionId = 1, PositionName = "Director" }
                     }
                 }
             };
 
-            var movieUpdateDTO = _mapper.Map<MovieUpdateDTO>(movie);
+            var movieUpdateDto = _mapper.Map<MovieUpdateDto>(movie);
 
-            Assert.Equal(movie.MovieID, movieUpdateDTO.MovieID);
-            Assert.Equal(movie.Title, movieUpdateDTO.Title);
-            Assert.Equal(movie.Description, movieUpdateDTO.Description);
-            Assert.Equal(movie.GenreID, movieUpdateDTO.GenreID);
-            Assert.Equal(movie.Duration, movieUpdateDTO.Duration);
-            Assert.Equal(movie.ReleaseDate, movieUpdateDTO.ReleaseDate);
-            Assert.Equal(movie.PosterURL, movieUpdateDTO.PosterURL);
-            Assert.Equal(movie.TrailerURL, movieUpdateDTO.TrailerURL);
-            Assert.Equal(movie.Rating, movieUpdateDTO.Rating);
-            Assert.Equal(movie.AgeLimit, movieUpdateDTO.AgeLimit);
+            Assert.Equal(movie.MovieId, movieUpdateDto.MovieId);
+            Assert.Equal(movie.Title, movieUpdateDto.Title);
+            Assert.Equal(movie.Description, movieUpdateDto.Description);
+            Assert.Equal(movie.GenreId, movieUpdateDto.GenreId);
+            Assert.Equal(movie.Duration, movieUpdateDto.Duration);
+            Assert.Equal(movie.ReleaseDate, movieUpdateDto.ReleaseDate);
+            Assert.Equal(movie.PosterUrl, movieUpdateDto.PosterUrl);
+            Assert.Equal(movie.TrailerUrl, movieUpdateDto.TrailerUrl);
+            Assert.Equal(movie.Rating, movieUpdateDto.Rating);
+            Assert.Equal(movie.AgeLimit, movieUpdateDto.AgeLimit);
             //Assert.Single(movieUpdateDTO.MovieCrewmates);
             //Assert.Equal(movie.MovieCrewmates.First().CrewmateID, movieUpdateDTO.MovieCrewmates.First().CrewmateID);
             //Assert.Equal(movie.MovieCrewmates.First().PositionID, movieUpdateDTO.MovieCrewmates.First().PositionID);

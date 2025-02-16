@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using CinemaApp.DAL.Data;
 using System.Linq.Expressions;
-using CinemaApp.BL.Interfaces;
 using CinemaApp.DAL.Entities;
 
 namespace CinemaApp.DAL.Repositories
@@ -16,7 +15,7 @@ namespace CinemaApp.DAL.Repositories
             _context = context;
             _dbSet = context.Set<T>();
         }
-        public async Task<T> GetByIdAsync(int id, Func<IQueryable<T>, IQueryable<T>> include = null)
+        public async Task<T> GetByIdAsync(int id, Func<IQueryable<T>, IQueryable<T>> include = null!)
         {
             var query = _dbSet.AsQueryable();
 

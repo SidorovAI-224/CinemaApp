@@ -10,7 +10,7 @@ public abstract class AiBase
     protected readonly IVectorStoreRecordCollection<int, VectorizedMovie> Items;
     protected readonly IEmbeddingGenerator<string, Embedding<float>> Generator;
 
-    protected AiBase(List<VectorizedMovie> itemList, Uri uri, string model)
+    protected AiBase(List<VectorizedMovie> itemList, Uri uri, string? model)
     {
         ItemList = itemList;
 
@@ -19,7 +19,7 @@ public abstract class AiBase
         Items = vectorStore.GetCollection<int, VectorizedMovie>("movies");
     }
 
-    protected async Task GenerateEmbeddings(List<Func<VectorizedMovie, string>> propertySelectors)
+    protected async Task GenerateEmbeddings(List<Func<VectorizedMovie, string?>> propertySelectors)
     {
         await Items.CreateCollectionIfNotExistsAsync();
         

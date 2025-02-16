@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using CinemaApp.BL.DTOs.MovieDTOs.Session;
 using CinemaApp.BL.Interfaces;
+using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
+using CinemaApp.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace CinemaApp.BL.Services
@@ -32,12 +34,12 @@ namespace CinemaApp.BL.Services
             }
             return _mapper.Map<SessionDTO>(session);
         }
-        public async Task<SessionDTO> AddSessionAsync(SessionCreateDTO sessionCreateDTO)
+        public async Task<SessionDTO> AddSessionAsync(SessionCreateDTO sessionCreateDto)
         {
-            var session = _mapper.Map<Session>(sessionCreateDTO);
+            var session = _mapper.Map<Session>(sessionCreateDto);
             await _sessionRepository.AddAsync(session);
 
-            var createdSession = await _sessionRepository.GetByIdAsync(session.SessionID);
+            var createdSession = await _sessionRepository.GetByIdAsync(session.SessionId);
             if (createdSession == null)
             {
                 throw new Exception("Save in DB error.");
@@ -46,7 +48,7 @@ namespace CinemaApp.BL.Services
             return _mapper.Map<SessionDTO>(createdSession);
         }
 
-        public async Task UpdateSessionAsync(int id, SessionUpdateDTO sessionUpdateDTO)
+        public async Task UpdateSessionAsync(int id, SessionUpdateDTO sessionUpdateDto)
         {
             var session = await _sessionRepository.GetByIdAsync(id);
             if (session == null)
@@ -54,7 +56,7 @@ namespace CinemaApp.BL.Services
                 throw new Exception("Session not found.");
             }
 
-            _mapper.Map(sessionUpdateDTO, session);
+            _mapper.Map(sessionUpdateDto, session);
             await _sessionRepository.UpdateAsync(session);
         }
 

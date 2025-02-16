@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CinemaApp.BL.DTOs.MovieDTOs.Genre.GenreDTO>
+﻿@model IEnumerable<CinemaApp.BL.DTOs.MovieDTOs.Genre.GenreDto>
 
 <h2>Genre list</h2>
 
@@ -14,11 +14,11 @@
         @foreach (var genre in Model)
         {
             <tr>
-                <td>@genre.GenreID</td>
+                <td>@genre.GenreId</td>
                 <td>@genre.GenreName</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@genre.GenreID" class="btn btn-warning">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@genre.GenreID" class="btn btn-danger">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@genre.GenreId" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@genre.GenreId" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         }

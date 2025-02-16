@@ -4,19 +4,19 @@ using CinemaApp.DAL.Entities;
 
 namespace CinemaApp.DAL.Configurations
 {
-    public class Crewmate_PositionsConfiguration : IEntityTypeConfiguration<CrewmatePositions>
+    public class CrewmatePositionsConfiguration : IEntityTypeConfiguration<CrewmatePositions>
     {
         public void Configure(EntityTypeBuilder<CrewmatePositions> builder)
         {
-            builder.HasKey(cp => new { cp.CrewmateID, cp.PositionID });
+            builder.HasKey(cp => new { CrewmateID = cp.CrewmateId, PositionID = cp.PositionId });
 
             builder.HasOne(cp => cp.Crewmate)
                    .WithMany(c => c.CrewmatePositions)
-                   .HasForeignKey(cp => cp.CrewmateID);
+                   .HasForeignKey(cp => cp.CrewmateId);
 
             builder.HasOne(cp => cp.Position)
                    .WithMany(p => p.CrewmatePositions)
-                   .HasForeignKey(cp => cp.PositionID);
+                   .HasForeignKey(cp => cp.PositionId);
         }
     }
 }

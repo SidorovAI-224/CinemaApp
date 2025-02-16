@@ -8,7 +8,7 @@ namespace CinemaApp.DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<Ticket> builder)
         {
-            builder.HasKey(t => t.TicketID);
+            builder.HasKey(t => t.TicketId);
 
             builder.Property(t => t.Seat)
                    .IsRequired();
@@ -25,12 +25,12 @@ namespace CinemaApp.DAL.Configurations
 
             builder.HasOne(t => t.Session)
                    .WithMany(s => s.Tickets)
-                   .HasForeignKey(t => t.SessionID)
+                   .HasForeignKey(t => t.SessionId)
                    .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(t => t.User)
                    .WithMany(u => u.Tickets)
-                   .HasForeignKey(t => t.UserID)
+                   .HasForeignKey(t => t.UserId)
                    .OnDelete(DeleteBehavior.Cascade);
         }
     }

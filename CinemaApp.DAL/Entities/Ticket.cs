@@ -3,9 +3,9 @@ namespace CinemaApp.DAL.Entities
 {
     public class Ticket
     {
-        public int TicketID { get; set; }
-        public int SessionID { get; set; }
-        public string? UserID { get; set; }
+        public int TicketId { get; set; }
+        public int SessionId { get; set; }
+        public string? UserId { get; set; }
         public int? Seat { get; set; }
 
         public int Row { get; set; }

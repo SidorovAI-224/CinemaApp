@@ -1,16 +1,11 @@
 ﻿using CinemaApp.BL.DTOs.MovieDTOs.Session;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Validators.Session
 {
-    public class SessionCreateDTOValidator : AbstractValidator<SessionCreateDTO>
+    public class SessionCreateDtoValidator : AbstractValidator<SessionCreateDTO>
     {
-        public SessionCreateDTOValidator()
+        public SessionCreateDtoValidator()
         {
             RuleFor(x => x.MovieID)
                 .NotEmpty().WithMessage("Must have MovieID")

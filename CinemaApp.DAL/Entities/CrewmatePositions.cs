@@ -3,8 +3,8 @@ namespace CinemaApp.DAL.Entities
 {
     public class CrewmatePositions
     {
-        public int CrewmateID { get; set; }
-        public int PositionID { get; set; }
+        public int CrewmateId { get; set; }
+        public int PositionId { get; set; }
 
 
         public Crewmate? Crewmate { get; set; }

@@ -30,7 +30,7 @@ namespace CinemaApp.UI.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> PositionCreate(PositionCreateDTO positionCreateDTO)
+        public async Task<IActionResult> PositionCreate(PositionCreateDto positionCreateDTO)
         {
             if (!ModelState.IsValid)
             {
@@ -50,9 +50,9 @@ namespace CinemaApp.UI.Controllers
             {
                 return NotFound();
             }
-            var positionUpdateDTO = new PositionUpdateDTO
+            var positionUpdateDTO = new PositionUpdateDto
             {
-                PositionID = position.PositionID,
+                PositionId = position.PositionId,
                 PositionName = position.PositionName,
             };
             
@@ -61,7 +61,7 @@ namespace CinemaApp.UI.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> PositionEdit(int id, PositionUpdateDTO positionUpdateDTO)
+        public async Task<IActionResult> PositionEdit(int id, PositionUpdateDto positionUpdateDTO)
         {
             if (!ModelState.IsValid)
             {

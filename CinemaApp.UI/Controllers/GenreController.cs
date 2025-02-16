@@ -29,7 +29,7 @@ namespace CinemaApp.UI.Controllers
         }
         [Authorize(Roles = "Admin")]
         [HttpPost("Create")]
-        public async Task<IActionResult> Create(GenreCreateDTO genreDTO)
+        public async Task<IActionResult> Create(GenreCreateDto genreDTO)
         {
             if (ModelState.IsValid)
             {
@@ -45,9 +45,9 @@ namespace CinemaApp.UI.Controllers
             var genre = await _genreService.GetGenreByIdAsync(id);
             if (genre == null) return NotFound();
 
-            var genreUpdateDTO = new GenreUpdateDTO
+            var genreUpdateDTO = new GenreUpdateDto
             {
-                GenreID = genre.GenreID,
+                GenreId = genre.GenreId,
                 GenreName = genre.GenreName
             };
 
@@ -55,7 +55,7 @@ namespace CinemaApp.UI.Controllers
         }
         [Authorize(Roles = "Admin")]
         [HttpPost("Edit/{id}")]
-        public async Task<IActionResult> Edit(int id, GenreUpdateDTO genreUpdateDTO)
+        public async Task<IActionResult> Edit(int id, GenreUpdateDto genreUpdateDTO)
         {
             if (ModelState.IsValid)
             {

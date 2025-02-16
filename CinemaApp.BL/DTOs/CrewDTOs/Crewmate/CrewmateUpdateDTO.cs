@@ -1,9 +1,9 @@
 ﻿
 namespace CinemaApp.BL.DTOs.CrewDTOs.Crewmate
 {
-    public class CrewmateUpdateDTO
+    public class CrewmateUpdateDto
     {
-        public int CrewmateID { get; set; }
+        public int CrewmateId { get; set; }
         public string? Name { get; set; }
     }
 }

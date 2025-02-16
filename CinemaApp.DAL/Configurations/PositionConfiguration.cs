@@ -8,7 +8,7 @@ namespace CinemaApp.DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<Position> builder)
         {
-            builder.HasKey(p => p.PositionID);
+            builder.HasKey(p => p.PositionId);
             builder.Property(p => p.PositionName).IsRequired().HasMaxLength(100);
         }
     }

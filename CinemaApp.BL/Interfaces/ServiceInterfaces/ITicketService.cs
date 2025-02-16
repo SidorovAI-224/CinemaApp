@@ -4,10 +4,10 @@ namespace CinemaApp.BL.Interfaces.ServiceInterfaces
 {
     public interface ITicketService
     {
-        Task<IEnumerable<TicketDTO>> GetAllTicketsAsync();
-        Task<TicketDTO> GetTicketByIdAsync(int id);
-        Task AddTicketAsync(TicketCreateDTO ticketCreateDTO);
-        Task UpdateTicketAsync(int id, TicketUpdateDTO ticketUpdateDTO);
+        Task<IEnumerable<TicketDto>> GetAllTicketsAsync();
+        Task<TicketDto> GetTicketByIdAsync(int id);
+        Task AddTicketAsync(TicketCreateDto ticketCreateDto);
+        Task UpdateTicketAsync(int id, TicketUpdateDto ticketUpdateDto);
         Task DeleteTicketByIdAsync(int id);
     }
 }

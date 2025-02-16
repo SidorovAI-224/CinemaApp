@@ -1,9 +1,9 @@
 ﻿
 namespace CinemaApp.BL.DTOs.CrewDTOs.Position
 {
-    public class PositionCreateDTO
+    public class PositionCreateDto
     {
         public string? PositionName { get; set; }
-        public int PositionID { get; set; }
+        public int PositionId { get; set; }
     }
 }

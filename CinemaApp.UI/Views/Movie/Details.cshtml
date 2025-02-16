@@ -1,9 +1,9 @@
-﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDTO
+﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDto
 
 <h2>Film details</h2>
 
 <div>
-    <h4>@Model.Title - @Model.MovieID ID</h4>
+    <h4>@Model.Title - @Model.MovieId ID</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">Description</dt>
@@ -17,12 +17,12 @@
         <dt class="col-sm-2">Age limit</dt>
         <dd class="col-sm-10">@Model.AgeLimit</dd>
         <dt class="col-sm-2">Genre</dt>
-        <dd class="col-sm-10">@Model.GenreID</dd>
+        <dd class="col-sm-10">@Model.GenreId</dd>
         <dt class="col-sm-2">Poster</dt>
         <dd class="col-sm-10">
-            @if (!string.IsNullOrEmpty(Model.PosterURL))
+            @if (!string.IsNullOrEmpty(Model.PosterUrl))
             {
-                <img src="@Model.PosterURL" alt="Film poster" class="img-fluid" />
+                <img src="@Model.PosterUrl" alt="Film poster" class="img-fluid" />
             }
             else
             {
@@ -31,9 +31,9 @@
         </dd>
         <dt class="col-sm-2">Trailer</dt>
         <dd class="col-sm-10">
-            @if (!string.IsNullOrEmpty(Model.TrailerURL))
+            @if (!string.IsNullOrEmpty(Model.TrailerUrl))
             {
-                <iframe width="560" height="315" src="@Model.TrailerURL.Replace("watch?v=", "embed/")" frameborder="0" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="@Model.TrailerUrl.Replace("watch?v=", "embed/")" frameborder="0" allowfullscreen></iframe>
             }
             else
             {
@@ -46,7 +46,7 @@
                 @foreach (var crewmate in Model.MovieCrewmates)
                 {
                     <li>@crewmate.CrewmateName - @crewmate.PositionName</li>
-                    Console.WriteLine($"Movie ID: {Model.MovieID}");
+                    Console.WriteLine($"Movie ID: {Model.MovieId}");
                     Console.WriteLine($"Crewmate ID: {crewmate.CrewmateID}");
                 }
                 @foreach(var position in Model.MovieCrewmates)
@@ -59,6 +59,6 @@
 </div>
 
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.MovieID" class="btn btn-warning">Edit</a>
+    <a asp-action="Edit" asp-route-id="@Model.MovieId" class="btn btn-warning">Edit</a>
     <a asp-action="Index" class="btn btn-secondary">Back to list</a>
 </div>

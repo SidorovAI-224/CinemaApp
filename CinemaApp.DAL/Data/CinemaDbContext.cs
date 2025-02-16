@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using CinemaApp.DAL.Entities;
 using CinemaApp.DAL.Configurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -9,7 +8,6 @@ namespace CinemaApp.DAL.Data
     public class CinemaDbContext : IdentityDbContext<User>
     {
         public CinemaDbContext(DbContextOptions<CinemaDbContext> options) : base(options) { }
-        
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Session> Sessions { get; set; }
@@ -32,7 +30,7 @@ namespace CinemaApp.DAL.Data
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new CrewmateConfiguration());
             modelBuilder.ApplyConfiguration(new MovieCrewmateConfiguration());
-            modelBuilder.ApplyConfiguration(new Crewmate_PositionsConfiguration());
+            modelBuilder.ApplyConfiguration(new CrewmatePositionsConfiguration());
             modelBuilder.ApplyConfiguration(new PositionConfiguration());
             modelBuilder.ApplyConfiguration(new MovieGenreConfiguration());
             modelBuilder.ApplyConfiguration(new HallOneConfiguration());

@@ -4,15 +4,14 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using Microsoft.SemanticKernel.Services;
-using IAIService = CinemaApp.BL.Interfaces.ServiceInterfaces.IAIService;
 
 namespace CinemaApp.Controllers
 {
     public class AiController : Controller
     {
-        private readonly IAIService _aiService;
+        private readonly IAiService _aiService;
 
-        public AiController(IAIService aiService)
+        public AiController(IAiService aiService)
         {
             _aiService = aiService;
         }

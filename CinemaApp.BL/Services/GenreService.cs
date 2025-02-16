@@ -3,7 +3,7 @@ using CinemaApp.DAL.Entities;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.DTOs.MovieDTOs.Genre;
-using Microsoft.EntityFrameworkCore;
+using CinemaApp.DAL.Repositories;
 
 namespace CinemaApp.BL.Services
 {
@@ -18,28 +18,28 @@ namespace CinemaApp.BL.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<GenreDTO>> GetAllGenresAsync()
+        public async Task<IEnumerable<GenreDto>> GetAllGenresAsync()
         {
             var genres = await _genreRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<GenreDTO>>(genres);
+            return _mapper.Map<IEnumerable<GenreDto>>(genres);
         }
 
-        public async Task<GenreDTO> GetGenreByIdAsync(int id)
+        public async Task<GenreDto> GetGenreByIdAsync(int id)
         {
             var genre = await _genreRepository.GetByIdAsync(id);
-            return _mapper.Map<GenreDTO>(genre);
+            return _mapper.Map<GenreDto>(genre);
         }
 
-        public async Task AddGenreAsync(GenreCreateDTO genreCreateDTO)
+        public async Task AddGenreAsync(GenreCreateDto genreCreateDto)
         {
-            var genre = _mapper.Map<Genre>(genreCreateDTO);
+            var genre = _mapper.Map<Genre>(genreCreateDto);
             await _genreRepository.AddAsync(genre);
         }
 
-        public async Task UpdateGenreAsync(int id, GenreUpdateDTO genreUpdateDTO)
+        public async Task UpdateGenreAsync(int id, GenreUpdateDto genreUpdateDto)
         {
             var genre = await _genreRepository.GetByIdAsync(id);
-            _mapper.Map(genreUpdateDTO, genre);
+            _mapper.Map(genreUpdateDto, genre);
             await _genreRepository.UpdateAsync(genre);
         }
 

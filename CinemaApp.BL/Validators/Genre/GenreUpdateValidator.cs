@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CinemaApp.BL.DTOs.MovieDTOs.Genre;
+﻿using CinemaApp.BL.DTOs.MovieDTOs.Genre;
 using FluentValidation;
 
 namespace CinemaApp.BL.Validators.Genre
 {
-    public class GenreUpdateValidator : AbstractValidator<GenreCreateDTO>
+    public class GenreUpdateValidator : AbstractValidator<GenreCreateDto>
     {
         public GenreUpdateValidator()
         {

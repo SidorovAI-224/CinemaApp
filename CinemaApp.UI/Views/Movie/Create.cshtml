@@ -1,4 +1,4 @@
-﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieCreateDTO
+﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieCreateDto
 
 <h2>Add new film</h2>
 
@@ -15,8 +15,8 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="GenreID" class="control-label">Genre </label>
-        <select asp-for="GenreID" class="form-control">
+        <label asp-for="GenreId" class="control-label">Genre </label>
+        <select asp-for="GenreId" class="form-control">
             <option value="">-- Select Genre --</option>
             @if (ViewBag.Genres != null)
             {
@@ -26,12 +26,12 @@
                 }
             }
         </select>
-        <span asp-validation-for="GenreID1" class="text-danger"></span>
+        <span asp-validation-for="GenreId1" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="GenreID1" class="control-label">Genre 1</label>
-        <select asp-for="GenreID1" class="form-control">
+        <label asp-for="GenreId1" class="control-label">Genre 1</label>
+        <select asp-for="GenreId1" class="form-control">
             <option value="">-- Select Genre --</option>
             @if (ViewBag.Genres != null)
             {
@@ -41,12 +41,12 @@
                 }
             }
         </select>
-        <span asp-validation-for="GenreID1" class="text-danger"></span>
+        <span asp-validation-for="GenreId1" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="GenreID2" class="control-label">Genre 2</label>
-        <select asp-for="GenreID2" class="form-control">
+        <label asp-for="GenreId2" class="control-label">Genre 2</label>
+        <select asp-for="GenreId2" class="form-control">
             <option value="">-- Select Genre --</option>
             @if (ViewBag.Genres != null)
             {
@@ -56,12 +56,12 @@
                 }
             }
         </select>
-        <span asp-validation-for="GenreID2" class="text-danger"></span>
+        <span asp-validation-for="GenreId2" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="GenreID3" class="control-label">Genre 3</label>
-        <select asp-for="GenreID3" class="form-control">
+        <label asp-for="GenreId3" class="control-label">Genre 3</label>
+        <select asp-for="GenreId3" class="form-control">
             <option value="">-- Select Genre --</option>
             @if (ViewBag.Genres != null)
             {
@@ -71,12 +71,12 @@
                 }
             }
         </select>
-        <span asp-validation-for="GenreID3" class="text-danger"></span>
+        <span asp-validation-for="GenreId3" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="GenreID4" class="control-label">Genre 4</label>
-        <select asp-for="GenreID4" class="form-control">
+        <label asp-for="GenreId4" class="control-label">Genre 4</label>
+        <select asp-for="GenreId4" class="form-control">
             <option value="">-- Select Genre --</option>
             @if (ViewBag.Genres != null)
             {
@@ -86,7 +86,7 @@
                 }
             }
         </select>
-        <span asp-validation-for="GenreID4" class="text-danger"></span>
+        <span asp-validation-for="GenreId4" class="text-danger"></span>
     </div>
 
     <div class="form-group">
@@ -110,14 +110,14 @@
         <span asp-validation-for="AgeLimit" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="PosterURL" class="control-label"></label>
-        <input asp-for="PosterURL" class="form-control" />
-        <span asp-validation-for="PosterURL" class="text-danger"></span>
+        <label asp-for="PosterUrl" class="control-label"></label>
+        <input asp-for="PosterUrl" class="form-control" />
+        <span asp-validation-for="PosterUrl" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="TrailerURL" class="control-label"></label>
-        <input asp-for="TrailerURL" class="form-control" />
-        <span asp-validation-for="TrailerURL" class="text-danger"></span>
+        <label asp-for="TrailerUrl" class="control-label"></label>
+        <input asp-for="TrailerUrl" class="form-control" />
+        <span asp-validation-for="TrailerUrl" class="text-danger"></span>
     </div>
 
     <h3>Crewmates</h3>

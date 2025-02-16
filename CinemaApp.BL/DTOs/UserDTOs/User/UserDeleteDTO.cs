@@ -1,8 +1,8 @@
 ﻿
 namespace CinemaApp.BL.DTOs.UserDTOs.User
 {
-    public class UserDeleteDTO
+    public class UserDeleteDto
     {
-        public string? UserID { get; set; }
+        public string? UserId { get; set; }
     }
 }

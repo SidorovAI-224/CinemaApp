@@ -1,9 +1,9 @@
 ﻿
 namespace CinemaApp.BL.DTOs.UserDTOs.Ticket
 {
-    public class TicketDeleteDTO
+    public class TicketDeleteDto
     {
-        public int TicketID { get; set; }
+        public int TicketId { get; set; }
 
     }
 }

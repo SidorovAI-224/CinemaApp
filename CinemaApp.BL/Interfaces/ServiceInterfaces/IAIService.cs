@@ -1,13 +1,9 @@
 ﻿using CinemaApp.BL.AI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CinemaApp.BL.Interfaces.ServiceInterfaces
 {
-    public interface IAIService
+    public interface IAiService
     {
         //Task<List<VectorizedMovie>> GetVectorizedMovies();
         Task<List<VectorizedMovie>> GetRecommendedMovies(string query, uint maxResults);

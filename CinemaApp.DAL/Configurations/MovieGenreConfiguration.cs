@@ -10,7 +10,7 @@ namespace CinemaApp.DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<MovieGenre> builder)
         {
-            builder.HasKey(mg => new { mg.MovieID, mg.GenreID });
+            builder.HasKey(mg => new { MovieID = mg.MovieId, GenreID = mg.GenreId });
 
         }
     }

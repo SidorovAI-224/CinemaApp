@@ -1,7 +1,7 @@
-﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDTO
+﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDto
 
 <h2>Delete film</h2>
-<input type="hidden" asp-for="MovieID" />
+<input type="hidden" asp-for="MovieId" />
 <h3>Are you sure you want to delete this film?</h3>
 <div>
     <h4>@Model.Title</h4>
@@ -12,7 +12,7 @@
     </dl>
 
     <form asp-action="DeleteConfirmed" method="post">
-        <input type="hidden" asp-for="MovieID" />
+        <input type="hidden" asp-for="MovieId" />
         <input type="submit" value="Delete" class="btn btn-danger" />
         <a asp-action="Index" class="btn btn-secondary">Back to list</a>
     </form>

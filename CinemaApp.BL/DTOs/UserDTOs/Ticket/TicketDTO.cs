@@ -1,11 +1,11 @@
 ﻿
 namespace CinemaApp.BL.DTOs.UserDTOs.Ticket
 {
-    public class TicketDTO
+    public class TicketDto
     {
-        public int TicketID { get; set; }
+        public int TicketId { get; set; }
         public int Seat { get; set; }
-        public int SessionID { get; set; }
+        public int SessionId { get; set; }
         public decimal Price { get; set; }
         public DateTime BookingDate { get; set; }
         public string? UserName { get; set; }

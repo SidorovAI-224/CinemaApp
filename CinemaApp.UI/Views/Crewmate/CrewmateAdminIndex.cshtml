@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CinemaApp.BL.DTOs.CrewDTOs.Crewmate.CrewmateDTO>
+﻿@model IEnumerable<CinemaApp.BL.DTOs.CrewDTOs.Crewmate.CrewmateDto>
 
 <h2>Crewmates</h2>
 
@@ -14,12 +14,12 @@
         @foreach (var crewmate in Model)
         {
             <tr>
-                <td>@crewmate.CrewmateID</td>
+                <td>@crewmate.CrewmateId</td>
                 <td>@crewmate.Name</td>
                 <td style="text-align: right">
-                    <a asp-action="CrewmateDetails" asp-route-id="@crewmate.CrewmateID" class="btn btn-success">Details</a> 
-                    <a asp-action="CrewmateEdit" asp-route-id="@crewmate.CrewmateID" class="btn btn-warning">Edit</a> 
-                    <a asp-action="CrewmateDelete" asp-route-id="@crewmate.CrewmateID" class="btn btn-danger">Delete</a>
+                    <a asp-action="CrewmateDetails" asp-route-id="@crewmate.CrewmateId" class="btn btn-success">Details</a> 
+                    <a asp-action="CrewmateEdit" asp-route-id="@crewmate.CrewmateId" class="btn btn-warning">Edit</a> 
+                    <a asp-action="CrewmateDelete" asp-route-id="@crewmate.CrewmateId" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         }

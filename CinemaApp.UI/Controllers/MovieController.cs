@@ -65,7 +65,7 @@ namespace CinemaApp.UI.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Create(MovieCreateDTO movieCreateDTO)
+        public async Task<IActionResult> Create(MovieCreateDto movieCreateDTO)
         {
             if (!ModelState.IsValid)
             {
@@ -110,7 +110,7 @@ namespace CinemaApp.UI.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, MovieDTO movieDTO)
+        public async Task<IActionResult> Edit(int id, MovieDto movieDTO)
         {
             if (!ModelState.IsValid)
             {
@@ -122,7 +122,7 @@ namespace CinemaApp.UI.Controllers
 
             try
             {
-                var movieUpdateDTO = _mapper.Map<MovieUpdateDTO>(movieDTO);
+                var movieUpdateDTO = _mapper.Map<MovieUpdateDto>(movieDTO);
                 await _movieService.UpdateMovieAsync(id, movieUpdateDTO);
                 return RedirectToAction(nameof(Index));
             }

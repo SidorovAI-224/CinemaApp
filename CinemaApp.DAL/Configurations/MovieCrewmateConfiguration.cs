@@ -8,15 +8,15 @@ namespace CinemaApp.DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<MovieCrewmate> builder)
         {
-            builder.HasKey(mc => new { mc.MovieID, mc.CrewmateID });
+            builder.HasKey(mc => new { MovieID = mc.MovieId, CrewmateID = mc.CrewmateId });
 
             builder.HasOne(mc => mc.Movie)
                    .WithMany(m => m.MovieCrewmates)
-                   .HasForeignKey(mc => mc.MovieID);
+                   .HasForeignKey(mc => mc.MovieId);
 
             builder.HasOne(mc => mc.Crewmate)
                    .WithMany(c => c.MoviesCrewmates)
-                   .HasForeignKey(mc => mc.CrewmateID);
+                   .HasForeignKey(mc => mc.CrewmateId);
         }
     }
 }

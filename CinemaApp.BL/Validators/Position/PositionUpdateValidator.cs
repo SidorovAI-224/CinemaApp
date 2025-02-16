@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CinemaApp.BL.DTOs.CrewDTOs.Position;
+﻿using CinemaApp.BL.DTOs.CrewDTOs.Position;
 using FluentValidation;
 
 
 namespace CinemaApp.BL.Validators.Position
 {
-    public class PositionUpdateValidator : AbstractValidator<PositionUpdateDTO>
+    public class PositionUpdateValidator : AbstractValidator<PositionUpdateDto>
     {
         public PositionUpdateValidator()
         {

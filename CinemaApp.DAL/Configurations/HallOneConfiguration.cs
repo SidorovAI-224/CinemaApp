@@ -8,7 +8,7 @@ namespace CinemaApp.DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<HallOne> builder)
         {
-            builder.HasKey(h => h.SeatID);
+            builder.HasKey(h => h.SeatId);
 
             builder.Property(h => h.IsBooked)
                    .IsRequired();

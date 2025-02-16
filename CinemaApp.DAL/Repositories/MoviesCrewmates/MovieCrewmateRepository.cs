@@ -15,9 +15,9 @@ namespace CinemaApp.DAL.Repositories.MoviesCrewmates
 
         public async Task<MovieCrewmate> GetByMovieAndCrewmateIdAsync(int movieId, int crewmateId)
         {
-            return await _context.MovieCrewmate
+            return (await _context.MovieCrewmate
                 .AsNoTracking()
-                .FirstOrDefaultAsync(mc => mc.MovieID == movieId && mc.CrewmateID == crewmateId);
+                .FirstOrDefaultAsync(mc => mc.MovieId == movieId && mc.CrewmateId == crewmateId))!;
         }
 
         public async Task AddMovieCrewmateAsync(MovieCrewmate movieCrewmate)
@@ -29,11 +29,8 @@ namespace CinemaApp.DAL.Repositories.MoviesCrewmates
         public async Task RemoveMovieCrewmateAsync(int movieId, int crewmateId)
         {
             var movieCrewmate = await GetByMovieAndCrewmateIdAsync(movieId, crewmateId);
-            if (movieCrewmate != null)
-            {
-                _context.MovieCrewmate.Remove(movieCrewmate);
-                await _context.SaveChangesAsync();
-            }
+            _context.MovieCrewmate.Remove(movieCrewmate);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<MovieCrewmate>> GetMovieCrewmatesByMovieIdAsync(int movieId)
@@ -42,7 +39,7 @@ namespace CinemaApp.DAL.Repositories.MoviesCrewmates
                 .AsNoTracking()
                 .Include(mc => mc.Crewmate)
                 .Include(mc => mc.Position)
-                .Where(mc => mc.MovieID == movieId)
+                .Where(mc => mc.MovieId == movieId)
                 .ToListAsync();
         }
 

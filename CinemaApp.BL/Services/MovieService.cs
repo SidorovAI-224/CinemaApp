@@ -3,6 +3,7 @@ using CinemaApp.BL.DTOs.MovieDTOs.Movie;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
+using CinemaApp.DAL.Repositories;
 using CinemaApp.DAL.Repositories.MoviesCrewmates;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,13 +23,13 @@ namespace CinemaApp.BL.Services
             _genreService = genreService;
         }
 
-        public async Task<IEnumerable<MovieDTO>> GetAllMoviesAsync()
+        public async Task<IEnumerable<MovieDto>> GetAllMoviesAsync()
         {
             var movies = await _movieRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<MovieDTO>>(movies);
+            return _mapper.Map<IEnumerable<MovieDto>>(movies);
         }
 
-        public async Task<MovieDTO> GetMovieByIdAsync(int id)
+        public async Task<MovieDto> GetMovieByIdAsync(int id)
         {
             var movie = await _movieRepository.GetByIdAsync(id,
                 include: q => q.Include(m => m.MovieCrewmates)
@@ -43,93 +44,93 @@ namespace CinemaApp.BL.Services
                                .AsNoTracking()
             );
 
-            var movieDTO = _mapper.Map<MovieDTO>(movie);
+            var movieDto = _mapper.Map<MovieDto>(movie);
 
             if (movie.Genre != null)
             {
-                movieDTO.GenreName = movie.Genre.GenreName;
+                movieDto.GenreName = movie.Genre.GenreName;
             }
             if (movie.Genre1 != null)
             {
-                movieDTO.GenreName1 = movie.Genre1.GenreName;
+                movieDto.GenreName1 = movie.Genre1.GenreName;
             }
             if (movie.Genre2 != null)
             {
-                movieDTO.GenreName2 = movie.Genre2.GenreName;
+                movieDto.GenreName2 = movie.Genre2.GenreName;
             }
             if (movie.Genre3 != null)
             {
-                movieDTO.GenreName3 = movie.Genre3.GenreName;
+                movieDto.GenreName3 = movie.Genre3.GenreName;
             }
             if (movie.Genre4 != null)
             {
-                movieDTO.GenreName4 = movie.Genre4.GenreName;
+                movieDto.GenreName4 = movie.Genre4.GenreName;
             }
 
-            return movieDTO;
+            return movieDto;
         }
 
-        public async Task AddMovieAsync(MovieCreateDTO movieCreateDTO)
+        public async Task AddMovieAsync(MovieCreateDto movieCreateDto)
         {
-            var movie = _mapper.Map<Movie>(movieCreateDTO);
-            if (movieCreateDTO.GenreID.HasValue)
+            var movie = _mapper.Map<Movie>(movieCreateDto);
+            if (movieCreateDto.GenreId.HasValue)
             {
-                var genre1 = await _genreService.GetGenreByIdAsync(movieCreateDTO.GenreID.Value);
+                var genre1 = await _genreService.GetGenreByIdAsync(movieCreateDto.GenreId.Value);
                 if (genre1 == null)
                 {
-                    throw new Exception($"Genre with ID {movieCreateDTO.GenreID} does not exist.");
+                    throw new Exception($"Genre with ID {movieCreateDto.GenreId} does not exist.");
                 }
             }
-            if (movieCreateDTO.GenreID1.HasValue)
+            if (movieCreateDto.GenreId1.HasValue)
             {
-                var genre1 = await _genreService.GetGenreByIdAsync(movieCreateDTO.GenreID1.Value);
+                var genre1 = await _genreService.GetGenreByIdAsync(movieCreateDto.GenreId1.Value);
                 if (genre1 == null)
                 {
-                    throw new Exception($"Genre with ID {movieCreateDTO.GenreID1} does not exist.");
+                    throw new Exception($"Genre with ID {movieCreateDto.GenreId1} does not exist.");
                 }
             }
 
-            if (movieCreateDTO.GenreID2.HasValue)
+            if (movieCreateDto.GenreId2.HasValue)
             {
-                var genre2 = await _genreService.GetGenreByIdAsync(movieCreateDTO.GenreID2.Value);
+                var genre2 = await _genreService.GetGenreByIdAsync(movieCreateDto.GenreId2.Value);
                 if (genre2 == null)
                 {
-                    throw new Exception($"Genre with ID {movieCreateDTO.GenreID2} does not exist.");
+                    throw new Exception($"Genre with ID {movieCreateDto.GenreId2} does not exist.");
                 }
             }
 
-            if (movieCreateDTO.GenreID3.HasValue)
+            if (movieCreateDto.GenreId3.HasValue)
             {
-                var genre3 = await _genreService.GetGenreByIdAsync(movieCreateDTO.GenreID3.Value);
+                var genre3 = await _genreService.GetGenreByIdAsync(movieCreateDto.GenreId3.Value);
                 if (genre3 == null)
                 {
-                    throw new Exception($"Genre with ID {movieCreateDTO.GenreID3} does not exist.");
+                    throw new Exception($"Genre with ID {movieCreateDto.GenreId3} does not exist.");
                 }
             }
 
-            if (movieCreateDTO.GenreID4.HasValue)
+            if (movieCreateDto.GenreId4.HasValue)
             {
-                var genre4 = await _genreService.GetGenreByIdAsync(movieCreateDTO.GenreID4.Value);
+                var genre4 = await _genreService.GetGenreByIdAsync(movieCreateDto.GenreId4.Value);
                 if (genre4 == null)
                 {
-                    throw new Exception($"Genre with ID {movieCreateDTO.GenreID4} does not exist.");
+                    throw new Exception($"Genre with ID {movieCreateDto.GenreId4} does not exist.");
                 }
             }
 
             await _movieRepository.AddAsync(movie);
 
-            if (movieCreateDTO.MovieCrewmates != null)
+            if (movieCreateDto.MovieCrewmates != null)
             {
-                foreach (var crewmateDTO in movieCreateDTO.MovieCrewmates)
+                foreach (var crewmateDto in movieCreateDto.MovieCrewmates)
                 {
-                    var existingCrewmate = await _movieCrewmateRepository.GetByMovieAndCrewmateIdAsync(movie.MovieID, crewmateDTO.CrewmateID);
+                    var existingCrewmate = await _movieCrewmateRepository.GetByMovieAndCrewmateIdAsync(movie.MovieId, crewmateDto.CrewmateID);
                     if (existingCrewmate == null)
                     {
                         var movieCrewmate = new MovieCrewmate
                         {
-                            MovieID = movie.MovieID,
-                            CrewmateID = crewmateDTO.CrewmateID,
-                            PositionID = crewmateDTO.PositionID
+                            MovieId = movie.MovieId,
+                            CrewmateId = crewmateDto.CrewmateID,
+                            PositionId = crewmateDto.PositionID
                         };
 
                         await _movieCrewmateRepository.AddMovieCrewmateAsync(movieCrewmate);
@@ -137,7 +138,7 @@ namespace CinemaApp.BL.Services
                 }
             }
         }
-        public async Task UpdateMovieAsync(int id, MovieUpdateDTO movieUpdateDTO)
+        public async Task UpdateMovieAsync(int id, MovieUpdateDto movieUpdateDto)
         {
             var movie = await _movieRepository.GetByIdAsync(id);
             if (movie == null)
@@ -145,35 +146,35 @@ namespace CinemaApp.BL.Services
                 throw new Exception("Movie not found");
             }
 
-            movie.Title = movieUpdateDTO.Title;
-            movie.Description = movieUpdateDTO.Description;
-            movie.GenreID = movieUpdateDTO.GenreID;
-            movie.GenreID1 = movieUpdateDTO.GenreID1;
-            movie.GenreID2 = movieUpdateDTO.GenreID2;
-            movie.GenreID3 = movieUpdateDTO.GenreID3;
-            movie.GenreID4 = movieUpdateDTO.GenreID4;
-            movie.Duration = movieUpdateDTO.Duration;
-            movie.ReleaseDate = movieUpdateDTO.ReleaseDate;
-            movie.Rating = movieUpdateDTO.Rating;
-            movie.AgeLimit = movieUpdateDTO.AgeLimit;
-            movie.PosterURL = movieUpdateDTO.PosterURL;
-            movie.TrailerURL = movieUpdateDTO.TrailerURL;
+            movie.Title = movieUpdateDto.Title;
+            movie.Description = movieUpdateDto.Description;
+            movie.GenreId = movieUpdateDto.GenreId;
+            movie.GenreId1 = movieUpdateDto.GenreId1;
+            movie.GenreId2 = movieUpdateDto.GenreId2;
+            movie.GenreId3 = movieUpdateDto.GenreId3;
+            movie.GenreId4 = movieUpdateDto.GenreId4;
+            movie.Duration = movieUpdateDto.Duration;
+            movie.ReleaseDate = movieUpdateDto.ReleaseDate;
+            movie.Rating = movieUpdateDto.Rating;
+            movie.AgeLimit = movieUpdateDto.AgeLimit;
+            movie.PosterUrl = movieUpdateDto.PosterUrl;
+            movie.TrailerUrl = movieUpdateDto.TrailerUrl;
 
             var existingCrewmates = await _movieCrewmateRepository.GetMovieCrewmatesByMovieIdAsync(id);
             foreach (var crewmate in existingCrewmates)
             {
-                await _movieCrewmateRepository.RemoveMovieCrewmateAsync(crewmate.MovieID, crewmate.CrewmateID);
+                await _movieCrewmateRepository.RemoveMovieCrewmateAsync(crewmate.MovieId, crewmate.CrewmateId);
             }
 
-            if (movieUpdateDTO.MovieCrewmates != null)
+            if (movieUpdateDto.MovieCrewmates != null)
             {
-                foreach (var crewmateDTO in movieUpdateDTO.MovieCrewmates)
+                foreach (var crewmateDto in movieUpdateDto.MovieCrewmates)
                 {
                     var movieCrewmate = new MovieCrewmate
                     {
-                        MovieID = movie.MovieID,
-                        CrewmateID = crewmateDTO.CrewmateID,
-                        PositionID = crewmateDTO.PositionID
+                        MovieId = movie.MovieId,
+                        CrewmateId = crewmateDto.CrewmateID,
+                        PositionId = crewmateDto.PositionID
                     };
 
                     await _movieCrewmateRepository.AddMovieCrewmateAsync(movieCrewmate);
@@ -188,16 +189,16 @@ namespace CinemaApp.BL.Services
             await _movieRepository.DeleteByIdAsync(id);
         }
 
-        public async Task<IEnumerable<MovieDTO>> FindMovieByGenreAsync(string genre)
+        public async Task<IEnumerable<MovieDto>> FindMovieByGenreAsync(string genre)
         {
             var movies = await _movieRepository.FindAsync(m => m.Genre.GenreName == genre);
-            return _mapper.Map<IEnumerable<MovieDTO>>(movies);
+            return _mapper.Map<IEnumerable<MovieDto>>(movies);
         }
 
-        public async Task<IEnumerable<MovieDTO>> FindMovieByNameAsync(string name)
+        public async Task<IEnumerable<MovieDto>> FindMovieByNameAsync(string name)
         {
-            var movies = await _movieRepository.FindAsync(m => m.Title.Contains(name));
-            return _mapper.Map<IEnumerable<MovieDTO>>(movies);
+            var movies = await _movieRepository.FindAsync(m => m.Title != null && m.Title.Contains(name));
+            return _mapper.Map<IEnumerable<MovieDto>>(movies);
         }
     }
 }

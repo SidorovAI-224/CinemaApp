@@ -1,4 +1,4 @@
-﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDTO
+﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDto
 
 @{
     ViewData["Title"] = Model.Title;
@@ -6,7 +6,7 @@
 
 <div class="movie-details-container">
     <div class="movie-poster">
-        <img src="@Model.PosterURL" alt="@Model.Title" class="poster-image" />
+        <img src="@Model.PosterUrl" alt="@Model.Title" class="poster-image" />
     </div>
     <div class="movie-info">
         <h1 class="movie-title">@Model.Title</h1>
@@ -78,7 +78,7 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        let movieId = @Model.MovieID;
+        let movieId = @Model.MovieId;
         fetch(`/api/ai/similar/${movieId}?maxResults=5`)
             .then(response => response.json())
             .then(data => {
@@ -114,7 +114,7 @@
 
 <div class="trailer-container">
     <h2>Trailer</h2> 
-    <iframe width="400" height="300" src="@Model.TrailerURL.Replace("watch?v=", "embed/")" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="400" height="300" src="@Model.TrailerUrl.Replace("watch?v=", "embed/")" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 </div>
 

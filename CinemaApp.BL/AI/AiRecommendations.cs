@@ -4,7 +4,7 @@ namespace CinemaApp.BL.AI;
 
 public class AiRecommendations : AiBase
 {
-    public AiRecommendations(List<VectorizedMovie> itemList, Uri uri, string model)
+    public AiRecommendations(List<VectorizedMovie> itemList, Uri uri, string? model)
         : base(itemList, uri, model)
     {
         
@@ -12,7 +12,7 @@ public class AiRecommendations : AiBase
 
     public async Task<List<VectorizedMovie>> GetSimilarItems(VectorizedMovie movie, uint maxResults)
     {
-        await GenerateEmbeddings(new List<Func<VectorizedMovie, string>>
+        await GenerateEmbeddings(new List<Func<VectorizedMovie, string?>>
         {
             vectorizedMovie => vectorizedMovie.Title,
             vectorizedMovie => vectorizedMovie.Genre,

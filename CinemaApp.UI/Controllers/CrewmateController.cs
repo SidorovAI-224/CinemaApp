@@ -42,7 +42,7 @@ namespace CinemaApp.Web.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CrewmateCreate(CrewmateCreateDTO crewmateCreateDTO)
+        public async Task<IActionResult> CrewmateCreate(CrewmateCreateDto crewmateCreateDTO)
         {
             if (ModelState.IsValid)
             {
@@ -61,9 +61,9 @@ namespace CinemaApp.Web.Controllers
             {
                 return NotFound();
             }
-            var crewmateUpdateDTO = new CrewmateUpdateDTO
+            var crewmateUpdateDTO = new CrewmateUpdateDto
             {
-                CrewmateID = crewmate.CrewmateID,
+                CrewmateId = crewmate.CrewmateId,
                 Name = crewmate.Name,
             };
             return View(crewmateUpdateDTO);
@@ -71,9 +71,9 @@ namespace CinemaApp.Web.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CrewmateEdit(int id, CrewmateUpdateDTO crewmateUpdateDTO)
+        public async Task<IActionResult> CrewmateEdit(int id, CrewmateUpdateDto crewmateUpdateDTO)
         {
-            if (id != crewmateUpdateDTO.CrewmateID)
+            if (id != crewmateUpdateDTO.CrewmateId)
             {
                 return NotFound();
             }

@@ -1,8 +1,8 @@
 ﻿
 namespace CinemaApp.BL.DTOs.CrewDTOs.Crewmate
 {
-    public class CrewmateDeleteDTO
+    public class CrewmateDeleteDto
     {
-        public int CrewmateID { get; set; }
+        public int CrewmateId { get; set; }
     }
 }

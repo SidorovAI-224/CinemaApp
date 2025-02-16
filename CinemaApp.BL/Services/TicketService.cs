@@ -3,6 +3,7 @@ using CinemaApp.BL.DTOs.UserDTOs.Ticket;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
+using CinemaApp.DAL.Repositories;
 
 namespace CinemaApp.BL.Services
 {
@@ -17,28 +18,28 @@ namespace CinemaApp.BL.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<TicketDTO>> GetAllTicketsAsync()
+        public async Task<IEnumerable<TicketDto>> GetAllTicketsAsync()
         {
             var tickets = await _ticketRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<TicketDTO>>(tickets);
+            return _mapper.Map<IEnumerable<TicketDto>>(tickets);
         }
 
-        public async Task<TicketDTO> GetTicketByIdAsync(int id)
+        public async Task<TicketDto> GetTicketByIdAsync(int id)
         {
             var ticket = await _ticketRepository.GetByIdAsync(id);
-            return _mapper.Map<TicketDTO>(ticket);
+            return _mapper.Map<TicketDto>(ticket);
         }
 
-        public async Task AddTicketAsync(TicketCreateDTO ticketCreateDTO)
+        public async Task AddTicketAsync(TicketCreateDto ticketCreateDto)
         {
-            var ticket = _mapper.Map<Ticket>(ticketCreateDTO);
+            var ticket = _mapper.Map<Ticket>(ticketCreateDto);
             await _ticketRepository.AddAsync(ticket);
         }
 
-        public async Task UpdateTicketAsync(int id, TicketUpdateDTO ticketUpdateDTO)
+        public async Task UpdateTicketAsync(int id, TicketUpdateDto ticketUpdateDto)
         {
             var ticket = await _ticketRepository.GetByIdAsync(id);
-            _mapper.Map(ticketUpdateDTO, ticket);
+            _mapper.Map(ticketUpdateDto, ticket);
             await _ticketRepository.UpdateAsync(ticket);
         }
 

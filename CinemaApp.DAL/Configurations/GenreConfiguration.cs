@@ -8,12 +8,12 @@ namespace CinemaApp.DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<Genre> builder)
         {
-            builder.HasKey(g => g.GenreID);
+            builder.HasKey(g => g.GenreId);
             builder.Property(g => g.GenreName).IsRequired().HasMaxLength(100);
 
             builder.HasMany(g => g.Movies)
                    .WithOne(m => m.Genre)
-                   .HasForeignKey(m => m.GenreID);
+                   .HasForeignKey(m => m.GenreId);
         }
     }
 }

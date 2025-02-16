@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Security.Cryptography;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 namespace CinemaApp.DAL.Entities
 {
     public class User : IdentityUser
@@ -11,7 +9,7 @@ namespace CinemaApp.DAL.Entities
 
         public DateTime RegistrationDate { get; set; }
 
-        public ICollection<Ticket> Tickets { get; set; }
+        public ICollection<Ticket>? Tickets { get; set; }
 
     }
 }

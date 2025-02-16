@@ -1,9 +1,9 @@
 ﻿
 namespace CinemaApp.BL.DTOs.UserDTOs.User
 {
-    public class UserDTO
+    public class UserDto
     {
-        public int UserID { get; set; }
+        public int UserId { get; set; }
         public string? UserName { get; set; }
         public string? FullName { get; set; }
         public string? Email { get; set; }

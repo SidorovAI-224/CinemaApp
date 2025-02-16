@@ -1,10 +1,10 @@
 ﻿
 namespace CinemaApp.BL.DTOs.CrewDTOs.CrewmatePositions
 {
-    public class CrewmatePositionsDTO
+    public class CrewmatePositionsDto
     {
-        public int CrewmateID { get; set; }
+        public int CrewmateId { get; set; }
 
-        public int PositionID { get; set; }
+        public int PositionId { get; set; }
     }
 }

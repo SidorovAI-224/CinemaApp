@@ -8,7 +8,7 @@ namespace CinemaApp.DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<Session> builder)
         {
-            builder.HasKey(s => s.SessionID);
+            builder.HasKey(s => s.SessionId);
 
             builder.Property(s => s.StartTime)
                    .IsRequired();
@@ -22,7 +22,7 @@ namespace CinemaApp.DAL.Configurations
 
             builder.HasOne(s => s.Movie)
                    .WithMany(m => m.Sessions)
-                   .HasForeignKey(s => s.MovieID)
+                   .HasForeignKey(s => s.MovieId)
                    .OnDelete(DeleteBehavior.Cascade);
         }
     }

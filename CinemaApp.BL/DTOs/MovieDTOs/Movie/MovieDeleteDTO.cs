@@ -1,7 +1,7 @@
 ﻿namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
 {
-    public class MovieDeleteDTO
+    public class MovieDeleteDto
     {
-        public int MovieID { get; set; }
+        public int MovieId { get; set; }
     }
 }

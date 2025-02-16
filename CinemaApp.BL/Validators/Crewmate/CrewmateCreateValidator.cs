@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CinemaApp.BL.DTOs.CrewDTOs.Crewmate;
+﻿using CinemaApp.BL.DTOs.CrewDTOs.Crewmate;
 using FluentValidation;
 
 namespace CinemaApp.BL.Validators.Crewmate
 {
-    public class CrewmateCreateValidator : AbstractValidator<CrewmateCreateDTO>
+    public class CrewmateCreateValidator : AbstractValidator<CrewmateCreateDto>
     {
         public CrewmateCreateValidator()
         {

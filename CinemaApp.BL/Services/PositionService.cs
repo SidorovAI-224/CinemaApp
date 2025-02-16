@@ -3,6 +3,7 @@ using CinemaApp.BL.DTOs.CrewDTOs.Position;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
+using CinemaApp.DAL.Repositories;
 
 namespace CinemaApp.BL.Services
 {
@@ -17,28 +18,28 @@ namespace CinemaApp.BL.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<PositionDTO>> GetAllPositionsAsync()
+        public async Task<IEnumerable<PositionDto>> GetAllPositionsAsync()
         {
             var positions = await _positionRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<PositionDTO>>(positions);
+            return _mapper.Map<IEnumerable<PositionDto>>(positions);
         }
 
-        public async Task<PositionDTO> GetPositionByIdAsync(int id)
+        public async Task<PositionDto> GetPositionByIdAsync(int id)
         {
             var position = await _positionRepository.GetByIdAsync(id);
-            return _mapper.Map<PositionDTO>(position);
+            return _mapper.Map<PositionDto>(position);
         }
 
-        public async Task AddPositionAsync(PositionCreateDTO positionCreateDTO)
+        public async Task AddPositionAsync(PositionCreateDto positionCreateDto)
         {
-            var position = _mapper.Map<Position>(positionCreateDTO);
+            var position = _mapper.Map<Position>(positionCreateDto);
             await _positionRepository.AddAsync(position);
         }
 
-        public async Task UpdatePositionAsync(int id, PositionUpdateDTO positionUpdateDTO)
+        public async Task UpdatePositionAsync(int id, PositionUpdateDto positionUpdateDto)
         {
             var position = await _positionRepository.GetByIdAsync(id);
-            _mapper.Map(positionUpdateDTO, position);
+            _mapper.Map(positionUpdateDto, position);
             await _positionRepository.UpdateAsync(position);
         }
 

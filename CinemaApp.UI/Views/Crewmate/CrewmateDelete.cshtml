@@ -1,4 +1,4 @@
-﻿@model CinemaApp.BL.DTOs.CrewDTOs.Crewmate.CrewmateDTO
+﻿@model CinemaApp.BL.DTOs.CrewDTOs.Crewmate.CrewmateDto
 
 <h2>Delete Crewmate</h2>
 
@@ -11,8 +11,8 @@
         <dd class="col-sm-10">@Model.Name</dd>
     </dl>
 
-    <form asp-action="CrewmateDeleteConfirmed" asp-route-id="@Model.CrewmateID" method="post">
-        <input type="hidden" asp-for="CrewmateID" />
+    <form asp-action="CrewmateDeleteConfirmed" asp-route-id="@Model.CrewmateId" method="post">
+        <input type="hidden" asp-for="CrewmateId" />
         <input type="submit" value="Delete" class="btn btn-danger me-2" />
         <a asp-action="CrewmateAdminIndex" class="btn btn-dark">Back to List</a>
     </form>
