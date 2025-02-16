@@ -1,0 +1,28 @@
+﻿@model IEnumerable<CinemaApp.BL.DTOs.CrewDTOs.Position.PositionDTO>
+
+<h2>Position List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var position in Model)
+        {
+            <tr>
+                <td>@position.PositionID</td>
+                <td>@position.PositionName</td>
+                <td>
+                    <a asp-action="PositionEdit" asp-route-id="@position.PositionID" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="PositionDelete" asp-route-id="@position.PositionID" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="PositionCreate" class="btn btn-primary mb-3">Add New Position</a>
+

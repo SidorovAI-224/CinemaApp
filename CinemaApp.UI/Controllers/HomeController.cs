@@ -1,18 +1,19 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using CinemaApp.UI.Models;
+using CinemaApp.BL;
 using Microsoft.AspNetCore.Authorization;
 using CinemaApp.BL.Interfaces;
-using System.Threading.Tasks;
-
 namespace CinemaApp.UI.Controllers;
 
 public class HomeController : Controller
 {
+    private readonly GreetingService _greetingService;
     private readonly IMovieService _movieService;
 
     public HomeController(IMovieService movieService)
     {
+        _greetingService = new GreetingService();
         _movieService = movieService;
     }
 
@@ -35,7 +36,7 @@ public class HomeController : Controller
     [Authorize(Roles = "User")]
     public IActionResult User()
     {
-        return View();  
+        return View();
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

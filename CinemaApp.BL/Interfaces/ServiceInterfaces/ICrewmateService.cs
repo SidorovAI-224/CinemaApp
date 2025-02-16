@@ -1,9 +1,4 @@
 ﻿using CinemaApp.BL.DTOs.CrewDTOs.Crewmate;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Interfaces.ServiceInterfaces
 {

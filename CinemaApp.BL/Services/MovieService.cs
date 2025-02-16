@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 using CinemaApp.DAL.Entities;
 using CinemaApp.BL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CinemaApp.BL.DTOs.MovieDTOs.Movie;
+using CinemaApp.BL.DTOs.MovieDTOs.MovieCrewmates;
+using CinemaApp.DAL.Repositories;
+using CinemaApp.DAL.Repositories.MoviesCrewmates;
+using CinemaApp.BL.DTOs.CrewDTOs.Crewmate;
 
 namespace CinemaApp.BL.Services
 {
@@ -14,6 +13,7 @@ namespace CinemaApp.BL.Services
     {
         private readonly IRepository<Movie> _movieRepository;
         private readonly IMapper _mapper;
+
 
         public MovieService(IRepository<Movie> movieRepository, IMapper mapper)
         {

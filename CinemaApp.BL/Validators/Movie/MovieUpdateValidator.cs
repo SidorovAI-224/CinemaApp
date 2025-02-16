@@ -22,8 +22,8 @@ namespace CinemaApp.BL.Validators.Movie
             RuleFor(x => x.GenreID)
                 .GreaterThan(0).WithMessage("GenreID must be greater than 0");
 
-            RuleFor(x => x.GenreName)
-                .NotEmpty().WithMessage("Genre can not be empty");
+            //RuleFor(x => x.GenreName)
+            //    .NotEmpty().WithMessage("Genre can not be empty");
 
             RuleFor(x => x.Duration)
                 .GreaterThan(TimeSpan.Zero).WithMessage("Duration can not be 0");

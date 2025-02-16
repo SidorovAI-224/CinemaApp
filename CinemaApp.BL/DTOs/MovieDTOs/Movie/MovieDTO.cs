@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
 {
     public class MovieDTO
@@ -18,6 +13,6 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
         public string PosterURL { get; set; }
         public string TrailerURL { get; set; }
         public decimal Rating { get; set; }
-        public string AgeLimit { get; set; }
+        public int AgeLimit { get; set; }
     }
 }

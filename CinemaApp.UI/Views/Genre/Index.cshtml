@@ -1,0 +1,28 @@
+﻿@model IEnumerable<CinemaApp.BL.DTOs.MovieDTOs.Genre.GenreDTO>
+
+<h2>Список жанрів</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Назва</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var genre in Model)
+        {
+            <tr>
+                <td>@genre.GenreID</td>
+                <td>@genre.GenreName</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@genre.GenreID" class="btn btn-warning">Редагувати</a>
+                    <a asp-action="Delete" asp-route-id="@genre.GenreID" class="btn btn-danger">Видалити</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Додати новий жанр</a>
