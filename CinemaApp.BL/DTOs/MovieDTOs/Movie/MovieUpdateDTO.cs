@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+
+// UNUSED DTO [!]
+
 namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
 {
     public class MovieUpdateDTO
@@ -16,8 +19,6 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
         [Required(ErrorMessage = "Film description is required")]
         public string? Description { get; set; }
 
-        [Required(ErrorMessage = "Genre ID is required")]
-        public int GenreID { get; set; }
 
         [Required(ErrorMessage = "Film duration is required")]
         public TimeSpan Duration { get; set; }
@@ -37,6 +38,20 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
         [Required(ErrorMessage = "Age limit is required")]
         [Range(0, 21, ErrorMessage = "Age limit must be in 0 - 21 range")]
         public int AgeLimit { get; set; }
+
+
+        // piece of shit
+        public int GenreID { get; set; }
+        public string? GenreName { get; set; }
+        public int? GenreID1 { get; set; }
+        public string? GenreName1 { get; set; }
+        public int? GenreID2 { get; set; }
+        public string? GenreName2 { get; set; }
+        public int? GenreID3 { get; set; }
+        public string? GenreName3 { get; set; }
+        public int? GenreID4 { get; set; }
+        public string? GenreName4 { get; set; }
+
 
         public List<MovieCrewmateDTO> MovieCrewmates { get; set; } = new List<MovieCrewmateDTO>();
     }

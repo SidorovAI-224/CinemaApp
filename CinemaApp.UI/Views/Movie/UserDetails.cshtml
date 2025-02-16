@@ -13,7 +13,32 @@
         <p class="movie-description">@Model.Description</p>
 
         <div class="movie-metadata">
-            <p><strong>Genre:</strong> @Model.GenreName</p>
+            <div class="movie-metadata">
+                <p>
+                    <strong>Genres:</strong>
+                    <span>G0: @Model.GenreName</span>
+                    @if (!string.IsNullOrEmpty(Model.GenreName1))
+                    {
+                        <span>G1: @Model.GenreName1</span>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.GenreName2))
+                    {
+                        <span>G2: @Model.GenreName2</span>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.GenreName3))
+                    {
+                        <span>G3: @Model.GenreName3</span>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.GenreName4))
+                    {
+                        <span>G4: @Model.GenreName4</span>
+                    }
+                </p>
+                <p><strong>Duration:</strong> @Model.Duration.ToString(@"hh\:mm")</p>
+                <p><strong>Release date:</strong> @Model.ReleaseDate.ToShortDateString()</p>
+                <p><strong>Rating:</strong> @Model.Rating</p>
+                <p><strong>Age limit:</strong> @Model.AgeLimit+</p>
+            </div>
             <p><strong>Duration:</strong> @Model.Duration.ToString(@"hh\:mm")</p>
             <p><strong>Release date:</strong> @Model.ReleaseDate.ToShortDateString()</p>
             <p><strong>Rating:</strong> @Model.Rating</p>

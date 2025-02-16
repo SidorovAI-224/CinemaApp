@@ -3,6 +3,7 @@ using CinemaApp.DAL.Entities;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.DTOs.MovieDTOs.Genre;
+using Microsoft.EntityFrameworkCore;
 
 namespace CinemaApp.BL.Services
 {

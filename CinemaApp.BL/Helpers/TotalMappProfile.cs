@@ -19,30 +19,30 @@ namespace CinemaApp.BL.Mapping
 
 
             // [MOVIE] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-            
+
             CreateMap<Movie, MovieDTO>()
                 .ForMember(dest => dest.MovieCrewmates, opt => opt.MapFrom(src => src.MovieCrewmates));
 
             CreateMap<MovieCreateDTO, Movie>()
                 .ForMember(dest => dest.MovieID, opt => opt.Ignore())
-                .ForMember(dest => dest.Genre, opt => opt.Ignore())   
-                .ForMember(dest => dest.Sessions, opt => opt.Ignore()) 
+                .ForMember(dest => dest.Genre, opt => opt.Ignore())
+                .ForMember(dest => dest.Sessions, opt => opt.Ignore())
                 .ForMember(dest => dest.MovieCrewmates, opt => opt.MapFrom(src => src.MovieCrewmates.Select(mc => new MovieCrewmate
-                {
-                    CrewmateID = mc.CrewmateID,
-                    PositionID = mc.PositionID
-                }).ToList()));
+                 {
+                     CrewmateID = mc.CrewmateID,
+                     PositionID = mc.PositionID
+                 }).ToList()));
 
             CreateMap<Movie, MovieUpdateDTO>()
                 .ForMember(dest => dest.GenreID, opt => opt.MapFrom(src => src.GenreID))
                 .ForMember(dest => dest.MovieCrewmates, opt => opt.MapFrom(src => src.MovieCrewmates.Select(mc => new MovieCrewmateDTO
-                {
-                    MovieID = mc.MovieID,
-                    CrewmateID = mc.CrewmateID,
-                    PositionID = mc.PositionID,
-                    CrewmateName = mc.Crewmate.Name,
-                    PositionName = mc.Position.PositionName
-                }).ToList()));
+                 {
+                     MovieID = mc.MovieID,
+                     CrewmateID = mc.CrewmateID,
+                     PositionID = mc.PositionID,
+                     CrewmateName = mc.Crewmate.Name,
+                     PositionName = mc.Position.PositionName
+                 }).ToList()));
 
             CreateMap<MovieUpdateDTO, Movie>()
                 .ForMember(dest => dest.MovieID, opt => opt.Ignore())

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FUe28UfxKZw=",
+  "dgSpecHash": "N1hinTkyisk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\arrtu\\Desktop\\NWR2\\Ruchkami\\CinemaApp.UI\\CinemaApp.UI.csproj",
+  "projectFilePath": "C:\\Users\\arrtu\\Desktop\\AC\\Alternative\\CinemaApp.UI\\CinemaApp.UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arrtu\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\arrtu\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",

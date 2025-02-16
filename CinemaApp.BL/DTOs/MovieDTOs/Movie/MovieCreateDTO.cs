@@ -8,14 +8,11 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
     public class MovieCreateDTO
     {
         [Required(ErrorMessage = "Film name is required")]
-        [StringLength(200, ErrorMessage = "Film name can't be longer than 200 characters")]
+        [StringLength(200, ErrorMessage = "Film name can't be longer than 200 characters")]  
         public string? Title { get; set; }
 
         [Required(ErrorMessage = "Film description is required")]
         public string? Description { get; set; }
-
-        [Required(ErrorMessage = "Genre ID is required")]
-        public int GenreID { get; set; }
 
         [Required(ErrorMessage = "Film duration is required")]
         public TimeSpan Duration { get; set; }
@@ -37,5 +34,13 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
         public int AgeLimit { get; set; }
 
         public List<MovieCrewmateCreateDTO> MovieCrewmates { get; set; } = new List<MovieCrewmateCreateDTO>();
+
+
+        //stupid ass genres
+        public int? GenreID { get; set; }
+        public int? GenreID1 { get; set; }
+        public int? GenreID2 { get; set; }
+        public int? GenreID3 { get; set; }
+        public int? GenreID4 { get; set; }
     }
 }

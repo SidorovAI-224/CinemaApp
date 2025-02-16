@@ -13,11 +13,82 @@
         <textarea asp-for="Description" class="form-control"></textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
+
     <div class="form-group">
-        <label asp-for="GenreID" class="control-label"></label>
-        <input asp-for="GenreID" class="form-control" />
-        <span asp-validation-for="GenreID" class="text-danger"></span>
+        <label asp-for="GenreID" class="control-label">Genre </label>
+        <select asp-for="GenreID" class="form-control">
+            <option value="">-- Select Genre --</option>
+            @if (ViewBag.Genres != null)
+            {
+                foreach (var genre in ViewBag.Genres)
+                {
+                    <option value="@genre.GenreID">@genre.GenreName</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="GenreID1" class="text-danger"></span>
     </div>
+
+    <div class="form-group">
+        <label asp-for="GenreID1" class="control-label">Genre 1</label>
+        <select asp-for="GenreID1" class="form-control">
+            <option value="">-- Select Genre --</option>
+            @if (ViewBag.Genres != null)
+            {
+                foreach (var genre in ViewBag.Genres)
+                {
+                    <option value="@genre.GenreID">@genre.GenreName</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="GenreID1" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GenreID2" class="control-label">Genre 2</label>
+        <select asp-for="GenreID2" class="form-control">
+            <option value="">-- Select Genre --</option>
+            @if (ViewBag.Genres != null)
+            {
+                foreach (var genre in ViewBag.Genres)
+                {
+                    <option value="@genre.GenreID">@genre.GenreName</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="GenreID2" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GenreID3" class="control-label">Genre 3</label>
+        <select asp-for="GenreID3" class="form-control">
+            <option value="">-- Select Genre --</option>
+            @if (ViewBag.Genres != null)
+            {
+                foreach (var genre in ViewBag.Genres)
+                {
+                    <option value="@genre.GenreID">@genre.GenreName</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="GenreID3" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GenreID4" class="control-label">Genre 4</label>
+        <select asp-for="GenreID4" class="form-control">
+            <option value="">-- Select Genre --</option>
+            @if (ViewBag.Genres != null)
+            {
+                foreach (var genre in ViewBag.Genres)
+                {
+                    <option value="@genre.GenreID">@genre.GenreName</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="GenreID4" class="text-danger"></span>
+    </div>
+
     <div class="form-group">
         <label asp-for="Duration" class="control-label"></label>
         <input asp-for="Duration" class="form-control" type="time" />
@@ -159,6 +230,7 @@
     });
 
     updateRemoveButtons();
+
 </script>
 
 @if (!ViewData.ModelState.IsValid)

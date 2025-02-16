@@ -4,6 +4,7 @@ using CinemaApp.BL.DTOs.MovieDTOs.Movie;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
+using CinemaApp.BL.Services;
 
 namespace CinemaApp.UI.Controllers
 {
@@ -14,19 +15,21 @@ namespace CinemaApp.UI.Controllers
         private readonly IPositionService _positionService;
         private readonly IMapper _mapper;
         private readonly IMovieCrewmateService _movieCrewmateService;
-
+        private readonly IGenreService _genreService;
         public MovieController(
             IMovieService movieService,
             IMapper mapper,
             ICrewmateService crewmateService,
             IPositionService positionService,
-            IMovieCrewmateService movieCrewmateService)
+            IMovieCrewmateService movieCrewmateService,
+            IGenreService genreService)
         {
             _movieService = movieService;
             _mapper = mapper;
             _crewmateService = crewmateService;
             _positionService = positionService;
             _movieCrewmateService = movieCrewmateService;
+            _genreService = genreService;
         }
 
         [Authorize(Roles = "Admin")]
@@ -53,9 +56,9 @@ namespace CinemaApp.UI.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
+            ViewBag.Genres = await _genreService.GetAllGenresAsync();
             var crewmates = await _crewmateService.GetAllCrewmatesAsync();
             var positions = await _positionService.GetAllPositionsAsync();
-
 
             return View();
         }
@@ -96,13 +99,13 @@ namespace CinemaApp.UI.Controllers
             {
                 return NotFound();
             }
-            
 
+            // Передаємо список жанрів у ViewBag
+            ViewBag.Genres = await _genreService.GetAllGenresAsync();
             ViewBag.Crewmates = await _crewmateService.GetAllCrewmatesAsync();
             ViewBag.Positions = await _positionService.GetAllPositionsAsync();
-            var movieDTO = _mapper.Map<MovieDTO>(movie);
 
-            return View(movieDTO);
+            return View(movie);
         }
 
         [Authorize(Roles = "Admin")]
@@ -111,6 +114,7 @@ namespace CinemaApp.UI.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.Genres = await _genreService.GetAllGenresAsync();
                 ViewBag.Crewmates = await _crewmateService.GetAllCrewmatesAsync();
                 ViewBag.Positions = await _positionService.GetAllPositionsAsync();
                 return View(movieDTO);
@@ -125,10 +129,9 @@ namespace CinemaApp.UI.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, ex.Message);
-
+                ViewBag.Genres = await _genreService.GetAllGenresAsync();
                 ViewBag.Crewmates = await _crewmateService.GetAllCrewmatesAsync();
                 ViewBag.Positions = await _positionService.GetAllPositionsAsync();
-
                 return View(movieDTO);
             }
         }
@@ -210,6 +213,5 @@ namespace CinemaApp.UI.Controllers
             }
             return Ok(new { name = position.PositionName });
         }
-
     }
 }

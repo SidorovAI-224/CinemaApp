@@ -9,14 +9,24 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
         public int MovieID { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
-        public int GenreID { get; set; }
-        public string? GenreName { get; set; }
         public TimeSpan Duration { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string? PosterURL { get; set; }
         public string? TrailerURL { get; set; }
         public decimal Rating { get; set; }
         public int AgeLimit { get; set; }
+
+        //unbeliveable genres
+        public int GenreID { get; set; }
+        public string? GenreName { get; set; }
+        public int? GenreID1 { get; set; }
+        public string? GenreName1 { get; set; }
+        public int? GenreID2 { get; set; }
+        public string? GenreName2 { get; set; }
+        public int? GenreID3 { get; set; }
+        public string? GenreName3 { get; set; }
+        public int? GenreID4 { get; set; }
+        public string? GenreName4 { get; set; }
         public List<MovieCrewmateDTO> MovieCrewmates { get; set; } = new List<MovieCrewmateDTO>();
     }
 }
