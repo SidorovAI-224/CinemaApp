@@ -5884,11 +5884,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\MB\\CinemaApp.UI\\CinemaApp.UI.csproj",
+      "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\GAY PORN\\CinemaApp.UI\\CinemaApp.UI.csproj",
       "projectName": "CinemaApp.UI",
-      "projectPath": "C:\\Users\\arrtu\\Desktop\\MB\\CinemaApp.UI\\CinemaApp.UI.csproj",
+      "projectPath": "C:\\Users\\arrtu\\Desktop\\GAY PORN\\CinemaApp.UI\\CinemaApp.UI.csproj",
       "packagesPath": "C:\\Users\\arrtu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\arrtu\\Desktop\\MB\\CinemaApp.UI\\obj\\",
+      "outputPath": "C:\\Users\\arrtu\\Desktop\\GAY PORN\\CinemaApp.UI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5910,8 +5910,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\arrtu\\Desktop\\MB\\CinemaApp.BL\\CinemaApp.BL.csproj": {
-              "projectPath": "C:\\Users\\arrtu\\Desktop\\MB\\CinemaApp.BL\\CinemaApp.BL.csproj"
+            "C:\\Users\\arrtu\\Desktop\\GAY PORN\\CinemaApp.BL\\CinemaApp.BL.csproj": {
+              "projectPath": "C:\\Users\\arrtu\\Desktop\\GAY PORN\\CinemaApp.BL\\CinemaApp.BL.csproj"
             }
           }
         }

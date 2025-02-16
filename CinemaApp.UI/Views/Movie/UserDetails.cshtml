@@ -66,6 +66,52 @@
     </div>
 </div>
 
+
+
+
+
+
+<div>
+    <h2>Recommended Movies</h2>
+    <ul id="recommendations-list"></ul>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let movieId = @Model.MovieID;
+        fetch(`/api/ai/similar/${movieId}?maxResults=5`)
+            .then(response => response.json())
+            .then(data => {
+                let list = document.getElementById("recommendations-list");
+                list.innerHTML = "";
+                data.forEach(movie => {
+                    let li = document.createElement("li");
+                    li.textContent = movie.title;
+                    list.appendChild(li);
+                });
+            })
+            .catch(error => console.error("Error fetching recommendations:", error));
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="trailer-container">
     <h2>Trailer</h2> 
     <iframe width="400" height="300" src="@Model.TrailerURL.Replace("watch?v=", "embed/")" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

@@ -17,6 +17,7 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
         public int AgeLimit { get; set; }
 
         //unbeliveable genres
+        // wall of shame
         public int GenreID { get; set; }
         public string? GenreName { get; set; }
         public int? GenreID1 { get; set; }

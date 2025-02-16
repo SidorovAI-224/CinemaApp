@@ -40,26 +40,27 @@ builder.Services.AddScoped<ISessionService, SessionService>();
 builder.Services.AddScoped<IPositionService, PositionService>();
 builder.Services.AddScoped<ICrewmateService, CrewmateService>();
 builder.Services.AddScoped<IMovieCrewmateService, MovieCrewmateService>();
+builder.Services.AddScoped<IAIService, AiService>();
 
 
 
 
-// //table check
-//var options = new DbContextOptionsBuilder<CinemaDbContext>()
-//    .UseSqlite("Data Source=CinemeApp.db") 
-//    .Options;
+//table check
+var options = new DbContextOptionsBuilder<CinemaDbContext>()
+    .UseSqlite("Data Source=CinemeApp.db")
+    .Options;
 
-//using (var context = new CinemaDbContext(options))
-//{
-//    var tables = context.Model.GetEntityTypes()
-//        .Select(t => t.GetTableName())
-//        .ToList();
+using (var context = new CinemaDbContext(options))
+{
+    var tables = context.Model.GetEntityTypes()
+        .Select(t => t.GetTableName())
+        .ToList();
 
-//    foreach (var table in tables)
-//    {
-//        Console.WriteLine(table);
-//    }
-//}
+    foreach (var table in tables)
+    {
+        Console.WriteLine(table);
+    }
+}
 
 
 // DB Connection
