@@ -11,40 +11,85 @@ using CinemaApp.BL.DTOs.CrewDTOs.Position;
 
 namespace CinemaApp.BL.Mapping
 {
-    public class TotalMappProfile : Profile
+    public class TotalMappProfile : Profile 
     {
         public TotalMappProfile()
         {
+
+
+
+            // [MOVIE] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
             CreateMap<Movie, MovieDTO>()
-                .ForMember(dest => dest.GenreName, opt => opt.MapFrom(src => src.Genre.GenreName));
+                .ForMember(dest => dest.MovieCrewmates, opt => opt.MapFrom(src => src.MovieCrewmates));
 
-            CreateMap<MovieCreateDTO, Movie>();
+            CreateMap<MovieCreateDTO, Movie>()
+                .ForMember(dest => dest.MovieID, opt => opt.Ignore())
+                .ForMember(dest => dest.Genre, opt => opt.Ignore())
+                .ForMember(dest => dest.Sessions, opt => opt.Ignore())
+                .ForMember(dest => dest.MovieCrewmates, opt => opt.MapFrom(src => src.MovieCrewmates.Select(mc => new MovieCrewmate
+                 {
+                     CrewmateID = mc.CrewmateID,
+                     PositionID = mc.PositionID
+                 }).ToList()));
 
-            CreateMap<MovieUpdateDTO, Movie>();
+            CreateMap<Movie, MovieUpdateDTO>()
+                .ForMember(dest => dest.GenreID, opt => opt.MapFrom(src => src.GenreID))
+                .ForMember(dest => dest.MovieCrewmates, opt => opt.MapFrom(src => src.MovieCrewmates.Select(mc => new MovieCrewmateDTO
+                 {
+                     MovieID = mc.MovieID,
+                     CrewmateID = mc.CrewmateID,
+                     PositionID = mc.PositionID,
+                     CrewmateName = mc.Crewmate.Name,
+                     PositionName = mc.Position.PositionName
+                 }).ToList()));
 
-            CreateMap<MovieDTO, MovieUpdateDTO>();
+            CreateMap<MovieUpdateDTO, Movie>()
+                .ForMember(dest => dest.MovieID, opt => opt.Ignore())
+                .ForMember(dest => dest.Genre, opt => opt.Ignore())
+                .ForMember(dest => dest.Sessions, opt => opt.Ignore());
 
-            // MovieDTO - Movie
             CreateMap<MovieDTO, Movie>()
                 .ForMember(dest => dest.Genre, opt => opt.Ignore())
                 .ForMember(dest => dest.Sessions, opt => opt.Ignore())
-                .ForMember(dest => dest.MoviesCrewmates, opt => opt.Ignore());
+                .ForMember(dest => dest.MovieCrewmates, opt => opt.Ignore());
 
-            // Movie - MovieDeleteDTO
             CreateMap<Movie, MovieDeleteDTO>();
 
-            // MovieDeleteDTO - Movie
-            CreateMap<MovieDeleteDTO, Movie>();
+            CreateMap<MovieDeleteDTO, Movie>()
+                .ForMember(dest => dest.Title, opt => opt.Ignore())
+                .ForMember(dest => dest.Description, opt => opt.Ignore())
+                .ForMember(dest => dest.GenreID, opt => opt.Ignore())
+                .ForMember(dest => dest.Duration, opt => opt.Ignore())
+                .ForMember(dest => dest.ReleaseDate, opt => opt.Ignore())
+                .ForMember(dest => dest.PosterURL, opt => opt.Ignore())
+                .ForMember(dest => dest.TrailerURL, opt => opt.Ignore())
+                .ForMember(dest => dest.Rating, opt => opt.Ignore())
+                .ForMember(dest => dest.AgeLimit, opt => opt.Ignore())
+                .ForMember(dest => dest.Genre, opt => opt.Ignore())
+                .ForMember(dest => dest.Sessions, opt => opt.Ignore())
+                .ForMember(dest => dest.MovieCrewmates, opt => opt.Ignore());
+
+            CreateMap<MovieDTO, MovieUpdateDTO>()
+                .ForMember(dest => dest.MovieID, opt => opt.Ignore());
+
+            CreateMap<MovieUpdateDTO, MovieDTO>();
 
 
+
+            // [SESSION] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
             CreateMap<Session, SessionDTO>()
                 .ForMember(dest => dest.MovieTitle, opt => opt.MapFrom(src => src.Movie.Title));
 
             CreateMap<SessionCreateDTO, Session>()
-                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date)); // Зберігаємо дату з DTO
+                .ForMember(dest => dest.SessionID, opt => opt.Ignore())
+                .ForMember(dest => dest.Movie, opt => opt.Ignore())
+                .ForMember(dest => dest.Tickets, opt => opt.Ignore());
 
-            CreateMap<SessionUpdateDTO, Session>();
+            CreateMap<SessionUpdateDTO, Session>()
+                .ForMember(dest => dest.Movie, opt => opt.Ignore())
+                .ForMember(dest => dest.Tickets, opt => opt.Ignore());
 
             CreateMap<Session, SessionUpdateDTO>();
 
@@ -58,145 +103,169 @@ namespace CinemaApp.BL.Mapping
                 .ForMember(dest => dest.StartTime, opt => opt.MapFrom(src => src.StartTime))
                 .ForMember(dest => dest.MovieID, opt => opt.MapFrom(src => src.MovieID));
 
-            CreateMap<SessionDeleteDTO, Session>();
+            CreateMap<SessionDeleteDTO, Session>()
+                .ForMember(dest => dest.Movie, opt => opt.Ignore())
+                .ForMember(dest => dest.Tickets, opt => opt.Ignore());
 
 
 
-            // User - UserDTO
+            // [USER] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
             CreateMap<User, UserDTO>()
                 .ForMember(dest => dest.UserID, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
 
-            // UserCreateDTO - User
             CreateMap<UserCreateDTO, User>()
-                .ForMember(dest => dest.Id, opt => opt.Ignore())
-                .ForMember(dest => dest.RegistrationDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .ForMember(dest => dest.Tickets, opt => opt.Ignore());
+                .ForMember(dest => dest.NormalizedUserName, opt => opt.Ignore())
+                .ForMember(dest => dest.NormalizedEmail, opt => opt.Ignore())
+                .ForMember(dest => dest.EmailConfirmed, opt => opt.Ignore())
+                .ForMember(dest => dest.PasswordHash, opt => opt.Ignore())
+                .ForMember(dest => dest.SecurityStamp, opt => opt.Ignore())
+                .ForMember(dest => dest.ConcurrencyStamp, opt => opt.Ignore())
+                .ForMember(dest => dest.PhoneNumber, opt => opt.Ignore())
+                .ForMember(dest => dest.PhoneNumberConfirmed, opt => opt.Ignore())
+                .ForMember(dest => dest.TwoFactorEnabled, opt => opt.Ignore())
+                .ForMember(dest => dest.LockoutEnd, opt => opt.Ignore())
+                .ForMember(dest => dest.LockoutEnabled, opt => opt.Ignore())
+                .ForMember(dest => dest.AccessFailedCount, opt => opt.Ignore());
 
-            // UserUpdateDTO - User
             CreateMap<UserUpdateDTO, User>()
-                .ForMember(dest => dest.Id, opt => opt.Ignore())
-                .ForMember(dest => dest.Tickets, opt => opt.Ignore());
+                .ForMember(dest => dest.RegistrationDate, opt => opt.Ignore())
+                .ForMember(dest => dest.NormalizedUserName, opt => opt.Ignore())
+                .ForMember(dest => dest.NormalizedEmail, opt => opt.Ignore())
+                .ForMember(dest => dest.EmailConfirmed, opt => opt.Ignore())
+                .ForMember(dest => dest.PasswordHash, opt => opt.Ignore())
+                .ForMember(dest => dest.SecurityStamp, opt => opt.Ignore())
+                .ForMember(dest => dest.ConcurrencyStamp, opt => opt.Ignore())
+                .ForMember(dest => dest.PhoneNumber, opt => opt.Ignore())
+                .ForMember(dest => dest.PhoneNumberConfirmed, opt => opt.Ignore())
+                .ForMember(dest => dest.TwoFactorEnabled, opt => opt.Ignore())
+                .ForMember(dest => dest.LockoutEnd, opt => opt.Ignore())
+                .ForMember(dest => dest.LockoutEnabled, opt => opt.Ignore())
+                .ForMember(dest => dest.AccessFailedCount, opt => opt.Ignore());
 
-            // User - UserDeleteDTO
             CreateMap<User, UserDeleteDTO>()
                 .ForMember(dest => dest.UserID, opt => opt.MapFrom(src => src.Id));
 
-            // UserDeleteDTO - User 
-            CreateMap<UserDeleteDTO, User>();
+             CreateMap<UserDeleteDTO, User>()
+                .ForMember(dest => dest.FullName, opt => opt.Ignore())
+                .ForMember(dest => dest.Age, opt => opt.Ignore())
+                .ForMember(dest => dest.RegistrationDate, opt => opt.Ignore())
+                .ForMember(dest => dest.Tickets, opt => opt.Ignore())
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.UserName, opt => opt.Ignore())
+                .ForMember(dest => dest.NormalizedUserName, opt => opt.Ignore())
+                .ForMember(dest => dest.Email, opt => opt.Ignore())
+                .ForMember(dest => dest.NormalizedEmail, opt => opt.Ignore())
+                .ForMember(dest => dest.EmailConfirmed, opt => opt.Ignore())
+                .ForMember(dest => dest.PasswordHash, opt => opt.Ignore())
+                .ForMember(dest => dest.SecurityStamp, opt => opt.Ignore())
+                .ForMember(dest => dest.ConcurrencyStamp, opt => opt.Ignore())
+                .ForMember(dest => dest.PhoneNumber, opt => opt.Ignore())
+                .ForMember(dest => dest.PhoneNumberConfirmed, opt => opt.Ignore())
+                .ForMember(dest => dest.TwoFactorEnabled, opt => opt.Ignore())
+                .ForMember(dest => dest.LockoutEnd, opt => opt.Ignore())
+                .ForMember(dest => dest.LockoutEnabled, opt => opt.Ignore())
+                .ForMember(dest => dest.AccessFailedCount, opt => opt.Ignore());
 
 
+            
+            // [TICKET] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-            // Ticket - TicketDTO
             CreateMap<Ticket, TicketDTO>()
                 .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.UserName))
                 .ForMember(dest => dest.MovieTitle, opt => opt.MapFrom(src => src.Session.Movie.Title))
                 .ForMember(dest => dest.SessionStartTime, opt => opt.MapFrom(src => src.Session.StartTime));
 
-            // TicketDTO - Ticket
             CreateMap<TicketCreateDTO, Ticket>()
                  .ForMember(dest => dest.TicketID, opt => opt.Ignore())
                  .ForMember(dest => dest.BookingDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
                  .ForMember(dest => dest.Session, opt => opt.Ignore())
                  .ForMember(dest => dest.User, opt => opt.Ignore());
 
-            // TicketUpdateDTO - Ticket
             CreateMap<TicketUpdateDTO, Ticket>()
                 .ForMember(dest => dest.Session, opt => opt.Ignore())
                 .ForMember(dest => dest.User, opt => opt.Ignore());
 
-            // Ticket - TicketDeleteDTO
             CreateMap<Ticket, TicketDeleteDTO>();
 
-            // TicketDeleteDTO - Ticket
             CreateMap<TicketDeleteDTO, Ticket>();
 
 
 
-            // Genre - GenreDTO
+            // [GENRE] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
             CreateMap<Genre, GenreDTO>();
 
-            // GenreDTO - Genre
             CreateMap<GenreDTO, Genre>()
                 .ForMember(dest => dest.Movies, opt => opt.Ignore());
 
-            // GenreUpdateDTO - Genre
             CreateMap<GenreUpdateDTO, Genre>();
 
-            // Genre - GenreDeleteDTO
             CreateMap<Genre, GenreDeleteDTO>();
 
-            // GenreDeleteDTO - Genre
             CreateMap<GenreDeleteDTO, Genre>();
 
-
-            // GenreCreateDTO - Genre
             CreateMap<GenreCreateDTO, Genre>();
 
 
 
-            // Position- PositionDTO
+            // [POSITION] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
             CreateMap<Position, PositionDTO>();
 
-            // PositionCreateDTO - Position
             CreateMap<PositionCreateDTO, Position>()
                 .ForMember(dest => dest.PositionID, opt => opt.Ignore());
 
-            // PositionUpdateDTO - Position
             CreateMap<PositionUpdateDTO, Position>()
                 .ForMember(dest => dest.PositionID, opt => opt.Ignore());
 
-            // Position - PositionDeleteDTO
             CreateMap<Position, PositionDeleteDTO>();
 
-            // PositionDeleteDTO - Position
             CreateMap<PositionDeleteDTO, Position>();
 
 
 
-            // Crewmate - CrewmateDTO
+            // [CREWMATE] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
             CreateMap<Crewmate, CrewmateDTO>()
                 .ForMember(dest => dest.Positions, opt => opt.MapFrom(src =>
                     src.CrewmatePositions.Select(cp => cp.Position.PositionName).ToList()));
 
-            // CrewmateCreateDTO - Crewmate
             CreateMap<CrewmateCreateDTO, Crewmate>()
                 .ForMember(dest => dest.CrewmateID, opt => opt.Ignore())
                 .ForMember(dest => dest.MoviesCrewmates, opt => opt.Ignore())
                 .ForMember(dest => dest.CrewmatePositions, opt => opt.Ignore());
 
-            // CrewmateUpdateDTO - Crewmate
             CreateMap<CrewmateUpdateDTO, Crewmate>()
                 .ForMember(dest => dest.CrewmateID, opt => opt.Ignore())
                 .ForMember(dest => dest.MoviesCrewmates, opt => opt.Ignore())
                 .ForMember(dest => dest.CrewmatePositions, opt => opt.Ignore());
 
-            // Crewmate - CrewmateDeleteDTO
             CreateMap<Crewmate, CrewmateDeleteDTO>();
 
-            // CrewmateDeleteDTO - Crewmate
-            CreateMap<CrewmateDeleteDTO, Crewmate>();
+            CreateMap<CrewmateDeleteDTO, Crewmate>()
+                .ForMember(dest => dest.Name, opt => opt.Ignore())
+                .ForMember(dest => dest.MoviesCrewmates, opt => opt.Ignore())
+                .ForMember(dest => dest.CrewmatePositions, opt => opt.Ignore());
 
-
-            // CrewmatePositions - CrewmatePositionsDTO
-            CreateMap<Crewmate, CrewmateDTO>();
-            // CrewmatePositionsDTO - CrewmatePositions
-            CreateMap<CrewmateDTO, Crewmate>();
-
-
-
-            // Movies_Crewmates - MovieCrewmateDTO
-            CreateMap<MovieCrewmate, MovieCrewmateDTO>();
-
-            // MovieCrewmateDTO - Movies_Crewmates
-            CreateMap<MovieCrewmateDTO, MovieCrewmate>();
+            CreateMap<CrewmateDTO, Crewmate>()
+                .ForMember(dest => dest.MoviesCrewmates, opt => opt.Ignore())
+                .ForMember(dest => dest.CrewmatePositions, opt => opt.Ignore());
 
 
 
-            //CreateMap<HallOne, HallOneDTO>();
-            //CreateMap<HallOneDTO, HallOne>();
+            // [MOVIECREWMATE] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+            CreateMap<MovieCrewmate, MovieCrewmateDTO>()
+                .ForMember(dest => dest.CrewmateName, opt => opt.MapFrom(src => src.Crewmate.Name))
+                .ForMember(dest => dest.PositionName, opt => opt.MapFrom(src => src.Position.PositionName));
+
+            CreateMap<MovieCrewmateDTO, MovieCrewmate>()
+                .ForMember(dest => dest.Crewmate, opt => opt.Ignore())
+                .ForMember(dest => dest.Position, opt => opt.Ignore());
         }
     }
+
 }

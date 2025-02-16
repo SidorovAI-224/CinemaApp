@@ -1,19 +1,16 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using CinemaApp.UI.Models;
-using CinemaApp.BL;
 using Microsoft.AspNetCore.Authorization;
 using CinemaApp.BL.Interfaces;
 namespace CinemaApp.UI.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly GreetingService _greetingService;
     private readonly IMovieService _movieService;
 
     public HomeController(IMovieService movieService)
     {
-        _greetingService = new GreetingService();
         _movieService = movieService;
     }
 

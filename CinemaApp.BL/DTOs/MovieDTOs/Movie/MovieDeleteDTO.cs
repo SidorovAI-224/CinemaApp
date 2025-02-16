@@ -1,5 +1,4 @@
-﻿
-namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
+﻿namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
 {
     public class MovieDeleteDTO
     {

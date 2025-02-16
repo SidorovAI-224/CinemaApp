@@ -3,8 +3,6 @@ using CinemaApp.BL.DTOs.CrewDTOs.Position;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
 using CinemaApp.DAL.Entities;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CinemaApp.BL.Services
 {

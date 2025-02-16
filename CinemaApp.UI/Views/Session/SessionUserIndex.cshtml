@@ -1,29 +1,26 @@
 ﻿@model IEnumerable<CinemaApp.BL.DTOs.MovieDTOs.Session.SessionDTO>
-@{
-    ViewData["Title"] = "Сторінка сеансів";
-}
 
-<input type="date" id="dateInput">
-<button onclick="filterSessionsByDate(document.getElementById('dateInput').value)">Фільтрувати за датою</button>
-<button onclick="filterSessionsByDate('all')">Показати всі</button>
+<h2>Avaible sessions</h2>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Назва фільму</th>
-            <th>Зал</th>
-            <th>Дата</th>
-            <th>Час початку</th>
+            <th>Session ID</th>
+            <th>Film</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Hall</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var session in Model)
         {
             <tr>
+                <td>@session.SessionID</td>
                 <td>@session.MovieTitle</td>
+                <td>@session.Date.ToString("M")</td>
+                <td>@session.StartTime.ToString("T")</td>
                 <td>@session.Hall</td>
-                <td>@session.Date.ToShortDateString()</td>
-                <td>@session.StartTime.ToShortTimeString()</td>
                 <td><a asp-controller="Ticket" asp-action="TicketCreate" class="btn btn-primary">Book a ticket</a></td>
             </tr>
         }

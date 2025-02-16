@@ -1,5 +1,4 @@
-﻿using CinemaApp.DAL.Entities;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace CinemaApp.BL.Interfaces
 {

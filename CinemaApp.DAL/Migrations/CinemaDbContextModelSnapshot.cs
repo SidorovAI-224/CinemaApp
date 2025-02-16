@@ -84,12 +84,10 @@ namespace CinemaApp.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("AgeLimit")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("AgeLimit")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("TEXT");
 
@@ -99,8 +97,19 @@ namespace CinemaApp.DAL.Migrations
                     b.Property<int>("GenreID")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("GenreID1")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("GenreID2")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("GenreID3")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("GenreID4")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("PosterURL")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("TEXT");
 
@@ -116,13 +125,20 @@ namespace CinemaApp.DAL.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TrailerURL")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("TEXT");
 
                     b.HasKey("MovieID");
 
                     b.HasIndex("GenreID");
+
+                    b.HasIndex("GenreID1");
+
+                    b.HasIndex("GenreID2");
+
+                    b.HasIndex("GenreID3");
+
+                    b.HasIndex("GenreID4");
 
                     b.ToTable("Movies");
                 });
@@ -135,9 +151,14 @@ namespace CinemaApp.DAL.Migrations
                     b.Property<int>("CrewmateID")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("PositionID")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("MovieID", "CrewmateID");
 
                     b.HasIndex("CrewmateID");
+
+                    b.HasIndex("PositionID");
 
                     b.ToTable("MovieCrewmate");
                 });
@@ -215,9 +236,6 @@ namespace CinemaApp.DAL.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Row")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("Seat")
                         .HasColumnType("INTEGER");
 
@@ -225,7 +243,6 @@ namespace CinemaApp.DAL.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserID")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("TicketID");
@@ -262,7 +279,6 @@ namespace CinemaApp.DAL.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("FullName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")
@@ -468,7 +484,35 @@ namespace CinemaApp.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("CinemaApp.DAL.Entities.Genre", "Genre1")
+                        .WithMany()
+                        .HasForeignKey("GenreID1")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CinemaApp.DAL.Entities.Genre", "Genre2")
+                        .WithMany()
+                        .HasForeignKey("GenreID2")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CinemaApp.DAL.Entities.Genre", "Genre3")
+                        .WithMany()
+                        .HasForeignKey("GenreID3")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CinemaApp.DAL.Entities.Genre", "Genre4")
+                        .WithMany()
+                        .HasForeignKey("GenreID4")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.Navigation("Genre");
+
+                    b.Navigation("Genre1");
+
+                    b.Navigation("Genre2");
+
+                    b.Navigation("Genre3");
+
+                    b.Navigation("Genre4");
                 });
 
             modelBuilder.Entity("CinemaApp.DAL.Entities.MovieCrewmate", b =>
@@ -480,20 +524,28 @@ namespace CinemaApp.DAL.Migrations
                         .IsRequired();
 
                     b.HasOne("CinemaApp.DAL.Entities.Movie", "Movie")
-                        .WithMany("MoviesCrewmates")
+                        .WithMany("MovieCrewmates")
                         .HasForeignKey("MovieID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CinemaApp.DAL.Entities.Position", "Position")
+                        .WithMany()
+                        .HasForeignKey("PositionID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Crewmate");
 
                     b.Navigation("Movie");
+
+                    b.Navigation("Position");
                 });
 
             modelBuilder.Entity("CinemaApp.DAL.Entities.MovieGenre", b =>
                 {
                     b.HasOne("CinemaApp.DAL.Entities.Genre", "Genre")
-                        .WithMany()
+                        .WithMany("MovieGenres")
                         .HasForeignKey("GenreID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -535,8 +587,7 @@ namespace CinemaApp.DAL.Migrations
                     b.HasOne("CinemaApp.DAL.Entities.User", "User")
                         .WithMany("Tickets")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Session");
 
@@ -603,6 +654,8 @@ namespace CinemaApp.DAL.Migrations
 
             modelBuilder.Entity("CinemaApp.DAL.Entities.Genre", b =>
                 {
+                    b.Navigation("MovieGenres");
+
                     b.Navigation("Movies");
                 });
 
@@ -613,7 +666,7 @@ namespace CinemaApp.DAL.Migrations
 
             modelBuilder.Entity("CinemaApp.DAL.Entities.Movie", b =>
                 {
-                    b.Navigation("MoviesCrewmates");
+                    b.Navigation("MovieCrewmates");
 
                     b.Navigation("Sessions");
                 });

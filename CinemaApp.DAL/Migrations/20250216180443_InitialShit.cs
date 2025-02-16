@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CinemaApp.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class InitialShit : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,7 +30,7 @@ namespace CinemaApp.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
-                    FullName = table.Column<string>(type: "TEXT", nullable: false),
+                    FullName = table.Column<string>(type: "TEXT", nullable: true),
                     Age = table.Column<int>(type: "INTEGER", nullable: false),
                     RegistrationDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
@@ -218,14 +218,18 @@ namespace CinemaApp.DAL.Migrations
                     MovieID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false),
-                    Description = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false),
-                    GenreID = table.Column<int>(type: "INTEGER", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: true),
                     Duration = table.Column<TimeSpan>(type: "TEXT", nullable: false),
                     ReleaseDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    PosterURL = table.Column<string>(type: "TEXT", maxLength: 500, nullable: false),
-                    TrailerURL = table.Column<string>(type: "TEXT", maxLength: 500, nullable: false),
+                    PosterURL = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    TrailerURL = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
                     Rating = table.Column<decimal>(type: "TEXT", nullable: false),
-                    AgeLimit = table.Column<string>(type: "TEXT", nullable: false)
+                    AgeLimit = table.Column<int>(type: "INTEGER", nullable: false),
+                    GenreID = table.Column<int>(type: "INTEGER", nullable: false),
+                    GenreID1 = table.Column<int>(type: "INTEGER", nullable: true),
+                    GenreID2 = table.Column<int>(type: "INTEGER", nullable: true),
+                    GenreID3 = table.Column<int>(type: "INTEGER", nullable: true),
+                    GenreID4 = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -236,6 +240,30 @@ namespace CinemaApp.DAL.Migrations
                         principalTable: "Genres",
                         principalColumn: "GenreID",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Movies_Genres_GenreID1",
+                        column: x => x.GenreID1,
+                        principalTable: "Genres",
+                        principalColumn: "GenreID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Movies_Genres_GenreID2",
+                        column: x => x.GenreID2,
+                        principalTable: "Genres",
+                        principalColumn: "GenreID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Movies_Genres_GenreID3",
+                        column: x => x.GenreID3,
+                        principalTable: "Genres",
+                        principalColumn: "GenreID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Movies_Genres_GenreID4",
+                        column: x => x.GenreID4,
+                        principalTable: "Genres",
+                        principalColumn: "GenreID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -267,7 +295,8 @@ namespace CinemaApp.DAL.Migrations
                 columns: table => new
                 {
                     MovieID = table.Column<int>(type: "INTEGER", nullable: false),
-                    CrewmateID = table.Column<int>(type: "INTEGER", nullable: false)
+                    CrewmateID = table.Column<int>(type: "INTEGER", nullable: false),
+                    PositionID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -283,6 +312,12 @@ namespace CinemaApp.DAL.Migrations
                         column: x => x.MovieID,
                         principalTable: "Movies",
                         principalColumn: "MovieID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MovieCrewmate_Positions_PositionID",
+                        column: x => x.PositionID,
+                        principalTable: "Positions",
+                        principalColumn: "PositionID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -339,9 +374,8 @@ namespace CinemaApp.DAL.Migrations
                     TicketID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     SessionID = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserID = table.Column<string>(type: "TEXT", nullable: false),
+                    UserID = table.Column<string>(type: "TEXT", nullable: true),
                     Seat = table.Column<int>(type: "INTEGER", nullable: false),
-                    Row = table.Column<int>(type: "INTEGER", nullable: false),
                     Price = table.Column<decimal>(type: "TEXT", nullable: false),
                     BookingDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     HallOneSeatID = table.Column<int>(type: "INTEGER", nullable: true)
@@ -416,6 +450,11 @@ namespace CinemaApp.DAL.Migrations
                 column: "CrewmateID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_MovieCrewmate_PositionID",
+                table: "MovieCrewmate",
+                column: "PositionID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_MovieGenre_GenreID",
                 table: "MovieGenre",
                 column: "GenreID");
@@ -424,6 +463,26 @@ namespace CinemaApp.DAL.Migrations
                 name: "IX_Movies_GenreID",
                 table: "Movies",
                 column: "GenreID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Movies_GenreID1",
+                table: "Movies",
+                column: "GenreID1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Movies_GenreID2",
+                table: "Movies",
+                column: "GenreID2");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Movies_GenreID3",
+                table: "Movies",
+                column: "GenreID3");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Movies_GenreID4",
+                table: "Movies",
+                column: "GenreID4");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sessions_MovieID",
@@ -480,10 +539,10 @@ namespace CinemaApp.DAL.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Positions");
+                name: "Crewmates");
 
             migrationBuilder.DropTable(
-                name: "Crewmates");
+                name: "Positions");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
