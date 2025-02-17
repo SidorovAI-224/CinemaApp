@@ -2,7 +2,7 @@
 
 CinemaApp – web application for ticket booking. Application allows for user to check current sessions, to book a ticket, watch film trailer, and for sure to see full film info!. Admin is allowed to control this service, add/change/delete films and each entity, like ticket/session/genre/actor(crewmate)/roler(positions) etc.
 
-## Functional  
+## - - Functional
 
 ### For user:  
 - Sessions check  
@@ -15,7 +15,7 @@ CinemaApp – web application for ticket booking. Application allows for user to
 - AI powered search & recomendations
 
 
-### Для адміністратора  
+### For admin:  
 - Adding / deleting / editing film
 - Adding / deleting / editing genre
 - Adding / deleting / editing session
@@ -24,7 +24,7 @@ CinemaApp – web application for ticket booking. Application allows for user to
 - Adding / deleting / editing ticket
 - Mange users - Update nickname / email / password 
 
-## Technologies  
+## Technologies:
 
 - **Backend**: ASP.NET MVC
 - **Frontend**: Razor Pages Views
@@ -33,8 +33,6 @@ CinemaApp – web application for ticket booking. Application allows for user to
 - **Authentication & authorization**: ASP.NET Identity  
 - **Mapping**: AutoMapper  
 - **Validation**: FluentValidation
-
-## Розгортання  
 
 ### Before launching [!]  
 Before starting the project, make sure you have the following things installed:  
