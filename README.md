@@ -40,7 +40,7 @@ Before starting the project, make sure you have the following things installed:
 - [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)  
 - [Visual Studio 2022+](https://visualstudio.microsoft.com/)  
 
-### Клонування репозиторію  
+### How to clone?  
 ```sh
 git clone https://github.com/your-repository/cinemaapp.git
 cd cinemaapp
