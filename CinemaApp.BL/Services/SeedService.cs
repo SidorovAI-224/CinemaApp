@@ -28,6 +28,8 @@ namespace CinemaApp.BL.Services
                 logger.LogInformation("Seeding admin user.");
                 var adminEmail = "admin@codehub.com";
 
+                
+
                 if (await userManager.FindByEmailAsync(adminEmail) == null)
                 {
                     //var _passwordHasher = new PasswordHasher<User>();
@@ -58,7 +60,7 @@ namespace CinemaApp.BL.Services
                     if (result.Succeeded)
                     {
                         logger.LogInformation("Assigning Admin role to the admin user");
-                        await userManager.AddToRoleAsync(adminUser, "Admin");
+                        await userManager.AddToRoleAsync(adminUser, "Admin"x);
                     }
                     */
                 }

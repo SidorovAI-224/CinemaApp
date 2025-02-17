@@ -1,10 +1,9 @@
-﻿@{
+﻿@model CinemaApp.BL.DTOs.UserDTOs.User.UserDTO;
+@{
     ViewData["Title"] = "Admin Page";
 }
 
 <div class="admin-panel text-center">
-    <h1 class="display-4">Welcome Back @User.Identity.Name</h1>
-
     <div class="button-container">
         <a asp-controller="Movie" asp-action="Index" class="admin-btn">Go to Movies</a>
         <a asp-controller="Genre" asp-action="Index" class="admin-btn">Go to Genres</a>
