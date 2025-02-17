@@ -2,7 +2,9 @@
 using CinemaApp.BL.DTOs.UserDTOs.Ticket;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
+using CinemaApp.DAL.Data;
 using CinemaApp.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace CinemaApp.BL.Services
 {
@@ -10,11 +12,13 @@ namespace CinemaApp.BL.Services
     {
         private readonly IRepository<Ticket> _ticketRepository;
         private readonly IMapper _mapper;
+        private readonly CinemaDbContext _context;
 
-        public TicketService(IRepository<Ticket> ticketRepository, IMapper mapper)
+        public TicketService(IRepository<Ticket> ticketRepository, IMapper mapper, CinemaDbContext dbContext)
         {
             _ticketRepository = ticketRepository;
             _mapper = mapper;
+            _context = dbContext;
         }
 
         public async Task<IEnumerable<TicketDTO>> GetAllTicketsAsync()
@@ -49,6 +53,16 @@ namespace CinemaApp.BL.Services
         public async Task AddTicketAsync(Ticket ticket) // Take the Entity directly
         {
             await _ticketRepository.AddAsync(ticket);
+        }
+        public async Task<IEnumerable<TicketDTO>> GetTicketsByUserIdAsync(string userId)
+        {
+            var tickets = await _context.Tickets
+                .Include(t => t.Session)
+                    .ThenInclude(s => s.Movie)
+                .Where(t => t.UserID == userId)
+                .ToListAsync();
+
+            return _mapper.Map<IEnumerable<TicketDTO>>(tickets);
         }
     }
 

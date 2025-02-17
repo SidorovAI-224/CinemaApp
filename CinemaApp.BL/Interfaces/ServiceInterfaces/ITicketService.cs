@@ -11,5 +11,6 @@ namespace CinemaApp.BL.Interfaces.ServiceInterfaces
         Task UpdateTicketAsync(int id, TicketUpdateDTO ticketUpdateDTO);
         Task DeleteTicketByIdAsync(int id);
         Task AddTicketAsync(Ticket ticket);
+        Task<IEnumerable<TicketDTO>> GetTicketsByUserIdAsync(string userId);
     }
 }

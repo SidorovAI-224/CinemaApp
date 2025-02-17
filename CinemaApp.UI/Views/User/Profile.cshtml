@@ -1,6 +1,101 @@
-﻿@model CinemaApp.DAL.Entities.User;
+﻿@using CinemaApp.UI.ViewModels;
+@model UserProfileViewModel
 @{
     ViewData["Title"] = "Особистий кабінет";
 }
-<h2>Особистий кабінет</h2>
+<div class="container py-4">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Особиста інформація</h5>
 
+                    <div class="mb-4">
+                        <p class="text-muted mb-1">Email:</p>
+                        <p class="fw-medium">@Model.User.Email</p>
+                    </div>
+
+                    <!-- Email Form -->
+                    <div class="mb-4">
+                        <button class="btn btn-primary w-100 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#emailForm">
+                            Змінити email
+                        </button>
+                        <div class="collapse" id="emailForm">
+                            <div class="card card-body border-0 bg-light">
+                                <form asp-action="UpdateEmail" method="post">
+                                    <div class="mb-3">
+                                        <label class="form-label">Новий email</label>
+                                        <input type="email" name="newEmail" class="form-control" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success w-100">Зберегти</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Password Form -->
+                    <div>
+                        <button class="btn btn-primary w-100 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#passwordForm">
+                            Змінити пароль
+                        </button>
+                        <div class="collapse" id="passwordForm">
+                            <div class="card card-body border-0 bg-light">
+                                <form asp-action="UpdatePassword" method="post">
+                                    <div class="mb-3">
+                                        <label class="form-label">Поточний пароль</label>
+                                        <input type="password" name="currentPassword" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Новий пароль</label>
+                                        <input type="password" name="newPassword" class="form-control" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success w-100">Зберегти</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Мої квитки</h5>
+                    @if (!Model.Tickets.Any())
+                    {
+                        <p class="text-muted">У вас поки немає куплених квитків.</p>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Фільм</th>
+                                        <th>Дата сеансу</th>
+                                        <th class="text-center">Ряд</th>
+                                        <th class="text-center">Місце</th>
+                                        <th class="text-end">Ціна</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var ticket in Model.Tickets)
+                                    {
+                                        <tr>
+                                            <td>@ticket.MovieTitle</td>
+                                            <td>@ticket.SessionStartTime.ToString("dd.MM.yyyy HH:mm")</td>
+                                            <td class="text-center">@ticket.Row</td>
+                                            <td class="text-center">@ticket.Seat</td>
+                                            <td class="text-end">@ticket.Price.ToString("C")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

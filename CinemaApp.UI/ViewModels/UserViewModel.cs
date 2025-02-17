@@ -1,4 +1,7 @@
-﻿namespace CinemaApp.UI.ViewModels
+﻿using CinemaApp.BL.DTOs.UserDTOs.Ticket;
+using CinemaApp.DAL.Entities;
+
+namespace CinemaApp.UI.ViewModels
 {
     public class UserViewModel
     {
