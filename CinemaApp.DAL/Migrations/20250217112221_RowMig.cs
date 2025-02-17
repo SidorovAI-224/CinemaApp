@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CinemaApp.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialShit : Migration
+    public partial class RowMig : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -374,11 +374,12 @@ namespace CinemaApp.DAL.Migrations
                     TicketID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     SessionID = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserID = table.Column<string>(type: "TEXT", nullable: true),
+                    UserID = table.Column<string>(type: "TEXT", nullable: false),
                     Seat = table.Column<int>(type: "INTEGER", nullable: false),
+                    Row = table.Column<int>(type: "INTEGER", nullable: false),
                     Price = table.Column<decimal>(type: "TEXT", nullable: false),
                     BookingDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    HallOneSeatID = table.Column<int>(type: "INTEGER", nullable: true)
+                    HallOneSeatID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -393,7 +394,8 @@ namespace CinemaApp.DAL.Migrations
                         name: "FK_Tickets_Halls_HallOneSeatID",
                         column: x => x.HallOneSeatID,
                         principalTable: "Halls",
-                        principalColumn: "SeatID");
+                        principalColumn: "SeatID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tickets_Sessions_SessionID",
                         column: x => x.SessionID,

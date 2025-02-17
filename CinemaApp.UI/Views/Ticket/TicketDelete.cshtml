@@ -1,0 +1,21 @@
+﻿@model CinemaApp.BL.DTOs.UserDTOs.Ticket.TicketDTO
+
+@{
+    ViewData["Title"] = "Видалити квиток";
+}
+
+<h2>Ви впевнені, що хочете видалити цей квиток?</h2>
+
+<div>
+    <h4>Фільм: @Model.MovieTitle</h4>
+    <h4>Сеанс: @Model.SessionStartTime.ToString("dd.MM.yyyy HH:mm")</h4>
+    <h4>Місце: @Model.Seat</h4>
+    <h4>Ціна: @Model.Price.ToString("C")</h4>
+    <h4>Користувач: @Model.UserName</h4>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="TicketID" />
+    <button type="submit" class="btn btn-danger">Видалити</button>
+    <a asp-controller="Ticket" asp-action="Index" class="btn btn-secondary">Скасувати</a>
+</form>

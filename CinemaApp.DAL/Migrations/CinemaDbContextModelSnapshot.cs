@@ -230,7 +230,7 @@ namespace CinemaApp.DAL.Migrations
                     b.Property<DateTime>("BookingDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("HallOneSeatID")
+                    b.Property<int>("HallOneSeatID")
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Price")
@@ -246,6 +246,7 @@ namespace CinemaApp.DAL.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserID")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("TicketID");
@@ -577,9 +578,11 @@ namespace CinemaApp.DAL.Migrations
 
             modelBuilder.Entity("CinemaApp.DAL.Entities.Ticket", b =>
                 {
-                    b.HasOne("CinemaApp.DAL.Entities.HallOne", null)
+                    b.HasOne("CinemaApp.DAL.Entities.HallOne", "HallOne")
                         .WithMany("Tickets")
-                        .HasForeignKey("HallOneSeatID");
+                        .HasForeignKey("HallOneSeatID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("CinemaApp.DAL.Entities.Session", "Session")
                         .WithMany("Tickets")
@@ -590,7 +593,10 @@ namespace CinemaApp.DAL.Migrations
                     b.HasOne("CinemaApp.DAL.Entities.User", "User")
                         .WithMany("Tickets")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("HallOne");
 
                     b.Navigation("Session");
 

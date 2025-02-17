@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinemaApp.DAL.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    [Migration("20250216180443_InitialShit")]
-    partial class InitialShit
+    [Migration("20250217112221_RowMig")]
+    partial class RowMig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -233,11 +233,14 @@ namespace CinemaApp.DAL.Migrations
                     b.Property<DateTime>("BookingDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("HallOneSeatID")
+                    b.Property<int>("HallOneSeatID")
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("Row")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Seat")
                         .HasColumnType("INTEGER");
@@ -246,6 +249,7 @@ namespace CinemaApp.DAL.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserID")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("TicketID");
@@ -577,9 +581,11 @@ namespace CinemaApp.DAL.Migrations
 
             modelBuilder.Entity("CinemaApp.DAL.Entities.Ticket", b =>
                 {
-                    b.HasOne("CinemaApp.DAL.Entities.HallOne", null)
+                    b.HasOne("CinemaApp.DAL.Entities.HallOne", "HallOne")
                         .WithMany("Tickets")
-                        .HasForeignKey("HallOneSeatID");
+                        .HasForeignKey("HallOneSeatID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("CinemaApp.DAL.Entities.Session", "Session")
                         .WithMany("Tickets")
@@ -590,7 +596,10 @@ namespace CinemaApp.DAL.Migrations
                     b.HasOne("CinemaApp.DAL.Entities.User", "User")
                         .WithMany("Tickets")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("HallOne");
 
                     b.Navigation("Session");
 

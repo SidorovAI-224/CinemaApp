@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CinemaApp.BL.DTOs.UserDTOs.Ticket.TicketDTO>
+
+@{
+    ViewData["Title"] = "Квитки";
+}
+
+<h2>Список квитків</h2>
+<a asp-action="Create" class="btn btn-primary mb-3">Додати квиток</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Фільм</th>
+            <th>Сеанс</th>
+            <th>Місце</th>
+            <th>Ціна</th>
+            <th>Дата бронювання</th>
+            <th>Користувач</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in Model)
+        {
+            <tr>
+                <td>@ticket.TicketID</td>
+                <td>@ticket.MovieTitle</td>
+                <td>@ticket.SessionStartTime.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>Ряд @ticket.Row Місце @ticket.Seat</td>
+                <td>@ticket.Price.ToString("C")</td>
+                <td>@ticket.BookingDate.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@ticket.UserName</td>
+                <td>
+                    <a asp-controller="Ticket" asp-action="TicketEdit" asp-route-id="@ticket.TicketID" class="btn btn-warning btn-sm">Редагувати</a>
+                    <a asp-controller="Ticket" asp-action="TicketDelete" asp-route-id="@ticket.TicketID" class="btn btn-danger btn-sm">Видалити</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

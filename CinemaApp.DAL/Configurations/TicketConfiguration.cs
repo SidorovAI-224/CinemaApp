@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using CinemaApp.DAL.Entities;
 
@@ -13,13 +14,11 @@ namespace CinemaApp.DAL.Configurations
             builder.Property(t => t.Seat)
                    .IsRequired();
 
-            builder.Property(t => t.Row)
-                .IsRequired();
-
             builder.Property(t => t.Price)
                    .IsRequired();
 
-
+            builder.Property(t => t.Row)
+                .IsRequired();
             builder.Property(t => t.BookingDate)
                    .IsRequired();
 
