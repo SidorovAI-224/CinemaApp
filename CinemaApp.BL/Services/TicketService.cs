@@ -23,9 +23,13 @@ namespace CinemaApp.BL.Services
 
         public async Task<IEnumerable<TicketDTO>> GetAllTicketsAsync()
         {
-            var tickets = await _ticketRepository.GetAllAsync();
+            var tickets = await _context.Tickets
+                .Include(t => t.Session)
+                .Include(t => t.User)
+                .ToListAsync();
             return _mapper.Map<IEnumerable<TicketDTO>>(tickets);
         }
+
 
         public async Task<TicketDTO> GetTicketByIdAsync(int id)
         {
@@ -35,9 +39,37 @@ namespace CinemaApp.BL.Services
 
         public async Task AddTicketAsync(TicketCreateDTO ticketCreateDTO)
         {
+            // Перевірка існування SessionID
+            var sessionExists = await _context.Sessions.AnyAsync(s => s.SessionID == ticketCreateDTO.SessionID);
+            if (!sessionExists)
+            {
+                Console.WriteLine("Invalid SessionID.");
+            }
+
+            // Перевірка існування UserID
+            var userExists = await _context.Users.AnyAsync(u => u.Id == ticketCreateDTO.UserID);
+            if (!userExists)
+            {
+                Console.WriteLine("Invalid UserID.");
+            }
+
+            // Перевірка існування SeatID та RowID у HallOne
+            var seatExists = await _context.HallOne.AnyAsync(h => h.SeatID == ticketCreateDTO.SeatID);
+            if (!seatExists)
+            {
+                Console.WriteLine("Invalid SeatID.");
+            }
+            var rowExists = await _context.HallOne.AnyAsync(h => h.RowID == ticketCreateDTO.RowID);
+            if (!rowExists)
+            {
+                Console.WriteLine("Invalid RowID.");
+            }
+
             var ticket = _mapper.Map<Ticket>(ticketCreateDTO);
-            await _ticketRepository.AddAsync(ticket);
+            _context.Tickets.Add(ticket);
+            await _context.SaveChangesAsync();
         }
+
 
         public async Task UpdateTicketAsync(int id, TicketUpdateDTO ticketUpdateDTO)
         {
@@ -50,7 +82,7 @@ namespace CinemaApp.BL.Services
         {
             await _ticketRepository.DeleteByIdAsync(id);
         }
-        public async Task AddTicketAsync(Ticket ticket) // Take the Entity directly
+        public async Task AddTicketAsync(Ticket ticket) // Take the Entity directly // другий адд тікет а ми який юзаємо то
         {
             await _ticketRepository.AddAsync(ticket);
         }

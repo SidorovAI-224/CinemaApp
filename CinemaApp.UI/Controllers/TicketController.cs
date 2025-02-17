@@ -42,7 +42,7 @@ namespace CinemaApp.UI.Controllers
             var tickets = await _ticketService.GetAllTicketsAsync();
             var takenSeats = tickets
                 .Where(t => t.SessionID == sessionId)
-                .Select(t => t.Seat)
+                .Select(t => t.SeatID)
                 .ToList();
 
             ViewBag.Session = session;
@@ -67,6 +67,7 @@ namespace CinemaApp.UI.Controllers
             {
                 return BadRequest("No seats selected");
             }
+
             try
             {
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -83,8 +84,8 @@ namespace CinemaApp.UI.Controllers
                     {
                         SessionID = sessionId,
                         UserID = userId,
-                        Row = row,
-                        Seat = seatNum,
+                        RowID = row, // Використовуємо RowID замість Row
+                        SeatID = seatNum, // Використовуємо SeatID замість Seat
                         Price = 140.00m,
                         BookingDate = DateTime.Now
                     };
@@ -95,31 +96,6 @@ namespace CinemaApp.UI.Controllers
                 TempData["SuccessMessage"] = "Tickets purchased successfully!";
                 return Json(new { success = true, redirectUrl = Url.Action("Index", "Home") });
             }
-            /*
-            try
-            {
-                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                var sessionId = int.Parse(Request.Form["SessionID"]);
-                var seats = selectedSeats.Split(',').Select(int.Parse).ToList();
-
-                foreach (var seat in seats)
-                {
-                    var ticketCreateDTO = new TicketCreateDTO
-                    {
-                        SessionID = sessionId,
-                        UserID = userId,
-                        Seat = seat,
-                        Price = 140.00m,
-                        BookingDate = DateTime.Now
-                    };
-
-                    await _ticketService.AddTicketAsync(ticketCreateDTO);
-                }
-
-                TempData["SuccessMessage"] = "Tickets purchased successfully!";
-                return Json(new { success = true, redirectUrl = Url.Action("Index", "Home") });
-            }
-            */
             catch (Exception ex)
             {
                 return Json(new { success = false, message = "Error occurred while processing your request." });
@@ -141,7 +117,7 @@ namespace CinemaApp.UI.Controllers
             {
                 TicketID = ticket.TicketID,
                 SessionID = ticket.SessionID,
-                Seat = ticket.Seat,
+                Seat = ticket.SeatID,
                 Price = ticket.Price,
                 MovieTitle = ticket.MovieTitle,
                 SessionStartTime = ticket.SessionStartTime
