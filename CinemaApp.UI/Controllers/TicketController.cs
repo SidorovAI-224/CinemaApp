@@ -10,7 +10,7 @@ using System.Security.Claims;
 
 namespace CinemaApp.UI.Controllers
 {
-    
+
     public class TicketController : Controller
     {
         private readonly ITicketService _ticketService;
@@ -101,7 +101,6 @@ namespace CinemaApp.UI.Controllers
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var sessionId = int.Parse(Request.Form["SessionID"]);
                 var seats = selectedSeats.Split(',').Select(int.Parse).ToList();
-
                 foreach (var seat in seats)
                 {
                     var ticketCreateDTO = new TicketCreateDTO
@@ -112,10 +111,8 @@ namespace CinemaApp.UI.Controllers
                         Price = 140.00m,
                         BookingDate = DateTime.Now
                     };
-
                     await _ticketService.AddTicketAsync(ticketCreateDTO);
                 }
-
                 TempData["SuccessMessage"] = "Tickets purchased successfully!";
                 return Json(new { success = true, redirectUrl = Url.Action("Index", "Home") });
             }
@@ -125,7 +122,6 @@ namespace CinemaApp.UI.Controllers
                 return Json(new { success = false, message = "Error occurred while processing your request." });
             }
         }
-
         // ДОДАНІ МЕТОДИ ДЛЯ РЕДАГУВАННЯ ТА ВИДАЛЕННЯ
         [Authorize(Roles = "Admin")]
         [HttpGet]
@@ -136,7 +132,6 @@ namespace CinemaApp.UI.Controllers
             {
                 return NotFound();
             }
-
             var model = new TicketUpdateDTO
             {
                 TicketID = ticket.TicketID,
@@ -146,10 +141,8 @@ namespace CinemaApp.UI.Controllers
                 MovieTitle = ticket.MovieTitle,
                 SessionStartTime = ticket.SessionStartTime
             };
-
             return View(model);
         }
-
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> TicketEdit(TicketUpdateDTO model)
@@ -158,7 +151,6 @@ namespace CinemaApp.UI.Controllers
             {
                 return View(model);
             }
-
             try
             {
                 await _ticketService.UpdateTicketAsync(model.TicketID, model);
@@ -170,7 +162,6 @@ namespace CinemaApp.UI.Controllers
                 return View(model);
             }
         }
-
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> TicketDelete(int id)
@@ -180,10 +171,8 @@ namespace CinemaApp.UI.Controllers
             {
                 return NotFound();
             }
-
             return View(ticket);
         }
-
         [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("TicketDelete")] // Додаємо ActionName, щоб маршрут був однаковий
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -201,4 +190,3 @@ namespace CinemaApp.UI.Controllers
         }
     }
 }
-    
