@@ -19,7 +19,7 @@ namespace CinemaApp.BL.Validators.Ticket
             //RuleFor(x => x.UserID)
             //    .NotEmpty().WithMessage("UserID can not be empty");
 
-            RuleFor(x => x.Seat)
+            RuleFor(x => x.SeatID)
                 .GreaterThan(0).WithMessage("Seat number must be greater than 0");
 
             RuleFor(x => x.Price)

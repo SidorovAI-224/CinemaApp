@@ -6,7 +6,7 @@
 
 <h2>Редагувати квиток</h2>
 
-<form asp-action="Edit" method="post">
+<form asp-action="TicketEdit" method="post">
     <input type="hidden" asp-for="TicketID" />
 
     <div class="form-group">
@@ -14,23 +14,23 @@
         <input asp-for="SessionID" class="form-control" required />
     </div>
     <div class="form-group">
-        <label asp-for="Seat">Місце</label>
-        <input asp-for="Seat" class="form-control" required />
+        <label asp-for="SeatID">Місце</label>
+        <input asp-for="SeatID" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label asp-for="RowID">Ряд</label>
+        <input asp-for="RowID" class="form-control" required />
     </div>
     <div class="form-group">
         <label asp-for="Price">Ціна</label>
         <input asp-for="Price" class="form-control" required />
     </div>
-    <div class="form-group">
-        <label asp-for="MovieTitle">Назва фільму</label>
-        <input asp-for="MovieTitle" class="form-control" required />
-    </div>
+
     <div class="form-group">
         <label asp-for="SessionStartTime">Час початку сеансу</label>
         <input asp-for="SessionStartTime" type="datetime-local" class="form-control" required />
     </div>
 
     <button type="submit" class="btn btn-primary">Зберегти зміни</button>
-    <a asp-controller="Ticket" asp-action="Index" class="btn btn-secondary">Назад</a>
+    <a asp-controller="Ticket" asp-action="TicketIndex" class="btn btn-secondary">Назад</a>
 </form>
-

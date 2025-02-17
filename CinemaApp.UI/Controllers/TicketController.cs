@@ -2,24 +2,23 @@
 using CinemaApp.BL.DTOs.UserDTOs.Ticket;
 using CinemaApp.BL.Interfaces;
 using CinemaApp.BL.Interfaces.ServiceInterfaces;
-using CinemaApp.DAL.Entities;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace CinemaApp.UI.Controllers
 {
-
     public class TicketController : Controller
     {
         private readonly ITicketService _ticketService;
         private readonly ISessionService _sessionService;
+        private readonly IMapper _mapper;
 
-        public TicketController(ITicketService ticketService, ISessionService sessionService)
+        public TicketController(ITicketService ticketService, ISessionService sessionService, IMapper mapper)
         {
             _ticketService = ticketService;
             _sessionService = sessionService;
+            _mapper = mapper;
         }
 
         [Authorize(Roles = "Admin")]
@@ -84,8 +83,8 @@ namespace CinemaApp.UI.Controllers
                     {
                         SessionID = sessionId,
                         UserID = userId,
-                        RowID = row, // Використовуємо RowID замість Row
-                        SeatID = seatNum, // Використовуємо SeatID замість Seat
+                        RowID = row,
+                        SeatID = seatNum,
                         Price = 140.00m,
                         BookingDate = DateTime.Now
                     };
@@ -102,7 +101,6 @@ namespace CinemaApp.UI.Controllers
             }
         }
 
-        // ДОДАНІ МЕТОДИ ДЛЯ РЕДАГУВАННЯ ТА ВИДАЛЕННЯ
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> TicketEdit(int id)
@@ -117,9 +115,9 @@ namespace CinemaApp.UI.Controllers
             {
                 TicketID = ticket.TicketID,
                 SessionID = ticket.SessionID,
-                Seat = ticket.SeatID,
+                SeatID = ticket.SeatID,
+                RowID = ticket.RowID,
                 Price = ticket.Price,
-                MovieTitle = ticket.MovieTitle,
                 SessionStartTime = ticket.SessionStartTime
             };
 
@@ -151,30 +149,31 @@ namespace CinemaApp.UI.Controllers
         [HttpGet]
         public async Task<IActionResult> TicketDelete(int id)
         {
-            var ticket = await _ticketService.GetTicketByIdAsync(id);
-            if (ticket == null)
+            var ticketDTO = await _ticketService.GetTicketByIdAsync(id);
+            if (ticketDTO == null)
             {
                 return NotFound();
             }
 
-            return View(ticket);
+            return View(ticketDTO);
         }
 
+
         [Authorize(Roles = "Admin")]
-        [HttpPost, ActionName("TicketDelete")] // Додаємо ActionName, щоб маршрут був однаковий
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        [HttpPost]
+        public async Task<IActionResult> TicketDeleted(TicketDeleteDTO model)
         {
             try
             {
-                await _ticketService.DeleteTicketByIdAsync(id);
+                await _ticketService.DeleteTicketByIdAsync(model.TicketID);
                 return RedirectToAction("TicketIndex");
             }
             catch (Exception)
             {
                 ModelState.AddModelError("", "Помилка видалення квитка");
-                return RedirectToAction("Delete", new { id });
+                return RedirectToAction("TicketDelete", new { id = model.TicketID });
             }
         }
+
     }
 }
-

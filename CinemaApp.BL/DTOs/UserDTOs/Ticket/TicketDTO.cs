@@ -4,7 +4,7 @@ namespace CinemaApp.BL.DTOs.UserDTOs.Ticket
     public class TicketDTO
     {
         public int TicketID { get; set; }
-        public int RowID {  get; set; }//тимчасова змінна рядка
+        public int RowID {  get; set; }
         public int SeatID { get; set; }
         public int SessionID { get; set; }
         public decimal Price { get; set; }

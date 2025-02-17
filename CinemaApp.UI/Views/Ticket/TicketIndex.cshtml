@@ -5,7 +5,6 @@
 }
 
 <h2>Список квитків</h2>
-<a asp-action="Create" class="btn btn-primary mb-3">Додати квиток</a>
 
 <table class="table table-striped">
     <thead>
@@ -27,13 +26,17 @@
                 <td>@ticket.TicketID</td>
                 <td>@ticket.MovieTitle</td>
                 <td>@ticket.SessionStartTime.ToString("dd.MM.yyyy HH:mm")</td>
-                <td>Ряд @ticket.RowID Місце @ticket.SeatID</td>
+                <td>Ряд @ticket.RowID, Місце @ticket.SeatID</td>
                 <td>@ticket.Price.ToString("C")</td>
                 <td>@ticket.BookingDate.ToString("dd.MM.yyyy HH:mm")</td>
                 <td>@ticket.UserName</td>
                 <td>
+                    <input type="hidden" asp-for="@ticket.TicketID" />
+
                     <a asp-controller="Ticket" asp-action="TicketEdit" asp-route-id="@ticket.TicketID" class="btn btn-warning btn-sm">Редагувати</a>
                     <a asp-controller="Ticket" asp-action="TicketDelete" asp-route-id="@ticket.TicketID" class="btn btn-danger btn-sm">Видалити</a>
+                    @* <a asp-action="TicketDelete" asp-route-id="@ticket.TicketID">Delete</a> *@
+
                 </td>
             </tr>
         }

@@ -18,7 +18,7 @@ namespace CinemaApp.DAL.Configurations
                    .HasForeignKey(t => t.SessionID)
                    .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasOne(t => t.HallOne) ////
+            builder.HasOne(t => t.HallOne)
                 .WithMany(h => h.Tickets)
                 .HasForeignKey(t => new { t.SeatID, t.RowID })
                 .OnDelete(DeleteBehavior.Restrict);
