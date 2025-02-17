@@ -100,7 +100,6 @@ namespace CinemaApp.UI.Controllers
                 return NotFound();
             }
 
-            // Передаємо список жанрів у ViewBag
             ViewBag.Genres = await _genreService.GetAllGenresAsync();
             ViewBag.Crewmates = await _crewmateService.GetAllCrewmatesAsync();
             ViewBag.Positions = await _positionService.GetAllPositionsAsync();

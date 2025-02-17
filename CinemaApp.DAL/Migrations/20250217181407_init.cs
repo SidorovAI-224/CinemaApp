@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace CinemaApp.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialShit : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -80,16 +82,16 @@ namespace CinemaApp.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Halls",
+                name: "HallOne",
                 columns: table => new
                 {
-                    SeatID = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    SeatID = table.Column<int>(type: "INTEGER", nullable: false),
+                    RowID = table.Column<int>(type: "INTEGER", nullable: false),
                     IsBooked = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Halls", x => x.SeatID);
+                    table.PrimaryKey("PK_HallOne", x => new { x.SeatID, x.RowID });
                 });
 
             migrationBuilder.CreateTable(
@@ -374,11 +376,11 @@ namespace CinemaApp.DAL.Migrations
                     TicketID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     SessionID = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserID = table.Column<string>(type: "TEXT", nullable: true),
-                    Seat = table.Column<int>(type: "INTEGER", nullable: false),
+                    UserID = table.Column<string>(type: "TEXT", nullable: false),
+                    SeatID = table.Column<int>(type: "INTEGER", nullable: true),
+                    RowID = table.Column<int>(type: "INTEGER", nullable: true),
                     Price = table.Column<decimal>(type: "TEXT", nullable: false),
-                    BookingDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    HallOneSeatID = table.Column<int>(type: "INTEGER", nullable: true)
+                    BookingDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -390,16 +392,174 @@ namespace CinemaApp.DAL.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tickets_Halls_HallOneSeatID",
-                        column: x => x.HallOneSeatID,
-                        principalTable: "Halls",
-                        principalColumn: "SeatID");
+                        name: "FK_Tickets_HallOne_SeatID_RowID",
+                        columns: x => new { x.SeatID, x.RowID },
+                        principalTable: "HallOne",
+                        principalColumns: new[] { "SeatID", "RowID" },
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Tickets_Sessions_SessionID",
                         column: x => x.SessionID,
                         principalTable: "Sessions",
                         principalColumn: "SessionID",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "HallOne",
+                columns: new[] { "RowID", "SeatID", "IsBooked" },
+                values: new object[,]
+                {
+                    { 1, 1, false },
+                    { 2, 1, false },
+                    { 3, 1, false },
+                    { 4, 1, false },
+                    { 5, 1, false },
+                    { 6, 1, false },
+                    { 7, 1, false },
+                    { 8, 1, false },
+                    { 9, 1, false },
+                    { 10, 1, false },
+                    { 1, 2, false },
+                    { 2, 2, false },
+                    { 3, 2, false },
+                    { 4, 2, false },
+                    { 5, 2, false },
+                    { 6, 2, false },
+                    { 7, 2, false },
+                    { 8, 2, false },
+                    { 9, 2, false },
+                    { 10, 2, false },
+                    { 1, 3, false },
+                    { 2, 3, false },
+                    { 3, 3, false },
+                    { 4, 3, false },
+                    { 5, 3, false },
+                    { 6, 3, false },
+                    { 7, 3, false },
+                    { 8, 3, false },
+                    { 9, 3, false },
+                    { 10, 3, false },
+                    { 1, 4, false },
+                    { 2, 4, false },
+                    { 3, 4, false },
+                    { 4, 4, false },
+                    { 5, 4, false },
+                    { 6, 4, false },
+                    { 7, 4, false },
+                    { 8, 4, false },
+                    { 9, 4, false },
+                    { 10, 4, false },
+                    { 1, 5, false },
+                    { 2, 5, false },
+                    { 3, 5, false },
+                    { 4, 5, false },
+                    { 5, 5, false },
+                    { 6, 5, false },
+                    { 7, 5, false },
+                    { 8, 5, false },
+                    { 9, 5, false },
+                    { 10, 5, false },
+                    { 1, 6, false },
+                    { 2, 6, false },
+                    { 3, 6, false },
+                    { 4, 6, false },
+                    { 5, 6, false },
+                    { 6, 6, false },
+                    { 7, 6, false },
+                    { 8, 6, false },
+                    { 9, 6, false },
+                    { 10, 6, false },
+                    { 1, 7, false },
+                    { 2, 7, false },
+                    { 3, 7, false },
+                    { 4, 7, false },
+                    { 5, 7, false },
+                    { 6, 7, false },
+                    { 7, 7, false },
+                    { 8, 7, false },
+                    { 9, 7, false },
+                    { 10, 7, false },
+                    { 1, 8, false },
+                    { 2, 8, false },
+                    { 3, 8, false },
+                    { 4, 8, false },
+                    { 5, 8, false },
+                    { 6, 8, false },
+                    { 7, 8, false },
+                    { 8, 8, false },
+                    { 9, 8, false },
+                    { 10, 8, false },
+                    { 1, 9, false },
+                    { 2, 9, false },
+                    { 3, 9, false },
+                    { 4, 9, false },
+                    { 5, 9, false },
+                    { 6, 9, false },
+                    { 7, 9, false },
+                    { 8, 9, false },
+                    { 9, 9, false },
+                    { 10, 9, false },
+                    { 1, 10, false },
+                    { 2, 10, false },
+                    { 3, 10, false },
+                    { 4, 10, false },
+                    { 5, 10, false },
+                    { 6, 10, false },
+                    { 7, 10, false },
+                    { 8, 10, false },
+                    { 9, 10, false },
+                    { 10, 10, false },
+                    { 1, 11, false },
+                    { 2, 11, false },
+                    { 3, 11, false },
+                    { 4, 11, false },
+                    { 5, 11, false },
+                    { 6, 11, false },
+                    { 7, 11, false },
+                    { 8, 11, false },
+                    { 9, 11, false },
+                    { 10, 11, false },
+                    { 1, 12, false },
+                    { 2, 12, false },
+                    { 3, 12, false },
+                    { 4, 12, false },
+                    { 5, 12, false },
+                    { 6, 12, false },
+                    { 7, 12, false },
+                    { 8, 12, false },
+                    { 9, 12, false },
+                    { 10, 12, false },
+                    { 1, 13, false },
+                    { 2, 13, false },
+                    { 3, 13, false },
+                    { 4, 13, false },
+                    { 5, 13, false },
+                    { 6, 13, false },
+                    { 7, 13, false },
+                    { 8, 13, false },
+                    { 9, 13, false },
+                    { 10, 13, false },
+                    { 1, 14, false },
+                    { 2, 14, false },
+                    { 3, 14, false },
+                    { 4, 14, false },
+                    { 5, 14, false },
+                    { 6, 14, false },
+                    { 7, 14, false },
+                    { 8, 14, false },
+                    { 9, 14, false },
+                    { 10, 14, false },
+                    { 1, 15, false },
+                    { 2, 15, false },
+                    { 3, 15, false },
+                    { 4, 15, false },
+                    { 5, 15, false },
+                    { 6, 15, false },
+                    { 7, 15, false },
+                    { 8, 15, false },
+                    { 9, 15, false },
+                    { 10, 15, false }
                 });
 
             migrationBuilder.CreateIndex(
@@ -490,9 +650,9 @@ namespace CinemaApp.DAL.Migrations
                 column: "MovieID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tickets_HallOneSeatID",
+                name: "IX_Tickets_SeatID_RowID",
                 table: "Tickets",
-                column: "HallOneSeatID");
+                columns: new[] { "SeatID", "RowID" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tickets_SessionID",
@@ -548,7 +708,7 @@ namespace CinemaApp.DAL.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Halls");
+                name: "HallOne");
 
             migrationBuilder.DropTable(
                 name: "Sessions");

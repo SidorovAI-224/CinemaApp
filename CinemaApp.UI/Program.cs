@@ -40,13 +40,16 @@ builder.Services.AddScoped<ISessionService, SessionService>();
 builder.Services.AddScoped<IPositionService, PositionService>();
 builder.Services.AddScoped<ICrewmateService, CrewmateService>();
 builder.Services.AddScoped<IMovieCrewmateService, MovieCrewmateService>();
+builder.Services.AddScoped<ITicketService, TicketService>();
+
+builder.Services.AddScoped<IAIService, AiService>();
 
 
 
 
-// //table check
+////table check
 //var options = new DbContextOptionsBuilder<CinemaDbContext>()
-//    .UseSqlite("Data Source=CinemeApp.db") 
+//    .UseSqlite("Data Source=CinemeApp.db")
 //    .Options;
 
 //using (var context = new CinemaDbContext(options))

@@ -7,10 +7,10 @@ public class VectorizedMovie
 {
     [VectorStoreRecordData]
     public string Title { get; set; }
-    
+
     [VectorStoreRecordData]
-    public string Genre { get; set; } 
-    
+    public string Genre { get; set; }
+
     [VectorStoreRecordData]
     public string Description { get; set; }
     
@@ -20,7 +20,9 @@ public class VectorizedMovie
     public VectorizedMovie(MovieDTO movieDto)
     {
         Title = movieDto.Title;
+        
         Genre = movieDto.GenreName;
+
         Description = movieDto.Description;
     }
     

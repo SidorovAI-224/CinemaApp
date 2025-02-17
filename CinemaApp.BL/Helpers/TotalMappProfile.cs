@@ -173,25 +173,25 @@ namespace CinemaApp.BL.Mapping
             
             // [TICKET] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+            CreateMap<TicketUpdateDTO, Ticket>()
+                .ForMember(dest => dest.Session, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore());
+
+
+
             CreateMap<Ticket, TicketDTO>()
                 .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.UserName))
                 .ForMember(dest => dest.MovieTitle, opt => opt.MapFrom(src => src.Session.Movie.Title))
                 .ForMember(dest => dest.SessionStartTime, opt => opt.MapFrom(src => src.Session.StartTime));
 
-            CreateMap<TicketCreateDTO, Ticket>()
-                 .ForMember(dest => dest.TicketID, opt => opt.Ignore())
-                 .ForMember(dest => dest.BookingDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                 .ForMember(dest => dest.Session, opt => opt.Ignore())
-                 .ForMember(dest => dest.User, opt => opt.Ignore());
+            CreateMap<TicketCreateDTO, Ticket>();
 
-            CreateMap<TicketUpdateDTO, Ticket>()
-                .ForMember(dest => dest.Session, opt => opt.Ignore())
-                .ForMember(dest => dest.User, opt => opt.Ignore());
+            CreateMap<Ticket, TicketDeleteDTO>()
+                .ForMember(dest => dest.TicketID, opt => opt.MapFrom(src => src.TicketID));
 
-            CreateMap<Ticket, TicketDeleteDTO>();
 
-            CreateMap<TicketDeleteDTO, Ticket>();
-
+            CreateMap<TicketDeleteDTO, Ticket>()
+                .ForMember(dest => dest.TicketID, opt => opt.MapFrom(src => src.TicketID));
 
 
             // [GENRE] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arrtu\\Desktop\\MB\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {}
+    "C:\\Users\\arrtu\\Desktop\\idk\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arrtu\\Desktop\\MB\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
+    "C:\\Users\\arrtu\\Desktop\\idk\\CinemaApp.DAL\\CinemaApp.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\MB\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\arrtu\\Desktop\\idk\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
         "projectName": "CinemaApp.DAL",
-        "projectPath": "C:\\Users\\arrtu\\Desktop\\MB\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
+        "projectPath": "C:\\Users\\arrtu\\Desktop\\idk\\CinemaApp.DAL\\CinemaApp.DAL.csproj",
         "packagesPath": "C:\\Users\\arrtu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arrtu\\Desktop\\MB\\CinemaApp.DAL\\obj\\",
+        "outputPath": "C:\\Users\\arrtu\\Desktop\\idk\\CinemaApp.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

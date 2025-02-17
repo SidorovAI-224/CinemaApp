@@ -16,7 +16,7 @@ public class AiQueryRecommendations : AiBase
     {
         await GenerateEmbeddings(new List<Func<VectorizedMovie, string>>
         {
-            movie => movie.Title,
+            movie => movie.Description,
         });
 
         ReadOnlyMemory<float> queryEmbedding = await Generator.GenerateEmbeddingVectorAsync(query);

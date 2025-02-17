@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CinemaApp.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CinemaApp.DAL.Entities;
 
 namespace CinemaApp.DAL.Configurations
 {
@@ -10,20 +10,19 @@ namespace CinemaApp.DAL.Configurations
         {
             builder.HasKey(t => t.TicketID);
 
-            builder.Property(t => t.Seat)
-                   .IsRequired();
-
-            builder.Property(t => t.Price)
-                   .IsRequired();
-
-
-            builder.Property(t => t.BookingDate)
-                   .IsRequired();
+            builder.Property(t => t.Price).IsRequired();
+            builder.Property(t => t.BookingDate).IsRequired();
 
             builder.HasOne(t => t.Session)
                    .WithMany(s => s.Tickets)
                    .HasForeignKey(t => t.SessionID)
                    .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(t => t.HallOne)
+                .WithMany(h => h.Tickets)
+                .HasForeignKey(t => new { t.SeatID, t.RowID })
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             builder.HasOne(t => t.User)
                    .WithMany(u => u.Tickets)
