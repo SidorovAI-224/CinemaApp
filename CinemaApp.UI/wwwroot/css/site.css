@@ -83,11 +83,15 @@ footer {
 }
 
 .badge-container {
-  position: relative;
-  top: 33px;
+  position: absolute;
+  top: 5px;
   left: 5px;
   display: flex;
   gap: 5px; 
+}
+
+.movie-item {
+  position: relative;
 }
 
 .new-badge, .relevant-badge {
