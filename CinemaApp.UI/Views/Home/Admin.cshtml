@@ -2,34 +2,35 @@
     ViewData["Title"] = "Admin Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Admin page </h1>
+<body class="@ViewData["PageClass"]">
+    <div class="text-center">
+        <h1 class="display-4">Welcome to Admin page </h1>
 
-
-    <tr>
-        <td>
-            <a asp-controller="Movie" asp-action="Index" class="btn btn-primary">Go to Movies</a>
-        </td>
-        <td>
-            <a asp-controller="Genre" asp-action="Index" class="btn btn-primary">Go to Genres</a>
-        </td>
-        <td>
-            <a asp-controller="Account" asp-action="Users" class="btn btn-primary">Manage Users</a>
-        </td>
-        <td>
-            <a asp-controller="Session" asp-action="SessionIndex" class="btn btn-primary">Go to Sessions</a>
-        </td>
-        <td>
-            <a asp-controller="Ticket" asp-action="Index" class="btn btn-primary">Go to Tickets</a>
-        </td>
-        <td>
-            <a asp-controller="Session" asp-action="SessionUserIndex" class="btn btn-primary">Go to user sessions</a>
-        </td>
-        <td>
-            <a asp-controller="Position" asp-action="PositionAdminIndex" class="btn btn-primary">Go to Positions</a>
-        </td>
-        <td>
-            <a asp-controller="Crewmate" asp-action="CrewmateAdminIndex" class="btn btn-primary">Go to Crewmates</a>
-        </td>
-    </tr>
-</div>
+            <tr>
+                <td>
+                    <a asp-controller="Movie" asp-action="Index" class="btn btn-primary">Go to Movies</a>
+                </td>
+                <td>
+                    <a asp-controller="Genre" asp-action="Index" class="btn btn-primary">Go to Genres</a>
+                </td>
+                <td>
+                    <a asp-controller="Account" asp-action="Users" class="btn btn-primary">Manage Users</a>
+                </td>
+                <td>
+                    <a asp-controller="Session" asp-action="SessionIndex" class="btn btn-primary">Go to Sessions</a>
+                </td>
+                <td>
+                    <a asp-controller="Ticket" asp-action="Index" class="btn btn-primary">Go to Tickets</a>
+                </td>
+                <td>
+                    <a asp-controller="Session" asp-action="SessionUserIndex" class="btn btn-primary">Go to user sessions</a>
+                </td>
+                <td>
+                    <a asp-controller="Position" asp-action="PositionAdminIndex" class="btn btn-primary">Go to Positions</a>
+                </td>
+                <td>
+                    <a asp-controller="Crewmate" asp-action="CrewmateAdminIndex" class="btn btn-primary">Go to Crewmates</a>
+                </td>
+            </tr>
+    </div>
+</body>

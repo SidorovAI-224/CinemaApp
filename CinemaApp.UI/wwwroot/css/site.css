@@ -12,13 +12,25 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+.btn-success {
+  background-color: #258cfb;
+  border-color: #258cfb;
+  color: white !important;
+}
+
+
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+  color: white;
+  background-color: #330066;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
@@ -29,12 +41,21 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
 footer {
-    height: 80px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
 }
+
+
+main {
+  min-height: calc(100vh - 100px); /* Враховує висоту футера */
+  padding-bottom: 100px; /* Запас, щоб текст не заходив за футер */
+}
+
 
 .modal {
   display: none; 
@@ -199,4 +220,75 @@ button:active {
 #dateInput:focus {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.navbar-nav .nav-item.active .nav-link {
+  border-bottom: 2px solid #007bff;  
+  font-weight: bold;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+  color: #007bff; 
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: black;
+  font-weight: normal;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #007bff;
+}
+
+.text-custom-blue {
+  color: #007bff; 
+}
+
+/* Фон для головної сторінки */
+
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.social-icon:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.table {
+  width: auto;
+}
+
+.table-sm td, .table-sm th {
+  padding: 8px;
+}
+
+
+.custom-table {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px; 
+  padding: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+  backdrop-filter: blur(10px); 
+  width: 80%; 
+  text-align: center; 
+}
+
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
