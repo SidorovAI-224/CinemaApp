@@ -18,8 +18,8 @@ public class VectorizedMovie
     public ReadOnlyMemory<float> Vector { get; set; }
 
     [VectorStoreRecordKey]
-    public int MovieId { get; set; }
-    public string PosterUrl { get; set; }
+    public int MovieId { get; set; } // Додайте MovieId для посилань
+    public string PosterUrl { get; set; } // Додайте PosterUrl для відображення постерів
 
     public VectorizedMovie(MovieDTO movieDto)
     {

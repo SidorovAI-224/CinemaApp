@@ -17,201 +17,201 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CinemaApp.UI
 build_property.RootNamespace = CinemaApp.UI
-build_property.ProjectDir = C:\Users\arrtu\Desktop\idk\CinemaApp.UI\
+build_property.ProjectDir = C:\Users\arrtu\Desktop\10AI\idk\CinemaApp.UI\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\arrtu\Desktop\idk\CinemaApp.UI
+build_property.MSBuildProjectDirectory = C:\Users\arrtu\Desktop\10AI\idk\CinemaApp.UI
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Account/ChangePassword.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Account/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Account/EditUser.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Account/EditUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFZGl0VXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Account/Login.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Account/Register.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Account/Users.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Account/Users.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxVc2Vycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Account/VerifyEmail.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Account/VerifyEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxWZXJpZnlFbWFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Crewmate/CrewmateAdminIndex.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Crewmate/CrewmateAdminIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Jld21hdGVcQ3Jld21hdGVBZG1pbkluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Crewmate/CrewmateCreate.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Crewmate/CrewmateCreate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Jld21hdGVcQ3Jld21hdGVDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Crewmate/CrewmateDelete.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Crewmate/CrewmateDelete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Jld21hdGVcQ3Jld21hdGVEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Crewmate/CrewmateDetails.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Crewmate/CrewmateDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Jld21hdGVcQ3Jld21hdGVEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Crewmate/CrewmateEdit.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Crewmate/CrewmateEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Jld21hdGVcQ3Jld21hdGVFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Genre/Create.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Genre/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Genre/Delete.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Genre/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Genre/Edit.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Genre/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Genre/Index.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Genre/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Home/Admin.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Home/Admin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Home/Index.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Home/Privacy.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Home/User.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Home/User.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Movie/Create.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Movie/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Movie/Delete.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Movie/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Movie/Details.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Movie/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Movie/Edit.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Movie/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Movie/Index.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Movie/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Movie/UserDetails.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Movie/UserDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcVXNlckRldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Position/PositionAdminIndex.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Position/PositionAdminIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25cUG9zaXRpb25BZG1pbkluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Position/PositionCreate.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Position/PositionCreate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25cUG9zaXRpb25DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Position/PositionDelete.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Position/PositionDelete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25cUG9zaXRpb25EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Position/PositionEdit.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Position/PositionEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25cUG9zaXRpb25FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Session/SessionCreate.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Session/SessionCreate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vzc2lvblxTZXNzaW9uQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Session/SessionDelete.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Session/SessionDelete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vzc2lvblxTZXNzaW9uRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Session/SessionEdit.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Session/SessionEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vzc2lvblxTZXNzaW9uRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Session/SessionIndex.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Session/SessionIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vzc2lvblxTZXNzaW9uSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Session/SessionUserIndex.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Session/SessionUserIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vzc2lvblxTZXNzaW9uVXNlckluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Shared/Error.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Shared/_AccountLayout.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Shared/_AccountLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BY2NvdW50TGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Shared/_ProfileModal.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Shared/_ProfileModal.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9maWxlTW9kYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Ticket/TicketCreateBooking.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Ticket/TicketCreateBooking.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0XFRpY2tldENyZWF0ZUJvb2tpbmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Ticket/TicketDelete.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Ticket/TicketDelete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0XFRpY2tldERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Ticket/TicketEdit.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Ticket/TicketEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0XFRpY2tldEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Ticket/TicketIndex.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Ticket/TicketIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0XFRpY2tldEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/User/Profile.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/User/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/_ViewImports.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/_ViewStart.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/arrtu/Desktop/idk/CinemaApp.UI/Views/Shared/_Layout.cshtml]
+[C:/Users/arrtu/Desktop/10AI/idk/CinemaApp.UI/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-2rvph1g3zw

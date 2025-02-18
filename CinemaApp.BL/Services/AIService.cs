@@ -21,7 +21,8 @@ namespace CinemaApp.BL.Services
             _movieService = movieService;
 
             //Uri aiUri = new Uri("http://192.168.62.86:44444");
-            Uri aiUri = new Uri("http://127.0.0.1:11434"); 
+            Uri aiUri = new Uri("http://127.0.0.1:11434");
+
             string model = "deepseek-r1:8b";
 
             List<VectorizedMovie> movies = GetVectorizedMovies().Result;

@@ -77,7 +77,7 @@ await SeedService.SeedDatabase(app.Services);
 //using (var scope = app.Services.CreateScope())
 //{
 //    var seedData = scope.ServiceProvider.GetRequiredService<SeedService>();
-//    await seedData.SeedRandomMoviesAsync(100);
+//    await seedData.SeedRandomMoviesAsync(10);
 //}
 
 if (!app.Environment.IsDevelopment())

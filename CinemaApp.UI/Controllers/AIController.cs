@@ -24,7 +24,7 @@ namespace CinemaApp.Controllers
 
             if (similarMovies == null || similarMovies.Count == 0)
             {
-                return StatusCode(202, new { message = " " });
+                return StatusCode(202, new { message = "Рекомендации ещё не готовы" });
             }
 
             return Ok(similarMovies);

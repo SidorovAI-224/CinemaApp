@@ -78,7 +78,7 @@ namespace CinemaApp.BL.Services
             return genres[_random.Next(genres.Count)];
         }
 
-        public async Task SeedRandomMoviesAsync(int count = 100)
+        public async Task SeedRandomMoviesAsync(int count = 10)
         {
             try
             {

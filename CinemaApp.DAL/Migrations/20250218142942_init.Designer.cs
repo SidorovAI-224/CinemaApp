@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinemaApp.DAL.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    [Migration("20250218124821_init")]
+    [Migration("20250218142942_init")]
     partial class init
     {
         /// <inheritdoc />

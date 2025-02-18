@@ -62,16 +62,8 @@
 
 <div class="trailer-container">
     <h2>Trailer</h2>
-    @if (!string.IsNullOrEmpty(Model.TrailerURL))
-    {
-        <iframe width="200" height="150" src="@Model.TrailerURL.Replace("watch?v=", "embed/")" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    }
-    else
-    {
-        <p>No trailer available.</p>
-    }
+    <iframe width="400" height="300" src="@Model.TrailerURL.Replace("watch?v=", "embed/")" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-
 
 <div class="recommendations-container">
     <h2>Recommended Movies</h2>
