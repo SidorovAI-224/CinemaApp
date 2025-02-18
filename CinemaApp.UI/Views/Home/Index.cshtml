@@ -168,7 +168,7 @@
                     <div class="card text-center shadow-sm">
                         <div class="position-relative">
                             <img src="@movie.PosterURL" class="card-img-top" alt="Film poster">
-                            @if (Int32.Parse(@movie.Rating) >= 8)
+                            @if (float.Parse(@movie.Rating) >= 8)
                             {
                                 <div class="relevant-badge">Recommended</div>
                             }
