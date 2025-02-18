@@ -179,9 +179,11 @@
 
                 recommendationsList.innerHTML = "";
 
-                data.forEach((movie, index) => {
+                data.forEach(movie => {
                     const movieCard = document.createElement("div");
                     movieCard.className = "movie-card";
+                    movieCard.style.opacity = 0;
+                    movieCard.style.transform = "translateY(30px)";
 
                     movieCard.innerHTML = `
                         <a href="/Movie/UserDetails/${movie.movieId}" class="recommendation-link">
@@ -196,12 +198,13 @@
                     `;
                     recommendationsList.appendChild(movieCard);
 
-                    gsap.from(movieCard, {
+                    gsap.to(".movie-card", {
                         duration: 0.5,
-                        y: 50,
-                        opacity: 0,
-                        delay: index * 0.1,
-                        ease: "power2.out"
+                        opacity: 1,
+                        y: 0,
+                        stagger: 0.1,
+                        ease: "power2.out",
+                        clearProps: "all"
                     });
                 });
 
@@ -541,9 +544,9 @@
     }
 
     .loading-spinner {
-        border: 4px solid rgba(12, 72, 108, 0.1); /* light border */
+        border: 4px solid rgba(12, 72, 108, 0.1);
         border-radius: 50%;
-        border-top: 4px solid #0c486c; /* primary color */
+        border-top: 4px solid #0c486c;
         width: 50px;
         height: 50px;
         margin: 0 auto 20px;
