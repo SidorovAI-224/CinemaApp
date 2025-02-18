@@ -14,19 +14,3 @@
         <a asp-controller="Account" asp-action="Users" class="admin-btn">Manage Users</a>
     </div>
 </div>
-
-@section Scripts {
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let buttons = document.querySelectorAll(".admin-btn");
-            buttons.forEach(btn => {
-                btn.addEventListener("mouseover", function () {
-                    this.style.transform = "scale(1.05)";
-                });
-                btn.addEventListener("mouseout", function () {
-                    this.style.transform = "scale(1)";
-                });
-            });
-        });
-    </script>
-}

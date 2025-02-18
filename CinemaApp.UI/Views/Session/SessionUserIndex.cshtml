@@ -1,33 +1,42 @@
 ﻿@model IEnumerable<CinemaApp.BL.DTOs.MovieDTOs.Session.SessionDTO>
 
-<h2>Доступні сеанси</h2>
+<input type="date" id="dateInput">
+<button onclick="filterSessionsByDate(document.getElementById('dateInput').value)">Фільтрувати за датою</button>
+<button onclick="filterSessionsByDate('all')">Показати всі</button>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Session ID</th>
-            <th>Фільм</th>
-            <th>Date</th>
-            <th>Час</th>
-            <th>Зал</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var session in Model)
-        {
+@if (Model == null || !Model.Any())
+{
+    <center><h2>Немає наявних сеансів...</h2></center>
+}
+else
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td>@session.SessionID</td>
-                <td>@session.MovieTitle</td>
-                <td>@session.Date.ToString("dd.MM.yyyy")</td>
-                <td>@session.StartTime.ToString("HH:mm")</td>
-                <td>@session.Hall</td>
-                <td>
-                    <a asp-controller="Ticket"
-                       asp-action="TicketCreateBooking"
-                       asp-route-sessionId="@session.SessionID"
-                       class="btn btn-primary">Book a ticket</a>
-                </td>
+                <th>ID сеансу</th>
+                <th>Фільм</th>
+                <th>Дата</th>
+                <th>Час</th>
+                <th>Зал</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var session in Model)
+            {
+                <tr>
+                    <td>@session.SessionID</td>
+                    <td>@session.MovieTitle</td>
+                    <td>@session.Date.ToString("dd.MM.yyyy")</td>
+                    <td>@session.StartTime.ToString("HH:mm")</td>
+                    <td>@session.Hall</td>
+                    <td>
+                        <a asp-controller="Ticket"
+                        asp-action="TicketCreateBooking"
+                        asp-route-sessionId="@session.SessionID"
+                        class="btn btn-primary">забронювати білет</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

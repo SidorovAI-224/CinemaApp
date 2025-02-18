@@ -81,3 +81,29 @@ function filterSessionsByDate(date) {
     });
 }
 
+function searchByTitle(inputElement) {
+    let searchText = inputElement.value.trim().toLowerCase();
+    let movies = document.querySelectorAll(".movie-item");
+    
+    movies.forEach(movie => {
+        let title = movie.querySelector(".movie-title").textContent.toLowerCase();
+        
+        if (title.includes(searchText)) {
+            movie.style.display = "block";
+        } else {
+            movie.style.display = "none";
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    let buttons = document.querySelectorAll(".admin-btn");
+    buttons.forEach(btn => {
+        btn.addEventListener("mouseover", function () {
+            this.style.transform = "scale(1.05)";
+        });
+        btn.addEventListener("mouseout", function () {
+            this.style.transform = "scale(1)";
+        });
+    });
+});
