@@ -37,8 +37,8 @@ namespace CinemaApp.BL.Validators.Movie
             RuleFor(x => x.ReleaseDate)
                 .NotEmpty().WithMessage("Release date is nescesary");
 
-            RuleFor(x => x.Rating)
-                .InclusiveBetween(0, 10).WithMessage("Rating must be in 1-10 range");
+            //RuleFor(x => x.Rating)
+            //    .InclusiveBetween(0, 10).WithMessage("Rating must be in 1-10 range");
 
             RuleFor(x => x.AgeLimit)
                 .NotEmpty().WithMessage("Age limit can not be empty");

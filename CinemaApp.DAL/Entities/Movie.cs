@@ -9,8 +9,9 @@ namespace CinemaApp.DAL.Entities
         public TimeSpan Duration { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string? PosterURL { get; set; }
-        public string? TrailerURL { get; set; }
-        public decimal Rating { get; set; }
+        public string? TrailerURL { get; set; } = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=1s";
+
+        public string Rating { get; set; } // decimal
         public int AgeLimit { get; set; }
 
 

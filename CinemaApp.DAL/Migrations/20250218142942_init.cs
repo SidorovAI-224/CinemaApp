@@ -225,7 +225,7 @@ namespace CinemaApp.DAL.Migrations
                     ReleaseDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     PosterURL = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
                     TrailerURL = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
-                    Rating = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Rating = table.Column<string>(type: "TEXT", nullable: false),
                     AgeLimit = table.Column<int>(type: "INTEGER", nullable: false),
                     GenreID = table.Column<int>(type: "INTEGER", nullable: false),
                     GenreID1 = table.Column<int>(type: "INTEGER", nullable: true),

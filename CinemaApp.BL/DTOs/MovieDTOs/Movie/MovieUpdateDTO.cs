@@ -1,10 +1,8 @@
 ﻿using CinemaApp.BL.DTOs.MovieDTOs.MovieCrewmates;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 
-// UNUSED DTO [!]
+// [!]
 
 namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
 {
@@ -33,7 +31,7 @@ namespace CinemaApp.BL.DTOs.MovieDTOs.Movie
         public string? TrailerURL { get; set; }
 
         [Range(0, 10, ErrorMessage = "Rating must be in 0 - 10 range")]
-        public decimal Rating { get; set; }
+        public string Rating { get; set; } // decimal
 
         [Required(ErrorMessage = "Age limit is required")]
         [Range(0, 21, ErrorMessage = "Age limit must be in 0 - 21 range")]

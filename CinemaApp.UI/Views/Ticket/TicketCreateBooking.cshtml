@@ -11,7 +11,8 @@
     {
         <h2 class="title">@session.MovieTitle</h2>
         <div class="info-container">
-            <p>Date: @session.Date.ToString("dd.MM.yyyy HH:mm")</p>
+            <p>Date: @session.Date.ToString("dd.MM.yyyy")</p>
+            <p>Hall: @session.StartTime.ToString("T")</p>
             <p>Hall: @session.Hall</p>
             <div class="price-legend">
                 <span class="price-item">
@@ -233,7 +234,6 @@
                 cursor: not-allowed;
             }
 
-        /* Modal styles */
         .modal-content {
             border-radius: 8px;
         }
@@ -278,7 +278,7 @@
                             row: this.dataset.row,
                             seat: this.dataset.seat
                         };
-                        const seatValue = `${seatInfo.row}-${seatInfo.seat}`;S
+                        const seatValue = `${seatInfo.row}-${seatInfo.seat}`;
 
                         if (this.classList.contains('selected')) {
                             this.classList.remove('selected');

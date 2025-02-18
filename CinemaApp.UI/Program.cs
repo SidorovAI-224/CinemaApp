@@ -14,26 +14,21 @@ using CinemaApp.DAL.Repositories.MoviesCrewmates;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Automapper:
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(TotalMappProfile));
-// mapper
-builder.Services.AddAutoMapper(typeof(TotalMappProfile));
-// validator
+
+// Validators:
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();
-
-
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
-
 builder.Services.AddValidatorsFromAssembly(typeof(GenreCreateValidator).Assembly);
 
-
-// Реєстрація репозиторію
+// Repositories:
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IMovieCrewmateRepository, MovieCrewmateRepository>();
 
-// Реєстрація сервісів
+// Services:
 builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<ISessionService, SessionService>();
@@ -41,34 +36,24 @@ builder.Services.AddScoped<IPositionService, PositionService>();
 builder.Services.AddScoped<ICrewmateService, CrewmateService>();
 builder.Services.AddScoped<IMovieCrewmateService, MovieCrewmateService>();
 builder.Services.AddScoped<ITicketService, TicketService>();
-
 builder.Services.AddScoped<IAIService, AiService>();
 
+builder.Services.AddHttpClient<OMDbService>(client =>
+{
+    client.BaseAddress = new Uri("http://www.omdbapi.com/");
+});
+builder.Services.AddSingleton<OMDbService>(sp =>
+{
+    var httpClient = sp.GetRequiredService<HttpClient>();
+    var apiKey = "d1d1c574";
+    return new OMDbService(httpClient, apiKey);
+});
 
+builder.Services.AddScoped<SeedService>();
 
-
-////table check
-//var options = new DbContextOptionsBuilder<CinemaDbContext>()
-//    .UseSqlite("Data Source=CinemeApp.db")
-//    .Options;
-
-//using (var context = new CinemaDbContext(options))
-//{
-//    var tables = context.Model.GetEntityTypes()
-//        .Select(t => t.GetTableName())
-//        .ToList();
-
-//    foreach (var table in tables)
-//    {
-//        Console.WriteLine(table);
-//    }
-//}
-
-
-// DB Connection
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<CinemaDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlite(connectionString));
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
@@ -80,12 +65,20 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
     options.SignIn.RequireConfirmedEmail = false;
     options.SignIn.RequireConfirmedPhoneNumber = false;
 })
-    .AddEntityFrameworkStores<CinemaDbContext>()
-    .AddDefaultTokenProviders();
+.AddEntityFrameworkStores<CinemaDbContext>()
+.AddDefaultTokenProviders();
 
 var app = builder.Build();
 
 await SeedService.SeedDatabase(app.Services);
+
+
+// uncoment to load 100 random films to DB (takes time)
+//using (var scope = app.Services.CreateScope())
+//{
+//    var seedData = scope.ServiceProvider.GetRequiredService<SeedService>();
+//    await seedData.SeedRandomMoviesAsync(10);
+//}
 
 if (!app.Environment.IsDevelopment())
 {
@@ -100,11 +93,8 @@ app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapStaticAssets();
-
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

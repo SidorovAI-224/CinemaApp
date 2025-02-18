@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinemaApp.DAL.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    [Migration("20250217181407_init")]
+    [Migration("20250218142942_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -1020,7 +1020,8 @@ namespace CinemaApp.DAL.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Rating")
+                    b.Property<string>("Rating")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ReleaseDate")

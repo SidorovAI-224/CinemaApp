@@ -15,11 +15,11 @@ public class AiRecommendations : AiBase
         await GenerateEmbeddings(new List<Func<VectorizedMovie, string>>
         {
             vectorizedMovie => vectorizedMovie.Title,
-            vectorizedMovie => vectorizedMovie.Genre,
+            //vectorizedMovie => vectorizedMovie.Genre,
             vectorizedMovie => vectorizedMovie.Description
         });
         
-        VectorizedMovie? targetMovie = ItemList.Find(m => m == movie);
+        VectorizedMovie? targetMovie = ItemList.Find(m => m.MovieId == movie.MovieId);
 
         VectorSearchOptions searchOptions = new()
         {
