@@ -10,7 +10,7 @@
     </div>
     <div class="movie-info">
         <h1 class="movie-title">@Model.Title</h1>
-        <p class="movie-description">@Model.Description MovieID</p>
+        <p class="movie-description">@Model.Description</p>
 
         <div class="movie-metadata">
             <p>
@@ -18,7 +18,7 @@
                 <span class="genre-tag">@Model.GenreName</span>
                 @if (!string.IsNullOrEmpty(Model.GenreName1))
                 {
-                    <span class="genre-tag">@Model.GenreName1</span>    
+                    <span class="genre-tag">@Model.GenreName1</span>
                 }
                 @if (!string.IsNullOrEmpty(Model.GenreName2))
                 {
@@ -42,33 +42,85 @@
         <h2>Crewmates and positions</h2>
         <table class="crewmate-table">
             <thead>
-                <tr>
-                    <th>Crewmate</th>
-                    <th>Position</th>
-                </tr>
+            <tr>
+                <th>Crewmate</th>
+                <th>Position</th>
+            </tr>
             </thead>
             <tbody>
-                @foreach (var crewmate in Model.MovieCrewmates)
-                {
-                    <tr>
-                        <td>@crewmate.CrewmateName</td>
-                        <td>@crewmate.PositionName</td>
-                    </tr>
-                }
+            @foreach (var crewmate in Model.MovieCrewmates)
+            {
+                <tr>
+                    <td>@crewmate.CrewmateName</td>
+                    <td>@crewmate.PositionName</td>
+                </tr>
+            }
             </tbody>
         </table>
     </div>
 </div>
 
-<div class="trailer-container" >
+<div class="trailer-container">
     <h2>Trailer</h2>
-    <iframe width="200" height="150" src="@Model.TrailerURL.Replace("watch?v=", "embed/")" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="400" height="300" src="@Model.TrailerURL.Replace("watch?v=", "embed/")" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 <div class="recommendations-container">
     <h2>Recommended Movies</h2>
+    <!-- Индикатор загрузки -->
+    <div id="recommendations-loading">Recommendations loading...</div>
     <ul id="recommendations-list"></ul>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const recommendationsList = document.getElementById("recommendations-list");
+        const loadingIndicator = document.getElementById("recommendations-loading");
+        const movieId = @Model.MovieID;
+        console.log("movieId:", movieId);
+
+        async function pollRecommendations() {
+            try {
+                const response = await fetch(`/api/ai/similar/${movieId}?maxResults=5`);
+                if (response.status === 202) {
+                    console.log("2 sec");
+                    setTimeout(pollRecommendations, 2000);
+                    return;
+                }
+                if (!response.ok) {
+                    throw new Error('Error: ' + response.status);
+                }
+                const data = await response.json();
+                console.log("Data:", data);
+                if (loadingIndicator) {
+                    loadingIndicator.style.display = "none";
+                }
+                recommendationsList.innerHTML = "";
+                data.forEach(movie => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `
+                    <a href="/Movie/UserDetails/${movie.movieId}" class="recommendation-link">
+                        <img src="${movie.posterUrl}" alt="${movie.title}" class="recommendation-poster" />
+                        <span>${movie.title}</span>
+                    </a>
+                `;
+                    recommendationsList.appendChild(li);
+                });
+            } catch (error) {
+                console.error("Error:", error);
+                if (loadingIndicator) {
+                    loadingIndicator.textContent = "Error";
+                }
+            }
+        }
+
+        pollRecommendations();
+    });
+</script>
+
+
+
+
 
 
 

@@ -20,8 +20,8 @@ namespace CinemaApp.BL.Services
         {
             _movieService = movieService;
 
-            Uri aiUri = new Uri(configuration["AI:BaseUrl"]);
-            string model = configuration["AI:Model"];
+            Uri aiUri = new Uri("http://192.168.62.86:44444");
+            string model = "deepseek-r1:8b";
 
             List<VectorizedMovie> movies = GetVectorizedMovies().Result;
 
@@ -53,7 +53,20 @@ namespace CinemaApp.BL.Services
                 return new List<VectorizedMovie>();
 
             var vectorizedMovie = new VectorizedMovie(movieDto);
-            return await _similarRecommender.GetSimilarItems(vectorizedMovie, maxResults);
+            var similarMovies = await _similarRecommender.GetSimilarItems(vectorizedMovie, maxResults);
+
+            // Додайте MovieId та PosterUrl до кожного фільму
+            foreach (var movie in similarMovies)
+            {
+                var movieDtoSimilar = await _movieService.GetMovieByIdAsync(movie.MovieId);
+                if (movieDtoSimilar != null)
+                {
+                    movie.PosterUrl = movieDtoSimilar.PosterURL;
+                }
+            }
+
+            return similarMovies;
         }
+
     }
 }
