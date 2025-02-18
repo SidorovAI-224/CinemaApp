@@ -215,6 +215,9 @@ button:active {
     text-decoration: none;
     transition: all 0.2s ease-in-out;
 }
+button:hover {
+    background: midnightblue;
+}
 
 .admin-btn:hover {
     background: #0056b3;

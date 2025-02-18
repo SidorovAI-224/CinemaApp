@@ -147,17 +147,17 @@
 <div class="container">
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Пошук...">
-        <button id="searchButton">Пошук</button>
+        <button id="searchButton">Search</button>
     </div>
 
     <div class="sort-container">
-        <button onclick="sortMovies('ReleaseDate')">Сортувати за датою виходу</button>
-        <button onclick="sortMovies('Rating')">Сортувати за рейтингом</button>
+        <button onclick="sortMovies('ReleaseDate')">Sort by release</button>
+        <button onclick="sortMovies('Rating')">Sort by rating</button>
     </div>
 
     @if (Model == null || !Model.Any())
     {
-        <p class="no-films-message">Немає доступних фільмів.</p>
+        <p class="no-films-message">No avaible films.</p>
     }
     else
     {
@@ -170,17 +170,17 @@
                             <img src="@movie.PosterURL" class="card-img-top" alt="Film poster">
                             @if (Int32.Parse(@movie.Rating) >= 8)
                             {
-                                <div class="relevant-badge">Рекомендовано</div>
+                                <div class="relevant-badge">Recommended</div>
                             }
                             @if (@movie.ReleaseDate >= DateTime.UtcNow.AddDays(-100))
                             {
-                                <div class="new-badge">Новинка</div>
+                                <div class="new-badge">New</div>
                             }
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">@movie.Title</h5>
-                            <p class="card-text"><strong>Рейтинг:</strong> @movie.Rating⭐ DATE: @movie.ReleaseDate.ToString("d")</p>
-                            <a asp-controller="Movie" asp-action="UserDetails" asp-route-id="@movie.MovieID" class="btn btn-primary btn-sm">Деталі</a>
+                            <p class="card-text"><strong>Rating:</strong> @movie.Rating⭐</p>
+                            <a asp-controller="Movie" asp-action="UserDetails" asp-route-id="@movie.MovieID" class="btn btn-primary btn-sm">Details</a>
                         </div>
                     </div>
                 </div>

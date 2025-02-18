@@ -32,8 +32,4 @@ public abstract class AiBase
             await Items.UpsertAsync(movie);
         }
     }
-    
-    
-    
-    
 }

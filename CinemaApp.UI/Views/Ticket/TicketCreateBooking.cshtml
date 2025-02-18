@@ -12,7 +12,7 @@
         <h2 class="title">@session.MovieTitle</h2>
         <div class="info-container">
             <p>Date: @session.Date.ToString("dd.MM.yyyy")</p>
-            <p>Hall: @session.StartTime.ToString("T")</p>
+            <p>Time: @session.StartTime.ToString("T")</p>
             <p>Hall: @session.Hall</p>
             <div class="price-legend">
                 <span class="price-item">
@@ -58,7 +58,7 @@
 
             <input type="hidden" name="selectedSeats" id="selectedSeatsInput" />
             <div class="total-amount">
-                Total amount: 0 UAH
+                Total amount: <span id="totalPrice">0</span> UAH
             </div>
 
             <div class="booking-controls">
@@ -74,7 +74,6 @@
     }
 </div>
 
-<!-- Модальне вікно підтвердження -->
 <div class="modal" id="confirmationModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -99,6 +98,15 @@
 
 @section Scripts {
     <style>
+        body {
+            background-color: white;
+            color: #e0e0e0;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -108,11 +116,18 @@
         .title {
             text-align: center;
             margin-bottom: 20px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0c486c;
         }
 
         .info-container {
             text-align: center;
             margin-bottom: 30px;
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .price-legend {
@@ -126,12 +141,26 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            font-size: 1rem;
+            color: #e0e0e0;
         }
 
         .price-box {
-            width: 30px;
-            height: 30px;
+            width: 20px;
+            height: 20px;
             border-radius: 4px;
+        }
+
+        .available {
+            background-color: #28a745;
+        }
+
+        .reserved {
+            background-color: #dc3545;
+        }
+
+        .selected {
+            background-color: #007bff;
         }
 
         .screen-container {
@@ -140,20 +169,24 @@
         }
 
         .screen {
-            background-color: #D3D3D3;
+            background-color: #2a2a40;
             padding: 15px;
             margin: 0 auto;
             width: 80%;
             text-align: center;
             font-weight: bold;
+            color: #e0e0e0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .seating-layout {
             margin: 20px auto;
             width: fit-content;
-            background: #f5f5f5;
+            background: #1f1f1f;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .row {
@@ -167,6 +200,7 @@
             width: 30px;
             text-align: center;
             font-weight: bold;
+            color: #e0e0e0;
         }
 
         .seat {
@@ -179,25 +213,25 @@
             align-items: center;
             justify-content: center;
             font-size: 12px;
-            color: #333;
+            color: #e0e0e0;
         }
 
         .available {
-            background-color: #87CEEB;
+            background-color: #28a745;
         }
 
             .available:hover {
-                background-color: #5CACEE;
+                background-color: #218838;
             }
 
         .reserved {
-            background-color: #ccc;
+            background-color: #dc3545;
             cursor: not-allowed;
             color: #666;
         }
 
         .selected {
-            background-color: #4682B4;
+            background-color: #007bff;
             color: white;
         }
 
@@ -205,7 +239,8 @@
             text-align: center;
             margin: 20px 0;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 1.2rem;
+            color: black;
         }
 
         .booking-controls {
@@ -214,28 +249,39 @@
         }
 
         .buy-tickets-btn {
-            background-color: #E6BE8A;
+            background-color: #007bff;
             border: none;
             padding: 15px 40px;
-            border-radius: 4px;
+            border-radius: 30px;
             cursor: pointer;
             text-transform: uppercase;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 1rem;
+            color: #e0e0e0;
             transition: background-color 0.3s ease;
         }
 
             .buy-tickets-btn:hover:not(:disabled) {
-                background-color: #D4AF77;
+                background-color: #0056b3;
             }
 
             .buy-tickets-btn:disabled {
-                background-color: #ccc;
+                background-color: #6c757d;
                 cursor: not-allowed;
             }
 
         .modal-content {
-            border-radius: 8px;
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+            border-radius: 10px;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #333;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #333;
         }
 
         .modal-body ul {
@@ -245,13 +291,14 @@
 
         .modal-body li {
             padding: 8px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #333;
         }
 
         .modal-body .total-price {
             font-weight: bold;
             font-size: 1.2em;
             margin-top: 15px;
+            color: #e0e0e0;
         }
 
         .modal {
@@ -264,15 +311,15 @@
     </style>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const seats = document.querySelectorAll('.seat.available');
-            const totalAmount = document.querySelector('.total-amount');
+            const totalAmount = document.getElementById('totalPrice');
             const selectedSeatsInput = document.getElementById('selectedSeatsInput');
             const submitButton = document.querySelector('.buy-tickets-btn');
             let selectedSeats = new Set();
 
             seats.forEach(seat => {
-                    seat.addEventListener('click', function() {
+                seat.addEventListener('click', function () {
                     if (this.classList.contains('available')) {
                         const seatInfo = {
                             row: this.dataset.row,
@@ -289,7 +336,7 @@
                         }
 
                         const totalPrice = selectedSeats.size * 140;
-                        totalAmount.textContent = `Total amount: ${totalPrice} UAH`;
+                        totalAmount.textContent = totalPrice;
                         selectedSeatsInput.value = Array.from(selectedSeats).join(',');
                         submitButton.disabled = selectedSeats.size === 0;
                     }
@@ -324,17 +371,17 @@
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    window.location.href = data.redirectUrl;
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => {
-                alert('An error occurred while processing your request.');
-            });
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = data.redirectUrl;
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    alert('An error occurred while processing your request.');
+                });
         }
     </script>
 }
