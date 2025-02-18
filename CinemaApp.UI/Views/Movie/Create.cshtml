@@ -1,19 +1,20 @@
 ﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieCreateDTO
 
-<h2>Add new film</h2>
+<h2>Add New Film</h2>
 
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label asp-for="Title" class="control-label"></label>
-        <input asp-for="Title" class="form-control" />
+<form asp-action="Create" method="post" class="needs-validation" novalidate>
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" required />
+        <div class="invalid-feedback">Please provide a title.</div>
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label asp-for="Description" class="control-label"></label>
-        <textarea asp-for="Description" class="form-control"></textarea>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control" required></textarea>
+        <div class="invalid-feedback">Please provide a description.</div>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
-
     <div class="form-group">
         <label asp-for="GenreID" class="control-label">Genre </label>
         <select asp-for="GenreID" class="form-control">
@@ -88,35 +89,40 @@
         </select>
         <span asp-validation-for="GenreID4" class="text-danger"></span>
     </div>
-
-    <div class="form-group">
-        <label asp-for="Duration" class="control-label"></label>
-        <input asp-for="Duration" class="form-control" type="time" />
+    <div class="mb-3">
+        <label asp-for="Duration" class="form-label"></label>
+        <input asp-for="Duration" class="form-control" type="time" required />
+        <div class="invalid-feedback">Please provide a duration.</div>
         <span asp-validation-for="Duration" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label asp-for="ReleaseDate" class="control-label"></label>
-        <input asp-for="ReleaseDate" class="form-control" type="date" />
+    <div class="mb-3">
+        <label asp-for="ReleaseDate" class="form-label"></label>
+        <input asp-for="ReleaseDate" class="form-control" type="date" required />
+        <div class="invalid-feedback">Please provide a release date.</div>
         <span asp-validation-for="ReleaseDate" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label asp-for="Rating" class="control-label"></label>
-        <input asp-for="Rating" class="form-control" />
+    <div class="mb-3">
+        <label asp-for="Rating" class="form-label"></label>
+        <input asp-for="Rating" class="form-control" required />
+        <div class="invalid-feedback">Please provide a rating.</div>
         <span asp-validation-for="Rating" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label asp-for="AgeLimit" class="control-label"></label>
-        <input asp-for="AgeLimit" class="form-control" />
+    <div class="mb-3">
+        <label asp-for="AgeLimit" class="form-label"></label>
+        <input asp-for="AgeLimit" class="form-control" required />
+        <div class="invalid-feedback">Please provide an age limit.</div>
         <span asp-validation-for="AgeLimit" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label asp-for="PosterURL" class="control-label"></label>
-        <input asp-for="PosterURL" class="form-control" />
+    <div class="mb-3">
+        <label asp-for="PosterURL" class="form-label"></label>
+        <input asp-for="PosterURL" class="form-control" required />
+        <div class="invalid-feedback">Please provide a poster URL.</div>
         <span asp-validation-for="PosterURL" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label asp-for="TrailerURL" class="control-label"></label>
-        <input asp-for="TrailerURL" class="form-control" />
+    <div class="mb-3">
+        <label asp-for="TrailerURL" class="form-label"></label>
+        <input asp-for="TrailerURL" class="form-control" required />
+        <div class="invalid-feedback">Please provide a trailer URL.</div>
         <span asp-validation-for="TrailerURL" class="text-danger"></span>
     </div>
 
@@ -134,10 +140,10 @@
         <tbody>
             <tr>
                 <td>
-                    <input type="number" name="MovieCrewmates[0].CrewmateID" class="form-control crewmate-id" />
+                    <input type="number" name="MovieCrewmates[0].CrewmateID" class="form-control crewmate-id" required />
                 </td>
                 <td>
-                    <input type="number" name="MovieCrewmates[0].PositionID" class="form-control position-id" />
+                    <input type="number" name="MovieCrewmates[0].PositionID" class="form-control position-id" required />
                 </td>
                 <td class="crewmate-name"></td>
                 <td class="position-name"></td>
@@ -147,16 +153,31 @@
             </tr>
         </tbody>
     </table>
-
     <button type="button" class="btn btn-success" id="addActor">Add crewmate</button>
 
-    <div class="form-group">
+    <div class="mb-3 mt-3">
         <input type="submit" value="Add" class="btn btn-primary" />
         <a asp-action="Index" class="btn btn-secondary">Back to list</a>
     </div>
 </form>
 
 <script>
+    (function () {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+
+        Array.prototype.slice.call(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+
     document.getElementById("addActor").addEventListener("click", function () {
         var table = document.getElementById("crewmateTable").getElementsByTagName('tbody')[0];
         var index = table.rows.length;
@@ -164,15 +185,15 @@
         var newRow = table.insertRow();
         newRow.innerHTML = `
             <td>
-                <input type="number" name="MovieCrewmates[${index}].CrewmateID" class="form-control crewmate-id" />
+                <input type="number" name="MovieCrewmates[${index}].CrewmateID" class="form-control crewmate-id" required />
             </td>
             <td>
-                <input type="number" name="MovieCrewmates[${index}].PositionID" class="form-control position-id" />
+                <input type="number" name="MovieCrewmates[${index}].PositionID" class="form-control position-id" required />
             </td>
             <td class="crewmate-name"></td>
             <td class="position-name"></td>
             <td>
-                <button type="button" class="btn btn-danger remove-actor">Видалити</button>
+                <button type="button" class="btn btn-danger remove-actor">Delete</button>
             </td>
         `;
 
@@ -230,7 +251,6 @@
     });
 
     updateRemoveButtons();
-
 </script>
 
 @if (!ViewData.ModelState.IsValid)
