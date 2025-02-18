@@ -13,17 +13,20 @@ public class VectorizedMovie
 
     [VectorStoreRecordData]
     public string Description { get; set; }
-    
+
     [VectorStoreRecordVector(4096, DistanceFunction.CosineSimilarity)]
     public ReadOnlyMemory<float> Vector { get; set; }
+
+    [VectorStoreRecordKey]
+    public int MovieId { get; set; }
+    public string PosterUrl { get; set; }
 
     public VectorizedMovie(MovieDTO movieDto)
     {
         Title = movieDto.Title;
-        
         Genre = movieDto.GenreName;
-
         Description = movieDto.Description;
+        MovieId = movieDto.MovieID;
+        PosterUrl = movieDto.PosterURL;
     }
-    
 }

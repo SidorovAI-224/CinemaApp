@@ -1,4 +1,4 @@
-﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDTO
+﻿ @model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDTO
 
 @{
     ViewData["Title"] = Model.Title;
@@ -10,7 +10,7 @@
     </div>
     <div class="movie-info">
         <h1 class="movie-title">@Model.Title</h1>
-        <p class="movie-description">@Model.Description MovieID</p>
+        <p class="movie-description">@Model.Description</p>
 
         <div class="movie-metadata">
             <p>
@@ -18,7 +18,7 @@
                 <span class="genre-tag">@Model.GenreName</span>
                 @if (!string.IsNullOrEmpty(Model.GenreName1))
                 {
-                    <span class="genre-tag">@Model.GenreName1</span>    
+                    <span class="genre-tag">@Model.GenreName1</span>
                 }
                 @if (!string.IsNullOrEmpty(Model.GenreName2))
                 {
@@ -60,17 +60,91 @@
     </div>
 </div>
 
-<div class="trailer-container" >
+<div class="trailer-container">
     <h2>Trailer</h2>
-    <iframe width="200" height="150" src="@Model.TrailerURL.Replace("watch?v=", "embed/")" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="400" height="300" src="@Model.TrailerURL.Replace("watch?v=", "embed/")" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 <div class="recommendations-container">
     <h2>Recommended Movies</h2>
-    <ul id="recommendations-list"></ul>
+    <div id="recommendations-loading">
+        <div class="loading-spinner"></div>
+        <p>Finding similar movies you might enjoy...</p>
+    </div>
+    <div id="recommendations-list" class="recommendations-grid"></div>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const recommendationsList = document.getElementById("recommendations-list");
+        const loadingIndicator = document.getElementById("recommendations-loading");
+        const movieId = @Model.MovieID;
+        console.log("movieId:", movieId);
 
+        async function pollRecommendations() {
+            try {
+                const response = await fetch(`/api/ai/similar/${movieId}?maxResults=5`);
+                if (response.status === 202) {
+                    console.log("Recommendations still processing, trying again in 2 seconds");
+                    setTimeout(pollRecommendations, 2000);
+                    return;
+                }
+                if (!response.ok) {
+                    throw new Error('Error: ' + response.status);
+                }
+                const data = await response.json();
+                console.log("Data:", data);
+
+                // Hide loading indicator with fade-out animation
+                if (loadingIndicator) {
+                    loadingIndicator.classList.add('fade-out');
+                    setTimeout(() => {
+                        loadingIndicator.style.display = "none";
+                    }, 500);
+                }
+
+                recommendationsList.innerHTML = "";
+
+
+                // Populate recommendations with staggered animation
+                data.forEach((movie, index) => {
+                    const movieCard = document.createElement("div");
+                    movieCard.className = "movie-card";
+                    movieCard.style.animationDelay = `${index * 0.15}s`;
+
+                    movieCard.innerHTML = `
+                        <a href="/Movie/UserDetails/${movie.movieId}" class="recommendation-link">
+                            <div class="poster-wrapper">
+                                <img src="${movie.posterUrl}" alt="${movie.title}" class="recommendation-poster" />
+                                <div class="hover-info">
+                                    <span>View details</span>
+                                </div>
+                            </div>
+                            <h3 class="movie-title">${movie.title}</h3>
+                        </a>
+                    `;
+                    recommendationsList.appendChild(movieCard);
+                });
+
+                // Display the recommendations container
+                recommendationsList.style.display = "grid";
+
+            } catch (error) {
+                console.error("Error fetching recommendations:", error);
+                if (loadingIndicator) {
+                    loadingIndicator.innerHTML = `
+                        <div class="error-message">
+                            <i class="error-icon">!</i>
+                            <p>Couldn't load recommendations. Please try again later.</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        pollRecommendations();
+    });
+</script>
 
 <style>
     body {
@@ -104,10 +178,10 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .poster-image:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    }
+        .poster-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
 
     .movie-info {
         flex: 2;
@@ -132,11 +206,11 @@
         margin-top: 20px;
     }
 
-    .movie-metadata p {
-        margin: 8px 0;
-        font-size: 1rem;
-        color: #444;
-    }
+        .movie-metadata p {
+            margin: 8px 0;
+            font-size: 1rem;
+            color: #444;
+        }
 
     .genre-tag {
         display: inline-block;
@@ -149,9 +223,9 @@
         transition: background-color 0.3s ease;
     }
 
-    .genre-tag:hover {
-        background-color: #0056b3;
-    }
+        .genre-tag:hover {
+            background-color: #0056b3;
+        }
 
     .crewmate-table {
         width: 100%;
@@ -160,20 +234,20 @@
         animation: fadeIn 1.5s ease-in-out;
     }
 
-    .crewmate-table th, .crewmate-table td {
-        padding: 12px;
-        border: 1px solid #ddd;
-        text-align: left;
-    }
+        .crewmate-table th, .crewmate-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
 
-    .crewmate-table th {
-        background-color: #007bff;
-        color: #fff;
-    }
+        .crewmate-table th {
+            background-color: #007bff;
+            color: #fff;
+        }
 
-    .crewmate-table tr:hover {
-        background-color: #f1f1f1;
-    }
+        .crewmate-table tr:hover {
+            background-color: #f1f1f1;
+        }
 
     .trailer-container {
         margin: 20px;
@@ -184,10 +258,11 @@
         animation: fadeIn 1.8s ease-in-out;
     }
 
-    .trailer-container h2 {
-        margin-bottom: 15px;
-        color: #222;
-    }
+
+        .trailer-container h2 {
+            margin-bottom: 15px;
+            color: #222;
+        }
 
     iframe {
         width: 100%;
@@ -198,10 +273,10 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    iframe:hover {
-        transform: scale(1.02);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    }
+        iframe:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
 
     .recommendations-container {
         margin: 20px;
@@ -212,30 +287,153 @@
         animation: fadeIn 2s ease-in-out;
     }
 
-    .recommendations-container h2 {
-        margin-bottom: 15px;
-        color: #222;
+        .recommendations-container h2 {
+            margin-bottom: 25px;
+            color: #222;
+            position: relative;
+            display: inline-block;
+        }
+
+            .recommendations-container h2:after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 50%;
+                height: 3px;
+                background: linear-gradient(to right, #0c486c, transparent);
+                border-radius: 3px;
+            }
+
+    #recommendations-loading {
+        text-align: center;
+        padding: 30px;
+        transition: opacity 0.5s ease;
     }
 
-    #recommendations-list {
-        list-style: none;
-        padding: 0;
+        #recommendations-loading.fade-out {
+            opacity: 0;
+        }
+
+    .loading-spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        border-top: 4px solid #0c486c;
+        width: 40px;
+        height: 40px;
+        margin: 0 auto 15px;
+        animation: spin 1s linear infinite;
     }
 
-    #recommendations-list li {
-        background-color: #007bff;
-        color: #fff;
+    @@keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .recommendations-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 25px;
         padding: 10px;
-        margin: 5px 0;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
     }
 
-    #recommendations-list li:hover {
-        background-color: #0056b3;
+    .movie-card {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeInUp 0.5s ease forwards;
+        opacity: 0;
     }
 
-    /* Анімації */
+        .movie-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+        }
+
+    .recommendation-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+    .poster-wrapper {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 2/3;
+    }
+
+    .recommendation-poster {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .movie-card:hover .recommendation-poster {
+        transform: scale(1.1);
+    }
+
+    .hover-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        padding: 15px 10px;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        text-align: center;
+    }
+
+        .hover-info span {
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+    .movie-card:hover .hover-info {
+        transform: translateY(0);
+    }
+
+    .movie-card h3 {
+        padding: 15px 10px;
+        margin: 0;
+        font-size: 1rem;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .error-message {
+        padding: 20px;
+        background-color: #fff3f3;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid #ffcccb;
+    }
+
+    .error-icon {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        line-height: 28px;
+        text-align: center;
+        background-color: #ff5252;
+        color: white;
+        border-radius: 50%;
+        font-weight: bold;
+        font-style: normal;
+        margin-bottom: 10px;
+    }
+
     @@keyframes fadeIn {
         from {
             opacity: 0;
@@ -245,6 +443,7 @@
             opacity: 1;
         }
     }
+
 
     @@keyframes slideInLeft {
         from {
@@ -257,22 +456,30 @@
             opacity: 1;
         }
     }
-</style>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let movieId = @Model.MovieID;
-        fetch(`/api/ai/similar/${movieId}?maxResults=5`)
-            .then(response => response.json())
-            .then(data => {
-                let list = document.getElementById("recommendations-list");
-                list.innerHTML = "";
-                data.forEach(movie => {
-                    let li = document.createElement("li");
-                    li.textContent = movie.title;
-                    list.appendChild(li);
-                });
-            })
-            .catch(error => console.error("Error fetching recommendations:", error));
-    });
-</script>
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .movie-details-container {
+            flex-direction: column;
+        }
+
+        .movie-poster {
+            max-width: 100%;
+        }
+
+        .recommendations-grid {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+    }
+</style>
