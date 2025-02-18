@@ -1,0 +1,32 @@
+﻿@model CinemaApp.BL.DTOs.UserDTOs.User.UserDTO;
+@{
+    ViewData["Title"] = "Admin Page";
+}
+
+<div class="admin-panel text-center">
+    <div class="button-container">
+        <a asp-controller="Movie" asp-action="Index" class="admin-btn">Go to Movies</a>
+        <a asp-controller="Genre" asp-action="Index" class="admin-btn">Go to Genres</a>
+        <a asp-controller="Session" asp-action="SessionIndex" class="admin-btn">Go to Sessions</a>
+        <a asp-controller="Position" asp-action="PositionAdminIndex" class="admin-btn">Go to Positions</a>
+        <a asp-controller="Crewmate" asp-action="CrewmateAdminIndex" class="admin-btn">Go to Crewmates</a>
+        <a asp-controller="Ticket" asp-action="TicketIndex" class="admin-btn">Go to Tickets</a>
+        <a asp-controller="Account" asp-action="Users" class="admin-btn">Manage Users</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let buttons = document.querySelectorAll(".admin-btn");
+            buttons.forEach(btn => {
+                btn.addEventListener("mouseover", function () {
+                    this.style.transform = "scale(1.05)";
+                });
+                btn.addEventListener("mouseout", function () {
+                    this.style.transform = "scale(1)";
+                });
+            });
+        });
+    </script>
+}

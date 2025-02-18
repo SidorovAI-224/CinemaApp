@@ -1,0 +1,262 @@
+﻿@model CinemaApp.BL.DTOs.MovieDTOs.Movie.MovieDTO
+
+
+
+
+
+
+<h2>Edit film</h2>
+<input type="hidden" asp-for="MovieID" />
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GenreID" class="control-label"></label>
+        <select asp-for="GenreID" class="form-control">
+            <option value="">Select Genre</option>
+            @foreach (var genre in ViewBag.Genres)
+            {
+                <option value="@genre.GenreID" selected="@(genre.GenreID == Model.GenreID ? "selected" : null)">
+                    @genre.GenreName
+                </option>
+            }
+        </select>
+        <span asp-validation-for="GenreID" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GenreID1" class="control-label"></label>
+        <select asp-for="GenreID1" class="form-control">
+            <option value="">Select Genre 1</option>
+            @foreach (var genre in ViewBag.Genres)
+            {
+                <option value="@genre.GenreID" selected="@(genre.GenreID == Model.GenreID1 ? "selected" : null)">
+                    @genre.GenreName
+                </option>
+            }
+        </select>
+        <span asp-validation-for="GenreID1" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GenreID2" class="control-label"></label>
+        <select asp-for="GenreID2" class="form-control">
+            <option value="">Select Genre 2</option>
+            @foreach (var genre in ViewBag.Genres)
+            {
+                <option value="@genre.GenreID" selected="@(genre.GenreID == Model.GenreID2 ? "selected" : null)">
+                    @genre.GenreName
+                </option>
+            }
+        </select>
+        <span asp-validation-for="GenreID2" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GenreID3" class="control-label"></label>
+        <select asp-for="GenreID3" class="form-control">
+            <option value="">Select Genre 3</option>
+            @foreach (var genre in ViewBag.Genres)
+            {
+                <option value="@genre.GenreID" selected="@(genre.GenreID == Model.GenreID3 ? "selected" : null)">
+                    @genre.GenreName
+                </option>
+            }
+        </select>
+        <span asp-validation-for="GenreID3" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GenreID4" class="control-label"></label>
+        <select asp-for="GenreID4" class="form-control">
+            <option value="">Select Genre 4</option>
+            @foreach (var genre in ViewBag.Genres)
+            {
+                <option value="@genre.GenreID" selected="@(genre.GenreID == Model.GenreID4 ? "selected" : null)">
+                    @genre.GenreName
+                </option>
+            }
+        </select>
+        <span asp-validation-for="GenreID4" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Duration" class="control-label"></label>
+        <input asp-for="Duration" class="form-control" type="time" />
+        <span asp-validation-for="Duration" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ReleaseDate" class="control-label"></label>
+        <input asp-for="ReleaseDate" class="form-control" type="date" />
+        <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Rating" class="control-label"></label>
+        <input asp-for="Rating" class="form-control" />
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AgeLimit" class="control-label"></label>
+        <input asp-for="AgeLimit" class="form-control" />
+        <span asp-validation-for="AgeLimit" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PosterURL" class="control-label"></label>
+        <input asp-for="PosterURL" class="form-control" />
+        <span asp-validation-for="PosterURL" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TrailerURL" class="control-label"></label>
+        <input asp-for="TrailerURL" class="form-control" />
+        <span asp-validation-for="TrailerURL" class="text-danger"></span>
+    </div>
+
+    <h3>Crewmates</h3>
+    <table class="table" id="crewmateTable">
+        <thead>
+            <tr>
+                <th>Crewmate ID</th>
+                <th>Position ID</th>
+                <th>Crewmate</th>
+                <th>Position</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.MovieCrewmates.Count; i++)
+            {
+                <tr>
+                    <td>
+                        <input type="number" asp-for="MovieCrewmates[i].CrewmateID" class="form-control crewmate-id" />
+                        <span asp-validation-for="MovieCrewmates[i].CrewmateID" class="text-danger"></span>
+                    </td>
+                    <td>
+                        <input type="number" asp-for="MovieCrewmates[i].PositionID" class="form-control position-id" />
+                        <span asp-validation-for="MovieCrewmates[i].PositionID" class="text-danger"></span>
+                    </td>
+                    <td class="crewmate-name"></td>
+                    <td class="position-name"></td>
+                    <td>
+                        <button type="button" class="btn btn-danger remove-actor">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-success" id="addActor">Add crewmate</button>
+
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Back to list</a>
+    </div>
+</form>
+
+<script>
+    document.getElementById("addActor").addEventListener("click", function () {
+        var table = document.getElementById("crewmateTable").getElementsByTagName('tbody')[0];
+        var index = table.rows.length;
+
+        var newRow = table.insertRow();
+        newRow.innerHTML = `
+            <td>
+                <input type="number" name="MovieCrewmates[${index}].CrewmateID" class="form-control crewmate-id" />
+            </td>
+            <td>
+                <input type="number" name="MovieCrewmates[${index}].PositionID" class="form-control position-id" />
+            </td>
+            <td class="crewmate-name"></td>
+            <td class="position-name"></td>
+            <td>
+                <button type="button" class="btn btn-danger remove-actor">Delete</button>
+            </td>
+        `;
+
+        updateRemoveButtons();
+        attachPreviewListeners(newRow);
+        updateRowIndexes();
+    });
+
+    function updateRemoveButtons() {
+        document.querySelectorAll(".remove-actor").forEach(button => {
+            button.addEventListener("click", function () {
+                const row = this.closest("tr");
+                row.remove();
+                updateRowIndexes();
+            });
+        });
+    }
+
+    function updateRowIndexes() {
+        const rows = document.querySelectorAll("#crewmateTable tbody tr");
+        rows.forEach((row, index) => {
+            row.querySelector(".crewmate-id").name = `MovieCrewmates[${index}].CrewmateID`;
+            row.querySelector(".position-id").name = `MovieCrewmates[${index}].PositionID`;
+        });
+    }
+
+    function attachPreviewListeners(row) {
+        const crewmateIdInput = row.querySelector(".crewmate-id");
+        const positionIdInput = row.querySelector(".position-id");
+        const crewmateNameCell = row.querySelector(".crewmate-name");
+        const positionNameCell = row.querySelector(".position-name");
+
+        crewmateIdInput.addEventListener("input", async function () {
+            const crewmateId = this.value;
+            if (crewmateId) {
+                const response = await fetch(`/Crewmate/GetCrewmateName?id=${crewmateId}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    crewmateNameCell.textContent = data.name;
+                } else {
+                    crewmateNameCell.textContent = "Unknown crewmate";
+                }
+            } else {
+                crewmateNameCell.textContent = "";
+            }
+        });
+
+        positionIdInput.addEventListener("input", async function () {
+            const positionId = this.value;
+            if (positionId) {
+                const response = await fetch(`/Position/GetPositionName?id=${positionId}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    positionNameCell.textContent = data.name;
+                } else {
+                    positionNameCell.textContent = "Unknown position";
+                }
+            } else {
+                positionNameCell.textContent = "";
+            }
+        });
+    }
+
+    document.querySelectorAll("#crewmateTable tbody tr").forEach(row => {
+        attachPreviewListeners(row);
+    });
+
+    updateRemoveButtons();
+</script>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}

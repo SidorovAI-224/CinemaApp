@@ -1,0 +1,33 @@
+﻿@model IEnumerable<CinemaApp.BL.DTOs.MovieDTOs.Session.SessionDTO>
+
+<h2>Avaible sessions</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Session ID</th>
+            <th>Film</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Hall</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var session in Model)
+        {
+            <tr>
+                <td>@session.SessionID</td>
+                <td>@session.MovieTitle</td>
+                <td>@session.Date.ToString("dd.MM.yyyy")</td>
+                <td>@session.StartTime.ToString("HH:mm")</td>
+                <td>@session.Hall</td>
+                <td>
+                    <a asp-controller="Ticket"
+                       asp-action="TicketCreateBooking"
+                       asp-route-sessionId="@session.SessionID"
+                       class="btn btn-primary">Book a ticket</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

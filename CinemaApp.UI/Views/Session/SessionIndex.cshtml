@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CinemaApp.BL.DTOs.MovieDTOs.Session.SessionDTO>
+
+<h2>Session list</h2>
+<a asp-action="SessionCreate" class="btn btn-primary">Add new session</a>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No avaible sessions.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Session ID</th>
+                <th>Film name</th>
+                <th>Hall</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var session in Model)
+            {
+                <tr>
+                    <td>@session.SessionID</td>
+                    <td>@session.MovieTitle</td>
+                    <td>@session.Hall</td>
+                    <td>@session.Date.ToShortDateString()</td>
+                    <td>@session.StartTime.ToShortTimeString()</td>
+                    <td>
+                        <a asp-action="SessionEdit" asp-route-id="@session.SessionID" class="btn btn-warning">Edit</a>
+                        <a asp-action="SessionDelete" asp-route-id="@session.SessionID" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+
