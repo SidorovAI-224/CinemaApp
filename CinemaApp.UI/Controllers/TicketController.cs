@@ -41,7 +41,7 @@ namespace CinemaApp.UI.Controllers
             var tickets = await _ticketService.GetAllTicketsAsync();
             var takenSeats = tickets
                 .Where(t => t.SessionID == sessionId)
-                .Select(t => t.SeatID)
+                .Select(t => (t.RowID - 1) * 15 + t.SeatID)
                 .ToList();
 
             ViewBag.Session = session;

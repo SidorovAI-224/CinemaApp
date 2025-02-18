@@ -44,7 +44,7 @@ namespace CinemaApp.Helpers.UnitTests
                 ReleaseDate = DateTime.Now,
                 PosterURL = "http://example.com/poster.jpg",
                 TrailerURL = "http://example.com/trailer.mp4",
-                Rating = 8.5m,
+                //Rating = 8.5m,
                 AgeLimit = 18,
                 MovieCrewmates = new List<MovieCrewmate>
                 {
