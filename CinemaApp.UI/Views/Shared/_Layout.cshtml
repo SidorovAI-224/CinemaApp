@@ -4,16 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Absolute Cinema</title>
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet" />
-    <!-- AOS (Animate On Scroll) library -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="~/css/site.css" />
     <style>
-        /* [Previous styles remain the same until the loader-wrapper] */
 
         body {
             display: flex;
@@ -27,24 +22,29 @@
             transition: background-color 0.3s ease;
         }
 
-        /* [All other previous styles remain the same] */
-
-        /* Remove page transition styles */
         .page-transition-out {
             display: none;
         }
-        /* Add margin-top to the footer */
         footer {
             margin-top: auto;
             position: relative;
         }
 
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .navbar {
+            margin-bottom: 0;
+        }
 
 
     </style>
 </head>
 <body>
-    <!-- Loader -->
     <div class="loader-wrapper">
         <div class="loader"></div>
     </div>
@@ -116,7 +116,6 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -130,12 +129,10 @@
                 once: true
             });
 
-            // Loader fadeout
             setTimeout(function() {
                 $('.loader-wrapper').fadeOut('slow');
             }, 500);
 
-            // Dark mode toggle
             $('#dark-mode-toggle').click(function() {
                 $('body').toggleClass('dark-mode');
                 if ($('body').hasClass('dark-mode')) {
@@ -147,25 +144,21 @@
                 }
             });
 
-            // Check for saved dark mode preference
             if (localStorage.getItem('darkMode') === 'enabled') {
                 $('body').addClass('dark-mode');
                 $('#dark-mode-toggle').html('<i class="fas fa-sun"></i>');
             }
 
-            // Initialize tooltips
             const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
             tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl);
             });
 
-            // Custom animation for cards
             $('.card').each(function(index) {
                 $(this).css('animation-delay', (index * 0.1) + 's');
             });
         });
 
-        // Show notification function
         function showNotification(title, message, type = 'success') {
             Swal.fire({
                 title: title,

@@ -216,6 +216,6 @@ button:active {
     transition: all 0.2s ease-in-out;
 }
 
-.admin-btn:hover {
-    background: #0056b3;
-}
+    .admin-btn:hover {
+        background: #0056b3;
+    }
